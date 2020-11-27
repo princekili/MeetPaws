@@ -281,6 +281,9 @@ PODS:
     - Kingfisher/Core (= 5.15.6)
   - Kingfisher/Core (5.15.6)
   - leveldb-library (1.22)
+  - Mapbox-iOS-SDK (6.3.0):
+    - MapboxMobileEvents (~> 0.10.4)
+  - MapboxMobileEvents (0.10.6)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -294,6 +297,7 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - IQKeyboardManagerSwift
   - Kingfisher
+  - Mapbox-iOS-SDK (~> 6.3.0)
   - SwiftLint
 
 SPEC REPOS:
@@ -312,6 +316,8 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - Kingfisher
     - leveldb-library
+    - Mapbox-iOS-SDK
+    - MapboxMobileEvents
     - nanopb
     - PromisesObjC
     - SwiftLint
@@ -331,10 +337,12 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Kingfisher: b3554e7bf6106115b44e8795300bad580ef2fdc7
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  Mapbox-iOS-SDK: 2563ed87ead6ec08f1c2090873977b8a7be335a8
+  MapboxMobileEvents: 5ef561e6b6f9cbff2900d62a52322e75d1a7dfdf
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: 658f922776c35882627c1711a668a8d5de38bacd
+PODFILE CHECKSUM: c72cefe4f5f0d1518458d02f7b3beb8926b869d8
 
 COCOAPODS: 1.10.0

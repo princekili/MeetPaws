@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A35BCC1D2570C6290090B95E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */; };
+		A35BCC202570EF830090B95E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35BCC1F2570EF830090B95E /* MapKit.framework */; };
 		A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99A256F87F1001DA842 /* AppDelegate.swift */; };
 		A3CEA99D256F87F1001DA842 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */; };
-		A3CEA99F256F87F1001DA842 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99E256F87F1001DA842 /* ViewController.swift */; };
+		A3CEA99F256F87F1001DA842 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99E256F87F1001DA842 /* MapVC.swift */; };
 		A3CEA9A2256F87F1001DA842 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3CEA9A0256F87F1001DA842 /* Main.storyboard */; };
 		A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA9A3256F87F1001DA842 /* Yogogo.xcdatamodeld */; };
 		A3CEA9A7256F87F4001DA842 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3CEA9A6256F87F4001DA842 /* Assets.xcassets */; };
@@ -21,10 +22,11 @@
 /* Begin PBXFileReference section */
 		156181625CD64B20800EA195 /* Pods-Yogogo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yogogo.debug.xcconfig"; path = "Target Support Files/Pods-Yogogo/Pods-Yogogo.debug.xcconfig"; sourceTree = "<group>"; };
 		A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A35BCC1F2570EF830090B95E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A3CEA997256F87F1001DA842 /* Yogogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yogogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3CEA99A256F87F1001DA842 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A3CEA99E256F87F1001DA842 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A3CEA99E256F87F1001DA842 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		A3CEA9A1256F87F1001DA842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A3CEA9A4256F87F1001DA842 /* Yogogo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Yogogo.xcdatamodel; sourceTree = "<group>"; };
 		A3CEA9A6256F87F4001DA842 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -39,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A35BCC202570EF830090B95E /* MapKit.framework in Frameworks */,
 				EBA0C7B7CB20B17C5302B71E /* Pods_Yogogo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,6 +56,22 @@
 				CD5866D8A6CE4D3ADE008249 /* Pods-Yogogo.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A35BCC222570EFED0090B95E /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				A3CEA99E256F87F1001DA842 /* MapVC.swift */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
+		A35BCC242570F0200090B95E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A35BCC222570EFED0090B95E /* Maps */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		A3CEA98E256F87F1001DA842 = {
@@ -78,13 +97,13 @@
 			children = (
 				A3CEA99A256F87F1001DA842 /* AppDelegate.swift */,
 				A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */,
-				A3CEA99E256F87F1001DA842 /* ViewController.swift */,
+				A3CEA9AB256F87F4001DA842 /* Info.plist */,
+				A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */,
 				A3CEA9A0256F87F1001DA842 /* Main.storyboard */,
 				A3CEA9A6256F87F4001DA842 /* Assets.xcassets */,
 				A3CEA9A8256F87F4001DA842 /* LaunchScreen.storyboard */,
-				A3CEA9AB256F87F4001DA842 /* Info.plist */,
-				A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */,
 				A3CEA9A3256F87F1001DA842 /* Yogogo.xcdatamodeld */,
+				A35BCC242570F0200090B95E /* Controllers */,
 			);
 			path = Yogogo;
 			sourceTree = "<group>";
@@ -92,6 +111,7 @@
 		C2A847738FFA764735640344 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A35BCC1F2570EF830090B95E /* MapKit.framework */,
 				C8F10A593450A151479F13EE /* Pods_Yogogo.framework */,
 			);
 			name = Frameworks;
@@ -231,7 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3CEA99F256F87F1001DA842 /* ViewController.swift in Sources */,
+				A3CEA99F256F87F1001DA842 /* MapVC.swift in Sources */,
 				A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */,
 				A3CEA99D256F87F1001DA842 /* SceneDelegate.swift in Sources */,
 				A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */,
