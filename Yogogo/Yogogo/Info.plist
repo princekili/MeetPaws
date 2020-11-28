@@ -5,7 +5,7 @@
 	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
 	<dict>
 		<key>MGLAccuracyAuthorizationDescription</key>
-		<string>Please show your accuracy location on the map with other users.</string>
+		<string>Please go to Settings/Yogogo/Location and turn on the ‘Precise Location’.</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
@@ -43,7 +43,7 @@
 		<string>MKDirectionsModePedestrian</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Please show your accuracy location on the map with other users.</string>
+	<string>Please enable your precise location while using the app.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
