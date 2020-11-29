@@ -60,4 +60,22 @@ class Users {
     static var list = [User]()
     
 //    static var conversationsVC: ConversationsVC?
+    
+    let userForTest = User(id: "J2jPvTNePXRWmngioPzA",
+                           accessToken: "",
+                           profileImage: "https://firebasestorage.googleapis.com/v0/b/mchat-764dc.appspot.com/o/ProfileImages%2F4C68F0A3-C6B7-43DB-96D2-391EB16D4953.jpg?alt=media&token=96ad3668-96d2-4739-90cd-4dd1e74060f2",
+                           name: "Meitzu",
+                           bio: nil,
+                           posts: nil,
+                           followRequests: nil,
+                           followers: nil,
+                           following: nil,
+                           postDidLike: nil,
+                           collections: nil,
+                           ignoreList: nil,
+                           registeredTime: nil,
+                           isPrivate: nil,
+                           isOnline: true,
+                           lastLogin: 1606566756.480166,
+                           isMapLocationEnabled: true)
 }

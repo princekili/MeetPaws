@@ -22,6 +22,7 @@
 		A3551EB5257363D70006099A /* UserInfoTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EB4257363D70006099A /* UserInfoTab.swift */; };
 		A3551EB9257372890006099A /* MGLMapViewDelegate + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EB8257372890006099A /* MGLMapViewDelegate + Extension.swift */; };
 		A3551EBC257378FB0006099A /* CustomUserLocationAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EBB257378FB0006099A /* CustomUserLocationAnnotationView.swift */; };
+		A3551EC12573901A0006099A /* UserListNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EC02573901A0006099A /* UserListNetworking.swift */; };
 		A35BCC1D2570C6290090B95E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */; };
 		A35BCC202570EF830090B95E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35BCC1F2570EF830090B95E /* MapKit.framework */; };
 		A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99A256F87F1001DA842 /* AppDelegate.swift */; };
@@ -51,6 +52,7 @@
 		A3551EB4257363D70006099A /* UserInfoTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTab.swift; sourceTree = "<group>"; };
 		A3551EB8257372890006099A /* MGLMapViewDelegate + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLMapViewDelegate + Extension.swift"; sourceTree = "<group>"; };
 		A3551EBB257378FB0006099A /* CustomUserLocationAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserLocationAnnotationView.swift; sourceTree = "<group>"; };
+		A3551EC02573901A0006099A /* UserListNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListNetworking.swift; sourceTree = "<group>"; };
 		A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A35BCC1F2570EF830090B95E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A3CEA997256F87F1001DA842 /* Yogogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yogogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +107,7 @@
 			children = (
 				A3551E45257252480006099A /* MapsNetworking.swift */,
 				A3551EA425734E260006099A /* LocationKit.swift */,
+				A3551EC02573901A0006099A /* UserListNetworking.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				A3CEA99F256F87F1001DA842 /* MapsVC.swift in Sources */,
 				A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */,
 				A3551E7725728F610006099A /* PostModel.swift in Sources */,
+				A3551EC12573901A0006099A /* UserListNetworking.swift in Sources */,
 				A3551E9F2572A5F10006099A /* AnnotationPin.swift in Sources */,
 				A3551EB5257363D70006099A /* UserInfoTab.swift in Sources */,
 				A3551EAE25735B000006099A /* UIImageView + Extension.swift in Sources */,

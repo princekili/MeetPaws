@@ -65,7 +65,13 @@ extension MapsVC: MGLMapViewDelegate {
         // Other users
         } else {
             guard let pin = annotation as? AnnotationPin else { return }
-            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.3,
+                           delay: 0,
+                           usingSpringWithDamping: 0.7,
+                           initialSpringVelocity: 1,
+                           options: .curveEaseIn,
+                           animations: {
+                            
                 self.userInfoTab = UserInfoTab(annotation: pin)
 //                let tapGesture = UITapGestureRecognizer(target: self,
 //                                                        action: #selector(self.openUserMessagesHandler))
@@ -77,8 +83,6 @@ extension MapsVC: MGLMapViewDelegate {
                 self.view.addSubview(self.userInfoTab!)
             })
         }
-        // We're borrowing this method as a gesture recognizer, so reset selection state.
-//        mapView.deselectAnnotation(annotation, animated: false)
     }
     
     // MARK: -

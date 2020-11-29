@@ -2,11 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
-	<dict>
-		<key>MGLAccuracyAuthorizationDescription</key>
-		<string>Please go to Settings/Yogogo/Location and turn on the ‘Precise Location’.</string>
-	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDocumentTypes</key>
@@ -42,6 +37,11 @@
 	<array>
 		<string>MKDirectionsModePedestrian</string>
 	</array>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict>
+		<key>MGLAccuracyAuthorizationDescription</key>
+		<string>Please go to Settings/Yogogo/Location and turn on the ‘Precise Location’.</string>
+	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please enable your precise location while using the app.</string>
 	<key>UIApplicationSceneManifest</key>
@@ -76,8 +76,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
