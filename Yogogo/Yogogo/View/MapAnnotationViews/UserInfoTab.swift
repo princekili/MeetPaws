@@ -43,32 +43,55 @@ class UserInfoTab: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: -
+    // MARK: - Mock data for test
     
     private func setupUserInfo(_ annotation: MGLAnnotation) {
+        
+        let url = "https://firebasestorage.googleapis.com/v0/b/mchat-764dc.appspot.com/o/ProfileImages%2F57ACD8E0-ED89-4BF0-93C1-BD1EB162C253.jpg?alt=media&token=f0520034-1b44-41d5-a0bb-53e2d3a0f323"
+        
+        // Other users
         if let pin = annotation as? AnnotationPin {
             self.pin = pin
-            profileImage.loadImage(url: pin.user.profileImage ?? "")
+            profileImage.loadImage(url: url)
             actionButton.setImage(UIImage(systemName: "bubble.right"), for: .normal)
+            nameLabel.text = "Test"
+            lastSeenLabel.text = "Test"
             
-            guard let title = annotation.title,
-                  let lastSeen = annotation.subtitle else { return }
-            nameLabel.text = title
-            lastSeenLabel.text = lastSeen
+        // Me
         } else {
-            profileImage.loadImage(url: CurrentUser.profileImage)
+            profileImage.loadImage(url: url)
             actionButton.setImage(UIImage(systemName: "gear"), for: .normal)
             nameLabel.text = "Me"
-            
-            var status: String!
-            if CurrentUser.isMapLocationEnabled ?? false {
-                status = "Online"
-            } else {
-                status = "Offline"
-            }
-            lastSeenLabel.text = status
+            lastSeenLabel.text = "Online"
         }
     }
+    
+    // MARK: - the real one
+    
+//    private func setupUserInfo(_ annotation: MGLAnnotation) {
+//        if let pin = annotation as? AnnotationPin {
+//            self.pin = pin
+//            profileImage.loadImage(url: pin.user.profileImage ?? "")
+//            actionButton.setImage(UIImage(systemName: "bubble.right"), for: .normal)
+//
+//            guard let title = annotation.title,
+//                  let lastSeen = annotation.subtitle else { return }
+//            nameLabel.text = title
+//            lastSeenLabel.text = lastSeen
+//        } else {
+//            profileImage.loadImage(url: CurrentUser.profileImage)
+//            actionButton.setImage(UIImage(systemName: "gear"), for: .normal)
+//            nameLabel.text = "Me"
+//
+//            var status: String!
+//            if CurrentUser.isMapLocationEnabled ?? false {
+//                status = "Online"
+//            } else {
+//                status = "Offline"
+//            }
+//            lastSeenLabel.text = status
+//        }
+//    }
     
     // MARK: -
     
@@ -105,6 +128,7 @@ class UserInfoTab: UIView {
         addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 16)
+        nameLabel.textColor = .black
         
         let constraints = [
             nameLabel.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 8),

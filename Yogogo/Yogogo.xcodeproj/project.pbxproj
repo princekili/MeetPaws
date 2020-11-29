@@ -20,6 +20,8 @@
 		A3551EAE25735B000006099A /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EAD25735B000006099A /* UIImageView + Extension.swift */; };
 		A3551EB2257361820006099A /* CurrentUserAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EB1257361820006099A /* CurrentUserAnnotationView.swift */; };
 		A3551EB5257363D70006099A /* UserInfoTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EB4257363D70006099A /* UserInfoTab.swift */; };
+		A3551EB9257372890006099A /* MGLMapViewDelegate + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EB8257372890006099A /* MGLMapViewDelegate + Extension.swift */; };
+		A3551EBC257378FB0006099A /* CustomUserLocationAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EBB257378FB0006099A /* CustomUserLocationAnnotationView.swift */; };
 		A35BCC1D2570C6290090B95E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */; };
 		A35BCC202570EF830090B95E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35BCC1F2570EF830090B95E /* MapKit.framework */; };
 		A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99A256F87F1001DA842 /* AppDelegate.swift */; };
@@ -47,6 +49,8 @@
 		A3551EAD25735B000006099A /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		A3551EB1257361820006099A /* CurrentUserAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserAnnotationView.swift; sourceTree = "<group>"; };
 		A3551EB4257363D70006099A /* UserInfoTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTab.swift; sourceTree = "<group>"; };
+		A3551EB8257372890006099A /* MGLMapViewDelegate + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLMapViewDelegate + Extension.swift"; sourceTree = "<group>"; };
+		A3551EBB257378FB0006099A /* CustomUserLocationAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserLocationAnnotationView.swift; sourceTree = "<group>"; };
 		A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A35BCC1F2570EF830090B95E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A3CEA997256F87F1001DA842 /* Yogogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yogogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +112,7 @@
 		A3551E82257292570006099A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A3551EB7257371F50006099A /* MapViews */,
 				A3551E9D2572A5CB0006099A /* MapAnnotationViews */,
 				A3CEA9A0256F87F1001DA842 /* Main.storyboard */,
 				A3CEA9A8256F87F4001DA842 /* LaunchScreen.storyboard */,
@@ -130,9 +135,18 @@
 				A3551E9E2572A5F10006099A /* AnnotationPin.swift */,
 				A3551EAA257358A30006099A /* UserAnnotationView.swift */,
 				A3551EB1257361820006099A /* CurrentUserAnnotationView.swift */,
+				A3551EBB257378FB0006099A /* CustomUserLocationAnnotationView.swift */,
 				A3551EB4257363D70006099A /* UserInfoTab.swift */,
 			);
 			path = MapAnnotationViews;
+			sourceTree = "<group>";
+		};
+		A3551EB7257371F50006099A /* MapViews */ = {
+			isa = PBXGroup;
+			children = (
+				A3551EB8257372890006099A /* MGLMapViewDelegate + Extension.swift */,
+			);
+			path = MapViews;
 			sourceTree = "<group>";
 		};
 		A35BCC222570EFED0090B95E /* Maps */ = {
@@ -333,6 +347,7 @@
 				A3551E7F25728FF10006099A /* UserIsTypingModel.swift in Sources */,
 				A3551EA525734E260006099A /* LocationKit.swift in Sources */,
 				A3551EB2257361820006099A /* CurrentUserAnnotationView.swift in Sources */,
+				A3551EB9257372890006099A /* MGLMapViewDelegate + Extension.swift in Sources */,
 				A3551EAB257358A30006099A /* UserAnnotationView.swift in Sources */,
 				A3551E46257252490006099A /* MapsNetworking.swift in Sources */,
 				A3551E7C25728FCC0006099A /* CommentModel.swift in Sources */,
@@ -346,6 +361,7 @@
 				A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */,
 				A3551E4B257256110006099A /* UserModel.swift in Sources */,
 				A3551EA22572AEE50006099A /* Calendar + Extension.swift in Sources */,
+				A3551EBC257378FB0006099A /* CustomUserLocationAnnotationView.swift in Sources */,
 				A3551EA825734FC10006099A /* CurrentUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
