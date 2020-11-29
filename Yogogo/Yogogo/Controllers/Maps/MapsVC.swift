@@ -25,7 +25,7 @@ class MapsVC: UIViewController {
     
 //    var settingsButton: MapSettingsButton!
     
-//    let point = MGLPointAnnotation()
+    let point = MGLPointAnnotation()
 
     // MARK: -
     
@@ -78,6 +78,18 @@ class MapsVC: UIViewController {
     
     // MARK: - Check user authorization of location
     
+    private func deniedAlert() {
+        let message = "To see the map you need to change your location settings. Please go to Settings/Yogogo/Location/ and allow location access.(While Using the App)"
+        
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default) { (alertAction) in
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     // TBD
 //    private func checkStatus() {
 //        switch CLLocationManager.authorizationStatus() {
@@ -106,15 +118,4 @@ class MapsVC: UIViewController {
 //            }
 //    }
     
-    private func deniedAlert() {
-        let message = "To see the map you need to change your location settings. Please go to Settings/Yogogo/Location/ and allow location access.(While Using the App)"
-        
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default) { (alertAction) in
-            self.navigationController?.popViewController(animated: true)
-        }
-        
-        alertController.addAction(alertAction)
-        present(alertController, animated: true, completion: nil)
-    }
 }

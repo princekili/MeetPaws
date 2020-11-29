@@ -36,6 +36,8 @@ extension MapsVC: MGLMapViewDelegate {
         
         mapView.setCenter(annotation.coordinate, zoomLevel: 16, animated: true)
         
+        tabBarController?.tabBar.isHidden = true
+        
         // Me
         if annotation is MGLUserLocation && mapView.userLocation != nil {
             
@@ -90,5 +92,7 @@ extension MapsVC: MGLMapViewDelegate {
     func mapView(_ mapView: MGLMapView, didDeselect annotation: MGLAnnotation) {
         self.userInfoTab?.removeFromSuperview()
         self.userInfoTab = nil
+        
+        tabBarController?.tabBar.isHidden = false
     }
 }
