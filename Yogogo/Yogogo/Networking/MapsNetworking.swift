@@ -31,12 +31,12 @@ class MapsNetworking {
                     guard let longitude = snap.value(forKey: "longitude") as? Double else { return }
 
                     let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    self.handleFriendLocation(user, coordinate)
+                    self.handleUserLocation(user, coordinate)
             }
         }
     }
     
-    func handleFriendLocation(_ user: User, _ coordinate: CLLocationCoordinate2D) {
+    func handleUserLocation(_ user: User, _ coordinate: CLLocationCoordinate2D) {
         let userPin = AnnotationPin(user, coordinate)
         var annotationToRemove: AnnotationPin!
         

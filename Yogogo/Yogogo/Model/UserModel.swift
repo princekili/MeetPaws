@@ -5,7 +5,6 @@
 //  Created by prince on 2020/11/28.
 //
 
-
 import Foundation
 
 // MARK: - User Info Model
@@ -34,7 +33,7 @@ struct User {
     
     var collections: [String]?
     
-    var blacklistUser: [String]?
+    var ignoreList: [String]?
     
     var registeredTime: TimeInterval?
     

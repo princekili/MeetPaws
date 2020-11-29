@@ -21,17 +21,20 @@ class MapsVC: UIViewController, MGLMapViewDelegate {
     
     var userCoordinates = [String: CLLocationCoordinate2D]()
     
-//    var userInfoTab: UserInfoTab?
+    var userInfoTab: UserInfoTab?
     
 //    var settingsButton: MapSettingsButton!
     
 //    let point = MGLPointAnnotation()
 
+    // MARK: -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupMapView()
 //        checkStatus()
+        setupMapView()
+        userMapHandler()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +48,8 @@ class MapsVC: UIViewController, MGLMapViewDelegate {
         super.viewWillDisappear(animated)
         
     }
+    
+    // MARK: -
     
     func setupMapView() {
         let mapView = MGLMapView(frame: view.bounds)
@@ -64,33 +69,42 @@ class MapsVC: UIViewController, MGLMapViewDelegate {
         view.addSubview(mapView)
     }
     
-    // TBD
-    private func checkStatus() {
-        switch CLLocationManager.authorizationStatus() {
-        case .authorizedWhenInUse:
-            setupMapView()
-        case .denied:
-            deniedAlert()
-            CLLocationManager().requestWhenInUseAuthorization()
-        default:
-            break
+    private func userMapHandler() {
+        if !LocationKit.mapTimer.isValid {
+            LocationKit.map.showsUserLocation = true
+            LocationKit.startUpdatingUserLocation()
         }
     }
     
+    // MARK: - Check user authorization of location
+    
     // TBD
-    func mapView(_ mapView: MGLMapView, didChangeLocationManagerAuthorization manager: MGLLocationManager) {
-        if #available(iOS 14.0, *) {
-
-                switch manager.authorizationStatus {
-                    case .authorizedAlways, .authorizedWhenInUse:
-                        setupMapView()
-                    case .notDetermined, .denied, .restricted:
-                        deniedAlert()
-                    default:
-                        break
-                }
-            }
-    }
+//    private func checkStatus() {
+//        switch CLLocationManager.authorizationStatus() {
+//        case .authorizedWhenInUse:
+//            setupMapView()
+//        case .denied:
+//            deniedAlert()
+//            CLLocationManager().requestWhenInUseAuthorization()
+//        default:
+//            break
+//        }
+//    }
+//
+//    // TBD
+//    func mapView(_ mapView: MGLMapView, didChangeLocationManagerAuthorization manager: MGLLocationManager) {
+//        if #available(iOS 14.0, *) {
+//
+//                switch manager.authorizationStatus {
+//                    case .authorizedAlways, .authorizedWhenInUse:
+//                        setupMapView()
+//                    case .notDetermined, .denied, .restricted:
+//                        deniedAlert()
+//                    default:
+//                        break
+//                }
+//            }
+//    }
     
     private func deniedAlert() {
         let message = "To see the map you need to change your location settings. Please go to Settings/Yogogo/Location/ and allow location access.(While Using the App)"
@@ -103,6 +117,8 @@ class MapsVC: UIViewController, MGLMapViewDelegate {
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
     }
+    
+    // MARK: - User location annotation
     
     func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
         // Substitute our custom view for the user location annotation. This custom view is defined below.

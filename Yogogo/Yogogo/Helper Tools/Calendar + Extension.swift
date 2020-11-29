@@ -10,9 +10,9 @@ import Foundation
 extension Calendar {
     
     // timeIntervalSince1970 num to a string.
-    func calculateTimePassed(date: NSDate) -> String{
+    func calculateTimePassed(date: NSDate) -> String {
         let now = Date()
-        let dataComponents = Calendar.current.dateComponents([.month, .day ,.hour, .minute], from: date as Date, to: now)
+        let dataComponents = Calendar.current.dateComponents([.month, .day, .hour, .minute], from: date as Date, to: now)
         
         if let month = dataComponents.month, month > 0 {
             return month == 1 ? "\(month)" + " month ago" : "\(month)" + " months ago"
@@ -31,12 +31,12 @@ extension Calendar {
         }
     }
     
-    func calculateLastLogin(_ date: NSDate) -> String{
+    func calculateLastLogin(_ date: NSDate) -> String {
         let now = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         let lastSeenDate = dateFormatter.string(from: date as Date)
-        let dataComponents = Calendar.current.dateComponents([.month, .day ,.hour, .minute], from: date as Date, to: now)
+        let dataComponents = Calendar.current.dateComponents([.month, .day, .hour, .minute], from: date as Date, to: now)
         
         if let month = dataComponents.month, month > 0 {
             return "last seen " + lastSeenDate
