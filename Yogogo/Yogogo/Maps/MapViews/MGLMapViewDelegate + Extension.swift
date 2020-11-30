@@ -10,7 +10,7 @@ import Mapbox
 
 // MARK: User location annotation
 
-extension MapsVC: MGLMapViewDelegate {    
+extension MapsViewController: MGLMapViewDelegate {    
     
     // Substitute our custom view for the user location annotation.
     func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {

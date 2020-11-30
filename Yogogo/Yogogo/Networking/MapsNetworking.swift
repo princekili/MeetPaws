@@ -11,7 +11,7 @@ import Mapbox
 
 class MapsNetworking {
     
-    var mapsVC: MapsVC!
+    var mapsVC: MapsViewController!
     
     let database = Firestore.firestore()
     

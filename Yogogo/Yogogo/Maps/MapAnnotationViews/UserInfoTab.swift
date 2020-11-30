@@ -10,7 +10,7 @@ import Mapbox
 
 class UserInfoTab: UIView {
 
-    let mapsVC = MapsVC()
+    let mapsVC = MapsViewController()
     
     var pin: AnnotationPin!
     

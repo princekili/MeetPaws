@@ -9,7 +9,7 @@
 import UIKit
 import Mapbox
 
-class MapsVC: UIViewController {
+class MapsViewController: UIViewController {
     
     var mapView: MGLMapView?
     
