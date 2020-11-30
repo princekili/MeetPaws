@@ -22,10 +22,11 @@ class AddPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupSelectedImageV()
-        setupResultsButton()
         showPicker()
         setupPickButton()
+        setupSelectedImageV()
+        setupResultsButton()
+        navigationItem.hidesBackButton = true
     }
     
     private func setupSelectedImageV() {
@@ -33,7 +34,7 @@ class AddPostViewController: UIViewController {
         
         selectedImageV.contentMode = .scaleAspectFit
         selectedImageV.frame = CGRect(x: 0,
-                                      y: 0,
+                                      y: 100,
                                       width: UIScreen.main.bounds.width,
                                       height: UIScreen.main.bounds.height * 0.45)
         view.addSubview(selectedImageV)
@@ -47,17 +48,19 @@ class AddPostViewController: UIViewController {
         pickButton.addTarget(self, action: #selector(showPicker), for: .touchUpInside)
         view.addSubview(pickButton)
         pickButton.center = view.center
+        pickButton.isHidden = true
     }
     
     private func setupResultsButton() {
         resultsButton.setTitle("Show selected", for: .normal)
         resultsButton.setTitleColor(.black, for: .normal)
         resultsButton.frame = CGRect(x: 0,
-                                     y: UIScreen.main.bounds.height - 100,
+                                     y: UIScreen.main.bounds.height - 200,
                                      width: UIScreen.main.bounds.width,
                                      height: 100)
         resultsButton.addTarget(self, action: #selector(showResults), for: .touchUpInside)
         view.addSubview(resultsButton)
+        resultsButton.isHidden = true
     }
     
     @objc func showResults() {
@@ -74,10 +77,7 @@ class AddPostViewController: UIViewController {
     
     // MARK: - Configuration
     @objc func showPicker() {
-        
         var config = YPImagePickerConfiguration()
-        
-        /* Uncomment and play around with the configuration 👨‍🔬 🚀 */
         
         /* Set this to true if you want to force the  library output to be a squared image. Defaults to false */
         //         config.library.onlySquare = true
@@ -143,9 +143,8 @@ class AddPostViewController: UIViewController {
         
         /* Defines if the bottom bar should be hidden when showing the picker. Default is false */
         config.hidesBottomBar = false
-        
+
         config.maxCameraZoomFactor = 3.0
-        
         config.library.maxNumberOfItems = 5
         config.gallery.hidesRemoveButton = false
         
@@ -190,6 +189,15 @@ class AddPostViewController: UIViewController {
             if cancelled {
                 print("Picker was canceled")
                 picker.dismiss(animated: true, completion: nil)
+//                picker.dismiss(animated: true, completion: { [weak self] in
+//                    self?.present(FeedViewController(), animated: true, completion: nil)
+//                    guard let feedVC = UIStoryboard(name: "FeedVC", bundle: nil).instantiateInitialViewController() as? FeedViewController
+//                    else { return }
+//
+//                    let nav = UINavigationController(rootViewController: feedVC)
+//                    self?.present(nav, animated: true, completion: nil)
+//                })
+                
                 return
             }
             _ = items.map { print("🧀 \($0)") }
@@ -217,7 +225,6 @@ class AddPostViewController: UIViewController {
                 }
             }
         }
-        
         /* Single Photo implementation. */
         // picker.didFinishPicking { [unowned picker] items, _ in
         //     self.selectedItems = items

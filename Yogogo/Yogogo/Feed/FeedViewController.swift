@@ -15,6 +15,7 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
 
         setupTableView()
+        navigationController?.navigationBar.barTintColor = .white
 //        self.setLeftAlignedNavigationItemTitle(text: "Yogogo", color: .black, margin: 10)
     }
     
