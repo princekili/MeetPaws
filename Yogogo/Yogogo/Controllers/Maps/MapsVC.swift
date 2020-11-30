@@ -25,7 +25,7 @@ class MapsVC: UIViewController {
     
 //    var settingsButton: MapSettingsButton!
     
-    let point = MGLPointAnnotation()
+//    let point = MGLPointAnnotation()
 
     // MARK: -
     
@@ -35,6 +35,9 @@ class MapsVC: UIViewController {
 //        checkStatus()
         setupMapView()
         userMapHandler()
+        
+        // MARK: - For test
+        getUsers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,9 +73,9 @@ class MapsVC: UIViewController {
     }
     
     private func userMapHandler() {
-        if !LocationKit.mapTimer.isValid {
-            LocationKit.map.showsUserLocation = true
-            LocationKit.startUpdatingUserLocation()
+        if !LocationNetworking.mapTimer.isValid {
+            LocationNetworking.map.showsUserLocation = true
+            LocationNetworking.startUpdatingUserLocation()
         }
     }
     
@@ -118,4 +121,16 @@ class MapsVC: UIViewController {
 //            }
 //    }
     
+    // MARK: - For test
+    
+    var users = [User]()
+    
+    private func getUsers() {
+        UserListNetworking().fetchUsers { (usersList) in
+            let sortedUserList = Array(usersList.values).sorted { (friend1, friend2) -> Bool in
+                return friend1.name ?? "" < friend2.name ?? ""
+            }
+            self.users = sortedUserList
+        }
+    }
 }

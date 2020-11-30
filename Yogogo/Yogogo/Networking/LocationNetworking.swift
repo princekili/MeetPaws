@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import Mapbox
 
-class LocationKit {
+class LocationNetworking {
     
     static var mapTimer = Timer()
     
@@ -18,18 +18,18 @@ class LocationKit {
     static let database = Firestore.firestore()
     
     static func startUpdatingUserLocation() {
-        LocationKit.mapTimer = Timer(timeInterval: 10,
+        LocationNetworking.mapTimer = Timer(timeInterval: 10,
                                      target: self,
-                                     selector: #selector(LocationKit.updateCurrentLocation),
+                                     selector: #selector(LocationNetworking.updateCurrentLocation),
                                      userInfo: nil,
                                      repeats: true)
         
-        RunLoop.current.add(LocationKit.mapTimer, forMode: RunLoop.Mode.common)
+        RunLoop.current.add(LocationNetworking.mapTimer, forMode: RunLoop.Mode.common)
     }
     
     @objc static func updateCurrentLocation() {
         guard CurrentUser.isMapLocationEnabled ?? false else { return }
-        guard let currentLocation = LocationKit.map.userLocation?.coordinate else { return }
+        guard let currentLocation = LocationNetworking.map.userLocation?.coordinate else { return }
         
         let ref = database.collection("userLocation").document(CurrentUser.uid)
         let value = ["longitude": currentLocation.longitude, "latitude": currentLocation.latitude]
