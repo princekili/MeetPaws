@@ -14,7 +14,13 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupTableView()
+//        self.setLeftAlignedNavigationItemTitle(text: "Yogogo", color: .black, margin: 10)
+    }
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 }
 
@@ -27,7 +33,4 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    
-    
-    
 }

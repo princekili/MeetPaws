@@ -12,6 +12,7 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageButton: UIButton! {
         didSet {
             profileImageButton.layer.cornerRadius = 36 / 2
+            profileImageButton.layer.masksToBounds = true
         }
     }
     

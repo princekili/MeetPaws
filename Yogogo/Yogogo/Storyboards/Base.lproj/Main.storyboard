@@ -9,27 +9,27 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Yogogo-->
+        <!--Feed-->
         <scene sceneID="3ZU-Py-byz">
             <objects>
-                <viewController id="8QM-k2-q7e" customClass="FeedViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8QM-k2-q7e" userLabel="Feed" customClass="FeedViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wpY-dR-MCR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pjr-xg-Nsj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pjr-xg-Nsj">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedTableViewCell" id="Gj1-kw-ZQO" customClass="FeedTableViewCell" customModule="Yogogo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="633"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="632.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gj1-kw-ZQO" id="vza-ml-M79">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="633"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="632.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aZk-gG-smH">
-                                                    <rect key="frame" x="16" y="8" width="119" height="36"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aZk-gG-smH">
+                                                    <rect key="frame" x="12" y="8" width="117" height="36"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ywk-3b-0Lv">
                                                             <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
@@ -40,7 +40,7 @@
                                                             <state key="normal" image="dog_profileImage"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wM1-oA-mzh">
-                                                            <rect key="frame" x="46" y="1.5" width="73" height="33"/>
+                                                            <rect key="frame" x="44" y="1.5" width="73" height="33"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <state key="normal" title="princekili">
                                                                 <color key="titleColor" systemColor="labelColor"/>
@@ -88,7 +88,7 @@
                                                     </state>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ctX-mx-UkB">
-                                                    <rect key="frame" x="16" y="496" width="223" height="125"/>
+                                                    <rect key="frame" x="16" y="496" width="223" height="124.5"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPe-uL-2GY">
                                                             <rect key="frame" x="0.0" y="0.0" width="61" height="33"/>
@@ -104,7 +104,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izd-qv-7pw">
-                                                            <rect key="frame" x="0.0" y="54" width="40" height="20"/>
+                                                            <rect key="frame" x="0.0" y="53.5" width="40" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="7WO-9z-01V"/>
                                                             </constraints>
@@ -114,14 +114,14 @@
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H74-Fm-Ia7">
-                                                            <rect key="frame" x="0.0" y="74" width="157" height="33"/>
+                                                            <rect key="frame" x="0.0" y="73.5" width="157" height="33"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="View all 2 comments">
                                                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July 27, 2014" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j40-rr-Tm0">
-                                                            <rect key="frame" x="0.0" y="107" width="90" height="18"/>
+                                                            <rect key="frame" x="0.0" y="106.5" width="90" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -138,7 +138,7 @@
                                                 <constraint firstItem="ctX-mx-UkB" firstAttribute="top" secondItem="4IE-qi-HTN" secondAttribute="bottom" id="drf-wu-uZc"/>
                                                 <constraint firstAttribute="bottom" secondItem="ctX-mx-UkB" secondAttribute="bottom" constant="12" id="ghh-4U-Ds6"/>
                                                 <constraint firstItem="4IE-qi-HTN" firstAttribute="top" secondItem="aLy-ka-vix" secondAttribute="bottom" constant="8" id="hHd-dj-0ao"/>
-                                                <constraint firstItem="aZk-gG-smH" firstAttribute="leading" secondItem="vza-ml-M79" secondAttribute="leading" constant="16" id="hTo-pw-c6s"/>
+                                                <constraint firstItem="aZk-gG-smH" firstAttribute="leading" secondItem="vza-ml-M79" secondAttribute="leading" constant="12" id="hTo-pw-c6s"/>
                                                 <constraint firstAttribute="trailing" secondItem="1eM-6K-pOe" secondAttribute="trailing" constant="12" id="mq8-fB-1ui"/>
                                                 <constraint firstItem="ctX-mx-UkB" firstAttribute="leading" secondItem="vza-ml-M79" secondAttribute="leading" constant="16" id="mus-89-Ig6"/>
                                                 <constraint firstAttribute="trailing" secondItem="aLy-ka-vix" secondAttribute="trailing" id="scV-jL-D3f"/>
@@ -171,7 +171,16 @@
                             <constraint firstItem="Pjr-xg-Nsj" firstAttribute="top" secondItem="wo0-GE-Ycp" secondAttribute="top" id="qoZ-vs-lFa"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Yogogo" id="0xY-qV-RCO"/>
+                    <navigationItem key="navigationItem" title="Yogogo" id="0xY-qV-RCO">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" id="8ZH-Tg-UTr">
+                                <imageReference key="image" image="paperplane" catalog="system" renderingMode="original"/>
+                            </barButtonItem>
+                            <barButtonItem id="CNE-5P-XGS">
+                                <imageReference key="image" image="heart" catalog="system" renderingMode="original"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Pjr-xg-Nsj" id="oRM-ip-r0M"/>
                     </connections>
@@ -180,21 +189,97 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="-1339.2857142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="o8p-GP-BZK">
             <objects>
-                <viewController id="3Mn-MZ-2et" sceneMemberID="viewController">
+                <viewController id="3Mn-MZ-2et" customClass="SearchViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fii-KR-tyj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SzR-Y9-mLV">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" text="wayne" placeholder="Search" id="lN3-jA-Nfv">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search"/>
+                                </searchBar>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchTableViewCell" rowHeight="56" id="ftq-q3-7KK" customClass="SearchTableViewCell" customModule="Yogogo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="84" width="414" height="56"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ftq-q3-7KK" id="SUu-ig-RwR">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3vz-I4-E74">
+                                                    <rect key="frame" x="12" y="10" width="166" height="36"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdB-K6-jie">
+                                                            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="xdB-K6-jie" secondAttribute="height" multiplier="1:1" id="X2Z-0m-Vut"/>
+                                                                <constraint firstAttribute="width" constant="36" id="kwm-Ib-3GK"/>
+                                                            </constraints>
+                                                            <state key="normal" image="IU_profileImage"/>
+                                                        </button>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="3hE-ey-XLk">
+                                                            <rect key="frame" x="44" y="0.0" width="122" height="36"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWS-Rr-JHz">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="122" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="gTm-Rv-Yvu"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                                    <state key="normal" title="waynechen323">
+                                                                        <color key="titleColor" systemColor="labelColor"/>
+                                                                    </state>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Df-PR-qbw">
+                                                                    <rect key="frame" x="0.0" y="20" width="89" height="16"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <state key="normal" title="aka 小安老師">
+                                                                        <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </state>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3vz-I4-E74" firstAttribute="leading" secondItem="SUu-ig-RwR" secondAttribute="leading" constant="12" id="ULU-QS-qmZ"/>
+                                                <constraint firstItem="3vz-I4-E74" firstAttribute="centerY" secondItem="SUu-ig-RwR" secondAttribute="centerY" id="xnK-Vf-VIO"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameButton" destination="2Df-PR-qbw" id="RgY-rq-veL"/>
+                                            <outlet property="profileImageButton" destination="xdB-K6-jie" id="g7w-r7-edX"/>
+                                            <outlet property="usernameButton" destination="QWS-Rr-JHz" id="OTX-sn-2Ih"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Hf4-Bp-qed"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SzR-Y9-mLV" firstAttribute="top" secondItem="Hf4-Bp-qed" secondAttribute="top" id="DP4-Br-wLl"/>
+                            <constraint firstItem="Hf4-Bp-qed" firstAttribute="trailing" secondItem="SzR-Y9-mLV" secondAttribute="trailing" id="Ri3-AV-3mH"/>
+                            <constraint firstItem="SzR-Y9-mLV" firstAttribute="leading" secondItem="Hf4-Bp-qed" secondAttribute="leading" id="m1d-sJ-SRu"/>
+                            <constraint firstItem="Hf4-Bp-qed" firstAttribute="bottom" secondItem="SzR-Y9-mLV" secondAttribute="bottom" id="sQh-74-sKD"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="o3v-ea-GZk"/>
+                    <connections>
+                        <outlet property="tableView" destination="SzR-Y9-mLV" id="hJm-kd-WRd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmB-aV-lc9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="-637"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="-636.16071428571422"/>
         </scene>
         <!--Maps View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -287,6 +372,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="IU_profileImage" width="640" height="640"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="dog_postImage" width="426" height="421"/>
         <image name="dog_profileImage" width="230" height="230"/>

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		A316BE402574F30700989152 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE3F2574F30700989152 /* FeedViewController.swift */; };
 		A316BE432574F3F400989152 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE422574F3F400989152 /* FeedTableViewCell.swift */; };
+		A316BE4A2575070D00989152 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE492575070C00989152 /* SearchTableViewCell.swift */; };
+		A316BE4D2575072200989152 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE4C2575072100989152 /* SearchViewController.swift */; };
+		A316BE512575245D00989152 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE502575245C00989152 /* UIViewController + Extension.swift */; };
 		A3551E46257252490006099A /* MapsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551E45257252480006099A /* MapsNetworking.swift */; };
 		A3551E4B257256110006099A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551E4A257256110006099A /* User.swift */; };
 		A3551E7725728F610006099A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551E7625728F610006099A /* Post.swift */; };
@@ -41,6 +44,9 @@
 		156181625CD64B20800EA195 /* Pods-Yogogo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yogogo.debug.xcconfig"; path = "Target Support Files/Pods-Yogogo/Pods-Yogogo.debug.xcconfig"; sourceTree = "<group>"; };
 		A316BE3F2574F30700989152 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		A316BE422574F3F400989152 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		A316BE492575070C00989152 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		A316BE4C2575072100989152 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		A316BE502575245C00989152 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		A3551E45257252480006099A /* MapsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsNetworking.swift; sourceTree = "<group>"; };
 		A3551E4A257256110006099A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A3551E7625728F610006099A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -97,7 +103,6 @@
 		A316BE0D2574E70000989152 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A3CEA9AB256F87F4001DA842 /* Info.plist */,
 				A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */,
 				A3CEA9A3256F87F1001DA842 /* Yogogo.xcdatamodeld */,
 			);
@@ -111,6 +116,15 @@
 				A316BE422574F3F400989152 /* FeedTableViewCell.swift */,
 			);
 			path = Feed;
+			sourceTree = "<group>";
+		};
+		A316BE47257504E700989152 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				A316BE4C2575072100989152 /* SearchViewController.swift */,
+				A316BE492575070C00989152 /* SearchTableViewCell.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		A3551E49257255F50006099A /* Models */ = {
@@ -149,6 +163,7 @@
 			children = (
 				A3551EA12572AEE50006099A /* Calendar + Extension.swift */,
 				A3551EAD25735B000006099A /* UIImageView + Extension.swift */,
+				A316BE502575245C00989152 /* UIViewController + Extension.swift */,
 			);
 			path = "Helper Tools";
 			sourceTree = "<group>";
@@ -204,6 +219,7 @@
 		A3CEA999256F87F1001DA842 /* Yogogo */ = {
 			isa = PBXGroup;
 			children = (
+				A316BE47257504E700989152 /* Search */,
 				A316BE0F2574E7AB00989152 /* Feed */,
 				A35BCC222570EFED0090B95E /* Maps */,
 				A3551E812572921C0006099A /* Networking */,
@@ -214,6 +230,7 @@
 				A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */,
 				A3CEA9A6256F87F4001DA842 /* Assets.xcassets */,
 				A316BE0D2574E70000989152 /* Supporting Files */,
+				A3CEA9AB256F87F4001DA842 /* Info.plist */,
 			);
 			path = Yogogo;
 			sourceTree = "<group>";
@@ -367,8 +384,10 @@
 				A3551EB9257372890006099A /* MGLMapViewDelegate + Extension.swift in Sources */,
 				A3551EAB257358A30006099A /* UserAnnotationView.swift in Sources */,
 				A3551E46257252490006099A /* MapsNetworking.swift in Sources */,
+				A316BE512575245D00989152 /* UIViewController + Extension.swift in Sources */,
 				A3551E7C25728FCC0006099A /* Comment.swift in Sources */,
 				A3CEA99F256F87F1001DA842 /* MapsViewController.swift in Sources */,
+				A316BE4A2575070D00989152 /* SearchTableViewCell.swift in Sources */,
 				A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */,
 				A3551E7725728F610006099A /* Post.swift in Sources */,
 				A3551EC12573901A0006099A /* UserListNetworking.swift in Sources */,
@@ -378,6 +397,7 @@
 				A3551EAE25735B000006099A /* UIImageView + Extension.swift in Sources */,
 				A3CEA99D256F87F1001DA842 /* SceneDelegate.swift in Sources */,
 				A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */,
+				A316BE4D2575072200989152 /* SearchViewController.swift in Sources */,
 				A3551E4B257256110006099A /* User.swift in Sources */,
 				A3551EA22572AEE50006099A /* Calendar + Extension.swift in Sources */,
 				A3551EBC257378FB0006099A /* CustomUserLocationAnnotationView.swift in Sources */,
