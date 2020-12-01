@@ -32,6 +32,8 @@
 		A3551EC12573901A0006099A /* UserListNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EC02573901A0006099A /* UserListNetworking.swift */; };
 		A35BCC1D2570C6290090B95E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */; };
 		A35BCC202570EF830090B95E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35BCC1F2570EF830090B95E /* MapKit.framework */; };
+		A3C1959F25765DE700BAB46B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3C1959E25765DE700BAB46B /* Launch Screen.storyboard */; };
+		A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195A125765F0200BAB46B /* UILabel + Extension.swift */; };
 		A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99A256F87F1001DA842 /* AppDelegate.swift */; };
 		A3CEA99D256F87F1001DA842 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */; };
 		A3CEA99F256F87F1001DA842 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99E256F87F1001DA842 /* MapsViewController.swift */; };
@@ -69,6 +71,8 @@
 		A3551EC02573901A0006099A /* UserListNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListNetworking.swift; sourceTree = "<group>"; };
 		A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A35BCC1F2570EF830090B95E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A3C1959E25765DE700BAB46B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		A3C195A125765F0200BAB46B /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		A3CEA997256F87F1001DA842 /* Yogogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yogogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3CEA99A256F87F1001DA842 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 			children = (
 				A3CEA9A0256F87F1001DA842 /* Main.storyboard */,
 				A3CEA9A8256F87F4001DA842 /* LaunchScreen.storyboard */,
+				A3C1959E25765DE700BAB46B /* Launch Screen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 				A3551EA12572AEE50006099A /* Calendar + Extension.swift */,
 				A3551EAD25735B000006099A /* UIImageView + Extension.swift */,
 				A316BE502575245C00989152 /* UIViewController + Extension.swift */,
+				A3C195A125765F0200BAB46B /* UILabel + Extension.swift */,
 			);
 			path = "Helper Tools";
 			sourceTree = "<group>";
@@ -329,6 +335,7 @@
 				A3CEA9AA256F87F4001DA842 /* LaunchScreen.storyboard in Resources */,
 				A35BCC1D2570C6290090B95E /* GoogleService-Info.plist in Resources */,
 				A3CEA9A7256F87F4001DA842 /* Assets.xcassets in Resources */,
+				A3C1959F25765DE700BAB46B /* Launch Screen.storyboard in Resources */,
 				A3CEA9A2256F87F1001DA842 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +417,7 @@
 				A316BE512575245D00989152 /* UIViewController + Extension.swift in Sources */,
 				A3551E7C25728FCC0006099A /* Comment.swift in Sources */,
 				A3CEA99F256F87F1001DA842 /* MapsViewController.swift in Sources */,
+				A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */,
 				A316BE4A2575070D00989152 /* SearchTableViewCell.swift in Sources */,
 				A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */,
 				A3551E7725728F610006099A /* Post.swift in Sources */,

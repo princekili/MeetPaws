@@ -178,17 +178,9 @@
                                 <segue destination="mBe-7a-scN" kind="show" animates="NO" id="8L1-q9-gHX"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Item" id="8ZH-Tg-UTr">
-                                <imageReference key="image" image="paperplane" catalog="system" symbolScale="medium" renderingMode="original"/>
-                                <connections>
-                                    <segue destination="WFW-8s-3Pe" kind="show" id="hXQ-vI-gvv"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem id="CNE-5P-XGS">
-                                <imageReference key="image" image="heart" catalog="system" symbolScale="medium" renderingMode="original"/>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" id="CNE-5P-XGS">
+                            <imageReference key="image" image="heart" catalog="system" symbolScale="medium" renderingMode="original"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Pjr-xg-Nsj" id="oRM-ip-r0M"/>
@@ -288,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmB-aV-lc9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="759"/>
+            <point key="canvasLocation" x="1048" y="-638"/>
         </scene>
         <!--Maps View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -304,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="-650"/>
+            <point key="canvasLocation" x="1048" y="60"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="9n0-YQ-iR2">
@@ -316,12 +308,11 @@
                         <viewLayoutGuide key="safeArea" id="8hO-0J-HsA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="message" catalog="system" selectedImage="message.fill" id="gTe-ca-C5M"/>
-                    <navigationItem key="navigationItem" id="sbU-80-ZCW"/>
+                    <navigationItem key="navigationItem" title="Messages" id="sbU-80-ZCW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AlG-kt-0Ht" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="60"/>
+            <point key="canvasLocation" x="1957.9710144927537" y="767.41071428571422"/>
         </scene>
         <!--Add Post View Controller-->
         <scene sceneID="ZIu-oD-94q">
@@ -338,7 +329,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNU-vD-zjs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2887" y="-1339"/>
+            <point key="canvasLocation" x="3201" y="-1339"/>
         </scene>
         <!--Profile Table View Controller-->
         <scene sceneID="J6I-XC-dUj">
@@ -524,6 +515,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="princekili" id="BFy-xw-1KT">
+                        <barButtonItem key="leftBarButtonItem" id="ALt-0k-Z0A">
+                            <imageReference key="image" image="plus" catalog="system" symbolScale="large" renderingMode="original"/>
+                            <connections>
+                                <segue destination="mBe-7a-scN" kind="show" id="Yvi-xp-A6B"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="shi-uq-nJg">
                             <imageReference key="image" image="slider.horizontal.3" catalog="system" renderingMode="original"/>
                         </barButtonItem>
@@ -552,7 +549,7 @@
                         <segue destination="jSv-8n-T8I" kind="relationship" relationship="viewControllers" id="DnV-Yb-bJ2"/>
                         <segue destination="3Mn-MZ-2et" kind="relationship" relationship="viewControllers" id="XwX-Vd-0Mn"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="MT4-cL-wSk"/>
-                        <segue destination="WFW-8s-3Pe" kind="relationship" relationship="viewControllers" id="rME-yP-fyW"/>
+                        <segue destination="dBA-sM-npu" kind="relationship" relationship="viewControllers" id="rME-yP-fyW"/>
                         <segue destination="IvV-aP-vPD" kind="relationship" relationship="viewControllers" id="Fl9-zb-AzP"/>
                     </connections>
                 </tabBarController>
@@ -569,8 +566,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AxG-I7-RGb">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -594,7 +593,7 @@
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="26"/>
-                            <offsetWrapper key="textShadowOffset" horizontal="-180" vertical="0.0"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -606,9 +605,33 @@
             </objects>
             <point key="canvasLocation" x="1048" y="1487"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="udd-2C-fT9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dBA-sM-npu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="paperplane" catalog="system" selectedImage="paperplane.fill" id="gTe-ca-C5M"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ffz-OI-EfG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="26"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WFW-8s-3Pe" kind="relationship" relationship="rootViewController" id="3GP-ey-3CV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QLB-A6-Opd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="766.74107142857144"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rME-yP-fyW"/>
+        <segue reference="Yvi-xp-A6B"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IMG_F94C257EA6BB-1" width="1125" height="1651"/>
@@ -623,8 +646,8 @@
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="message" catalog="system" width="128" height="113"/>
-        <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="paperplane" catalog="system" width="128" height="118"/>
+        <image name="paperplane.fill" catalog="system" width="128" height="118"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
