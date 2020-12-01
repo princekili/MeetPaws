@@ -29,6 +29,12 @@ class AddPostViewController: UIViewController {
         navigationItem.hidesBackButton = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        showPicker()
+    }
+    
     private func setupSelectedImageV() {
         self.view.backgroundColor = .white
         
@@ -189,15 +195,7 @@ class AddPostViewController: UIViewController {
             if cancelled {
                 print("Picker was canceled")
                 picker.dismiss(animated: true, completion: nil)
-//                picker.dismiss(animated: true, completion: { [weak self] in
-//                    self?.present(FeedViewController(), animated: true, completion: nil)
-//                    guard let feedVC = UIStoryboard(name: "FeedVC", bundle: nil).instantiateInitialViewController() as? FeedViewController
-//                    else { return }
-//
-//                    let nav = UINavigationController(rootViewController: feedVC)
-//                    self?.present(nav, animated: true, completion: nil)
-//                })
-                
+                self.navigationController?.popViewController(animated: false)
                 return
             }
             _ = items.map { print("🧀 \($0)") }
@@ -209,6 +207,7 @@ class AddPostViewController: UIViewController {
                 case .photo(let photo):
                     self.selectedImageV.image = photo.image
                     picker.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: false)
                 
                 case .video(let video):
                     self.selectedImageV.image = video.thumbnail
@@ -220,6 +219,7 @@ class AddPostViewController: UIViewController {
                     
                     picker.dismiss(animated: true, completion: { [weak self] in
                         self?.present(playerVC, animated: true, completion: nil)
+                        self?.navigationController?.popViewController(animated: false)
                         print("😀 \(String(describing: self?.resolutionForLocalVideo(url: assetURL)!))")
                     })
                 }

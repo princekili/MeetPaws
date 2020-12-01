@@ -173,16 +173,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="Yogogo" id="0xY-qV-RCO">
                         <barButtonItem key="leftBarButtonItem" id="eFG-iY-Cwk">
-                            <imageReference key="image" image="camera" catalog="system" symbolScale="medium" renderingMode="original"/>
+                            <imageReference key="image" image="plus" catalog="system" symbolScale="large" renderingMode="original"/>
                             <connections>
-                                <segue destination="mBe-7a-scN" kind="show" id="8L1-q9-gHX"/>
+                                <segue destination="mBe-7a-scN" kind="show" animates="NO" id="8L1-q9-gHX"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" id="8ZH-Tg-UTr">
                                 <imageReference key="image" image="paperplane" catalog="system" symbolScale="medium" renderingMode="original"/>
                                 <connections>
-                                    <segue destination="WFW-8s-3Pe" kind="show" identifier="FeedToMessageSegue" id="dTv-eu-6sj"/>
+                                    <segue destination="WFW-8s-3Pe" kind="show" id="hXQ-vI-gvv"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem id="CNE-5P-XGS">
@@ -196,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pid-eU-f7S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957.9710144927537" y="-1339.2857142857142"/>
+            <point key="canvasLocation" x="1958" y="-1339"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="o8p-GP-BZK">
@@ -338,7 +338,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNU-vD-zjs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2993" y="-1485"/>
+            <point key="canvasLocation" x="2887" y="-1339"/>
         </scene>
         <!--Profile Table View Controller-->
         <scene sceneID="J6I-XC-dUj">
@@ -550,9 +550,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="jSv-8n-T8I" kind="relationship" relationship="viewControllers" id="DnV-Yb-bJ2"/>
-                        <segue destination="mBe-7a-scN" kind="relationship" relationship="viewControllers" id="mNx-Ke-pth"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="MT4-cL-wSk"/>
                         <segue destination="3Mn-MZ-2et" kind="relationship" relationship="viewControllers" id="XwX-Vd-0Mn"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="MT4-cL-wSk"/>
+                        <segue destination="WFW-8s-3Pe" kind="relationship" relationship="viewControllers" id="rME-yP-fyW"/>
                         <segue destination="IvV-aP-vPD" kind="relationship" relationship="viewControllers" id="Fl9-zb-AzP"/>
                     </connections>
                 </tabBarController>
@@ -608,13 +608,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8L1-q9-gHX"/>
+        <segue reference="rME-yP-fyW"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IMG_F94C257EA6BB-1" width="1125" height="1651"/>
         <image name="IU_profileImage" width="640" height="640"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>
-        <image name="camera" catalog="system" width="128" height="94"/>
         <image name="dog_postImage" width="426" height="421"/>
         <image name="dog_profileImage" width="230" height="230"/>
         <image name="heart" catalog="system" width="128" height="109"/>
@@ -628,6 +627,7 @@
         <image name="paperplane" catalog="system" width="128" height="118"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
