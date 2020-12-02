@@ -48,6 +48,7 @@
 		A3C195DD25778FD600BAB46B /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195DC25778FD600BAB46B /* FirestoreManager.swift */; };
 		A3C195E02577902100BAB46B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195DF2577902100BAB46B /* StorageManager.swift */; };
 		A3C195E32577934C00BAB46B /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3C195E22577934C00BAB46B /* Auth.storyboard */; };
+		A3C195E725779A9C00BAB46B /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195E625779A9C00BAB46B /* UIView + Extension.swift */; };
 		A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99A256F87F1001DA842 /* AppDelegate.swift */; };
 		A3CEA99D256F87F1001DA842 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */; };
 		A3CEA99F256F87F1001DA842 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99E256F87F1001DA842 /* MapsViewController.swift */; };
@@ -101,6 +102,7 @@
 		A3C195DC25778FD600BAB46B /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		A3C195DF2577902100BAB46B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		A3C195E22577934C00BAB46B /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		A3C195E625779A9C00BAB46B /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		A3CEA997256F87F1001DA842 /* Yogogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yogogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3CEA99A256F87F1001DA842 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,14 +136,6 @@
 				CD5866D8A6CE4D3ADE008249 /* Pods-Yogogo.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		A316BE0D2574E70000989152 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */,
-			);
-			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		A316BE0F2574E7AB00989152 /* Feed */ = {
@@ -213,6 +207,7 @@
 				A3551EAD25735B000006099A /* UIImageView + Extension.swift */,
 				A316BE502575245C00989152 /* UIViewController + Extension.swift */,
 				A3C195A125765F0200BAB46B /* UILabel + Extension.swift */,
+				A3C195E625779A9C00BAB46B /* UIView + Extension.swift */,
 			);
 			path = "Helpers + Extension";
 			sourceTree = "<group>";
@@ -253,6 +248,7 @@
 				A3CEA99A256F87F1001DA842 /* AppDelegate.swift */,
 				A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */,
 				A3CEA9A3256F87F1001DA842 /* Yogogo.xcdatamodeld */,
+				A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -347,7 +343,6 @@
 				A3C195A52577666B00BAB46B /* Views */,
 				A3C195A62577668F00BAB46B /* Controllers */,
 				A3551E83257292950006099A /* Helpers + Extension */,
-				A316BE0D2574E70000989152 /* Supporting Files */,
 				A3CEA9AB256F87F4001DA842 /* Info.plist */,
 			);
 			path = Yogogo;
@@ -530,6 +525,7 @@
 				A3CEA99D256F87F1001DA842 /* SceneDelegate.swift in Sources */,
 				A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */,
 				A3C195CC257778F200BAB46B /* PostEditorViewController.swift in Sources */,
+				A3C195E725779A9C00BAB46B /* UIView + Extension.swift in Sources */,
 				A3C195DD25778FD600BAB46B /* FirestoreManager.swift in Sources */,
 				A316BE4D2575072200989152 /* SearchViewController.swift in Sources */,
 				A3C195B52577747D00BAB46B /* SignUpViewController.swift in Sources */,

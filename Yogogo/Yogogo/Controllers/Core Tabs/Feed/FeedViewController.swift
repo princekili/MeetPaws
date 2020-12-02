@@ -17,7 +17,6 @@ class FeedViewController: UIViewController {
 
         setupTableView()
         navigationController?.navigationBar.barTintColor = .white
-//        self.setLeftAlignedNavigationItemTitle(text: "Yogogo", color: .black, margin: 10)
     }
  
     override func viewDidAppear(_ animated: Bool) {
