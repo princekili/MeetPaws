@@ -273,7 +273,9 @@
                             <constraint firstItem="Hf4-Bp-qed" firstAttribute="bottom" secondItem="SzR-Y9-mLV" secondAttribute="bottom" id="sQh-74-sKD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="o3v-ea-GZk"/>
+                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="o3v-ea-GZk">
+                        <imageReference key="selectedImage" image="magnifyingglass" catalog="system" renderingMode="original"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="tableView" destination="SzR-Y9-mLV" id="hJm-kd-WRd"/>
                     </connections>
@@ -292,7 +294,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="map" catalog="system" selectedImage="map.fill" id="oru-aX-hGq"/>
+                    <tabBarItem key="tabBarItem" title="" image="map" catalog="system" id="oru-aX-hGq">
+                        <imageReference key="selectedImage" image="map.fill" catalog="system" renderingMode="original"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -561,7 +565,9 @@
         <scene sceneID="7MQ-8P-X6h">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jSv-8n-T8I" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" selectedImage="house.fill" id="lqy-GC-Ajf"/>
+                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="lqy-GC-Ajf">
+                        <imageReference key="selectedImage" image="house.fill" catalog="system" renderingMode="original"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AxG-I7-RGb">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -585,7 +591,9 @@
         <scene sceneID="NWj-Q9-osl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IvV-aP-vPD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="person" catalog="system" selectedImage="person.fill" id="qIH-g0-aHy"/>
+                    <tabBarItem key="tabBarItem" title="" image="person" catalog="system" id="qIH-g0-aHy">
+                        <imageReference key="selectedImage" image="person.fill" catalog="system" renderingMode="original"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NhK-qk-0Cf">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -608,7 +616,9 @@
         <scene sceneID="udd-2C-fT9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dBA-sM-npu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="paperplane" catalog="system" selectedImage="paperplane.fill" id="gTe-ca-C5M"/>
+                    <tabBarItem key="tabBarItem" title="" image="paperplane" catalog="system" id="gTe-ca-C5M">
+                        <imageReference key="selectedImage" image="paperplane.fill" catalog="system" renderingMode="original"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ffz-OI-EfG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

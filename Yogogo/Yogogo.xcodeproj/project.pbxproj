@@ -131,7 +131,6 @@
 		A316BE0D2574E70000989152 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A3CEA9AB256F87F4001DA842 /* Info.plist */,
 				A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */,
 				A3CEA9A3256F87F1001DA842 /* Yogogo.xcdatamodeld */,
 			);
@@ -337,6 +336,7 @@
 				A3551E812572921C0006099A /* Networking */,
 				A3551E83257292950006099A /* Helpers + Extension */,
 				A316BE0D2574E70000989152 /* Supporting Files */,
+				A3CEA9AB256F87F4001DA842 /* Info.plist */,
 			);
 			path = Yogogo;
 			sourceTree = "<group>";
