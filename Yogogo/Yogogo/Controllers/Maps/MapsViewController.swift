@@ -56,6 +56,7 @@ class MapsViewController: UIViewController {
     
     func setupMapView() {
         let mapView = MGLMapView(frame: view.bounds)
+        
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.delegate = self
         mapView.allowsRotating = false
@@ -69,6 +70,7 @@ class MapsViewController: UIViewController {
         mapView.showsUserHeadingIndicator = true
         
         self.mapView = mapView
+        
         view.addSubview(mapView)
     }
     

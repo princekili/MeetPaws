@@ -298,10 +298,10 @@
             </objects>
             <point key="canvasLocation" x="1048" y="60"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--Messages View Controller-->
         <scene sceneID="9n0-YQ-iR2">
             <objects>
-                <viewController id="WFW-8s-3Pe" userLabel="Chat View Controller" sceneMemberID="viewController">
+                <viewController id="WFW-8s-3Pe" userLabel="Messages View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gTE-jG-ga0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -590,7 +590,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NhK-qk-0Cf">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="26"/>
                             <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>

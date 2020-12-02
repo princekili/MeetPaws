@@ -31,4 +31,3 @@ extension UILabel {
             return Int(ceil(CGFloat(labelSize.height) / self.font.lineHeight))
         }
 }
-

@@ -111,19 +111,20 @@
 		A316BE0D2574E70000989152 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A3CEA9AB256F87F4001DA842 /* Info.plist */,
 				A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */,
 				A3CEA9A3256F87F1001DA842 /* Yogogo.xcdatamodeld */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A316BE0F2574E7AB00989152 /* Feed */ = {
+		A316BE0F2574E7AB00989152 /* HomeFeed */ = {
 			isa = PBXGroup;
 			children = (
 				A316BE3F2574F30700989152 /* FeedViewController.swift */,
 				A316BE422574F3F400989152 /* FeedTableViewCell.swift */,
 			);
-			path = Feed;
+			path = HomeFeed;
 			sourceTree = "<group>";
 		};
 		A316BE47257504E700989152 /* Search */ = {
@@ -183,7 +184,7 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		A3551E83257292950006099A /* Helper Tools */ = {
+		A3551E83257292950006099A /* Helpers + Extension */ = {
 			isa = PBXGroup;
 			children = (
 				A3551EA12572AEE50006099A /* Calendar + Extension.swift */,
@@ -191,7 +192,7 @@
 				A316BE502575245C00989152 /* UIViewController + Extension.swift */,
 				A3C195A125765F0200BAB46B /* UILabel + Extension.swift */,
 			);
-			path = "Helper Tools";
+			path = "Helpers + Extension";
 			sourceTree = "<group>";
 		};
 		A3551E9D2572A5CB0006099A /* MapAnnotationViews */ = {
@@ -224,6 +225,44 @@
 			path = Maps;
 			sourceTree = "<group>";
 		};
+		A3C195A42577661F00BAB46B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A3CEA99A256F87F1001DA842 /* AppDelegate.swift */,
+				A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A3C195A52577666B00BAB46B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A3551E82257292570006099A /* Storyboards */,
+				A3CEA9A6256F87F4001DA842 /* Assets.xcassets */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A3C195A62577668F00BAB46B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A316BED62575320900989152 /* AddPost */,
+				A316BE0F2574E7AB00989152 /* HomeFeed */,
+				A316BE47257504E700989152 /* Search */,
+				A35BCC222570EFED0090B95E /* Maps */,
+				A3C195A72577672B00BAB46B /* Messages */,
+				A316BF082575805500989152 /* Profile */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A3C195A72577672B00BAB46B /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
 		A3CEA98E256F87F1001DA842 = {
 			isa = PBXGroup;
 			children = (
@@ -245,20 +284,13 @@
 		A3CEA999256F87F1001DA842 /* Yogogo */ = {
 			isa = PBXGroup;
 			children = (
-				A316BF082575805500989152 /* Profile */,
-				A316BED62575320900989152 /* AddPost */,
-				A316BE47257504E700989152 /* Search */,
-				A316BE0F2574E7AB00989152 /* Feed */,
-				A35BCC222570EFED0090B95E /* Maps */,
-				A3551E812572921C0006099A /* Networking */,
+				A3C195A42577661F00BAB46B /* Resources */,
 				A3551E49257255F50006099A /* Models */,
-				A3551E83257292950006099A /* Helper Tools */,
-				A3551E82257292570006099A /* Storyboards */,
-				A3CEA99A256F87F1001DA842 /* AppDelegate.swift */,
-				A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */,
-				A3CEA9A6256F87F4001DA842 /* Assets.xcassets */,
+				A3C195A52577666B00BAB46B /* Views */,
+				A3C195A62577668F00BAB46B /* Controllers */,
+				A3551E812572921C0006099A /* Networking */,
+				A3551E83257292950006099A /* Helpers + Extension */,
 				A316BE0D2574E70000989152 /* Supporting Files */,
-				A3CEA9AB256F87F4001DA842 /* Info.plist */,
 			);
 			path = Yogogo;
 			sourceTree = "<group>";
