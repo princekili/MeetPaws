@@ -179,7 +179,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="CNE-5P-XGS">
-                            <imageReference key="image" image="heart" catalog="system" symbolScale="medium" renderingMode="original"/>
+                            <imageReference key="image" image="bell" catalog="system" symbolScale="medium" renderingMode="original"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -301,7 +301,7 @@
         <!--Messages View Controller-->
         <scene sceneID="9n0-YQ-iR2">
             <objects>
-                <viewController id="WFW-8s-3Pe" userLabel="Messages View Controller" sceneMemberID="viewController">
+                <viewController id="WFW-8s-3Pe" userLabel="Messages View Controller" customClass="MessagesViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gTE-jG-ga0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -314,10 +314,10 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="767.41071428571422"/>
         </scene>
-        <!--Add Post View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="ZIu-oD-94q">
             <objects>
-                <viewController modalTransitionStyle="flipHorizontal" id="mBe-7a-scN" customClass="AddPostViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" id="mBe-7a-scN" customClass="CameraViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e5a-j3-hpg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -518,7 +518,7 @@
                         <barButtonItem key="leftBarButtonItem" id="ALt-0k-Z0A">
                             <imageReference key="image" image="plus" catalog="system" symbolScale="large" renderingMode="original"/>
                             <connections>
-                                <segue destination="mBe-7a-scN" kind="show" id="Yvi-xp-A6B"/>
+                                <segue destination="mBe-7a-scN" kind="show" animates="NO" id="Yvi-xp-A6B"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="shi-uq-nJg">
@@ -635,6 +635,7 @@
     <resources>
         <image name="IMG_F94C257EA6BB-1" width="1125" height="1651"/>
         <image name="IU_profileImage" width="640" height="640"/>
+        <image name="bell" catalog="system" width="128" height="124"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="dog_postImage" width="426" height="421"/>
         <image name="dog_profileImage" width="230" height="230"/>

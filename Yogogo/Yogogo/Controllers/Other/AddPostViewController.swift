@@ -11,7 +11,7 @@ import AVFoundation
 import AVKit
 import Photos
 
-class AddPostViewController: UIViewController {
+class CameraViewController: UIViewController {
     
     var selectedItems = [YPMediaItem]()
     
@@ -253,7 +253,7 @@ class AddPostViewController: UIViewController {
 }
 
 // Support methods
-extension AddPostViewController {
+extension CameraViewController {
     /* Gives a resolution for the video by URL */
     func resolutionForLocalVideo(url: URL) -> CGSize? {
         guard let track = AVURLAsset(url: url).tracks(withMediaType: AVMediaType.video).first else { return nil }
@@ -263,7 +263,7 @@ extension AddPostViewController {
 }
 
 // YPImagePickerDelegate
-extension AddPostViewController: YPImagePickerDelegate {
+extension CameraViewController: YPImagePickerDelegate {
     func noPhotos() {}
     
     func shouldAddToSelection(indexPath: IndexPath, numSelections: Int) -> Bool {
