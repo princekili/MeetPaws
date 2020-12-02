@@ -34,7 +34,7 @@
 		A35BCC202570EF830090B95E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35BCC1F2570EF830090B95E /* MapKit.framework */; };
 		A3C1959F25765DE700BAB46B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3C1959E25765DE700BAB46B /* Launch Screen.storyboard */; };
 		A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195A125765F0200BAB46B /* UILabel + Extension.swift */; };
-		A3C195B22577746C00BAB46B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B12577746C00BAB46B /* SignInViewController.swift */; };
+		A3C195B22577746C00BAB46B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B12577746C00BAB46B /* LoginViewController.swift */; };
 		A3C195B52577747D00BAB46B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B42577747D00BAB46B /* SignUpViewController.swift */; };
 		A3C195B82577751600BAB46B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B72577751600BAB46B /* MessagesViewController.swift */; };
 		A3C195BC257775FF00BAB46B /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */; };
@@ -44,6 +44,10 @@
 		A3C195C92577783800BAB46B /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195C82577783800BAB46B /* UserListViewController.swift */; };
 		A3C195CC257778F200BAB46B /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195CB257778F200BAB46B /* PostEditorViewController.swift */; };
 		A3C195CF2577790600BAB46B /* PublishPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195CE2577790600BAB46B /* PublishPostViewController.swift */; };
+		A3C195DA25778E4500BAB46B /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195D925778E4500BAB46B /* AuthManager.swift */; };
+		A3C195DD25778FD600BAB46B /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195DC25778FD600BAB46B /* FirestoreManager.swift */; };
+		A3C195E02577902100BAB46B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195DF2577902100BAB46B /* StorageManager.swift */; };
+		A3C195E32577934C00BAB46B /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3C195E22577934C00BAB46B /* Auth.storyboard */; };
 		A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99A256F87F1001DA842 /* AppDelegate.swift */; };
 		A3CEA99D256F87F1001DA842 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */; };
 		A3CEA99F256F87F1001DA842 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99E256F87F1001DA842 /* MapsViewController.swift */; };
@@ -83,7 +87,7 @@
 		A35BCC1F2570EF830090B95E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A3C1959E25765DE700BAB46B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A3C195A125765F0200BAB46B /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
-		A3C195B12577746C00BAB46B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		A3C195B12577746C00BAB46B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A3C195B42577747D00BAB46B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A3C195B72577751600BAB46B /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +97,10 @@
 		A3C195C82577783800BAB46B /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		A3C195CB257778F200BAB46B /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		A3C195CE2577790600BAB46B /* PublishPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishPostViewController.swift; sourceTree = "<group>"; };
+		A3C195D925778E4500BAB46B /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		A3C195DC25778FD600BAB46B /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		A3C195DF2577902100BAB46B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		A3C195E22577934C00BAB46B /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		A3CEA997256F87F1001DA842 /* Yogogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yogogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3CEA99A256F87F1001DA842 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */,
-				A3CEA9A3256F87F1001DA842 /* Yogogo.xcdatamodeld */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -181,6 +188,9 @@
 				A3551E45257252480006099A /* MapsNetworking.swift */,
 				A3551EA425734E260006099A /* LocationNetworking.swift */,
 				A3551EC02573901A0006099A /* UserListNetworking.swift */,
+				A3C195D925778E4500BAB46B /* AuthManager.swift */,
+				A3C195DC25778FD600BAB46B /* FirestoreManager.swift */,
+				A3C195DF2577902100BAB46B /* StorageManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -191,6 +201,7 @@
 				A3CEA9A0256F87F1001DA842 /* Main.storyboard */,
 				A3CEA9A8256F87F4001DA842 /* LaunchScreen.storyboard */,
 				A3C1959E25765DE700BAB46B /* Launch Screen.storyboard */,
+				A3C195E22577934C00BAB46B /* Auth.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -241,6 +252,7 @@
 			children = (
 				A3CEA99A256F87F1001DA842 /* AppDelegate.swift */,
 				A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */,
+				A3CEA9A3256F87F1001DA842 /* Yogogo.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -258,7 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				A3C195AD2577721F00BAB46B /* Core Tabs */,
-				A3C195AF2577724500BAB46B /* Other */,
+				A3C195AF2577724500BAB46B /* General */,
 				A3C195B02577741A00BAB46B /* Auth */,
 			);
 			path = Controllers;
@@ -284,7 +296,7 @@
 			path = "Core Tabs";
 			sourceTree = "<group>";
 		};
-		A3C195AF2577724500BAB46B /* Other */ = {
+		A3C195AF2577724500BAB46B /* General */ = {
 			isa = PBXGroup;
 			children = (
 				A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */,
@@ -296,13 +308,13 @@
 				A316BED72575323700989152 /* CameraViewController.swift */,
 				A3C195CE2577790600BAB46B /* PublishPostViewController.swift */,
 			);
-			path = Other;
+			path = General;
 			sourceTree = "<group>";
 		};
 		A3C195B02577741A00BAB46B /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				A3C195B12577746C00BAB46B /* SignInViewController.swift */,
+				A3C195B12577746C00BAB46B /* LoginViewController.swift */,
 				A3C195B42577747D00BAB46B /* SignUpViewController.swift */,
 			);
 			path = Auth;
@@ -330,10 +342,10 @@
 			isa = PBXGroup;
 			children = (
 				A3C195A42577661F00BAB46B /* Resources */,
+				A3551E812572921C0006099A /* Networking */,
 				A3551E49257255F50006099A /* Models */,
 				A3C195A52577666B00BAB46B /* Views */,
 				A3C195A62577668F00BAB46B /* Controllers */,
-				A3551E812572921C0006099A /* Networking */,
 				A3551E83257292950006099A /* Helpers + Extension */,
 				A316BE0D2574E70000989152 /* Supporting Files */,
 				A3CEA9AB256F87F4001DA842 /* Info.plist */,
@@ -414,6 +426,7 @@
 				A35BCC1D2570C6290090B95E /* GoogleService-Info.plist in Resources */,
 				A3CEA9A7256F87F4001DA842 /* Assets.xcassets in Resources */,
 				A3C1959F25765DE700BAB46B /* Launch Screen.storyboard in Resources */,
+				A3C195E32577934C00BAB46B /* Auth.storyboard in Resources */,
 				A3CEA9A2256F87F1001DA842 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,13 +511,15 @@
 				A3551E7C25728FCC0006099A /* Comment.swift in Sources */,
 				A3CEA99F256F87F1001DA842 /* MapsViewController.swift in Sources */,
 				A3C195C3257777C400BAB46B /* EditProfileViewController.swift in Sources */,
-				A3C195B22577746C00BAB46B /* SignInViewController.swift in Sources */,
+				A3C195B22577746C00BAB46B /* LoginViewController.swift in Sources */,
 				A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */,
 				A316BE4A2575070D00989152 /* SearchTableViewCell.swift in Sources */,
+				A3C195DA25778E4500BAB46B /* AuthManager.swift in Sources */,
 				A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */,
 				A3551E7725728F610006099A /* Post.swift in Sources */,
 				A316BF292575968600989152 /* ProfileTableViewController.swift in Sources */,
 				A3C195B82577751600BAB46B /* MessagesViewController.swift in Sources */,
+				A3C195E02577902100BAB46B /* StorageManager.swift in Sources */,
 				A3551EC12573901A0006099A /* UserListNetworking.swift in Sources */,
 				A3551E9F2572A5F10006099A /* AnnotationPin.swift in Sources */,
 				A3551EB5257363D70006099A /* UserInfoTab.swift in Sources */,
@@ -515,6 +530,7 @@
 				A3CEA99D256F87F1001DA842 /* SceneDelegate.swift in Sources */,
 				A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */,
 				A3C195CC257778F200BAB46B /* PostEditorViewController.swift in Sources */,
+				A3C195DD25778FD600BAB46B /* FirestoreManager.swift in Sources */,
 				A316BE4D2575072200989152 /* SearchViewController.swift in Sources */,
 				A3C195B52577747D00BAB46B /* SignUpViewController.swift in Sources */,
 				A3551E4B257256110006099A /* User.swift in Sources */,

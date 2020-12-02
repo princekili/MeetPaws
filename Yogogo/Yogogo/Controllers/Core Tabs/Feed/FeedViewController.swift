@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class FeedViewController: UIViewController {
 
@@ -18,10 +19,26 @@ class FeedViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .white
 //        self.setLeftAlignedNavigationItemTitle(text: "Yogogo", color: .black, margin: 10)
     }
+ 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        handleNotAuthenticated()
+    }
     
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    fileprivate func handleNotAuthenticated() {
+        // Check auth status
+        if Auth.auth().currentUser == nil {
+            // Show sign in
+            let loginVC = LoginViewController()
+            loginVC.modalPresentationStyle = .fullScreen
+            present(loginVC, animated: false)
+        }
     }
 }
 

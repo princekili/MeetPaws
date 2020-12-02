@@ -30,6 +30,8 @@ class ProfileTableViewController: UITableViewController {
 
         tableView.dataSource = self
         tableView.delegate = self
+        
+        navigationController?.navigationBar.barTintColor = .white
     }
 
     // MARK: - Table view data source

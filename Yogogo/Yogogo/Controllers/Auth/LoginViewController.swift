@@ -1,5 +1,5 @@
 //
-//  SignInViewController.swift
+//  LoginViewController.swift
 //  Yogogo
 //
 //  Created by prince on 2020/12/2.
@@ -7,14 +7,13 @@
 
 import UIKit
 
-class SignInViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+//        view.backgroundColor = .red
     }
-    
 
     /*
     // MARK: - Navigation

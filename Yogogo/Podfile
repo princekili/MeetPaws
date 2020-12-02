@@ -9,8 +9,9 @@ target 'Yogogo' do
   pod 'SwiftLint'
   pod 'Mapbox-iOS-SDK', '~> 6.3.0'
   pod 'IQKeyboardManagerSwift'
-#  pod 'Kingfisher'
   pod 'YPImagePicker'
+#  pod 'Kingfisher'
+#  pod 'Appirater'
 
   # Pods for Firebase
   pod 'Firebase/Firestore'
