@@ -5,22 +5,24 @@
 //  Created by prince on 2020/11/28.
 //
 
-import Foundation
+import Firebase
 
 struct Post {
     
-    var id: String?
+    var id: String
     
-    var author: User?
+    var authorID: String // User.id
     
-    var images: [String]?
+    var authorProfileImage: String // User.profileImage
     
-    var userDidLike: [User]?
+    var thumbnailImage: String
     
-    var textContent: String?
+    var images: [String]
     
-    var comments: [Comment]?
+    var userDidLike: [String] // [User.id]
     
-    var timestamp: TimeInterval?
+    var caption: String
+    
+    var timestamp: Timestamp
 }
 

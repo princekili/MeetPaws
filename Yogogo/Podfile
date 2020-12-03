@@ -10,7 +10,7 @@ target 'Yogogo' do
   pod 'Mapbox-iOS-SDK', '~> 6.3.0'
   pod 'IQKeyboardManagerSwift'
   pod 'YPImagePicker'
-#  pod 'Kingfisher'
+  pod 'Kingfisher'
 #  pod 'Appirater'
 
   # Pods for Firebase

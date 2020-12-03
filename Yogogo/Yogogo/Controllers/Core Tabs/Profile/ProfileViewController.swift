@@ -45,7 +45,8 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
         else {
             return UICollectionViewCell()
         }
-//        cell.setup()
+        cell.setupForTest()
+//        cell.setup(with: <#T##Post#>)
         
         return cell
     }
