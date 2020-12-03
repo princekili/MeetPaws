@@ -20,7 +20,8 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }
     
     func setupForTest() {
-        let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/mchat-764dc.appspot.com/o/ProfileImages%2F4C68F0A3-C6B7-43DB-96D2-391EB16D4953.jpg?alt=media&token=96ad3668-96d2-4739-90cd-4dd1e74060f2")
+        let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/mchat-764dc.appspot.com/o/ProfileImages%2F57ACD8E0-ED89-4BF0-93C1-BD1EB162C253.jpg?alt=media&token=f0520034-1b44-41d5-a0bb-53e2d3a0f323")
+        
         photoImageView.kf.setImage(with: url)
     }
 }

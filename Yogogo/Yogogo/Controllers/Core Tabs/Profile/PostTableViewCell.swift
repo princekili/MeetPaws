@@ -1,14 +1,16 @@
 //
-//  FeedTableViewCell.swift
+//  PostTableViewCell.swift
 //  Yogogo
 //
-//  Created by prince on 2020/11/30.
+//  Created by prince on 2020/12/3.
 //
 
 import UIKit
 
-class FeedTableViewCell: UITableViewCell {
-
+class PostTableViewCell: UITableViewCell {
+    
+    static let identifier = "PostTableViewCell"
+    
     @IBOutlet weak var profileImageButton: UIButton! {
         didSet {
             profileImageButton.layer.cornerRadius = 36 / 2
@@ -28,20 +30,18 @@ class FeedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var bookmarkButton: UIButton!
     
-    @IBOutlet weak var likeCounter: UIButton!
+    @IBOutlet weak var likeCount: UIButton!
     
     @IBOutlet weak var moreButton: UIButton!
     
     @IBOutlet weak var viewCommentButton: UIButton!
     
+    @IBOutlet weak var captionLabel: UILabel!
+    
     @IBOutlet weak var timestampLabel: UILabel!
     
     @IBOutlet weak var postImageView: UIImageView!
-    
-    @IBOutlet weak var captionLabel: UILabel!
-    
-    static let identifier = "FeedTableViewCell"
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

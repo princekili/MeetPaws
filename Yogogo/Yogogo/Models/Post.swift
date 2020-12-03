@@ -25,4 +25,3 @@ struct Post {
     
     var timestamp: Timestamp
 }
-
