@@ -23,3 +23,4 @@ struct Post {
     
     var timestamp: TimeInterval?
 }
+
