@@ -17,6 +17,23 @@ enum Result<T> {
 
 // MARK:-
 
+enum CollectionName: String {
+    
+    case users = "users"
+    
+    case posts = "posts"
+    
+    case comment = "comment"
+    
+    case userLocation = "userLocation"
+    
+    case messages = "messages"
+    
+    case walkings = "walkings"
+}
+
+// MARK:-
+
 enum FirebaseError: String, Error {
     
     case decode = "Firebase decode error"
@@ -47,13 +64,13 @@ class FirestoreManager {
     
     // MARK:-
     
-    func getCollection(name: String) -> CollectionReference {
-        return Firestore.firestore().collection(name)
+    func getCollection(name: CollectionName) -> CollectionReference {
+        return Firestore.firestore().collection(name.rawValue)
     }
     
     // MARK:-
     
-    func listen(collectionName: String, completion: @escaping () -> Void) {
+    func listen(collectionName: CollectionName, completion: @escaping () -> Void) {
         let collection = getCollection(name: collectionName)
         
         collection.getDocuments { _, _ in
@@ -79,7 +96,7 @@ class FirestoreManager {
     
     // MARK:-
     
-    func read<T: Codable>(collectionName: String, dataType: T.Type, completion: @escaping (Result<[T]>) -> Void) {
+    func read<T: Codable>(collectionName: CollectionName, dataType: T.Type, completion: @escaping (Result<[T]>) -> Void) {
         let collection = getCollection(name: collectionName)
         
         collection.getDocuments { (querySnapshot, error) in
@@ -103,7 +120,7 @@ class FirestoreManager {
     
     // MARK:- Filter by only one condition
     
-    func read<T: Codable>(collectionName: String, dataType: T.Type, filter: Filter, completion: @escaping (Result<[T]>) -> Void) {
+    func read<T: Codable>(collectionName: CollectionName, dataType: T.Type, filter: Filter, completion: @escaping (Result<[T]>) -> Void) {
         
         let collection = getCollection(name: collectionName)
         
@@ -142,7 +159,7 @@ class FirestoreManager {
     
     // MARK:-
     
-    func update(collectionName: String, documentId: String, key: String, value: Any) {
+    func update(collectionName: CollectionName, documentId: String, key: String, value: Any) {
         let document = getCollection(name: collectionName).document(documentId)
         document.updateData([key: value])
     }

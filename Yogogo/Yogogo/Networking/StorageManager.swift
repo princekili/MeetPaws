@@ -8,17 +8,29 @@
 import Foundation
 import FirebaseStorage
 
+enum StorageFolder: String {
+    
+    case user = "user"
+    
+    case post = "post"
+    
+    case message = "message"
+}
+
 class StorageManager {
     
     static let shared = StorageManager()
     
     private init() {}
     
-    func uploadImage(images: [UIImage], folderName: String, completion: @escaping (Result<String>) -> Void) {
+    func uploadImage(images: [UIImage], folderName: StorageFolder, completion: @escaping (Result<String>) -> Void) {
             
         for image in images {
             
-            let storageRef = Storage.storage().reference().child(folderName).child(NSUUID().uuidString)
+            let storageRef =
+                Storage.storage().reference()
+                .child(folderName.rawValue)
+                .child(NSUUID().uuidString)
             
             guard let data = image.jpegData(compressionQuality: 0.7) else { return }
             
@@ -46,8 +58,6 @@ class StorageManager {
                 }
             }
         }
-        
-        
     }
     
 }
