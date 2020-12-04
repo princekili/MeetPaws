@@ -20,31 +20,31 @@ struct User {
     
     var name: String?
     
-    var bio: String
+    var bio: String?
     
-    var posts: [String] // Post.id
+    var posts: [String]? // Post.id
     
-    var followRequests: [String] // User.id
+    var followRequests: [String]? // User.id
     
-    var followers: [String] // User.id
+    var followers: [String]? // User.id
     
-    var following: [String] // User.id
+    var following: [String]? // User.id
     
-    var postDidLike: [String] // Post.id
+    var postDidLike: [String]? // Post.id
     
-    var bookmarks: [String] // Post.id
+    var bookmarks: [String]? // Post.id
     
-    var ignoreList: [String]
+    var ignoreList: [String]?
     
-    var joinedTime: Timestamp
+    var joinedDate: NSNumber? // Date?
     
-    var lastLogin: Timestamp
+    var lastLogin: NSNumber? // Date?
     
-    var isPrivate: Bool
+    var isPrivate: Bool?
     
-    var isOnline: Bool
+    var isOnline: Bool?
     
-    var isMapLocationEnabled: Bool
+    var isMapLocationEnabled: Bool?
 
     func userCheck() -> Bool {
         if id == nil || name == nil || profileImage == nil {

@@ -30,7 +30,6 @@ class UserListNetworking {
                         
                         let data: [String: Any] = document.data()
                         
-                        user.accessToken = data["accessToken"] as? String
                         user.profileImage = data["profileImage"] as? String
                         user.name = data["name"] as? String
                         user.id = document.documentID
