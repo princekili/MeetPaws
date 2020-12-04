@@ -16,7 +16,7 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
 
         setupTableView()
-        navigationController?.navigationBar.barTintColor = .white
+        setupNavigation()
     }
  
     override func viewDidAppear(_ animated: Bool) {
@@ -28,6 +28,12 @@ class FeedViewController: UIViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    private func setupNavigation() {
+        navigationController?.navigationBar.barTintColor = .white
+        navigationItem.backBarButtonItem?.tintColor = .label
+        navigationItem.backButtonTitle = ""
     }
     
     fileprivate func handleNotAuthenticated() {

@@ -17,10 +17,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
         setupCollectionView()
-        
-        navigationController?.navigationBar.barTintColor = .white
-        navigationItem.backBarButtonItem?.tintColor = .label
-        navigationItem.backButtonTitle = ""
+        setupNavigation()
     }
     
     private func setupCollectionView() {
@@ -32,6 +29,12 @@ class ProfileViewController: UIViewController {
         collectionView.register(ProfileTabsCollectionReusableView.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: ProfileTabsCollectionReusableView.identifier)
+    }
+    
+    private func setupNavigation() {
+        navigationController?.navigationBar.barTintColor = .white
+        navigationItem.backBarButtonItem?.tintColor = .label
+        navigationItem.backButtonTitle = ""
     }
 }
 

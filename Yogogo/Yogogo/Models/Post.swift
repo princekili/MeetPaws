@@ -11,13 +11,13 @@ struct Post {
     
     var id: String
     
-    var authorID: String // User.id
+    var authorId: String // User.id
     
     var authorProfileImage: String // User.profileImage
     
-    var thumbnailImage: String
+    var thumbnailImage: String // URL
     
-    var images: [String]
+    var images: [String] // [URL]
     
     var userDidLike: [String] // [User.id]
     

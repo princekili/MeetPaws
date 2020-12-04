@@ -5,17 +5,23 @@
 //  Created by prince on 2020/11/28.
 //
 
-import Foundation
+import Firebase
 
 struct Comment {
     
-    var id: String?
+    var id: String
     
-    var author: User?
+    var postId: String
     
-    var userDidLike: [User]?
+    var authorId: String // User.id
     
-    var textContent: String?
+    var username: String // User.username
     
-    var timestamp: TimeInterval?
+    var profileImage: String // User.profileImage
+    
+    var userDidLike: [String] // [User.id]
+    
+    var text: String
+    
+    var timestamp: Timestamp
 }
