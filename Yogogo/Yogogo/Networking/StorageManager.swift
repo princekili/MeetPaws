@@ -10,11 +10,11 @@ import FirebaseStorage
 
 enum StorageFolder: String {
     
-    case user = "user"
+    case user
     
-    case post = "post"
+    case post
     
-    case message = "message"
+    case message
 }
 
 class StorageManager {

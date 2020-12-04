@@ -15,31 +15,31 @@ enum Result<T> {
     case failure(Error)
 }
 
-// MARK:-
+// MARK: -
 
 enum CollectionName: String {
     
-    case users = "users"
+    case users
     
-    case posts = "posts"
+    case posts
     
-    case comment = "comment"
+    case comment
     
-    case userLocation = "userLocation"
+    case userLocation
     
-    case messages = "messages"
+    case messages
     
-    case walkings = "walkings"
+    case walkings
 }
 
-// MARK:-
+// MARK: -
 
 enum FirebaseError: String, Error {
     
     case decode = "Firebase decode error"
 }
 
-// MARK:-
+// MARK: -
 
 struct Filter {
     
@@ -48,7 +48,7 @@ struct Filter {
     let value: Any
 }
 
-// MARK:-
+// MARK: -
 
 class FirestoreManager {
     
@@ -56,19 +56,19 @@ class FirestoreManager {
     
     private init() {}
     
-    // MARK:-
+    // MARK: -
     
     var currentTimestamp: Timestamp {
         return Firebase.Timestamp()
     }
     
-    // MARK:-
+    // MARK: -
     
     func getCollection(name: CollectionName) -> CollectionReference {
         return Firestore.firestore().collection(name.rawValue)
     }
     
-    // MARK:-
+    // MARK: -
     
     func listen(collectionName: CollectionName, completion: @escaping () -> Void) {
         let collection = getCollection(name: collectionName)
@@ -78,7 +78,7 @@ class FirestoreManager {
         }
     }
     
-    // MARK:-
+    // MARK: -
     
     func decode<T: Codable>(_ dataType: T.Type, documents: [QueryDocumentSnapshot], completion: @escaping (Result<[T]>) -> Void) {
         
@@ -94,7 +94,7 @@ class FirestoreManager {
         completion(.success(datas))
     }
     
-    // MARK:-
+    // MARK: -
     
     func read<T: Codable>(collectionName: CollectionName, dataType: T.Type, completion: @escaping (Result<[T]>) -> Void) {
         let collection = getCollection(name: collectionName)
@@ -118,7 +118,7 @@ class FirestoreManager {
         }
     }
     
-    // MARK:- Filter by only one condition
+    // MARK: - Filter by only one condition
     
     func read<T: Codable>(collectionName: CollectionName, dataType: T.Type, filter: Filter, completion: @escaping (Result<[T]>) -> Void) {
         
@@ -143,7 +143,7 @@ class FirestoreManager {
         }
     }
     
-    // MARK:-
+    // MARK: -
     
     func save<T: Codable>(to document: DocumentReference, data dataType: T) {
         let encoder = Firestore.Encoder()
@@ -157,7 +157,7 @@ class FirestoreManager {
         }
     }
     
-    // MARK:-
+    // MARK: -
     
     func update(collectionName: CollectionName, documentId: String, key: String, value: Any) {
         let document = getCollection(name: collectionName).document(documentId)
