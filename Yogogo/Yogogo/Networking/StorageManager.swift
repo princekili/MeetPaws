@@ -14,4 +14,40 @@ class StorageManager {
     
     private init() {}
     
+    func uploadImage(images: [UIImage], folderName: String, completion: @escaping (Result<String>) -> Void) {
+            
+        for image in images {
+            
+            let storageRef = Storage.storage().reference().child(folderName).child(NSUUID().uuidString)
+            
+            guard let data = image.jpegData(compressionQuality: 0.7) else { return }
+            
+            storageRef.putData(data, metadata: nil) { (data, error) in
+                if error != nil {
+                    completion(.failure(error!))
+                    print("Storage putData error: ", error!.localizedDescription)
+                    return
+                }
+                
+                storageRef.downloadURL { (url, error) in
+                    if error != nil {
+                        completion(.failure(error!))
+                        print("Storage download error: ", error!.localizedDescription)
+                        return
+                    }
+                    
+                    guard let url = url else {
+                        completion(.failure(error!))
+                        print("Storage download url error: ", error!.localizedDescription)
+                        return
+                    }
+                    
+                    completion(.success(url.absoluteString))
+                }
+            }
+        }
+        
+        
+    }
+    
 }

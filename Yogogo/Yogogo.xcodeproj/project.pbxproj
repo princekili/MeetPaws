@@ -355,11 +355,11 @@
 		A3CEA999256F87F1001DA842 /* Yogogo */ = {
 			isa = PBXGroup;
 			children = (
-				A3C195A42577661F00BAB46B /* Resources */,
 				A3551E812572921C0006099A /* Networking */,
 				A3551E49257255F50006099A /* Models */,
 				A3C195A52577666B00BAB46B /* Views */,
 				A3C195A62577668F00BAB46B /* Controllers */,
+				A3C195A42577661F00BAB46B /* Resources */,
 				A3551E83257292950006099A /* Helpers + Extension */,
 				A3CEA9AB256F87F4001DA842 /* Info.plist */,
 			);
