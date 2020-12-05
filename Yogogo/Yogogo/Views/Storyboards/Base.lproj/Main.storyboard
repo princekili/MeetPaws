@@ -10,16 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Auth-->
-        <scene sceneID="jKe-er-5bs">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="WelcomeVC" storyboardName="Auth" id="hyd-JJ-5qr" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="dF3-fJ-h4O"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wHz-8r-ST8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2378" y="-1890"/>
-        </scene>
         <!--Feed View Controller-->
         <scene sceneID="3ZU-Py-byz">
             <objects>
@@ -165,6 +155,7 @@
                                                 <constraint firstItem="4IE-qi-HTN" firstAttribute="top" secondItem="aLy-ka-vix" secondAttribute="bottom" constant="8" id="hHd-dj-0ao"/>
                                                 <constraint firstItem="aZk-gG-smH" firstAttribute="leading" secondItem="vza-ml-M79" secondAttribute="leading" constant="12" id="hTo-pw-c6s"/>
                                                 <constraint firstAttribute="trailing" secondItem="TAb-gS-6WF" secondAttribute="trailing" constant="12" id="iIp-OQ-wHw"/>
+                                                <constraint firstItem="TAb-gS-6WF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aZk-gG-smH" secondAttribute="trailing" priority="750" constant="243" id="k66-Qb-soN"/>
                                                 <constraint firstAttribute="trailing" secondItem="1eM-6K-pOe" secondAttribute="trailing" constant="12" id="mq8-fB-1ui"/>
                                                 <constraint firstItem="ctX-mx-UkB" firstAttribute="leading" secondItem="vza-ml-M79" secondAttribute="leading" constant="16" id="mus-89-Ig6"/>
                                                 <constraint firstAttribute="trailing" secondItem="aLy-ka-vix" secondAttribute="trailing" id="scV-jL-D3f"/>
@@ -207,9 +198,6 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="CNE-5P-XGS">
                             <imageReference key="image" image="bell" catalog="system" symbolScale="medium" renderingMode="original"/>
-                            <connections>
-                                <segue destination="hyd-JJ-5qr" kind="show" id="HAw-nU-Y0J"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -575,6 +563,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="5gj-81-IZG">
                             <imageReference key="image" image="line.horizontal.3" catalog="system" renderingMode="original"/>
+                            <connections>
+                                <segue destination="hSX-d2-tY5" kind="showDetail" id="AaQ-nC-YIx"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -683,6 +674,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j5Z-Ec-SWZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1048" y="1494"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="aQC-Io-UO4">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="SettingsTVC" storyboardName="Settings" id="hSX-d2-tY5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gIl-pa-giZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2543" y="1091"/>
         </scene>
         <!--Post View Controller-->
         <scene sceneID="WBf-Tv-rJZ">

@@ -41,7 +41,6 @@
 		A3C195BC257775FF00BAB46B /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */; };
 		A3C195C0257777A500BAB46B /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195BF257777A500BAB46B /* PostViewController.swift */; };
 		A3C195C3257777C400BAB46B /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195C2257777C400BAB46B /* EditProfileViewController.swift */; };
-		A3C195C6257777E800BAB46B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195C5257777E800BAB46B /* SettingsViewController.swift */; };
 		A3C195C92577783800BAB46B /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195C82577783800BAB46B /* UserListViewController.swift */; };
 		A3C195CC257778F200BAB46B /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195CB257778F200BAB46B /* PostEditorViewController.swift */; };
 		A3C195CF2577790600BAB46B /* PublishPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195CE2577790600BAB46B /* PublishPostViewController.swift */; };
@@ -64,6 +63,8 @@
 		A3EE02ED257B5FEB00459C54 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3EE02EC257B5FEB00459C54 /* Camera.storyboard */; };
 		A3EE02F9257B6D7300459C54 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3EE02F8257B6D7300459C54 /* Launch Screen.storyboard */; };
 		A3EE0309257B7B2500459C54 /* launchscreen_logo_0.png in Resources */ = {isa = PBXBuildFile; fileRef = A3EE0308257B7B2500459C54 /* launchscreen_logo_0.png */; };
+		A3EE0318257BB57600459C54 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3EE0317257BB57600459C54 /* Settings.storyboard */; };
+		A3EE0328257BB98500459C54 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EE0327257BB98500459C54 /* SettingsTableViewController.swift */; };
 		EBA0C7B7CB20B17C5302B71E /* Pods_Yogogo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F10A593450A151479F13EE /* Pods_Yogogo.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,7 +104,6 @@
 		A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		A3C195BF257777A500BAB46B /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		A3C195C2257777C400BAB46B /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		A3C195C5257777E800BAB46B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A3C195C82577783800BAB46B /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		A3C195CB257778F200BAB46B /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		A3C195CE2577790600BAB46B /* PublishPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishPostViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +129,8 @@
 		A3EE02F8257B6D7300459C54 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A3EE0308257B7B2500459C54 /* launchscreen_logo_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen_logo_0.png; sourceTree = "<group>"; };
 		A3EE0310257B8E5900459C54 /* Yogogo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yogogo.entitlements; sourceTree = "<group>"; };
+		A3EE0317257BB57600459C54 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		A3EE0327257BB98500459C54 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		C8F10A593450A151479F13EE /* Pods_Yogogo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yogogo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5866D8A6CE4D3ADE008249 /* Pods-Yogogo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yogogo.release.xcconfig"; path = "Target Support Files/Pods-Yogogo/Pods-Yogogo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,6 +219,7 @@
 				A3EE02EC257B5FEB00459C54 /* Camera.storyboard */,
 				A3EE02F8257B6D7300459C54 /* Launch Screen.storyboard */,
 				A3C195E22577934C00BAB46B /* Auth.storyboard */,
+				A3EE0317257BB57600459C54 /* Settings.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -320,7 +323,7 @@
 				A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */,
 				A3C195C82577783800BAB46B /* UserListViewController.swift */,
 				A3C195C2257777C400BAB46B /* EditProfileViewController.swift */,
-				A3C195C5257777E800BAB46B /* SettingsViewController.swift */,
+				A3EE0327257BB98500459C54 /* SettingsTableViewController.swift */,
 				A3EE0314257BB42E00459C54 /* Post */,
 				A3C195CB257778F200BAB46B /* PostEditorViewController.swift */,
 				A316BED72575323700989152 /* CameraViewController.swift */,
@@ -454,6 +457,7 @@
 				A3EE02ED257B5FEB00459C54 /* Camera.storyboard in Resources */,
 				A35BCC1D2570C6290090B95E /* GoogleService-Info.plist in Resources */,
 				A3CEA9A7256F87F4001DA842 /* Assets.xcassets in Resources */,
+				A3EE0318257BB57600459C54 /* Settings.storyboard in Resources */,
 				A3EE0309257B7B2500459C54 /* launchscreen_logo_0.png in Resources */,
 				A3C195E32577934C00BAB46B /* Auth.storyboard in Resources */,
 				A3CEA9A2256F87F1001DA842 /* Main.storyboard in Resources */,
@@ -560,10 +564,10 @@
 				A316BE402574F30700989152 /* FeedViewController.swift in Sources */,
 				A3EE02E9257B489800459C54 /* WelcomeViewController.swift in Sources */,
 				A3C195C0257777A500BAB46B /* PostViewController.swift in Sources */,
-				A3C195C6257777E800BAB46B /* SettingsViewController.swift in Sources */,
 				A3551EAE25735B000006099A /* UIImageView + Extension.swift in Sources */,
 				A3CEA99D256F87F1001DA842 /* SceneDelegate.swift in Sources */,
 				A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */,
+				A3EE0328257BB98500459C54 /* SettingsTableViewController.swift in Sources */,
 				A3C195CC257778F200BAB46B /* PostEditorViewController.swift in Sources */,
 				A3C195E725779A9C00BAB46B /* UIView + Extension.swift in Sources */,
 				A3C195DD25778FD600BAB46B /* FirestoreManager.swift in Sources */,
