@@ -27,12 +27,14 @@ class SettingsTableViewController: UITableViewController {
             let alertController = UIAlertController(title: "Sign Out Error",
                                                     message: error.localizedDescription,
                                                     preferredStyle: .alert)
+            
             let okayAction = UIAlertAction(title: "OK",
                                            style: .cancel,
                                            handler: nil)
             
             alertController.addAction(okayAction)
             present(alertController, animated: true, completion: nil)
+            
             return
         }
         
