@@ -40,7 +40,7 @@ class FeedViewController: UIViewController {
         // Check auth status
         if Auth.auth().currentUser == nil {
             // Show sign in
-            let loginVC = LoginViewController()
+            let loginVC = SignInViewController()
             loginVC.modalPresentationStyle = .fullScreen
             present(loginVC, animated: false)
         }

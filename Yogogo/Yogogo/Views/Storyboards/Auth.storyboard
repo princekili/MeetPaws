@@ -11,7 +11,7 @@
         <!--Welcome View Controller-->
         <scene sceneID="o5P-6N-bLf">
             <objects>
-                <viewController storyboardIdentifier="WelcomeVC" title="LoginVC" id="btx-yT-kY9" userLabel="Welcome View Controller" customClass="LoginViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInVC" title="SignInVC" id="btx-yT-kY9" userLabel="Welcome View Controller" customClass="SignInViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FF3-gX-0yy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="MM0-Ce-SXS" kind="show" id="nYM-Ri-tmK"/>
+                                            <segue destination="MM0-Ce-SXS" kind="showDetail" id="nYM-Ri-tmK"/>
                                         </connections>
                                     </button>
                                 </subviews>

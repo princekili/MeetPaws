@@ -36,7 +36,7 @@
 		A38293922578DF770064D971 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38293912578DF770064D971 /* PostTableViewCell.swift */; };
 		A38293B025793CF50064D971 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38293AF25793CF50064D971 /* UserLocation.swift */; };
 		A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195A125765F0200BAB46B /* UILabel + Extension.swift */; };
-		A3C195B22577746C00BAB46B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B12577746C00BAB46B /* LoginViewController.swift */; };
+		A3C195B22577746C00BAB46B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B12577746C00BAB46B /* SignInViewController.swift */; };
 		A3C195B52577747D00BAB46B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B42577747D00BAB46B /* SignUpViewController.swift */; };
 		A3C195B82577751600BAB46B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B72577751600BAB46B /* MessagesViewController.swift */; };
 		A3C195BC257775FF00BAB46B /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */; };
@@ -99,7 +99,7 @@
 		A38293912578DF770064D971 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		A38293AF25793CF50064D971 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		A3C195A125765F0200BAB46B /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
-		A3C195B12577746C00BAB46B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A3C195B12577746C00BAB46B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A3C195B42577747D00BAB46B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A3C195B72577751600BAB46B /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -129,9 +129,6 @@
 		A3EE02E8257B489700459C54 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		A3EE02EC257B5FEB00459C54 /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		A3EE02F8257B6D7300459C54 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		A3EE02FD257B76C000459C54 /* launchscreen_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen_logo.png; sourceTree = "<group>"; };
-		A3EE0301257B787E00459C54 /* launchscreen_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchscreen_logo.png; path = ../../../../../../../../Downloads/AppIcons/launchscreen_logo.png; sourceTree = "<group>"; };
-		A3EE0305257B7A8600459C54 /* launchscreen_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen_logo.png; sourceTree = "<group>"; };
 		A3EE0308257B7B2500459C54 /* launchscreen_logo_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen_logo_0.png; sourceTree = "<group>"; };
 		C8F10A593450A151479F13EE /* Pods_Yogogo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yogogo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5866D8A6CE4D3ADE008249 /* Pods-Yogogo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yogogo.release.xcconfig"; path = "Target Support Files/Pods-Yogogo/Pods-Yogogo.release.xcconfig"; sourceTree = "<group>"; };
@@ -339,7 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				A3EE02E8257B489700459C54 /* WelcomeViewController.swift */,
-				A3C195B12577746C00BAB46B /* LoginViewController.swift */,
+				A3C195B12577746C00BAB46B /* SignInViewController.swift */,
 				A3C195B42577747D00BAB46B /* SignUpViewController.swift */,
 			);
 			path = Auth;
@@ -348,11 +345,8 @@
 		A3CEA98E256F87F1001DA842 = {
 			isa = PBXGroup;
 			children = (
-				A3EE0308257B7B2500459C54 /* launchscreen_logo_0.png */,
-				A3EE02FD257B76C000459C54 /* launchscreen_logo.png */,
-				A3EE0301257B787E00459C54 /* launchscreen_logo.png */,
-				A3EE0305257B7A8600459C54 /* launchscreen_logo.png */,
 				A3CEA999256F87F1001DA842 /* Yogogo */,
+				A3EE0308257B7B2500459C54 /* launchscreen_logo_0.png */,
 				A3CEA998256F87F1001DA842 /* Products */,
 				85420101885810C289ADB45C /* Pods */,
 				C2A847738FFA764735640344 /* Frameworks */,
@@ -542,7 +536,7 @@
 				A38293922578DF770064D971 /* PostTableViewCell.swift in Sources */,
 				A3CEA99F256F87F1001DA842 /* MapsViewController.swift in Sources */,
 				A3C195C3257777C400BAB46B /* EditProfileViewController.swift in Sources */,
-				A3C195B22577746C00BAB46B /* LoginViewController.swift in Sources */,
+				A3C195B22577746C00BAB46B /* SignInViewController.swift in Sources */,
 				A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */,
 				A316BE4A2575070D00989152 /* SearchTableViewCell.swift in Sources */,
 				A344F41C257A61CA0048B754 /* RoundedCornerButton.swift in Sources */,
