@@ -10,6 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Auth-->
+        <scene sceneID="jKe-er-5bs">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="WelcomeVC" storyboardName="Auth" id="hyd-JJ-5qr" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dF3-fJ-h4O"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wHz-8r-ST8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2378" y="-1890"/>
+        </scene>
         <!--Feed View Controller-->
         <scene sceneID="3ZU-Py-byz">
             <objects>
@@ -192,11 +202,14 @@
                         <barButtonItem key="leftBarButtonItem" id="eFG-iY-Cwk">
                             <imageReference key="image" image="plus" catalog="system" symbolScale="large" renderingMode="original"/>
                             <connections>
-                                <segue destination="mBe-7a-scN" kind="show" animates="NO" id="8L1-q9-gHX"/>
+                                <segue destination="gMV-PJ-K5I" kind="show" identifier="CameraView" animates="NO" id="LwI-kW-ddj"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="CNE-5P-XGS">
                             <imageReference key="image" image="bell" catalog="system" symbolScale="medium" renderingMode="original"/>
+                            <connections>
+                                <segue destination="hyd-JJ-5qr" kind="show" id="HAw-nU-Y0J"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -335,22 +348,15 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="767.41071428571422"/>
         </scene>
-        <!--Camera View Controller-->
-        <scene sceneID="ZIu-oD-94q">
+        <!--CameraView-->
+        <scene sceneID="ioG-i4-Fdk">
             <objects>
-                <viewController modalTransitionStyle="flipHorizontal" id="mBe-7a-scN" customClass="CameraViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="e5a-j3-hpg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="n8p-rm-emN"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="plus.app" catalog="system" selectedImage="plus.app.fill" id="IMQ-C1-9fd"/>
-                    <navigationItem key="navigationItem" id="if5-8X-3Y8"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gNU-vD-zjs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Camera" referencedIdentifier="CameraView" id="gMV-PJ-K5I" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zZM-od-3n3"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MYV-D3-ohG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4541" y="60"/>
+            <point key="canvasLocation" x="4489" y="90"/>
         </scene>
         <!--Profile Table View Controller-->
         <scene sceneID="J6I-XC-dUj">
@@ -786,7 +792,7 @@
                         <barButtonItem key="leftBarButtonItem" id="mfS-xS-smg">
                             <imageReference key="image" image="plus" catalog="system" symbolScale="large" renderingMode="original"/>
                             <connections>
-                                <segue destination="mBe-7a-scN" kind="show" animates="NO" id="9gf-GZ-BuM"/>
+                                <segue destination="gMV-PJ-K5I" kind="show" identifier="CameraView" animates="NO" id="N3A-wu-T8P"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="5gj-81-IZG">
@@ -827,7 +833,7 @@
         <!--Navigation Controller-->
         <scene sceneID="7MQ-8P-X6h">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jSv-8n-T8I" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainView" automaticallyAdjustsScrollViewInsets="NO" id="jSv-8n-T8I" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="lqy-GC-Ajf">
                         <imageReference key="selectedImage" image="house.fill" catalog="system" renderingMode="original"/>
                     </tabBarItem>
@@ -1571,7 +1577,7 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="gG7-UW-RZV"/>
-        <segue reference="8L1-q9-gHX"/>
+        <segue reference="LwI-kW-ddj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IMG_F94C257EA6BB-1" width="1125" height="1651"/>
@@ -1594,8 +1600,6 @@
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="placeholdertext.fill" catalog="system" width="80" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="plus.app" catalog="system" width="128" height="114"/>
-        <image name="plus.app.fill" catalog="system" width="128" height="114"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

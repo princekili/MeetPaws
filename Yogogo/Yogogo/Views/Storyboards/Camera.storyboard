@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Camera View Controller-->
+        <scene sceneID="Cw9-uO-dlm">
+            <objects>
+                <viewController storyboardIdentifier="CameraView" modalTransitionStyle="flipHorizontal" id="hkO-f3-na9" customClass="CameraViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CyV-sK-NBF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="8DE-pP-CJi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="plus.app" catalog="system" selectedImage="plus.app.fill" id="chF-dh-HMo"/>
+                    <navigationItem key="navigationItem" id="8oy-52-O4R"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kcQ-e1-2Cd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4541" y="60"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="plus.app" catalog="system" width="128" height="114"/>
+        <image name="plus.app.fill" catalog="system" width="128" height="114"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

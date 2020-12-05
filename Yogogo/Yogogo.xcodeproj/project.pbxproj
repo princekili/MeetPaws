@@ -63,6 +63,8 @@
 		A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA9A3256F87F1001DA842 /* Yogogo.xcdatamodeld */; };
 		A3CEA9A7256F87F4001DA842 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3CEA9A6256F87F4001DA842 /* Assets.xcassets */; };
 		A3CEA9AA256F87F4001DA842 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3CEA9A8256F87F4001DA842 /* LaunchScreen.storyboard */; };
+		A3EE02E9257B489800459C54 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EE02E8257B489700459C54 /* WelcomeViewController.swift */; };
+		A3EE02ED257B5FEB00459C54 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3EE02EC257B5FEB00459C54 /* Camera.storyboard */; };
 		EBA0C7B7CB20B17C5302B71E /* Pods_Yogogo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F10A593450A151479F13EE /* Pods_Yogogo.framework */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +128,8 @@
 		A3CEA9A6256F87F4001DA842 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3CEA9A9256F87F4001DA842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A3CEA9AB256F87F4001DA842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3EE02E8257B489700459C54 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		A3EE02EC257B5FEB00459C54 /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		C8F10A593450A151479F13EE /* Pods_Yogogo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yogogo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5866D8A6CE4D3ADE008249 /* Pods-Yogogo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yogogo.release.xcconfig"; path = "Target Support Files/Pods-Yogogo/Pods-Yogogo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -213,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				A3CEA9A0256F87F1001DA842 /* Main.storyboard */,
+				A3EE02EC257B5FEB00459C54 /* Camera.storyboard */,
 				A3CEA9A8256F87F4001DA842 /* LaunchScreen.storyboard */,
 				A3C1959E25765DE700BAB46B /* Launch Screen.storyboard */,
 				A3C195E22577934C00BAB46B /* Auth.storyboard */,
@@ -331,6 +336,7 @@
 		A3C195B02577741A00BAB46B /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				A3EE02E8257B489700459C54 /* WelcomeViewController.swift */,
 				A3C195B12577746C00BAB46B /* LoginViewController.swift */,
 				A3C195B42577747D00BAB46B /* SignUpViewController.swift */,
 			);
@@ -439,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3CEA9AA256F87F4001DA842 /* LaunchScreen.storyboard in Resources */,
+				A3EE02ED257B5FEB00459C54 /* Camera.storyboard in Resources */,
 				A35BCC1D2570C6290090B95E /* GoogleService-Info.plist in Resources */,
 				A3CEA9A7256F87F4001DA842 /* Assets.xcassets in Resources */,
 				A3C1959F25765DE700BAB46B /* Launch Screen.storyboard in Resources */,
@@ -545,6 +552,7 @@
 				A3551E9F2572A5F10006099A /* AnnotationPin.swift in Sources */,
 				A3551EB5257363D70006099A /* UserInfoTab.swift in Sources */,
 				A316BE402574F30700989152 /* FeedViewController.swift in Sources */,
+				A3EE02E9257B489800459C54 /* WelcomeViewController.swift in Sources */,
 				A3C195C0257777A500BAB46B /* PostViewController.swift in Sources */,
 				A3C195C6257777E800BAB46B /* SettingsViewController.swift in Sources */,
 				A3551EAE25735B000006099A /* UIImageView + Extension.swift in Sources */,

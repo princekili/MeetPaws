@@ -14,7 +14,7 @@ struct User {
     
     var id: String?
     
-//    var auth: String?
+    var email: String?
     
     var profileImage: String?
     
@@ -47,7 +47,7 @@ struct User {
     var isMapLocationEnabled: Bool?
 
     func userCheck() -> Bool {
-        if id == nil || name == nil || profileImage == nil {
+        if id == nil || name == nil || profileImage == nil, email == nil {
             return false
         }
         return true

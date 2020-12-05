@@ -1,32 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="btx-yT-kY9">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
-        <scene sceneID="4nG-Qg-hla">
+        <!--Welcome View Controller-->
+        <scene sceneID="o5P-6N-bLf">
             <objects>
-                <viewController id="7Sf-1X-pgp" customClass="LoginViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wy1-xa-0dD">
+                <viewController storyboardIdentifier="WelcomeVC" title="LoginVC" id="btx-yT-kY9" userLabel="Welcome View Controller" customClass="LoginViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FF3-gX-0yy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="pUx-nX-Q3S"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="fSo-td-0gq">
+                                <rect key="frame" x="20" y="742" width="374" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9v-97-d4c" customClass="CustomButton" customModule="Yogogo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Mq8-37-VJi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Sign in with Apple">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <imageReference key="image" image="applelogo" catalog="system" symbolScale="large"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="L9v-97-d4c" secondAttribute="trailing" id="tRI-Va-98M"/>
+                                    <constraint firstItem="L9v-97-d4c" firstAttribute="leading" secondItem="fSo-td-0gq" secondAttribute="leading" id="wUF-m0-0mF"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZOq-o5-WXQ">
+                                <rect key="frame" x="107.5" y="144" width="199" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDL-GI-KSg">
+                                        <rect key="frame" x="0.0" y="0.0" width="199" height="71"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="50"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJc-Pg-WMH">
+                                        <rect key="frame" x="0.0" y="71" width="199" height="57"/>
+                                        <string key="text">To enjoy Yogogo, 
+you have to sign in.</string>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="20"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="u0n-BG-KGi"/>
+                        <color key="backgroundColor" red="0.68329036239999996" green="0.90281301739999997" blue="0.89990013840000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZOq-o5-WXQ" firstAttribute="top" secondItem="u0n-BG-KGi" secondAttribute="top" constant="100" id="5ZV-6R-smi"/>
+                            <constraint firstItem="u0n-BG-KGi" firstAttribute="bottom" secondItem="fSo-td-0gq" secondAttribute="bottom" constant="60" id="ANA-ea-TQb"/>
+                            <constraint firstItem="fSo-td-0gq" firstAttribute="leading" secondItem="u0n-BG-KGi" secondAttribute="leading" constant="20" id="GA0-z2-k5v"/>
+                            <constraint firstItem="ZOq-o5-WXQ" firstAttribute="centerX" secondItem="FF3-gX-0yy" secondAttribute="centerX" id="Mhp-pO-B0V"/>
+                            <constraint firstItem="u0n-BG-KGi" firstAttribute="trailing" secondItem="fSo-td-0gq" secondAttribute="trailing" constant="20" id="oaR-SH-9EQ"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="gYw-bn-p1v"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="efq-t6-iCx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xzC-cO-0fU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="197" y="173"/>
+            <point key="canvasLocation" x="147.82608695652175" y="172.76785714285714"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="L9v-97-d4c">
+            <size key="intrinsicContentSize" width="180" height="24"/>
+        </designable>
+    </designables>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="applelogo" catalog="system" width="103" height="128"/>
     </resources>
 </document>
