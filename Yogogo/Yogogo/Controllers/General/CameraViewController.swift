@@ -93,7 +93,7 @@ class CameraViewController: UIViewController {
          resized to fit in a 1024x1024 box. Defaults to original image size. */
         // config.targetImageSize = .cappedTo(size: 1024)
         /* Choose what media types are available in the library. Defaults to `.photo` */
-        config.library.mediaType = .photoAndVideo
+        config.library.mediaType = .photo
         config.library.itemOverlayType = .grid
         /* Enables selecting the front camera by default, useful for avatars. Defaults to false */
         // config.usesFrontCamera = true
@@ -120,7 +120,7 @@ class CameraViewController: UIViewController {
         
         /* Defines which screens are shown at launch, and their order.
          Default value is `[.library, .photo]` */
-        config.screens = [.library, .photo, .video]
+        config.screens = [.library, .photo]
         
         /* Can forbid the items with very big height with this property */
         //        config.library.minWidthForItem = UIScreen.main.bounds.width * 0.8
@@ -133,8 +133,8 @@ class CameraViewController: UIViewController {
         
         /* Adds a Crop step in the photo taking process, after filters. Defaults to .none */
 //        config.showsCrop = .rectangle(ratio: (16/9))
-        config.showsCrop = .rectangle(ratio: 1)
-//        config.showsCrop = .none
+//        config.showsCrop = .rectangle(ratio: 1)
+        config.showsCrop = .none
         
         /* Defines the overlay view for the camera. Defaults to UIView(). */
         // let overlayView = UIView()
@@ -142,7 +142,7 @@ class CameraViewController: UIViewController {
         // overlayView.alpha = 0.3
         // config.overlayView = overlayView
         /* Customize wordings */
-        config.wordings.libraryTitle = "Gallery"
+        config.wordings.libraryTitle = "Library"
         
         /* Defines if the status bar should be hidden when showing the picker. Default is true */
         config.hidesStatusBar = false
