@@ -57,7 +57,7 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         
-        case 0: return 1
+        case 0: return 3
             
         case 1: return 1
             
@@ -66,9 +66,10 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        
         if indexPath.section == 1 && indexPath.row == 0 {
             handleSignOut()
         }
     }
-
 }

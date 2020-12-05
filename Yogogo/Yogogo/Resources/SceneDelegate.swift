@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,15 +18,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         // MARK: -
-        guard let _ = (scene as? UIWindowScene) else { return }
-
-        let storyboard = UIStoryboard(name: "Auth", bundle: nil)
-
-        guard let initialViewController = storyboard.instantiateViewController(withIdentifier: "SignInVC") as? SignInViewController else {
-
-            fatalError("Unable to instantiate an ViewController from the storyboard")
+//        guard let _ = (scene as? UIWindowScene) else { return }
+//
+//        let storyboard = UIStoryboard(name: "Auth", bundle: nil)
+//
+//        guard let initialViewController = storyboard.instantiateViewController(withIdentifier: "SignInVC") as? SignInViewController else {
+//
+//            fatalError("Unable to instantiate an ViewController from the storyboard")
+//        }
+//        self.window?.rootViewController = initialViewController
+        
+        // MARK: -
+        guard let sceneWindow = (scene as? UIWindowScene) else { return }
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let initialVC = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+//
+        window = UIWindow(windowScene: sceneWindow)
+//        window?.rootViewController = initialVC
+//        window?.makeKeyAndVisible()
+        
+        if let _ = Auth.auth().currentUser?.uid {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialVC = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+            
+            window = UIWindow(windowScene: sceneWindow)
+            window?.rootViewController = initialVC
+            window?.makeKeyAndVisible()
+            
+        } else {
+            let storyboard = UIStoryboard(name: "Auth", bundle: nil)
+            let initialVC = storyboard.instantiateViewController(withIdentifier: "SignInVC")
+            
+            window = UIWindow(windowScene: sceneWindow)
+            window?.rootViewController = initialVC
+            window?.makeKeyAndVisible()
         }
-        self.window?.rootViewController = initialViewController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

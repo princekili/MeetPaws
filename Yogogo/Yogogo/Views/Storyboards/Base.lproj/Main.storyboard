@@ -500,7 +500,7 @@
                                             </state>
                                             <connections>
                                                 <action selector="editProfileButtonDidTap:" destination="rs9-Db-LkJ" eventType="touchUpInside" id="1i4-DT-IeD"/>
-                                                <segue destination="hsN-5l-chU" kind="presentation" id="yfF-SE-cHt"/>
+                                                <segue destination="k03-TF-3DC" kind="presentation" modalPresentationStyle="fullScreen" id="ogl-pT-ZWv"/>
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-2" translatesAutoresizingMaskIntoConstraints="NO" id="nQ2-2J-MIl">
@@ -612,7 +612,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" systemColor="labelColor"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="26"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
                             <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
                         </textAttributes>
                     </navigationBar>
@@ -637,7 +637,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="26"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
                             <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
                         </textAttributes>
                     </navigationBar>
@@ -663,7 +663,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" systemColor="labelColor"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="26"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -681,7 +681,15 @@
                 <viewControllerPlaceholder storyboardIdentifier="SettingsTVC" storyboardName="Settings" id="hSX-d2-tY5" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIl-pa-giZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2543" y="1091"/>
+            <point key="canvasLocation" x="2617" y="917"/>
+        </scene>
+        <!--EditProfile-->
+        <scene sceneID="FE2-lC-wKi">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="EditProfileTVC" storyboardName="EditProfile" id="k03-TF-3DC" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wTN-Qw-RpR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2676" y="1010"/>
         </scene>
         <!--Post View Controller-->
         <scene sceneID="WBf-Tv-rJZ">
@@ -870,7 +878,7 @@
             <objects>
                 <viewController id="hsN-5l-chU" customClass="EditProfileViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2bz-1D-O8N">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Esv-xS-SQ2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1124,7 +1132,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="gG7-UW-RZV"/>
-        <segue reference="LwI-kW-ddj"/>
+        <segue reference="N3A-wu-T8P"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IU_profileImage" width="640" height="640"/>

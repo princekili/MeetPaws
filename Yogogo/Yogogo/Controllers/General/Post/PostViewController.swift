@@ -28,7 +28,7 @@ class PostViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        navigationController?.navigationBar.barTintColor = .white
+//        navigationController?.navigationBar.barTintColor = .white
     }
 }
 

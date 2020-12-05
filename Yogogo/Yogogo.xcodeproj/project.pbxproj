@@ -34,13 +34,14 @@
 		A35BCC202570EF830090B95E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35BCC1F2570EF830090B95E /* MapKit.framework */; };
 		A38293922578DF770064D971 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38293912578DF770064D971 /* PostTableViewCell.swift */; };
 		A38293B025793CF50064D971 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38293AF25793CF50064D971 /* UserLocation.swift */; };
+		A3C136A5257BE0C200960B4C /* EditProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3C136A4257BE0C200960B4C /* EditProfile.storyboard */; };
+		A3C136A9257BE3C500960B4C /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C136A8257BE3C500960B4C /* EditProfileTableViewController.swift */; };
 		A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195A125765F0200BAB46B /* UILabel + Extension.swift */; };
 		A3C195B22577746C00BAB46B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B12577746C00BAB46B /* SignInViewController.swift */; };
 		A3C195B52577747D00BAB46B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B42577747D00BAB46B /* SignUpViewController.swift */; };
 		A3C195B82577751600BAB46B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B72577751600BAB46B /* MessagesViewController.swift */; };
 		A3C195BC257775FF00BAB46B /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */; };
 		A3C195C0257777A500BAB46B /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195BF257777A500BAB46B /* PostViewController.swift */; };
-		A3C195C3257777C400BAB46B /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195C2257777C400BAB46B /* EditProfileViewController.swift */; };
 		A3C195C92577783800BAB46B /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195C82577783800BAB46B /* UserListViewController.swift */; };
 		A3C195CC257778F200BAB46B /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195CB257778F200BAB46B /* PostEditorViewController.swift */; };
 		A3C195CF2577790600BAB46B /* PublishPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195CE2577790600BAB46B /* PublishPostViewController.swift */; };
@@ -97,13 +98,14 @@
 		A35BCC1F2570EF830090B95E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A38293912578DF770064D971 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		A38293AF25793CF50064D971 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
+		A3C136A4257BE0C200960B4C /* EditProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditProfile.storyboard; sourceTree = "<group>"; };
+		A3C136A8257BE3C500960B4C /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		A3C195A125765F0200BAB46B /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		A3C195B12577746C00BAB46B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A3C195B42577747D00BAB46B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A3C195B72577751600BAB46B /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		A3C195BF257777A500BAB46B /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		A3C195C2257777C400BAB46B /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		A3C195C82577783800BAB46B /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		A3C195CB257778F200BAB46B /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		A3C195CE2577790600BAB46B /* PublishPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishPostViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				A3EE02F8257B6D7300459C54 /* Launch Screen.storyboard */,
 				A3C195E22577934C00BAB46B /* Auth.storyboard */,
 				A3EE0317257BB57600459C54 /* Settings.storyboard */,
+				A3C136A4257BE0C200960B4C /* EditProfile.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -320,14 +323,14 @@
 		A3C195AF2577724500BAB46B /* General */ = {
 			isa = PBXGroup;
 			children = (
+				A3EE0314257BB42E00459C54 /* Post */,
 				A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */,
 				A3C195C82577783800BAB46B /* UserListViewController.swift */,
-				A3C195C2257777C400BAB46B /* EditProfileViewController.swift */,
 				A3EE0327257BB98500459C54 /* SettingsTableViewController.swift */,
-				A3EE0314257BB42E00459C54 /* Post */,
 				A3C195CB257778F200BAB46B /* PostEditorViewController.swift */,
 				A316BED72575323700989152 /* CameraViewController.swift */,
 				A3C195CE2577790600BAB46B /* PublishPostViewController.swift */,
+				A3C136A8257BE3C500960B4C /* EditProfileTableViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				A3EE0318257BB57600459C54 /* Settings.storyboard in Resources */,
 				A3EE0309257B7B2500459C54 /* launchscreen_logo_0.png in Resources */,
 				A3C195E32577934C00BAB46B /* Auth.storyboard in Resources */,
+				A3C136A5257BE0C200960B4C /* EditProfile.storyboard in Resources */,
 				A3CEA9A2256F87F1001DA842 /* Main.storyboard in Resources */,
 				A3EE02F9257B6D7300459C54 /* Launch Screen.storyboard in Resources */,
 			);
@@ -546,7 +550,6 @@
 				A3551E7C25728FCC0006099A /* Comment.swift in Sources */,
 				A38293922578DF770064D971 /* PostTableViewCell.swift in Sources */,
 				A3CEA99F256F87F1001DA842 /* MapsViewController.swift in Sources */,
-				A3C195C3257777C400BAB46B /* EditProfileViewController.swift in Sources */,
 				A3C195B22577746C00BAB46B /* SignInViewController.swift in Sources */,
 				A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */,
 				A316BE4A2575070D00989152 /* SearchTableViewCell.swift in Sources */,
@@ -562,6 +565,7 @@
 				A3551E9F2572A5F10006099A /* AnnotationPin.swift in Sources */,
 				A3551EB5257363D70006099A /* UserInfoTab.swift in Sources */,
 				A316BE402574F30700989152 /* FeedViewController.swift in Sources */,
+				A3C136A9257BE3C500960B4C /* EditProfileTableViewController.swift in Sources */,
 				A3EE02E9257B489800459C54 /* WelcomeViewController.swift in Sources */,
 				A3C195C0257777A500BAB46B /* PostViewController.swift in Sources */,
 				A3551EAE25735B000006099A /* UIImageView + Extension.swift in Sources */,
