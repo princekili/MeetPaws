@@ -10,28 +10,22 @@
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
-                                <rect key="frame" x="0.0" y="876" width="414" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-30" translatesAutoresizingMaskIntoConstraints="NO" id="9GY-tn-1tZ">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-30" translatesAutoresizingMaskIntoConstraints="NO" id="PPA-Dy-rSQ">
                                 <rect key="frame" x="107" y="305.5" width="200" height="229"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Yogogo-Logo-center_1-3" translatesAutoresizingMaskIntoConstraints="NO" id="At7-Tu-qva">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen_logo_0.png" translatesAutoresizingMaskIntoConstraints="NO" id="9hd-ZS-L6W">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="202"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="Cfs-Vg-oXv"/>
-                                            <constraint firstAttribute="width" secondItem="At7-Tu-qva" secondAttribute="height" multiplier="100:101" id="Mz0-UM-TeC"/>
+                                            <constraint firstAttribute="width" secondItem="9hd-ZS-L6W" secondAttribute="height" multiplier="100:101" id="S9w-2v-tz0"/>
+                                            <constraint firstAttribute="width" constant="200" id="k8X-vE-bNR"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yogogo" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVq-0n-5cr">
+                                    <label opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yogogo" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lr-ed-QNm">
                                         <rect key="frame" x="38" y="172" width="124" height="57"/>
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="40"/>
                                         <nil key="textColor"/>
@@ -41,13 +35,10 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
-                        <color key="backgroundColor" red="0.68136078119999999" green="0.90188479420000001" blue="0.90179848669999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.675113976" green="0.90276247259999998" blue="0.9040350318" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
-                            <constraint firstItem="9GY-tn-1tZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Clj-Ib-dEI"/>
-                            <constraint firstItem="9GY-tn-1tZ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-28" id="Gyt-Cj-DQC"/>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="20" symbolic="YES" id="SfN-ll-jLj"/>
-                            <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
+                            <constraint firstItem="PPA-Dy-rSQ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3VW-FB-BNW"/>
+                            <constraint firstItem="PPA-Dy-rSQ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-28" id="rRD-sm-EQD"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -57,6 +48,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Yogogo-Logo-center_1-3" width="4267" height="4267"/>
+        <image name="launchscreen_logo_0.png" width="116.16000366210938" height="119.76000213623047"/>
     </resources>
 </document>

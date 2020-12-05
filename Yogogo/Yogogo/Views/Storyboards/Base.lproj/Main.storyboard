@@ -810,7 +810,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="JbJ-OS-paK">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="nJw-eL-QhD" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainView" automaticallyAdjustsScrollViewInsets="NO" id="nJw-eL-QhD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eSe-Hd-1ue">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -833,7 +833,7 @@
         <!--Navigation Controller-->
         <scene sceneID="7MQ-8P-X6h">
             <objects>
-                <navigationController storyboardIdentifier="MainView" automaticallyAdjustsScrollViewInsets="NO" id="jSv-8n-T8I" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jSv-8n-T8I" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="lqy-GC-Ajf">
                         <imageReference key="selectedImage" image="house.fill" catalog="system" renderingMode="original"/>
                     </tabBarItem>
@@ -1472,7 +1472,7 @@
                                                 </stackView>
                                             </subviews>
                                         </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="XxV-zP-gwb">
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="XxV-zP-gwb">
                                             <rect key="frame" x="20" y="202" width="374" height="35"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcT-FZ-xQ5">
@@ -1527,6 +1527,7 @@
                                     <constraints>
                                         <constraint firstItem="HYV-B3-gRR" firstAttribute="top" secondItem="rCy-JV-HVP" secondAttribute="top" constant="20" id="00C-Y3-rdj"/>
                                         <constraint firstItem="h9t-zn-yXQ" firstAttribute="centerY" secondItem="HYV-B3-gRR" secondAttribute="centerY" id="3Vd-Oc-sey"/>
+                                        <constraint firstItem="XxV-zP-gwb" firstAttribute="top" secondItem="FH5-eG-gYb" secondAttribute="bottom" constant="14" id="GW7-2Q-679"/>
                                         <constraint firstItem="HYV-B3-gRR" firstAttribute="leading" secondItem="rCy-JV-HVP" secondAttribute="leading" constant="20" id="XLa-st-zAF"/>
                                         <constraint firstItem="HYV-B3-gRR" firstAttribute="width" secondItem="HYV-B3-gRR" secondAttribute="height" multiplier="1:1" id="Yc6-mq-JGl"/>
                                         <constraint firstAttribute="trailing" secondItem="h9t-zn-yXQ" secondAttribute="trailing" constant="20" id="bQr-Vz-dy8"/>
@@ -1577,7 +1578,7 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="gG7-UW-RZV"/>
-        <segue reference="LwI-kW-ddj"/>
+        <segue reference="N3A-wu-T8P"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IMG_F94C257EA6BB-1" width="1125" height="1651"/>

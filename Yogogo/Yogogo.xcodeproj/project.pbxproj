@@ -35,7 +35,6 @@
 		A35BCC202570EF830090B95E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35BCC1F2570EF830090B95E /* MapKit.framework */; };
 		A38293922578DF770064D971 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38293912578DF770064D971 /* PostTableViewCell.swift */; };
 		A38293B025793CF50064D971 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38293AF25793CF50064D971 /* UserLocation.swift */; };
-		A3C1959F25765DE700BAB46B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3C1959E25765DE700BAB46B /* Launch Screen.storyboard */; };
 		A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195A125765F0200BAB46B /* UILabel + Extension.swift */; };
 		A3C195B22577746C00BAB46B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B12577746C00BAB46B /* LoginViewController.swift */; };
 		A3C195B52577747D00BAB46B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B42577747D00BAB46B /* SignUpViewController.swift */; };
@@ -62,9 +61,10 @@
 		A3CEA9A2256F87F1001DA842 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3CEA9A0256F87F1001DA842 /* Main.storyboard */; };
 		A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA9A3256F87F1001DA842 /* Yogogo.xcdatamodeld */; };
 		A3CEA9A7256F87F4001DA842 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3CEA9A6256F87F4001DA842 /* Assets.xcassets */; };
-		A3CEA9AA256F87F4001DA842 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3CEA9A8256F87F4001DA842 /* LaunchScreen.storyboard */; };
 		A3EE02E9257B489800459C54 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EE02E8257B489700459C54 /* WelcomeViewController.swift */; };
 		A3EE02ED257B5FEB00459C54 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3EE02EC257B5FEB00459C54 /* Camera.storyboard */; };
+		A3EE02F9257B6D7300459C54 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3EE02F8257B6D7300459C54 /* Launch Screen.storyboard */; };
+		A3EE0309257B7B2500459C54 /* launchscreen_logo_0.png in Resources */ = {isa = PBXBuildFile; fileRef = A3EE0308257B7B2500459C54 /* launchscreen_logo_0.png */; };
 		EBA0C7B7CB20B17C5302B71E /* Pods_Yogogo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F10A593450A151479F13EE /* Pods_Yogogo.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,7 +98,6 @@
 		A35BCC1F2570EF830090B95E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A38293912578DF770064D971 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		A38293AF25793CF50064D971 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
-		A3C1959E25765DE700BAB46B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A3C195A125765F0200BAB46B /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		A3C195B12577746C00BAB46B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A3C195B42577747D00BAB46B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -126,10 +125,14 @@
 		A3CEA9A1256F87F1001DA842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A3CEA9A4256F87F1001DA842 /* Yogogo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Yogogo.xcdatamodel; sourceTree = "<group>"; };
 		A3CEA9A6256F87F4001DA842 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A3CEA9A9256F87F4001DA842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A3CEA9AB256F87F4001DA842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3EE02E8257B489700459C54 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		A3EE02EC257B5FEB00459C54 /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
+		A3EE02F8257B6D7300459C54 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		A3EE02FD257B76C000459C54 /* launchscreen_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen_logo.png; sourceTree = "<group>"; };
+		A3EE0301257B787E00459C54 /* launchscreen_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchscreen_logo.png; path = ../../../../../../../../Downloads/AppIcons/launchscreen_logo.png; sourceTree = "<group>"; };
+		A3EE0305257B7A8600459C54 /* launchscreen_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen_logo.png; sourceTree = "<group>"; };
+		A3EE0308257B7B2500459C54 /* launchscreen_logo_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen_logo_0.png; sourceTree = "<group>"; };
 		C8F10A593450A151479F13EE /* Pods_Yogogo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yogogo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5866D8A6CE4D3ADE008249 /* Pods-Yogogo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yogogo.release.xcconfig"; path = "Target Support Files/Pods-Yogogo/Pods-Yogogo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -218,8 +221,7 @@
 			children = (
 				A3CEA9A0256F87F1001DA842 /* Main.storyboard */,
 				A3EE02EC257B5FEB00459C54 /* Camera.storyboard */,
-				A3CEA9A8256F87F4001DA842 /* LaunchScreen.storyboard */,
-				A3C1959E25765DE700BAB46B /* Launch Screen.storyboard */,
+				A3EE02F8257B6D7300459C54 /* Launch Screen.storyboard */,
 				A3C195E22577934C00BAB46B /* Auth.storyboard */,
 			);
 			path = Storyboards;
@@ -346,6 +348,10 @@
 		A3CEA98E256F87F1001DA842 = {
 			isa = PBXGroup;
 			children = (
+				A3EE0308257B7B2500459C54 /* launchscreen_logo_0.png */,
+				A3EE02FD257B76C000459C54 /* launchscreen_logo.png */,
+				A3EE0301257B787E00459C54 /* launchscreen_logo.png */,
+				A3EE0305257B7A8600459C54 /* launchscreen_logo.png */,
 				A3CEA999256F87F1001DA842 /* Yogogo */,
 				A3CEA998256F87F1001DA842 /* Products */,
 				85420101885810C289ADB45C /* Pods */,
@@ -444,13 +450,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3CEA9AA256F87F4001DA842 /* LaunchScreen.storyboard in Resources */,
 				A3EE02ED257B5FEB00459C54 /* Camera.storyboard in Resources */,
 				A35BCC1D2570C6290090B95E /* GoogleService-Info.plist in Resources */,
 				A3CEA9A7256F87F4001DA842 /* Assets.xcassets in Resources */,
-				A3C1959F25765DE700BAB46B /* Launch Screen.storyboard in Resources */,
+				A3EE0309257B7B2500459C54 /* launchscreen_logo_0.png in Resources */,
 				A3C195E32577934C00BAB46B /* Auth.storyboard in Resources */,
 				A3CEA9A2256F87F1001DA842 /* Main.storyboard in Resources */,
+				A3EE02F9257B6D7300459C54 /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,14 +589,6 @@
 				A3CEA9A1256F87F1001DA842 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A3CEA9A8256F87F4001DA842 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A3CEA9A9256F87F4001DA842 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

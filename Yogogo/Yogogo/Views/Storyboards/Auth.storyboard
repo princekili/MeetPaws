@@ -37,6 +37,9 @@
                                                 <real key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="MM0-Ce-SXS" kind="show" id="nYM-Ri-tmK"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -81,6 +84,16 @@ you have to sign in.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xzC-cO-0fU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="147.82608695652175" y="172.76785714285714"/>
+        </scene>
+        <!--MainView-->
+        <scene sceneID="RC2-Cy-A3w">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="MainView" id="MM0-Ce-SXS" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vgC-j3-bfr"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qch-gX-z51" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="870" y="241"/>
         </scene>
     </scenes>
     <designables>

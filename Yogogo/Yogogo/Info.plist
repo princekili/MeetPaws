@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>for capturing videos</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>for you to choose photos to upload</string>
-	<key>NSCameraUsageDescription</key>
-	<string>for capturing photos</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDocumentTypes</key>
@@ -43,6 +37,8 @@
 	<array>
 		<string>MKDirectionsModePedestrian</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>for capturing photos</string>
 	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
 	<dict>
 		<key>MGLAccuracyAuthorizationDescription</key>
@@ -50,6 +46,10 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please enable your precise location while using the app.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>for capturing videos</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>for you to choose photos to upload</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -72,7 +72,7 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>Launch Screen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
