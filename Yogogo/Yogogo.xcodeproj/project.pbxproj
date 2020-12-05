@@ -130,6 +130,7 @@
 		A3EE02EC257B5FEB00459C54 /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		A3EE02F8257B6D7300459C54 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A3EE0308257B7B2500459C54 /* launchscreen_logo_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen_logo_0.png; sourceTree = "<group>"; };
+		A3EE0310257B8E5900459C54 /* Yogogo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yogogo.entitlements; sourceTree = "<group>"; };
 		C8F10A593450A151479F13EE /* Pods_Yogogo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yogogo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5866D8A6CE4D3ADE008249 /* Pods-Yogogo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yogogo.release.xcconfig"; path = "Target Support Files/Pods-Yogogo/Pods-Yogogo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -364,6 +365,7 @@
 		A3CEA999256F87F1001DA842 /* Yogogo */ = {
 			isa = PBXGroup;
 			children = (
+				A3EE0310257B8E5900459C54 /* Yogogo.entitlements */,
 				A3551E812572921C0006099A /* Networking */,
 				A3551E49257255F50006099A /* Models */,
 				A3C195A52577666B00BAB46B /* Views */,
@@ -710,6 +712,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Yogogo/Yogogo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YQ4Y66HUTL;
 				INFOPLIST_FILE = Yogogo/Info.plist;
@@ -731,6 +734,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Yogogo/Yogogo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YQ4Y66HUTL;
 				INFOPLIST_FILE = Yogogo/Info.plist;

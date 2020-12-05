@@ -5,16 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeName</key>
-			<string>MKDirectionsRequest</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.apple.maps.directionsrequest</string>
-			</array>
-		</dict>
-	</array>
+	<array/>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -33,10 +24,6 @@
 	<true/>
 	<key>MGLMapboxAccessToken</key>
 	<string>pk.eyJ1IjoicHJpbmNla2lsaSIsImEiOiJja2h5cmdzOHQwOGR1MnFuazRpcTQ3bmhxIn0.GvwUCNlWQwmCjIJEoHoU6Q</string>
-	<key>MKDirectionsApplicationSupportedModes</key>
-	<array>
-		<string>MKDirectionsModePedestrian</string>
-	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>for capturing photos</string>
 	<key>NSLocationTemporaryUsageDescriptionDictionary</key>

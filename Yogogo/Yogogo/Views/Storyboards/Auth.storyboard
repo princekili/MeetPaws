@@ -30,7 +30,7 @@
                                         <inset key="imageEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Sign in with Apple">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <imageReference key="image" image="applelogo" catalog="system" symbolScale="large"/>
+                                            <imageReference key="image" image="applelogo" catalog="system" symbolScale="medium"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -38,7 +38,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="MM0-Ce-SXS" kind="showDetail" id="nYM-Ri-tmK"/>
+                                            <action selector="signInWithAppleButtonDidTap:" destination="btx-yT-kY9" eventType="touchUpInside" id="K65-8Z-fPl"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -98,7 +98,7 @@ you have to sign in.</string>
     </scenes>
     <designables>
         <designable name="L9v-97-d4c">
-            <size key="intrinsicContentSize" width="180" height="24"/>
+            <size key="intrinsicContentSize" width="176" height="24"/>
         </designable>
     </designables>
     <resources>

@@ -810,7 +810,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="JbJ-OS-paK">
             <objects>
-                <tabBarController storyboardIdentifier="MainView" automaticallyAdjustsScrollViewInsets="NO" id="nJw-eL-QhD" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="nJw-eL-QhD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eSe-Hd-1ue">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -1578,7 +1578,7 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="gG7-UW-RZV"/>
-        <segue reference="N3A-wu-T8P"/>
+        <segue reference="LwI-kW-ddj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IMG_F94C257EA6BB-1" width="1125" height="1651"/>
