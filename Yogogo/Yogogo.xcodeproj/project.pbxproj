@@ -13,7 +13,6 @@
 		A316BE4D2575072200989152 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE4C2575072100989152 /* SearchViewController.swift */; };
 		A316BE512575245D00989152 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE502575245C00989152 /* UIViewController + Extension.swift */; };
 		A316BED82575323700989152 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BED72575323700989152 /* CameraViewController.swift */; };
-		A316BF292575968600989152 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BF282575968600989152 /* ProfileTableViewController.swift */; };
 		A344F41C257A61CA0048B754 /* RoundedCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */; };
 		A3551E46257252490006099A /* MapsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551E45257252480006099A /* MapsNetworking.swift */; };
 		A3551E4B257256110006099A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551E4A257256110006099A /* User.swift */; };
@@ -76,7 +75,6 @@
 		A316BE4C2575072100989152 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A316BE502575245C00989152 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		A316BED72575323700989152 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		A316BF282575968600989152 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerButton.swift; sourceTree = "<group>"; };
 		A3551E45257252480006099A /* MapsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsNetworking.swift; sourceTree = "<group>"; };
 		A3551E4A257256110006099A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -178,12 +176,10 @@
 		A316BF082575805500989152 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				A316BF282575968600989152 /* ProfileTableViewController.swift */,
 				A3C195EC2577E35F00BAB46B /* ProfileViewController.swift */,
 				A3C195E92577D6E600BAB46B /* PhotoCollectionViewCell.swift */,
 				A3C195EF2577E7CF00BAB46B /* ProfileInfoHeaderCollectionReusableView.swift */,
 				A3C195F22577E80900BAB46B /* ProfileTabsCollectionReusableView.swift */,
-				A38293912578DF770064D971 /* PostTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -325,7 +321,7 @@
 				A3C195C82577783800BAB46B /* UserListViewController.swift */,
 				A3C195C2257777C400BAB46B /* EditProfileViewController.swift */,
 				A3C195C5257777E800BAB46B /* SettingsViewController.swift */,
-				A3C195BF257777A500BAB46B /* PostViewController.swift */,
+				A3EE0314257BB42E00459C54 /* Post */,
 				A3C195CB257778F200BAB46B /* PostEditorViewController.swift */,
 				A316BED72575323700989152 /* CameraViewController.swift */,
 				A3C195CE2577790600BAB46B /* PublishPostViewController.swift */,
@@ -375,6 +371,15 @@
 				A3CEA9AB256F87F4001DA842 /* Info.plist */,
 			);
 			path = Yogogo;
+			sourceTree = "<group>";
+		};
+		A3EE0314257BB42E00459C54 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				A3C195BF257777A500BAB46B /* PostViewController.swift */,
+				A38293912578DF770064D971 /* PostTableViewCell.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 		C2A847738FFA764735640344 /* Frameworks */ = {
@@ -547,7 +552,6 @@
 				A3551E7725728F610006099A /* Post.swift in Sources */,
 				A38293B025793CF50064D971 /* UserLocation.swift in Sources */,
 				A3C195F02577E7CF00BAB46B /* ProfileInfoHeaderCollectionReusableView.swift in Sources */,
-				A316BF292575968600989152 /* ProfileTableViewController.swift in Sources */,
 				A3C195B82577751600BAB46B /* MessagesViewController.swift in Sources */,
 				A3C195E02577902100BAB46B /* StorageManager.swift in Sources */,
 				A3551EC12573901A0006099A /* UserListNetworking.swift in Sources */,
