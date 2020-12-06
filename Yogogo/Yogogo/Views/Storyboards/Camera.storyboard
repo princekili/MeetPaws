@@ -11,7 +11,7 @@
         <!--Camera View Controller-->
         <scene sceneID="Cw9-uO-dlm">
             <objects>
-                <viewController storyboardIdentifier="CameraView" modalTransitionStyle="flipHorizontal" id="hkO-f3-na9" customClass="CameraViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CameraVC" modalTransitionStyle="flipHorizontal" id="hkO-f3-na9" customClass="CameraViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CyV-sK-NBF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,15 +20,92 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="plus.app" catalog="system" selectedImage="plus.app.fill" id="chF-dh-HMo"/>
                     <navigationItem key="navigationItem" id="8oy-52-O4R"/>
+                    <connections>
+                        <segue destination="8In-EC-Xjd" kind="presentation" identifier="showSubmitPostTVC" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="4bY-QA-Ed6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcQ-e1-2Cd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4541" y="60"/>
         </scene>
+        <!--New Post-->
+        <scene sceneID="q8p-JI-aBK">
+            <objects>
+                <tableViewController storyboardIdentifier="SubmitPostTVC" id="8In-EC-Xjd" customClass="SubmitPostTableViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cVS-hp-BzX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="k3g-Gz-25b">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="130" id="VBc-JW-G1f">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="130"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VBc-JW-G1f" id="Q9Z-Sp-4Eb">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgT-4d-Drs">
+                                                    <rect key="frame" x="20" y="15" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="R13-Zw-rOX"/>
+                                                        <constraint firstAttribute="width" constant="100" id="SZy-0W-dg6"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="dog_postImage"/>
+                                                </button>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" text="Write a caption..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yHq-iM-xuQ">
+                                                    <rect key="frame" x="128" y="15" width="266" height="100"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="Pwh-7y-FI5"/>
+                                                    </constraints>
+                                                    <color key="textColor" systemColor="labelColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="yHq-iM-xuQ" secondAttribute="trailing" constant="20" id="EMl-SW-3pz"/>
+                                                <constraint firstItem="yHq-iM-xuQ" firstAttribute="centerY" secondItem="Q9Z-Sp-4Eb" secondAttribute="centerY" id="IDw-nM-A1f"/>
+                                                <constraint firstItem="yHq-iM-xuQ" firstAttribute="leading" secondItem="fgT-4d-Drs" secondAttribute="trailing" constant="8" symbolic="YES" id="LFT-iq-zVL"/>
+                                                <constraint firstItem="fgT-4d-Drs" firstAttribute="leading" secondItem="Q9Z-Sp-4Eb" secondAttribute="leading" constant="20" id="iMG-U2-Uvk"/>
+                                                <constraint firstItem="fgT-4d-Drs" firstAttribute="centerY" secondItem="Q9Z-Sp-4Eb" secondAttribute="centerY" id="nF0-Mi-tIg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="8In-EC-Xjd" id="DG2-Z0-E3h"/>
+                            <outlet property="delegate" destination="8In-EC-Xjd" id="dnB-6a-Ldq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="New Post" id="Atd-1n-Y2Y">
+                        <barButtonItem key="rightBarButtonItem" title="Share" style="done" id="Hhg-uO-WD7">
+                            <connections>
+                                <action selector="shareButtonDidTap:" destination="8In-EC-Xjd" id="qLJ-iH-ah1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="captionTextView" destination="yHq-iM-xuQ" id="UPs-PH-qpG"/>
+                        <outlet property="imageButton" destination="fgT-4d-Drs" id="3ds-Cb-fby"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="659-8p-fIe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5522" y="60"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="dog_postImage" width="426" height="421"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

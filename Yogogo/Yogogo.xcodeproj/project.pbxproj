@@ -36,6 +36,7 @@
 		A38293B025793CF50064D971 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38293AF25793CF50064D971 /* UserLocation.swift */; };
 		A3C136A5257BE0C200960B4C /* EditProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3C136A4257BE0C200960B4C /* EditProfile.storyboard */; };
 		A3C136A9257BE3C500960B4C /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C136A8257BE3C500960B4C /* EditProfileTableViewController.swift */; };
+		A3C136AE257C77BD00960B4C /* SubmitPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C136AD257C77BD00960B4C /* SubmitPostTableViewController.swift */; };
 		A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195A125765F0200BAB46B /* UILabel + Extension.swift */; };
 		A3C195B22577746C00BAB46B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B12577746C00BAB46B /* SignInViewController.swift */; };
 		A3C195B52577747D00BAB46B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B42577747D00BAB46B /* SignUpViewController.swift */; };
@@ -100,6 +101,7 @@
 		A38293AF25793CF50064D971 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		A3C136A4257BE0C200960B4C /* EditProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditProfile.storyboard; sourceTree = "<group>"; };
 		A3C136A8257BE3C500960B4C /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
+		A3C136AD257C77BD00960B4C /* SubmitPostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitPostTableViewController.swift; sourceTree = "<group>"; };
 		A3C195A125765F0200BAB46B /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		A3C195B12577746C00BAB46B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A3C195B42577747D00BAB46B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +272,15 @@
 			path = Maps;
 			sourceTree = "<group>";
 		};
+		A3C136AC257C778F00960B4C /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				A316BED72575323700989152 /* CameraViewController.swift */,
+				A3C136AD257C77BD00960B4C /* SubmitPostTableViewController.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 		A3C195A42577661F00BAB46B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,11 +335,11 @@
 			isa = PBXGroup;
 			children = (
 				A3EE0314257BB42E00459C54 /* Post */,
+				A3C136AC257C778F00960B4C /* Camera */,
 				A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */,
 				A3C195C82577783800BAB46B /* UserListViewController.swift */,
 				A3EE0327257BB98500459C54 /* SettingsTableViewController.swift */,
 				A3C195CB257778F200BAB46B /* PostEditorViewController.swift */,
-				A316BED72575323700989152 /* CameraViewController.swift */,
 				A3C195CE2577790600BAB46B /* PublishPostViewController.swift */,
 				A3C136A8257BE3C500960B4C /* EditProfileTableViewController.swift */,
 			);
@@ -553,6 +564,7 @@
 				A3C195B22577746C00BAB46B /* SignInViewController.swift in Sources */,
 				A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */,
 				A316BE4A2575070D00989152 /* SearchTableViewCell.swift in Sources */,
+				A3C136AE257C77BD00960B4C /* SubmitPostTableViewController.swift in Sources */,
 				A344F41C257A61CA0048B754 /* RoundedCornerButton.swift in Sources */,
 				A3C195DA25778E4500BAB46B /* AuthManager.swift in Sources */,
 				A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */,

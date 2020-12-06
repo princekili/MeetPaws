@@ -24,7 +24,7 @@ class CameraViewController: UIViewController {
         
         showPicker()
         setupPickButton()
-        setupSelectedImageV()
+//        setupSelectedImageV()
         setupResultsButton()
         navigationItem.hidesBackButton = true
     }
@@ -151,7 +151,7 @@ class CameraViewController: UIViewController {
         config.hidesBottomBar = false
 
         config.maxCameraZoomFactor = 3.0
-        config.library.maxNumberOfItems = 5
+        config.library.maxNumberOfItems = 1
         config.gallery.hidesRemoveButton = false
         
         /* Disable scroll to change between mode */
@@ -208,7 +208,7 @@ class CameraViewController: UIViewController {
                     self.selectedImageV.image = photo.image
                     picker.dismiss(animated: true, completion: nil)
                     self.navigationController?.popViewController(animated: false)
-                
+                    
                 case .video(let video):
                     self.selectedImageV.image = video.thumbnail
                     
@@ -226,11 +226,31 @@ class CameraViewController: UIViewController {
             }
         }
         /* Single Photo implementation. */
-        // picker.didFinishPicking { [unowned picker] items, _ in
-        //     self.selectedItems = items
-        //     self.selectedImageV.image = items.singlePhoto?.image
-        //     picker.dismiss(animated: true, completion: nil)
-        // }
+//        picker.didFinishPicking { [unowned picker] items, _ in
+//            self.selectedItems = items
+//            self.selectedImageV.image = items.singlePhoto?.image
+//            picker.dismiss(animated: true, completion: nil)
+//        }
+        // MARK: - didFinishPicking
+        
+        picker.didFinishPicking { [unowned picker] items, cancelled in
+            
+            if cancelled {
+                print("Picker was canceled")
+                picker.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: false)
+                return
+            }
+            
+            self.selectedItems = items
+            self.selectedImageV.image = items.singlePhoto?.image
+            self.performSegue(withIdentifier: "showSubmitPostTVC", sender: self)
+            
+            self.showNextController()
+//            picker.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: false)
+        }
+        
         /* Single Video implementation. */
         //picker.didFinishPicking { [unowned picker] items, cancelled in
         //    if cancelled { picker.dismiss(animated: true, completion: nil); return }
@@ -259,6 +279,22 @@ extension CameraViewController {
         guard let track = AVURLAsset(url: url).tracks(withMediaType: AVMediaType.video).first else { return nil }
         let size = track.naturalSize.applying(track.preferredTransform)
         return CGSize(width: abs(size.width), height: abs(size.height))
+    }
+    
+    // MARK: - Show next Controller
+    func showNextController() {
+        if let nextC = self.storyboard?.instantiateViewController(identifier: "SubmitPostTVC") {
+            nextC.modalTransitionStyle = .crossDissolve
+            present(nextC, animated: true, completion: nil)
+        }
+    }
+    
+    // Pass data
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSubmitPostTVC" {
+            guard let submitPostTVC = segue.destination as? SubmitPostTableViewController else { return }
+            submitPostTVC.selectedImageView?.image = selectedImageV.image
+        }
     }
 }
 
