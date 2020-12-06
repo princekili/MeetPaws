@@ -37,6 +37,7 @@
 		A3C136A5257BE0C200960B4C /* EditProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3C136A4257BE0C200960B4C /* EditProfile.storyboard */; };
 		A3C136A9257BE3C500960B4C /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C136A8257BE3C500960B4C /* EditProfileTableViewController.swift */; };
 		A3C136AE257C77BD00960B4C /* SubmitPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C136AD257C77BD00960B4C /* SubmitPostTableViewController.swift */; };
+		A3C136D4257CBC9500960B4C /* UITextView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C136D3257CBC9500960B4C /* UITextView + Extension.swift */; };
 		A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195A125765F0200BAB46B /* UILabel + Extension.swift */; };
 		A3C195B22577746C00BAB46B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B12577746C00BAB46B /* SignInViewController.swift */; };
 		A3C195B52577747D00BAB46B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B42577747D00BAB46B /* SignUpViewController.swift */; };
@@ -102,6 +103,7 @@
 		A3C136A4257BE0C200960B4C /* EditProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditProfile.storyboard; sourceTree = "<group>"; };
 		A3C136A8257BE3C500960B4C /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		A3C136AD257C77BD00960B4C /* SubmitPostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitPostTableViewController.swift; sourceTree = "<group>"; };
+		A3C136D3257CBC9500960B4C /* UITextView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView + Extension.swift"; sourceTree = "<group>"; };
 		A3C195A125765F0200BAB46B /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		A3C195B12577746C00BAB46B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A3C195B42577747D00BAB46B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				A3C195A125765F0200BAB46B /* UILabel + Extension.swift */,
 				A3C195E625779A9C00BAB46B /* UIView + Extension.swift */,
 				A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */,
+				A3C136D3257CBC9500960B4C /* UITextView + Extension.swift */,
 			);
 			path = "Helpers + Extension";
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				A3CEA99F256F87F1001DA842 /* MapsViewController.swift in Sources */,
 				A3C195B22577746C00BAB46B /* SignInViewController.swift in Sources */,
 				A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */,
+				A3C136D4257CBC9500960B4C /* UITextView + Extension.swift in Sources */,
 				A316BE4A2575070D00989152 /* SearchTableViewCell.swift in Sources */,
 				A3C136AE257C77BD00960B4C /* SubmitPostTableViewController.swift in Sources */,
 				A344F41C257A61CA0048B754 /* RoundedCornerButton.swift in Sources */,

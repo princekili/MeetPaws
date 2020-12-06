@@ -19,20 +19,54 @@ class CameraViewController: UIViewController {
     let pickButton = UIButton()
     let resultsButton = UIButton()
     
+    @IBOutlet weak var imageButton: UIButton!
+    
+    @IBOutlet weak var captionTextView: UITextView! {
+        didSet {
+            captionTextView.placeholder = "Write a caption..."
+        }
+    }
+    
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         showPicker()
         setupPickButton()
-//        setupSelectedImageV()
         setupResultsButton()
-        navigationItem.hidesBackButton = true
+
+        hideButtons()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+    }
+    
+    @IBAction func backButtonDidTap(_ sender: UIBarButtonItem) {
 //        showPicker()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func imageButtonDidTap(_ sender: UIButton) {
+        showPicker()
+    }
+    
+    private func hideButtons() {
+        cancelButton.tintColor = .clear
+        shareButton.tintColor = .clear
+        imageButton.isHidden = true
+        captionTextView.isHidden = true
+    }
+    
+    private func showButtons() {
+        cancelButton.tintColor = .label
+        shareButton.tintColor = .systemBlue
+        imageButton.isHidden = false
+        captionTextView.isHidden = false
     }
     
     private func setupSelectedImageV() {
@@ -91,7 +125,7 @@ class CameraViewController: UIViewController {
         // config.onlySquareImagesFromCamera = false
         /* Ex: cappedTo:1024 will make sure images from the library or the camera will be
          resized to fit in a 1024x1024 box. Defaults to original image size. */
-        // config.targetImageSize = .cappedTo(size: 1024)
+        config.targetImageSize = .cappedTo(size: 1024)
         /* Choose what media types are available in the library. Defaults to `.photo` */
         config.library.mediaType = .photo
         config.library.itemOverlayType = .grid
@@ -189,66 +223,70 @@ class CameraViewController: UIViewController {
         
         /* Change configuration directly */
         // YPImagePickerConfiguration.shared.wordings.libraryTitle = "Gallery2"
-        /* Multiple media implementation */
-        picker.didFinishPicking { [unowned picker] items, cancelled in
-            
-            if cancelled {
-                print("Picker was canceled")
-                picker.dismiss(animated: true, completion: nil)
-                self.navigationController?.popViewController(animated: false)
-                return
-            }
-            _ = items.map { print("🧀 \($0)") }
-            
-            self.selectedItems = items
-            if let firstItem = items.first {
-                switch firstItem {
-                
-                case .photo(let photo):
-                    self.selectedImageV.image = photo.image
-                    picker.dismiss(animated: true, completion: nil)
-                    self.navigationController?.popViewController(animated: false)
-                    
-                case .video(let video):
-                    self.selectedImageV.image = video.thumbnail
-                    
-                    let assetURL = video.url
-                    let playerVC = AVPlayerViewController()
-                    let player = AVPlayer(playerItem: AVPlayerItem(url: assetURL))
-                    playerVC.player = player
-                    
-                    picker.dismiss(animated: true, completion: { [weak self] in
-                        self?.present(playerVC, animated: true, completion: nil)
-                        self?.navigationController?.popViewController(animated: false)
-                        print("😀 \(String(describing: self?.resolutionForLocalVideo(url: assetURL)!))")
-                    })
-                }
-            }
-        }
-        /* Single Photo implementation. */
+        
+        // MARK: - Multiple media implementation
+        
+//        picker.didFinishPicking { [unowned picker] items, cancelled in
+//
+//            if cancelled {
+//                print("Picker was canceled")
+//                picker.dismiss(animated: true, completion: nil)
+//                self.navigationController?.popViewController(animated: false)
+//                return
+//            }
+//            _ = items.map { print("🧀 \($0)") }
+//
+//            self.selectedItems = items
+//            if let firstItem = items.first {
+//                switch firstItem {
+//
+//                case .photo(let photo):
+//                    self.selectedImageV.image = photo.image
+//                    picker.dismiss(animated: true, completion: nil)
+//                    self.navigationController?.popViewController(animated: false)
+//
+//                case .video(let video):
+//                    self.selectedImageV.image = video.thumbnail
+//
+//                    let assetURL = video.url
+//                    let playerVC = AVPlayerViewController()
+//                    let player = AVPlayer(playerItem: AVPlayerItem(url: assetURL))
+//                    playerVC.player = player
+//
+//                    picker.dismiss(animated: true, completion: { [weak self] in
+//                        self?.present(playerVC, animated: true, completion: nil)
+//                        self?.navigationController?.popViewController(animated: false)
+//                        print("😀 \(String(describing: self?.resolutionForLocalVideo(url: assetURL)!))")
+//                    })
+//                }
+//            }
+//        }
+        
+        // MARK: - Single Photo implementation
+        
 //        picker.didFinishPicking { [unowned picker] items, _ in
 //            self.selectedItems = items
 //            self.selectedImageV.image = items.singlePhoto?.image
 //            picker.dismiss(animated: true, completion: nil)
 //        }
-        // MARK: - didFinishPicking
+        
+        // MARK: didFinishPicking
         
         picker.didFinishPicking { [unowned picker] items, cancelled in
             
             if cancelled {
                 print("Picker was canceled")
                 picker.dismiss(animated: true, completion: nil)
-                self.navigationController?.popViewController(animated: false)
+                self.dismiss(animated: true, completion: nil)
                 return
             }
             
             self.selectedItems = items
-            self.selectedImageV.image = items.singlePhoto?.image
-            self.performSegue(withIdentifier: "showSubmitPostTVC", sender: self)
+            self.imageButton.setImage(items.singlePhoto?.image, for: .normal)
             
-            self.showNextController()
-//            picker.dismiss(animated: true, completion: nil)
-            self.navigationController?.popViewController(animated: false)
+            self.showButtons()
+            
+            picker.dismiss(animated: true, completion: nil)
         }
         
         /* Single Video implementation. */
@@ -296,6 +334,7 @@ extension CameraViewController {
             submitPostTVC.selectedImageView?.image = selectedImageV.image
         }
     }
+    
 }
 
 // YPImagePickerDelegate
