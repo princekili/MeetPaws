@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -235,8 +236,81 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="106.47321428571428"/>
         </scene>
+        <!--Edit Name View Controller-->
+        <scene sceneID="oNh-Oj-r16">
+            <objects>
+                <viewController storyboardIdentifier="EditNameVC" id="sbo-8j-VQn" customClass="EditNameViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G3n-gz-xeM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9A-Mq-xga">
+                                <rect key="frame" x="20" y="98" width="94" height="21.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="94" id="jws-w4-zG3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fill in your name..." textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="xQl-0a-SZE">
+                                <rect key="frame" x="20" y="124.5" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7ui-Xs-dst"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="g9A-Mq-xga" firstAttribute="leading" secondItem="7ui-Xs-dst" secondAttribute="leading" constant="20" id="9wv-Sj-Rpb"/>
+                            <constraint firstItem="7ui-Xs-dst" firstAttribute="trailing" secondItem="xQl-0a-SZE" secondAttribute="trailing" constant="20" id="QX8-wD-5g4"/>
+                            <constraint firstItem="g9A-Mq-xga" firstAttribute="top" secondItem="7ui-Xs-dst" secondAttribute="top" constant="10" id="awH-A1-4h6"/>
+                            <constraint firstItem="xQl-0a-SZE" firstAttribute="leading" secondItem="7ui-Xs-dst" secondAttribute="leading" constant="20" id="nDI-ei-kKD"/>
+                            <constraint firstItem="xQl-0a-SZE" firstAttribute="top" secondItem="g9A-Mq-xga" secondAttribute="bottom" constant="5" id="pFP-EH-z0f"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cMi-dm-ny5">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.left" catalog="system" id="xRP-Di-pke">
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <connections>
+                                <action selector="backButtonDidTap:" destination="sbo-8j-VQn" id="3e0-OC-9c6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="d5p-Xn-P7g">
+                            <connections>
+                                <action selector="donButtonDidTap:" destination="sbo-8j-VQn" id="XEM-hc-q60"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="xQl-0a-SZE" id="zjM-pP-Zk8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Sa-dl-OAW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1957.9710144927537" y="839.73214285714278"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cHA-iD-AXN">
+            <objects>
+                <navigationController storyboardIdentifier="EditNameNC" automaticallyAdjustsScrollViewInsets="NO" id="Qqe-Ky-bcZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5yI-XW-0Nu">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sbo-8j-VQn" kind="relationship" relationship="rootViewController" id="ak5-3Z-Ki9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pZK-ij-VnV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="839.73214285714278"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="dog_profileImage" width="230" height="230"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -36,6 +36,13 @@ class EditProfileTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - Pass data via closure
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "" {
+            
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -103,7 +110,12 @@ class EditProfileTableViewController: UITableViewController {
             }
             present(imagePickerAlertController, animated: true, completion: nil)
             
-//        case 1:
+        case 1:
+            
+            if let nextC = self.storyboard?.instantiateViewController(identifier: "EditNameNC") {
+                nextC.modalPresentationStyle = .fullScreen
+                self.present(nextC, animated: true, completion: nil)
+            }
 //
 //        case 2:
 //

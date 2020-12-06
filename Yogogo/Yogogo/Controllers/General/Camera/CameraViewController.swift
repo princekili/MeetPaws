@@ -326,15 +326,6 @@ extension CameraViewController {
             present(nextC, animated: true, completion: nil)
         }
     }
-    
-    // Pass data
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showSubmitPostTVC" {
-            guard let submitPostTVC = segue.destination as? SubmitPostTableViewController else { return }
-            submitPostTVC.selectedImageView?.image = selectedImageV.image
-        }
-    }
-    
 }
 
 // YPImagePickerDelegate
