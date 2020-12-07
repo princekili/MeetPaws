@@ -508,7 +508,7 @@
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-2" translatesAutoresizingMaskIntoConstraints="NO" id="nQ2-2J-MIl">
-                                            <rect key="frame" x="20" y="136" width="92" height="52"/>
+                                            <rect key="frame" x="20" y="136" width="374" height="52"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prince" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqj-YB-DLw">
                                                     <rect key="frame" x="0.0" y="0.0" width="66.5" height="27.5"/>
@@ -517,16 +517,21 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇹🇼Taiwan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smm-og-ALP">
-                                                    <rect key="frame" x="0.0" y="25.5" width="92" height="26.5"/>
+                                                    <rect key="frame" x="0.0" y="25.5" width="374" height="26.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="smm-og-ALP" firstAttribute="leading" secondItem="nQ2-2J-MIl" secondAttribute="leading" id="3x4-X0-2Kc"/>
+                                                <constraint firstAttribute="trailing" secondItem="smm-og-ALP" secondAttribute="trailing" id="Oso-Rn-cjG"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="nQ2-2J-MIl" firstAttribute="leading" secondItem="7nJ-b4-PVW" secondAttribute="leading" id="93m-Pd-rrD"/>
+                                        <constraint firstAttribute="trailing" secondItem="nQ2-2J-MIl" secondAttribute="trailing" constant="20" id="A7k-pn-wBE"/>
                                         <constraint firstItem="7nJ-b4-PVW" firstAttribute="leading" secondItem="rs9-Db-LkJ" secondAttribute="leading" constant="20" id="DJC-SI-roc"/>
                                         <constraint firstAttribute="trailing" secondItem="t7W-0y-5lZ" secondAttribute="trailing" constant="20" id="IA9-OV-HpH"/>
                                         <constraint firstItem="OOp-vG-jyd" firstAttribute="centerY" secondItem="7nJ-b4-PVW" secondAttribute="centerY" id="VTO-z0-EDO"/>
@@ -1120,7 +1125,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="gG7-UW-RZV"/>
-        <segue reference="LwI-kW-ddj"/>
+        <segue reference="N3A-wu-T8P"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IU_profileImage" width="640" height="640"/>

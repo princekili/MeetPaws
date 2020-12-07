@@ -17,6 +17,8 @@ class EditBioViewController: UIViewController {
             bioTextView.layer.borderColor = UIColor.lightGray.cgColor
             bioTextView.layer.cornerRadius = 4
             bioTextView.layer.masksToBounds = true
+            
+            bioTextView.delegate = self
         }
     }
     
@@ -38,5 +40,22 @@ class EditBioViewController: UIViewController {
             tapHandler?(textInput)
             navigationController?.popViewController(animated: true)
         }
+    }
+}
+
+extension EditBioViewController: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        // get the current text, or use an empty string if that failed
+        let currentText = textView.text ?? ""
+        
+        // attempt to read the range they are trying to change, or exit if we can't
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        
+        // add their new text to the existing text
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+        
+        // make sure the result is under __ characters
+        return updatedText.count <= 100
     }
 }
