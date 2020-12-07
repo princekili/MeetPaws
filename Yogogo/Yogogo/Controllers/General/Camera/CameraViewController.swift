@@ -24,6 +24,7 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var captionTextView: UITextView! {
         didSet {
             captionTextView.placeholder = "Write a caption..."
+            captionTextView.delegate = self
         }
     }
     
@@ -47,7 +48,6 @@ class CameraViewController: UIViewController {
     }
     
     @IBAction func backButtonDidTap(_ sender: UIBarButtonItem) {
-//        showPicker()
         dismiss(animated: true, completion: nil)
     }
     
@@ -276,6 +276,7 @@ class CameraViewController: UIViewController {
             
             if cancelled {
                 print("Picker was canceled")
+                self.hideButtons()
                 picker.dismiss(animated: true, completion: nil)
                 self.dismiss(animated: true, completion: nil)
                 return
@@ -334,5 +335,22 @@ extension CameraViewController: YPImagePickerDelegate {
     
     func shouldAddToSelection(indexPath: IndexPath, numSelections: Int) -> Bool {
         return true // indexPath.row != 2
+    }
+}
+
+extension CameraViewController: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        // get the current text, or use an empty string if that failed
+        let currentText = textView.text ?? ""
+        
+        // attempt to read the range they are trying to change, or exit if we can't
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        
+        // add their new text to the existing text
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+        
+        // make sure the result is under __ characters
+        return updatedText.count <= 500
     }
 }
