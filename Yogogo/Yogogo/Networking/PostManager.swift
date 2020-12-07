@@ -56,8 +56,8 @@ final class PostManager {
             
             guard let userId = Auth.auth().currentUser?.uid else { return }
             
-//            guard let userDisplayName = Auth.auth().currentUser?.displayName else { return }
-            let userDisplayName = Auth.auth().currentUser?.displayName
+//            guard let username = Auth.auth().currentUser?.displayName else { return }
+            let username = Auth.auth().currentUser?.displayName
             
             // Add a reference in the database
             snapshot.reference.downloadURL(completion: { (url, error) in
@@ -70,7 +70,7 @@ final class PostManager {
                 let timestamp = Int(Date().timeIntervalSince1970 * 1000)
                 
                 let post: [String: Any] = ["userId": userId,
-                                            "userDisplayName": userDisplayName ?? "Unknown name",
+                                            "username": username ?? "Unknown name",
                                             "imageFileURL": imageFileURL,
                                             "userDidLike": [],
                                             "caption": "",

@@ -54,7 +54,7 @@ class FeedViewController: UIViewController {
                 print("-------")
                 print("Post ID: \(post.postId)")
                 print("userId: \(post.userId)")
-                print("userDisplayName: \(post.userDisplayName)")
+                print("username: \(post.username)")
                 print("Image URL: \(post.imageFileURL)")
                 print("userDidLike: \(post.userDidLike)")
                 print("caption: \(post.caption)")

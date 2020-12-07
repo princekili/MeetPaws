@@ -15,9 +15,9 @@ struct Post {
 
     var userId: String // User.id
     
-    var userDisplayName: String // Auth.auth().currentUser?.displayName
+    var username: String
     
-//    var authorProfileImage: String // User.profileImage
+    var userProfileImage: String // User.profileImage -> URL
 
 //    var thumbnailImage: String // URL
     
@@ -37,7 +37,9 @@ struct Post {
         
         static let userId = "authorId"
 
-        static let userDisplayName = "userDisplayName"
+        static let username = "username"
+        
+        static let userProfileImage = "userProfileImage"
         
         static let imageFileURL = "imageFileURL"
         
@@ -52,7 +54,8 @@ struct Post {
     
     init(postId: String,
          userId: String,
-         userDisplayName: String,
+         userProfileImage: String,
+         username: String,
          imageFileURL: String,
          userDidLike: [String],
          caption: String,
@@ -61,7 +64,8 @@ struct Post {
         
         self.postId = postId
         self.userId = userId
-        self.userDisplayName = userDisplayName
+        self.userProfileImage = userProfileImage
+        self.username = username
         self.imageFileURL = imageFileURL
         self.userDidLike = userDidLike
         self.caption = caption
@@ -74,7 +78,8 @@ struct Post {
     ) {
         
         guard let userId = postInfo[PostInfoKey.userId] as? String,
-              let userDisplayName = postInfo[PostInfoKey.userDisplayName] as? String,
+              let username = postInfo[PostInfoKey.username] as? String,
+              let userProfileImage = postInfo[PostInfoKey.userProfileImage] as? String,
               let imageFileURL = postInfo[PostInfoKey.imageFileURL] as? String,
               let userDidLike = postInfo[PostInfoKey.userDidLike] as? [String],
               let caption = postInfo[PostInfoKey.caption] as? String,
@@ -83,7 +88,8 @@ struct Post {
         
         self = Post(postId: postId,
                     userId: userId,
-                    userDisplayName: userDisplayName,
+                    userProfileImage: userProfileImage,
+                    username: username,
                     imageFileURL: imageFileURL,
                     userDidLike: userDidLike,
                     caption: caption,

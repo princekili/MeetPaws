@@ -13,6 +13,7 @@
 		A3137012257E5C4100CEA185 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3137011257E5C4100CEA185 /* UIImage + Extension.swift */; };
 		A3137015257E872500CEA185 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3137014257E872500CEA185 /* CacheManager.swift */; };
 		A3137018257EB45C00CEA185 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3137017257EB45C00CEA185 /* ProfileManager.swift */; };
+		A313701B257EBB1D00CEA185 /* UINavigationController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A313701A257EBB1D00CEA185 /* UINavigationController + Extension.swift */; };
 		A316BE402574F30700989152 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE3F2574F30700989152 /* FeedViewController.swift */; };
 		A316BE432574F3F400989152 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE422574F3F400989152 /* FeedTableViewCell.swift */; };
 		A316BE4A2575070D00989152 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE492575070C00989152 /* SearchTableViewCell.swift */; };
@@ -85,6 +86,7 @@
 		A3137011257E5C4100CEA185 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		A3137014257E872500CEA185 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		A3137017257EB45C00CEA185 /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
+		A313701A257EBB1D00CEA185 /* UINavigationController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController + Extension.swift"; sourceTree = "<group>"; };
 		A316BE3F2574F30700989152 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		A316BE422574F3F400989152 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A316BE492575070C00989152 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */,
 				A3C136D3257CBC9500960B4C /* UITextView + Extension.swift */,
 				A3137011257E5C4100CEA185 /* UIImage + Extension.swift */,
+				A313701A257EBB1D00CEA185 /* UINavigationController + Extension.swift */,
 			);
 			path = "Helpers + Extension";
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				A3136FC4257DF3C000CEA185 /* EditUsernameViewController.swift in Sources */,
 				A3EE0328257BB98500459C54 /* SettingsTableViewController.swift in Sources */,
 				A3C195CC257778F200BAB46B /* PostEditorViewController.swift in Sources */,
+				A313701B257EBB1D00CEA185 /* UINavigationController + Extension.swift in Sources */,
 				A3C195E725779A9C00BAB46B /* UIView + Extension.swift in Sources */,
 				A3C195DD25778FD600BAB46B /* FirestoreManager.swift in Sources */,
 				A316BE4D2575072200989152 /* SearchViewController.swift in Sources */,

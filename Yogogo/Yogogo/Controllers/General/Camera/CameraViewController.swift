@@ -65,7 +65,7 @@ class CameraViewController: UIViewController {
                 print("-------")
                 print("Post ID: \(item.key)")
                 print("userId: \(postInfo["userId"] ?? "")")
-                print("userDisplayName: \(postInfo["userDisplayName"] ?? "")")
+                print("username: \(postInfo["username"] ?? "")")
                 print("Image URL: \(postInfo["imageFileURL"] ?? "")")
                 print("userDidLike: \(postInfo["userDidLike"] ?? "")")
                 print("caption: \(postInfo["caption"] ?? "")")
