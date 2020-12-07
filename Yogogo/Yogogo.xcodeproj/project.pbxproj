@@ -11,6 +11,7 @@
 		A3136FC7257E04DE00CEA185 /* EditBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3136FC6257E04DE00CEA185 /* EditBioViewController.swift */; };
 		A313700F257E58C400CEA185 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A313700E257E58C400CEA185 /* PostManager.swift */; };
 		A3137012257E5C4100CEA185 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3137011257E5C4100CEA185 /* UIImage + Extension.swift */; };
+		A3137015257E872500CEA185 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3137014257E872500CEA185 /* CacheManager.swift */; };
 		A316BE402574F30700989152 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE3F2574F30700989152 /* FeedViewController.swift */; };
 		A316BE432574F3F400989152 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE422574F3F400989152 /* FeedTableViewCell.swift */; };
 		A316BE4A2575070D00989152 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE492575070C00989152 /* SearchTableViewCell.swift */; };
@@ -81,6 +82,7 @@
 		A3136FC6257E04DE00CEA185 /* EditBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioViewController.swift; sourceTree = "<group>"; };
 		A313700E257E58C400CEA185 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		A3137011257E5C4100CEA185 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
+		A3137014257E872500CEA185 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		A316BE3F2574F30700989152 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		A316BE422574F3F400989152 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A316BE492575070C00989152 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				A3C195DC25778FD600BAB46B /* FirestoreManager.swift */,
 				A3C195DF2577902100BAB46B /* StorageManager.swift */,
 				A313700E257E58C400CEA185 /* PostManager.swift */,
+				A3137014257E872500CEA185 /* CacheManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */,
 				A3C136D4257CBC9500960B4C /* UITextView + Extension.swift in Sources */,
 				A316BE4A2575070D00989152 /* SearchTableViewCell.swift in Sources */,
+				A3137015257E872500CEA185 /* CacheManager.swift in Sources */,
 				A344F41C257A61CA0048B754 /* RoundedCornerButton.swift in Sources */,
 				A3C195DA25778E4500BAB46B /* AuthManager.swift in Sources */,
 				A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */,
