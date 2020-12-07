@@ -28,6 +28,10 @@ class CameraViewController: UIViewController {
         didSet {
             captionTextView.placeholder = "Write a caption..."
             captionTextView.delegate = self
+            
+            if captionTextView.text.count > 0 {
+                captionTextView.placeholder = nil
+            }
         }
     }
     

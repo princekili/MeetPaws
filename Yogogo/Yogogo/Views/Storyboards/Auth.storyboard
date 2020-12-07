@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -85,6 +86,21 @@ you have to sign in.</string>
             </objects>
             <point key="canvasLocation" x="147.82608695652175" y="172.76785714285714"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="D6R-Iu-v5l">
+            <objects>
+                <viewController id="VMf-WZ-JNz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ndI-ce-L0h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="wrh-Dk-l2v"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LkZ-KR-Am9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1151" y="173"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="L9v-97-d4c">
@@ -93,5 +109,8 @@ you have to sign in.</string>
     </designables>
     <resources>
         <image name="applelogo" catalog="system" width="103" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

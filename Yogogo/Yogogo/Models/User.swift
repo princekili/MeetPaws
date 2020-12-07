@@ -12,13 +12,15 @@ import Firebase
 
 struct User {
     
-    var id: String?
+    var userId: String?
     
     var email: String?
     
-    var profileImage: String?
+    var username: String?
     
-    var name: String?
+    var fullName: String?
+    
+    var profileImage: String?
     
     var bio: String?
     
@@ -47,7 +49,7 @@ struct User {
     var isMapLocationEnabled: Bool?
 
     func userCheck() -> Bool {
-        if id == nil || name == nil || profileImage == nil, email == nil {
+        if userId == nil || username == nil || profileImage == nil, email == nil {
             return false
         }
         return true

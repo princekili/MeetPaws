@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nJw-eL-QhD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -309,7 +309,7 @@
         <!--Maps View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MapsViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapsVC" id="BYZ-38-t0r" customClass="MapsViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -348,7 +348,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYV-D3-ohG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4489" y="90"/>
+            <point key="canvasLocation" x="2859" y="60"/>
         </scene>
         <!--princekili-->
         <scene sceneID="hET-qn-wW8">
@@ -612,8 +612,8 @@
         <scene sceneID="7MQ-8P-X6h">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jSv-8n-T8I" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="lqy-GC-Ajf">
-                        <imageReference key="selectedImage" image="house.fill" catalog="system" renderingMode="original"/>
+                    <tabBarItem key="tabBarItem" title="" image="heart.text.square" catalog="system" id="lqy-GC-Ajf">
+                        <imageReference key="selectedImage" image="heart.text.square.fill" catalog="system" renderingMode="original"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AxG-I7-RGb">
@@ -1134,8 +1134,8 @@
         <image name="dog_postImage" width="426" height="421"/>
         <image name="dog_profileImage" width="230" height="230"/>
         <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="house" catalog="system" width="128" height="106"/>
-        <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="heart.text.square" catalog="system" width="128" height="114"/>
+        <image name="heart.text.square.fill" catalog="system" width="128" height="114"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="map" catalog="system" width="128" height="110"/>

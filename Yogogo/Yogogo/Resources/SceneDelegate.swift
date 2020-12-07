@@ -19,25 +19,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // MARK: -
 //        guard let _ = (scene as? UIWindowScene) else { return }
-//
-//        let storyboard = UIStoryboard(name: "Auth", bundle: nil)
-//
-//        guard let initialViewController = storyboard.instantiateViewController(withIdentifier: "SignInVC") as? SignInViewController else {
-//
-//            fatalError("Unable to instantiate an ViewController from the storyboard")
-//        }
-//        self.window?.rootViewController = initialViewController
         
         // MARK: -
         guard let sceneWindow = (scene as? UIWindowScene) else { return }
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let initialVC = storyboard.instantiateViewController(withIdentifier: "TabBarController")
-//
+
         window = UIWindow(windowScene: sceneWindow)
-//        window?.rootViewController = initialVC
-//        window?.makeKeyAndVisible()
         
-        if let _ = Auth.auth().currentUser?.uid {
+        if Auth.auth().currentUser?.uid != nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let initialVC = storyboard.instantiateViewController(withIdentifier: "TabBarController")
             
