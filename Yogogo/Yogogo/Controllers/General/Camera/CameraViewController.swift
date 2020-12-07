@@ -60,15 +60,17 @@ class CameraViewController: UIViewController {
                 
                 print("-------")
                 print("Post ID: \(item.key)")
+                print("userId: \(postInfo["userId"] ?? "")")
+                print("userDisplayName: \(postInfo["userDisplayName"] ?? "")")
                 print("Image URL: \(postInfo["imageFileURL"] ?? "")")
-                print("User: \(postInfo["user"] ?? "")")
-                print("Votes: \(postInfo["votes"] ?? "")")
+                print("userDidLike: \(postInfo["userDidLike"] ?? "")")
+                print("caption: \(postInfo["caption"] ?? "")")
                 print("Timestamp: \(postInfo["timestamp"] ?? "")")
             }
         }
     }
     
-    // MARK: - Upload Image
+    // MARK: - Upload Post
     
     @IBAction func shareButtonDidTap(_ sender: UIBarButtonItem) {
         
@@ -78,7 +80,7 @@ class CameraViewController: UIViewController {
             return
         }
         
-        PostManager.shared.uploadImage(image: image) {
+        PostManager.shared.uploadPost(image: image) {
         }
         self.dismiss(animated: true, completion: nil)
     }

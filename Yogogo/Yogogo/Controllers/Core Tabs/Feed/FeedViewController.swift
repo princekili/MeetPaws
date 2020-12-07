@@ -17,6 +17,8 @@ class FeedViewController: UIViewController {
 
         setupTableView()
         setupNavigation()
+        
+        getPostsInfo()
     }
  
     override func viewDidAppear(_ animated: Bool) {
@@ -43,6 +45,21 @@ class FeedViewController: UIViewController {
             let loginVC = SignInViewController()
             loginVC.modalPresentationStyle = .fullScreen
             present(loginVC, animated: false)
+        }
+    }
+    
+    func getPostsInfo() {
+        PostManager.shared.getRecentPosts(limit: 3) { (newPosts) in
+            newPosts.forEach { (post) in
+                print("-------")
+                print("Post ID: \(post.postId)")
+                print("userId: \(post.userId)")
+                print("userDisplayName: \(post.userDisplayName)")
+                print("Image URL: \(post.imageFileURL)")
+                print("userDidLike: \(post.userDidLike)")
+                print("caption: \(post.caption)")
+                print("Timestamp: \(post.timestamp)")
+            }
         }
     }
 }

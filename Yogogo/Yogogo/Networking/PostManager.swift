@@ -27,9 +27,9 @@ final class PostManager {
 
     let photoStorageRef: StorageReference = Storage.storage().reference().child("photos")
     
-    // MARK: - Upload Image
+    // MARK: - Upload Post
     
-    func uploadImage(image: UIImage, completion: @escaping () -> Void) {
+    func uploadPost(image: UIImage, completion: @escaping () -> Void) {
         
         // Generate a unique ID for the post and prepare the post database reference
         let postDatabaseRef = postDbRef.childByAutoId()
@@ -95,5 +95,52 @@ final class PostManager {
                 print("Upload error -> ", error.localizedDescription)
             }
         }
+    }
+    
+    // MARK: - Download Post
+    
+    func getRecentPosts(start timestamp: Int? = nil, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
+        
+        var postQuery = postDbRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
+        
+        if let latestPostTimestamp = timestamp, latestPostTimestamp > 0 {
+            
+            // If the timestamp is specified, we will get the posts with timestamp newer than the given value
+            postQuery = postQuery.queryStarting(atValue: latestPostTimestamp + 1, childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
+        
+        } else {
+            
+            // Otherwise, we will just get the most recent posts
+            postQuery = postQuery.queryLimited(toLast: limit)
+        }
+        
+        // Call Firebase API to retrieve the latest records
+        postQuery.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var newPosts: [Post] = []
+            
+            print("👉 Total number of posts: \(snapshot.childrenCount)")
+            
+            guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
+                print("😭 There's no post.")
+                return
+            }
+            
+            for item in allObjects {
+                let postInfo = item.value as? [String: Any] ?? [:]
+                
+                if let post = Post(postId: item.key, postInfo: postInfo) {
+                    newPosts.append(post)
+                }
+            }
+            if newPosts.count > 0 {
+                
+                // Order in descending order (i.e. the latest post becomes the first post)
+                newPosts.sort(by: { $0.timestamp > $1.timestamp })
+            }
+            
+            completionHandler(newPosts)
+        })
+        
     }
 }
