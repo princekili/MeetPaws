@@ -1,17 +1,22 @@
 //
-//  EditNameViewController.swift
+//  EditBioViewController.swift
 //  Yogogo
 //
-//  Created by prince on 2020/12/6.
+//  Created by prince on 2020/12/7.
 //
 
 import UIKit
 
-class EditNameViewController: UIViewController {
-
-    @IBOutlet weak var nameTextField: UITextField! {
+class EditBioViewController: UIViewController {
+    
+    @IBOutlet weak var bioTextView: UITextView! {
         didSet {
-            nameTextField.text = text
+            bioTextView.placeholder = "Fill in your bio..."
+            bioTextView.text = text
+            bioTextView.layer.borderWidth = 0.5
+            bioTextView.layer.borderColor = UIColor.lightGray.cgColor
+            bioTextView.layer.cornerRadius = 4
+            bioTextView.layer.masksToBounds = true
         }
     }
     
@@ -29,7 +34,7 @@ class EditNameViewController: UIViewController {
     }
     
     @IBAction func doneButtonDidTap(_ sender: UIBarButtonItem) {
-        if let textInput = nameTextField.text {
+        if let textInput = bioTextView.text {
             tapHandler?(textInput)
             navigationController?.popViewController(animated: true)
         }

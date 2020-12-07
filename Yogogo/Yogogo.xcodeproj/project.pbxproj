@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A3136FC4257DF3C000CEA185 /* EditUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3136FC3257DF3C000CEA185 /* EditUsernameViewController.swift */; };
+		A3136FC7257E04DE00CEA185 /* EditBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3136FC6257E04DE00CEA185 /* EditBioViewController.swift */; };
 		A316BE402574F30700989152 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE3F2574F30700989152 /* FeedViewController.swift */; };
 		A316BE432574F3F400989152 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE422574F3F400989152 /* FeedTableViewCell.swift */; };
 		A316BE4A2575070D00989152 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE492575070C00989152 /* SearchTableViewCell.swift */; };
@@ -73,6 +75,8 @@
 
 /* Begin PBXFileReference section */
 		156181625CD64B20800EA195 /* Pods-Yogogo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yogogo.debug.xcconfig"; path = "Target Support Files/Pods-Yogogo/Pods-Yogogo.debug.xcconfig"; sourceTree = "<group>"; };
+		A3136FC3257DF3C000CEA185 /* EditUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUsernameViewController.swift; sourceTree = "<group>"; };
+		A3136FC6257E04DE00CEA185 /* EditBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioViewController.swift; sourceTree = "<group>"; };
 		A316BE3F2574F30700989152 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		A316BE422574F3F400989152 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A316BE492575070C00989152 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -288,6 +292,8 @@
 			children = (
 				A3C136A8257BE3C500960B4C /* EditProfileTableViewController.swift */,
 				A3C136D9257CC50700960B4C /* EditNameViewController.swift */,
+				A3136FC3257DF3C000CEA185 /* EditUsernameViewController.swift */,
+				A3136FC6257E04DE00CEA185 /* EditBioViewController.swift */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -594,12 +600,14 @@
 				A3551EAE25735B000006099A /* UIImageView + Extension.swift in Sources */,
 				A3CEA99D256F87F1001DA842 /* SceneDelegate.swift in Sources */,
 				A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */,
+				A3136FC4257DF3C000CEA185 /* EditUsernameViewController.swift in Sources */,
 				A3EE0328257BB98500459C54 /* SettingsTableViewController.swift in Sources */,
 				A3C195CC257778F200BAB46B /* PostEditorViewController.swift in Sources */,
 				A3C195E725779A9C00BAB46B /* UIView + Extension.swift in Sources */,
 				A3C195DD25778FD600BAB46B /* FirestoreManager.swift in Sources */,
 				A316BE4D2575072200989152 /* SearchViewController.swift in Sources */,
 				A3C195B52577747D00BAB46B /* SignUpViewController.swift in Sources */,
+				A3136FC7257E04DE00CEA185 /* EditBioViewController.swift in Sources */,
 				A3551E4B257256110006099A /* User.swift in Sources */,
 				A3551EA22572AEE50006099A /* Calendar + Extension.swift in Sources */,
 				A3551EBC257378FB0006099A /* CustomUserLocationAnnotationView.swift in Sources */,

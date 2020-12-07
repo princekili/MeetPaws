@@ -1,17 +1,17 @@
 //
-//  EditNameViewController.swift
+//  EditUsernameViewController.swift
 //  Yogogo
 //
-//  Created by prince on 2020/12/6.
+//  Created by prince on 2020/12/7.
 //
 
 import UIKit
 
-class EditNameViewController: UIViewController {
+class EditUsernameViewController: UIViewController {
 
-    @IBOutlet weak var nameTextField: UITextField! {
+    @IBOutlet weak var usernameTextField: UITextField! {
         didSet {
-            nameTextField.text = text
+            usernameTextField.text = text
         }
     }
     
@@ -29,7 +29,7 @@ class EditNameViewController: UIViewController {
     }
     
     @IBAction func doneButtonDidTap(_ sender: UIBarButtonItem) {
-        if let textInput = nameTextField.text {
+        if let textInput = usernameTextField.text {
             tapHandler?(textInput)
             navigationController?.popViewController(animated: true)
         }

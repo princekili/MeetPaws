@@ -21,6 +21,8 @@ class EditProfileTableViewController: UITableViewController {
     
     @IBOutlet weak var bioLabel: UILabel!
     
+    @IBOutlet weak var bioTextView: UITextView!
+    
     var imagePickerController: UIImagePickerController?
     
     override func viewDidLoad() {
@@ -36,10 +38,44 @@ class EditProfileTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    // MARK: - Pass data via closure
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "" {
+    // MARK: - show next VC
+    
+    private func showEditNameVC() {
+        if let nextVC = self.storyboard?.instantiateViewController(identifier: "EditNameVC") as? EditNameViewController {
             
+            nextVC.text = nameLabel.text
+            nextVC.tapHandler = { [weak self] textInput in
+                self?.nameLabel.text = textInput
+            }
+            
+            nextVC.modalPresentationStyle = .fullScreen
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+    }
+    
+    private func showEditUsernameVC() {
+        if let nextVC = self.storyboard?.instantiateViewController(identifier: "EditUsernameVC") as? EditUsernameViewController {
+            
+            nextVC.text = usernameLabel.text
+            nextVC.tapHandler = { [weak self] textInput in
+                self?.usernameLabel.text = textInput
+            }
+            
+            nextVC.modalPresentationStyle = .fullScreen
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+    }
+    
+    private func showEditBioVC() {
+        if let nextVC = self.storyboard?.instantiateViewController(identifier: "EditBioVC") as? EditBioViewController {
+            
+            nextVC.text = bioTextView.text
+            nextVC.tapHandler = { [weak self] textInput in
+                self?.bioTextView.text = textInput
+            }
+            
+            nextVC.modalPresentationStyle = .fullScreen
+            self.navigationController?.pushViewController(nextVC, animated: true)
         }
     }
     
@@ -53,6 +89,14 @@ class EditProfileTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 4
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 165
+        }
+        
+        return UITableView.automaticDimension
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -111,15 +155,13 @@ class EditProfileTableViewController: UITableViewController {
             present(imagePickerAlertController, animated: true, completion: nil)
             
         case 1:
-            
-            if let nextC = self.storyboard?.instantiateViewController(identifier: "EditNameNC") {
-                nextC.modalPresentationStyle = .fullScreen
-                self.present(nextC, animated: true, completion: nil)
-            }
-//
-//        case 2:
-//
-//        case 3:
+            showEditNameVC()
+
+        case 2:
+            showEditUsernameVC()
+
+        case 3:
+            showEditBioVC()
             
         default:
             return
