@@ -29,6 +29,7 @@ class EditBioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        bioTextView.placeholder = "Fill in your bio..."
     }
     
     @IBAction func backButtonDidTap(_ sender: UIBarButtonItem) {

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A3136FC4257DF3C000CEA185 /* EditUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3136FC3257DF3C000CEA185 /* EditUsernameViewController.swift */; };
 		A3136FC7257E04DE00CEA185 /* EditBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3136FC6257E04DE00CEA185 /* EditBioViewController.swift */; };
+		A313700F257E58C400CEA185 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A313700E257E58C400CEA185 /* PostManager.swift */; };
+		A3137012257E5C4100CEA185 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3137011257E5C4100CEA185 /* UIImage + Extension.swift */; };
 		A316BE402574F30700989152 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE3F2574F30700989152 /* FeedViewController.swift */; };
 		A316BE432574F3F400989152 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE422574F3F400989152 /* FeedTableViewCell.swift */; };
 		A316BE4A2575070D00989152 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE492575070C00989152 /* SearchTableViewCell.swift */; };
@@ -77,6 +79,8 @@
 		156181625CD64B20800EA195 /* Pods-Yogogo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yogogo.debug.xcconfig"; path = "Target Support Files/Pods-Yogogo/Pods-Yogogo.debug.xcconfig"; sourceTree = "<group>"; };
 		A3136FC3257DF3C000CEA185 /* EditUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUsernameViewController.swift; sourceTree = "<group>"; };
 		A3136FC6257E04DE00CEA185 /* EditBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioViewController.swift; sourceTree = "<group>"; };
+		A313700E257E58C400CEA185 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
+		A3137011257E5C4100CEA185 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		A316BE3F2574F30700989152 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		A316BE422574F3F400989152 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A316BE492575070C00989152 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				A3C195D925778E4500BAB46B /* AuthManager.swift */,
 				A3C195DC25778FD600BAB46B /* FirestoreManager.swift */,
 				A3C195DF2577902100BAB46B /* StorageManager.swift */,
+				A313700E257E58C400CEA185 /* PostManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -245,6 +250,7 @@
 				A3C195E625779A9C00BAB46B /* UIView + Extension.swift */,
 				A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */,
 				A3C136D3257CBC9500960B4C /* UITextView + Extension.swift */,
+				A3137011257E5C4100CEA185 /* UIImage + Extension.swift */,
 			);
 			path = "Helpers + Extension";
 			sourceTree = "<group>";
@@ -569,8 +575,10 @@
 				A3551EB2257361820006099A /* CurrentUserAnnotationView.swift in Sources */,
 				A3551EB9257372890006099A /* MGLMapViewDelegate + Extension.swift in Sources */,
 				A316BED82575323700989152 /* CameraViewController.swift in Sources */,
+				A313700F257E58C400CEA185 /* PostManager.swift in Sources */,
 				A3C195C92577783800BAB46B /* UserListViewController.swift in Sources */,
 				A3C195ED2577E35F00BAB46B /* ProfileViewController.swift in Sources */,
+				A3137012257E5C4100CEA185 /* UIImage + Extension.swift in Sources */,
 				A3551EAB257358A30006099A /* UserAnnotationView.swift in Sources */,
 				A3551E46257252490006099A /* MapsNetworking.swift in Sources */,
 				A3C195CF2577790600BAB46B /* PublishPostViewController.swift in Sources */,

@@ -15,7 +15,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     
     func setup(with model: Post) {
-        let url = URL(string: model.thumbnailImage)
+        let url = URL(string: model.imageFileURL)
         photoImageView.kf.setImage(with: url)
     }
     

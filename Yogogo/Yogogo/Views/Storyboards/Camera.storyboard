@@ -53,10 +53,14 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="WB6-f1-qy5">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
-                                <action selector="backButtonDidTap:" destination="hkO-f3-na9" id="MZE-14-KMA"/>
+                                <action selector="cancelButtonDidTap:" destination="hkO-f3-na9" id="MZE-14-KMA"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Share" style="done" id="tGZ-lt-4o9"/>
+                        <barButtonItem key="rightBarButtonItem" title="Share" style="done" id="tGZ-lt-4o9">
+                            <connections>
+                                <action selector="shareButtonDidTap:" destination="hkO-f3-na9" id="ySl-uU-J9q"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="WB6-f1-qy5" id="FAT-eh-MKM"/>
@@ -72,9 +76,8 @@
         <!--Navigation Controller-->
         <scene sceneID="YWn-8Q-1cm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cYB-5g-uSQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="CameraNC" automaticallyAdjustsScrollViewInsets="NO" id="IH8-NJ-dhz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="tabBarItem:chF-dh-HMo:image" catalog="system" selectedImage="tabBarItem:chF-dh-HMo:selectedImage" id="chF-dh-HMo"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabBarItem:chF-dh-HMo:image" selectedImage="tabBarItem:chF-dh-HMo:selectedImage" id="chF-dh-HMo"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kDS-db-Vcx">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -85,13 +88,14 @@
                         <segue destination="hkO-f3-na9" kind="relationship" relationship="rootViewController" id="ZWS-UW-SIl"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cYB-5g-uSQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4540.579710144928" y="59.598214285714285"/>
         </scene>
     </scenes>
     <resources>
         <image name="dog_postImage" width="426" height="421"/>
-        <image name="tabBarItem:chF-dh-HMo:image" catalog="system" width="128" height="114">
+        <image name="tabBarItem:chF-dh-HMo:image" width="128" height="114">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T
 S2V5ZWRBcmNoaXZlctEICVRyb290gAGvEBELDBscIRkmKisyNThCSktPUlUkbnVsbNcNDg8QERITFBUW
@@ -15808,7 +15812,7 @@ AA5PbgAOT3AADk9yAA5PewAOT4AADk+GAA5PjgAOT5AADk+SAA5PlAAOT5YADmECAA5hBwAOYRQADmEX
 AA5hJAAOYSkADmExAA5hNAAOYTkADmFBAAAAAAAABAEAAAAAAAAAVQAAAAAAAAAAAAAAAAAOYUQ
 </mutableData>
         </image>
-        <image name="tabBarItem:chF-dh-HMo:selectedImage" catalog="system" width="128" height="114">
+        <image name="tabBarItem:chF-dh-HMo:selectedImage" width="128" height="114">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T
 S2V5ZWRBcmNoaXZlctEICVRyb290gAGvEBELDBscIRkmKisyNThCSktPUlUkbnVsbNcNDg8QERITFBUW
