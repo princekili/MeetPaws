@@ -70,38 +70,38 @@ class FeedTableViewCell: UITableViewCell {
         // Reset image view's image
         postImageView.image = nil
         
-//        let url = URL(string: post.imageFileURL)
-//        postImageView.kf.setImage(with: url)
+        let url = URL(string: post.imageFileURL)
+        postImageView.kf.setImage(with: url)
         
         // Download post image
-        if let image = CacheManager.shared.getFromCache(key: post.imageFileURL) as? UIImage {
-            postImageView.image = image
-
-        } else {
-            if let url = URL(string: post.imageFileURL) {
-
-                let downloadTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-
-                    guard let imageData = data else {
-                        return
-                    }
-
-                    OperationQueue.main.addOperation {
-                        guard let image = UIImage(data: imageData) else { return }
-
-                        if self.currentPost?.imageFileURL == post.imageFileURL {
-                            self.postImageView.image = image
-                        }
-
-                        // Add the downloaded image to cache
-                        CacheManager.shared.cache(object: image, key: post.imageFileURL)
-                    }
-
-                })
-
-                downloadTask.resume()
-            }
-        }
+//        if let image = CacheManager.shared.getFromCache(key: post.imageFileURL) as? UIImage {
+//            postImageView.image = image
+//
+//        } else {
+//            if let url = URL(string: post.imageFileURL) {
+//
+//                let downloadTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+//
+//                    guard let imageData = data else {
+//                        return
+//                    }
+//
+//                    OperationQueue.main.addOperation {
+//                        guard let image = UIImage(data: imageData) else { return }
+//
+//                        if self.currentPost?.imageFileURL == post.imageFileURL {
+//                            self.postImageView.image = image
+//                        }
+//
+//                        // Add the downloaded image to cache
+//                        CacheManager.shared.cache(object: image, key: post.imageFileURL)
+//                    }
+//
+//                })
+//
+//                downloadTask.resume()
+//            }
+//        }
     }
 
 }

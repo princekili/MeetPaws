@@ -35,7 +35,7 @@ struct Post {
     
     enum PostInfoKey {
         
-        static let userId = "authorId"
+        static let userId = "userId"
 
         static let username = "username"
         

@@ -193,7 +193,7 @@
                         <barButtonItem key="leftBarButtonItem" id="eFG-iY-Cwk">
                             <imageReference key="image" image="plus" catalog="system" symbolScale="large" renderingMode="original"/>
                             <connections>
-                                <segue destination="gMV-PJ-K5I" kind="presentation" identifier="CameraView" animates="NO" modalPresentationStyle="fullScreen" id="LwI-kW-ddj"/>
+                                <segue destination="gMV-PJ-K5I" kind="presentation" identifier="CameraVC" animates="NO" modalPresentationStyle="fullScreen" id="LwI-kW-ddj"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="CNE-5P-XGS">
@@ -1124,8 +1124,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gG7-UW-RZV"/>
-        <segue reference="N3A-wu-T8P"/>
+        <segue reference="dtZ-oy-n6N"/>
+        <segue reference="LwI-kW-ddj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IU_profileImage" width="640" height="640"/>

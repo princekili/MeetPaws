@@ -26,13 +26,16 @@ class FeedViewController: UIViewController {
         setupRefresher()
         
         // Load recent posts
-        loadRecentPosts()
+//        loadRecentPosts()
     }
  
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
 //        handleNotAuthenticated()
+        tableView.reloadData()
+        
+        // Load recent posts
         loadRecentPosts()
     }
     
@@ -59,12 +62,21 @@ class FeedViewController: UIViewController {
     
     private func setupRefresher() {
         // Configure the pull to
-        refreshControl.backgroundColor = UIColor.black
+        tableView.refreshControl = refreshControl
+        refreshControl.backgroundColor = UIColor.clear
         refreshControl.tintColor = UIColor.white
         refreshControl.addTarget(self,
                                  action: #selector(loadRecentPosts),
                                  for: UIControl.Event.valueChanged
         )
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CameraVC" {
+            let storyboard = UIStoryboard(name: "Camera", bundle: nil)
+            guard let cameraVC = storyboard.instantiateViewController(identifier: "CameraVC") as? CameraViewController else { return }
+            cameraVC.delegate = self
+        }
     }
     
 //    func getPostsInfo() {
@@ -85,15 +97,19 @@ class FeedViewController: UIViewController {
 
 // MARK: - Managing Post Download and Display
 
-extension FeedViewController {
-
-     @objc private func loadRecentPosts() {
+extension FeedViewController: LoadRecentPostsDelegate {
+    
+    func loadRecentPost() {
+        loadRecentPosts()
+    }
+    
+    @objc private func loadRecentPosts() {
         
         print("👉 Loading Recent Posts...")
         
         isLoadingPost = true
         
-        PostManager.shared.getRecentPosts(start: postFeed.first?.timestamp, limit: 10) { (newPosts) in
+        PostManager.shared.getRecentPosts(start: postFeed.first?.timestamp, limit: 3) { (newPosts) in
             
             if newPosts.count > 0 {
                 // Add the array to the beginning of the posts arrays
@@ -125,7 +141,9 @@ extension FeedViewController {
         
         // Display the posts by inserting them to the table view
         var indexPaths: [IndexPath] = []
+        
         self.tableView.beginUpdates()
+        
         for num in 0...(posts.count - 1) {
             let indexPath = IndexPath(row: num, section: 0)
             indexPaths.append(indexPath)
@@ -144,15 +162,15 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return postFeed.count
-        return 5
+        return postFeed.count
+//        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.identifier, for: indexPath) as? FeedTableViewCell else { return UITableViewCell() }
         
-//        let currentPost = postFeed[indexPath.row]
-//        cell.setup(post: currentPost)
+        let currentPost = postFeed[indexPath.row]
+        cell.setup(post: currentPost)
         
         return cell
     }
@@ -171,7 +189,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             return
         }
         
-        PostManager.shared.getOldPosts(start: lastPostTimestamp, limit: 3) { (newPosts) in
+        PostManager.shared.getOldPosts(start: lastPostTimestamp, limit: 1) { (newPosts) in
             
             // Add new posts to existing arrays and table view
             var indexPaths: [IndexPath] = []

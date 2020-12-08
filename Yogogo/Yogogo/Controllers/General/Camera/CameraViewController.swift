@@ -12,6 +12,11 @@ import AVKit
 import Photos
 import FirebaseDatabase
 
+protocol LoadRecentPostsDelegate: AnyObject {
+    
+    func loadRecentPost()
+}
+
 class CameraViewController: UIViewController {
     
     var selectedItems = [YPMediaItem]()
@@ -21,6 +26,8 @@ class CameraViewController: UIViewController {
     let pickButton = UIButton()
     
     let resultsButton = UIButton()
+    
+    weak var delegate: LoadRecentPostsDelegate?
     
     @IBOutlet weak var imageButton: UIButton!
     
@@ -81,6 +88,7 @@ class CameraViewController: UIViewController {
         let caption = captionTextView.text ?? ""
         
         PostManager.shared.uploadPost(image: image, caption: caption) {
+            self.delegate?.loadRecentPost()
         }
         self.dismiss(animated: true, completion: nil)
     }
