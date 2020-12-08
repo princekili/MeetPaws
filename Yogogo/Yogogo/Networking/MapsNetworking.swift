@@ -20,7 +20,7 @@ class MapsNetworking {
             guard user.isMapLocationEnabled ?? false else { continue }
             
             database.collection("userLocation")
-                .document(user.id ?? "")
+                .document(user.userId ?? "")
                 .addSnapshotListener { (documentSnapshot, error) in
                     
                 guard let snap = documentSnapshot else {
@@ -44,16 +44,16 @@ class MapsNetworking {
             guard let oldAnnotation = annotation as? AnnotationPin else { return false }
             annotationToRemove = oldAnnotation
             
-            return oldAnnotation.user.id == userPin.user.id
+            return oldAnnotation.user.userId == userPin.user.userId
         })
         if status ?? false {
             mapsVC.mapView?.removeAnnotation(annotationToRemove)
         }
-        mapsVC.userCoordinates[user.id ?? ""] = coordinate
+        mapsVC.userCoordinates[user.userId ?? ""] = coordinate
         mapsVC.mapView?.addAnnotation(userPin)
         
-        if mapsVC.isUserSelected && mapsVC.selectedUser.id != nil {
-            guard let coordinate = mapsVC.userCoordinates[mapsVC.selectedUser.id!] else { return }
+        if mapsVC.isUserSelected && mapsVC.selectedUser.userId != nil {
+            guard let coordinate = mapsVC.userCoordinates[mapsVC.selectedUser.userId!] else { return }
             mapsVC.mapView?.setCenter(coordinate, zoomLevel: 16, animated: true)
         }
     }

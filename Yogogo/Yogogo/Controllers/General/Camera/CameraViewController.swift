@@ -27,11 +27,6 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var captionTextView: UITextView! {
         didSet {
             captionTextView.placeholder = "Write a caption..."
-            captionTextView.delegate = self
-            
-            if captionTextView.text.count > 0 {
-                captionTextView.placeholder = nil
-            }
         }
     }
     
@@ -83,8 +78,9 @@ class CameraViewController: UIViewController {
             print("selectedItems error")
             return
         }
+        let caption = captionTextView.text ?? ""
         
-        PostManager.shared.uploadPost(image: image) {
+        PostManager.shared.uploadPost(image: image, caption: caption) {
         }
         self.dismiss(animated: true, completion: nil)
     }

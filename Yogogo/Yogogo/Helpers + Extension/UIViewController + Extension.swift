@@ -9,6 +9,19 @@ import UIKit
 
 extension UIViewController {
     
+    // MARK: -
+    
+    func hideKeyboardWhenDidTapAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    // MARK: -
+    
     func setLeftAlignedNavigationItemTitle(text: String,
                                            color: UIColor,
                                            margin left: CGFloat) {

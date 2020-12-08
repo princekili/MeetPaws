@@ -15,6 +15,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
 
         setupTableView()
+        hideKeyboardWhenDidTapAround()
     }
     
     private func setupTableView() {

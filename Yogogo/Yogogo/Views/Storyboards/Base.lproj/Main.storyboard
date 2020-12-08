@@ -165,7 +165,7 @@
                                             <outlet property="bookmarkButton" destination="1eM-6K-pOe" id="DC3-mU-x7E"/>
                                             <outlet property="captionLabel" destination="eky-sw-YfW" id="AFU-Sm-ack"/>
                                             <outlet property="likeButton" destination="Iys-6H-yaL" id="3aQ-Lc-eKv"/>
-                                            <outlet property="likeCounter" destination="lPe-uL-2GY" id="Tz6-y5-dZf"/>
+                                            <outlet property="likeCount" destination="lPe-uL-2GY" id="Tz6-y5-dZf"/>
                                             <outlet property="messageButton" destination="Uw6-KL-KYe" id="hfN-hy-yb6"/>
                                             <outlet property="moreButton" destination="Izd-qv-7pw" id="eHN-7d-312"/>
                                             <outlet property="postImageView" destination="aLy-ka-vix" id="RX5-Ao-lkt"/>
@@ -353,7 +353,7 @@
         <!--princekili-->
         <scene sceneID="hET-qn-wW8">
             <objects>
-                <viewController id="v5s-mV-UN2" customClass="ProfileViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileVC" id="v5s-mV-UN2" customClass="ProfileViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uLH-DE-CII">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

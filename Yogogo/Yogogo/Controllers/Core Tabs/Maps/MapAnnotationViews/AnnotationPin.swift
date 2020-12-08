@@ -17,7 +17,7 @@ class AnnotationPin: MGLPointAnnotation {
         super.init()
         self.user = user
         self.coordinate = coordinate
-        self.title = user.name
+        self.title = user.username
         
         if user.isOnline ?? false {
             self.subtitle = "Online"

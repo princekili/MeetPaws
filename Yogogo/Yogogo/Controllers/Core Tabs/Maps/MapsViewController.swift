@@ -130,7 +130,7 @@ class MapsViewController: UIViewController {
     private func getUsers() {
         UserListNetworking().fetchUsers { (usersList) in
             let sortedUserList = Array(usersList.values).sorted { (friend1, friend2) -> Bool in
-                return friend1.name ?? "" < friend2.name ?? ""
+                return friend1.username ?? "" < friend2.username ?? ""
             }
             self.users = sortedUserList
         }

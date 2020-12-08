@@ -29,7 +29,7 @@ final class PostManager {
     
     // MARK: - Upload Post
     
-    func uploadPost(image: UIImage, completion: @escaping () -> Void) {
+    func uploadPost(image: UIImage, caption: String, completion: @escaping () -> Void) {
         
         // Generate a unique ID for the post and prepare the post database reference
         let postDatabaseRef = postDbRef.childByAutoId()
@@ -59,6 +59,8 @@ final class PostManager {
 //            guard let username = Auth.auth().currentUser?.displayName else { return }
             let username = Auth.auth().currentUser?.displayName
             
+            let userProfileImage = "https://firebasestorage.googleapis.com/v0/b/yogogo-ddcf9.appspot.com/o/photos%2F-MO-4gw5z5qCMbKHKzRl.jpg?alt=media&token=2330abe3-98bb-4a9d-b8e6-7929e58da0de"
+            
             // Add a reference in the database
             snapshot.reference.downloadURL(completion: { (url, error) in
                 guard let url = url else { return }
@@ -66,14 +68,18 @@ final class PostManager {
                 // Add a reference in the database
                 let imageFileURL = url.absoluteString
                 
-//                let timestamp = Int(Date().timeIntervalSince1970 * 1000)
+                let userDidLike: [String] = ["me"]
+                
+                let caption = caption
+                
                 let timestamp = Int(Date().timeIntervalSince1970 * 1000)
                 
                 let post: [String: Any] = ["userId": userId,
                                             "username": username ?? "Unknown name",
+                                            "userProfileImage": userProfileImage,
                                             "imageFileURL": imageFileURL,
-                                            "userDidLike": [],
-                                            "caption": "",
+                                            "userDidLike": userDidLike,
+                                            "caption": caption,
                                             "timestamp": timestamp
                 ]
                 
@@ -138,6 +144,37 @@ final class PostManager {
                 // Order in descending order (i.e. the latest post becomes the first post)
                 newPosts.sort(by: { $0.timestamp > $1.timestamp })
             }
+            
+            completionHandler(newPosts)
+        })
+        
+    }
+    
+    func getOldPosts(start timestamp: Int, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
+        
+        let postOrderedQuery = postDbRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
+        let postLimitedQuery = postOrderedQuery.queryEnding(atValue: timestamp - 1, childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
+        
+        postLimitedQuery.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var newPosts: [Post] = []
+            
+            guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
+                print("😭 There's no post.")
+                return
+            }
+            
+            for item in allObjects {
+                print("Post key: \(item.key)")
+                let postInfo = item.value as? [String: Any] ?? [:]
+                
+                if let post = Post(postId: item.key, postInfo: postInfo) {
+                    newPosts.append(post)
+                }
+            }
+            
+            // Order in descending order (i.e. the latest post becomes the first post)
+            newPosts.sort(by: { $0.timestamp > $1.timestamp })
             
             completionHandler(newPosts)
         })

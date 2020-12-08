@@ -31,12 +31,12 @@ class UserListNetworking {
                         let data: [String: Any] = document.data()
                         
                         user.profileImage = data["profileImage"] as? String
-                        user.name = data["name"] as? String
-                        user.id = document.documentID
-                        print("\(String(describing: user.id)) -> \(data)")
+                        user.username = data["name"] as? String
+                        user.userId = document.documentID
+                        print("\(String(describing: user.userId)) -> \(data)")
                         
-                        if user.id != CurrentUser.uid && user.userCheck() {
-                            self.usersList[user.id!] = user
+                        if user.userId != CurrentUser.uid && user.userCheck() {
+                            self.usersList[user.userId!] = user
                         }
                     }
                     return completion(self.usersList)
