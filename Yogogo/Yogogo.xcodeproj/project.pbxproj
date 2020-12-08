@@ -20,6 +20,7 @@
 		A316BE4D2575072200989152 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE4C2575072100989152 /* SearchViewController.swift */; };
 		A316BE512575245D00989152 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE502575245C00989152 /* UIViewController + Extension.swift */; };
 		A316BED82575323700989152 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BED72575323700989152 /* CameraViewController.swift */; };
+		A331583E257F931F004CC86C /* DataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A331583D257F931F004CC86C /* DataClass.swift */; };
 		A344F41C257A61CA0048B754 /* RoundedCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */; };
 		A3551E46257252490006099A /* MapsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551E45257252480006099A /* MapsNetworking.swift */; };
 		A3551E4B257256110006099A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551E4A257256110006099A /* User.swift */; };
@@ -93,6 +94,7 @@
 		A316BE4C2575072100989152 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A316BE502575245C00989152 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		A316BED72575323700989152 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		A331583D257F931F004CC86C /* DataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClass.swift; sourceTree = "<group>"; };
 		A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerButton.swift; sourceTree = "<group>"; };
 		A3551E45257252480006099A /* MapsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsNetworking.swift; sourceTree = "<group>"; };
 		A3551E4A257256110006099A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				A3C136D3257CBC9500960B4C /* UITextView + Extension.swift */,
 				A3137011257E5C4100CEA185 /* UIImage + Extension.swift */,
 				A313701A257EBB1D00CEA185 /* UINavigationController + Extension.swift */,
+				A331583D257F931F004CC86C /* DataClass.swift */,
 			);
 			path = "Helpers + Extension";
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				A313700F257E58C400CEA185 /* PostManager.swift in Sources */,
 				A3C195C92577783800BAB46B /* UserListViewController.swift in Sources */,
 				A3C195ED2577E35F00BAB46B /* ProfileViewController.swift in Sources */,
+				A331583E257F931F004CC86C /* DataClass.swift in Sources */,
 				A3137012257E5C4100CEA185 /* UIImage + Extension.swift in Sources */,
 				A3551EAB257358A30006099A /* UserAnnotationView.swift in Sources */,
 				A3551E46257252490006099A /* MapsNetworking.swift in Sources */,

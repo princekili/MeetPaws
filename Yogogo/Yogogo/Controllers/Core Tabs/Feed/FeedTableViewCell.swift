@@ -63,17 +63,29 @@ class FeedTableViewCell: UITableViewCell {
 
         // Set up
         usernameButton.setTitle(post.username, for: .normal)
-//        profileImageButton.setTitle(post.userProfileImage, for: .normal)
-        likeCount.setTitle("\(post.userDidLike.count) likes", for: .normal)
-        captionLabel.text = "\(Data())"
+        profileImageButton.setTitle(post.userProfileImage, for: .normal)
+        captionLabel.text = "\(post.caption)"
+        
+        let stringTimestamp = String(post.timestamp / 1000)
+//        let date = DataClass.timeStampToString(stringTimestamp)
+        let date = DataClass.compareCurrentTime(str: stringTimestamp)
+        timestampLabel.text = "\(date)"
+        
+        let count = post.userDidLike.count
+        if count > 1 {
+            likeCount.setTitle("\(post.userDidLike.count) likes", for: .normal)
+        } else {
+            likeCount.setTitle("\(post.userDidLike.count) like", for: .normal)
+        }
         
         // Reset image view's image
         postImageView.image = nil
         
+        // MARK: - Download post image - KingFisher
         let url = URL(string: post.imageFileURL)
         postImageView.kf.setImage(with: url)
         
-        // Download post image
+        // MARK: - Download post image - URLSession
 //        if let image = CacheManager.shared.getFromCache(key: post.imageFileURL) as? UIImage {
 //            postImageView.image = image
 //

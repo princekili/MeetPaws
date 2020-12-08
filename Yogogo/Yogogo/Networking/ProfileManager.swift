@@ -14,4 +14,6 @@ class ProfileManager {
     private init() {}
     
     var username: String?
+    
+    
 }

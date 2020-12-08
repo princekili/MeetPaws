@@ -75,12 +75,12 @@ final class PostManager {
                 let timestamp = Int(Date().timeIntervalSince1970 * 1000)
                 
                 let post: [String: Any] = ["userId": userId,
-                                            "username": username ?? "Unknown name",
-                                            "userProfileImage": userProfileImage,
-                                            "imageFileURL": imageFileURL,
-                                            "userDidLike": userDidLike,
-                                            "caption": caption,
-                                            "timestamp": timestamp
+                                           "username": username ?? "Unknown name",
+                                           "userProfileImage": userProfileImage,
+                                           "imageFileURL": imageFileURL,
+                                           "userDidLike": userDidLike,
+                                           "caption": caption,
+                                           "timestamp": timestamp
                 ]
                 
                 postDatabaseRef.setValue(post)
@@ -125,10 +125,10 @@ final class PostManager {
             
             var newPosts: [Post] = []
             
-            print("👉 Total number of posts: \(snapshot.childrenCount)")
+//            print("👉 Total number of posts: \(snapshot.childrenCount)")
             
             guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
-                print("😭 There's no post.")
+                print("There's no post.")
                 return
             }
             
@@ -160,7 +160,7 @@ final class PostManager {
             var newPosts: [Post] = []
             
             guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
-                print("😭 There's no post.")
+                print("There's no post.")
                 return
             }
             

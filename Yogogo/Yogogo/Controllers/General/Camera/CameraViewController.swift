@@ -46,7 +46,7 @@ class CameraViewController: UIViewController {
         showPicker()
         hideButtons()
         
-        observePosts()
+//        observePosts()
     }
     
     // MARK: -

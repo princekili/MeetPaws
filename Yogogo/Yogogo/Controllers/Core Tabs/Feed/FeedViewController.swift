@@ -24,9 +24,6 @@ class FeedViewController: UIViewController {
         setupTableView()
         setupNavigation()
         setupRefresher()
-        
-        // Load recent posts
-//        loadRecentPosts()
     }
  
     override func viewDidAppear(_ animated: Bool) {
@@ -34,8 +31,6 @@ class FeedViewController: UIViewController {
         
 //        handleNotAuthenticated()
         tableView.reloadData()
-        
-        // Load recent posts
         loadRecentPosts()
     }
     
@@ -61,7 +56,6 @@ class FeedViewController: UIViewController {
     }
     
     private func setupRefresher() {
-        // Configure the pull to
         tableView.refreshControl = refreshControl
         refreshControl.backgroundColor = UIColor.clear
         refreshControl.tintColor = UIColor.white
@@ -78,21 +72,6 @@ class FeedViewController: UIViewController {
             cameraVC.delegate = self
         }
     }
-    
-//    func getPostsInfo() {
-//        PostManager.shared.getRecentPosts(limit: 3) { (newPosts) in
-//            newPosts.forEach { (post) in
-//                print("-------")
-//                print("Post ID: \(post.postId)")
-//                print("userId: \(post.userId)")
-//                print("username: \(post.username)")
-//                print("Image URL: \(post.imageFileURL)")
-//                print("userDidLike: \(post.userDidLike)")
-//                print("caption: \(post.caption)")
-//                print("Timestamp: \(post.timestamp)")
-//            }
-//        }
-//    }
 }
 
 // MARK: - Managing Post Download and Display
@@ -163,7 +142,6 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return postFeed.count
-//        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
