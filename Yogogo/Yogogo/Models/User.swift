@@ -18,7 +18,7 @@ struct User {
     
     var username: String?
     
-    var fullName: String?
+    var name: String?
     
     var profileImage: String?
     

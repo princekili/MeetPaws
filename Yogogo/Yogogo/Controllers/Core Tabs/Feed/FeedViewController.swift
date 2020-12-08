@@ -29,7 +29,6 @@ class FeedViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        handleNotAuthenticated()
         tableView.reloadData()
         loadRecentPosts()
     }
@@ -45,20 +44,10 @@ class FeedViewController: UIViewController {
         navigationItem.backButtonTitle = ""
     }
     
-    fileprivate func handleNotAuthenticated() {
-        // Check auth status
-        if Auth.auth().currentUser == nil {
-            // Show sign in
-            let loginVC = SignInViewController()
-            loginVC.modalPresentationStyle = .fullScreen
-            present(loginVC, animated: false)
-        }
-    }
-    
     private func setupRefresher() {
         tableView.refreshControl = refreshControl
         refreshControl.backgroundColor = UIColor.clear
-        refreshControl.tintColor = UIColor.white
+        refreshControl.tintColor = UIColor.lightGray
         refreshControl.addTarget(self,
                                  action: #selector(loadRecentPosts),
                                  for: UIControl.Event.valueChanged
@@ -88,7 +77,7 @@ extension FeedViewController: LoadRecentPostsDelegate {
         
         isLoadingPost = true
         
-        PostManager.shared.getRecentPosts(start: postFeed.first?.timestamp, limit: 3) { (newPosts) in
+        PostManager.shared.getRecentPosts(start: postFeed.first?.timestamp, limit: 10) { (newPosts) in
             
             if newPosts.count > 0 {
                 // Add the array to the beginning of the posts arrays
@@ -167,7 +156,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             return
         }
         
-        PostManager.shared.getOldPosts(start: lastPostTimestamp, limit: 1) { (newPosts) in
+        PostManager.shared.getOldPosts(start: lastPostTimestamp, limit: 10) { (newPosts) in
             
             // Add new posts to existing arrays and table view
             var indexPaths: [IndexPath] = []

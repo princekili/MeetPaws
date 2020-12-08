@@ -4,8 +4,8 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,37 +17,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="fSo-td-0gq">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9v-97-d4c" customClass="CustomButton" customModule="Yogogo" customModuleProvider="target">
                                 <rect key="frame" x="20" y="742" width="374" height="60"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9v-97-d4c" customClass="CustomButton" customModule="Yogogo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="Mq8-37-VJi"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Sign in with Apple">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <imageReference key="image" image="applelogo" catalog="system" symbolScale="medium"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="8"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="signInWithAppleButtonDidTap:" destination="btx-yT-kY9" eventType="touchUpInside" id="K65-8Z-fPl"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="L9v-97-d4c" secondAttribute="trailing" id="tRI-Va-98M"/>
-                                    <constraint firstItem="L9v-97-d4c" firstAttribute="leading" secondItem="fSo-td-0gq" secondAttribute="leading" id="wUF-m0-0mF"/>
+                                    <constraint firstAttribute="height" constant="60" id="Mq8-37-VJi"/>
                                 </constraints>
-                            </stackView>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Sign in with Apple">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="applelogo" catalog="system" symbolScale="medium"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signInWithAppleButtonDidTap:" destination="btx-yT-kY9" eventType="touchUpInside" id="K65-8Z-fPl"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZOq-o5-WXQ">
                                 <rect key="frame" x="107.5" y="144" width="199" height="128"/>
                                 <subviews>
@@ -72,10 +63,10 @@ you have to sign in.</string>
                         <color key="backgroundColor" red="0.68329036239999996" green="0.90281301739999997" blue="0.89990013840000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ZOq-o5-WXQ" firstAttribute="top" secondItem="u0n-BG-KGi" secondAttribute="top" constant="100" id="5ZV-6R-smi"/>
-                            <constraint firstItem="u0n-BG-KGi" firstAttribute="bottom" secondItem="fSo-td-0gq" secondAttribute="bottom" constant="60" id="ANA-ea-TQb"/>
-                            <constraint firstItem="fSo-td-0gq" firstAttribute="leading" secondItem="u0n-BG-KGi" secondAttribute="leading" constant="20" id="GA0-z2-k5v"/>
                             <constraint firstItem="ZOq-o5-WXQ" firstAttribute="centerX" secondItem="FF3-gX-0yy" secondAttribute="centerX" id="Mhp-pO-B0V"/>
-                            <constraint firstItem="u0n-BG-KGi" firstAttribute="trailing" secondItem="fSo-td-0gq" secondAttribute="trailing" constant="20" id="oaR-SH-9EQ"/>
+                            <constraint firstItem="u0n-BG-KGi" firstAttribute="bottom" secondItem="L9v-97-d4c" secondAttribute="bottom" constant="60" id="ZcG-hV-cFM"/>
+                            <constraint firstItem="u0n-BG-KGi" firstAttribute="trailing" secondItem="L9v-97-d4c" secondAttribute="trailing" constant="20" id="nXs-8j-ttO"/>
+                            <constraint firstItem="L9v-97-d4c" firstAttribute="leading" secondItem="u0n-BG-KGi" secondAttribute="leading" constant="20" id="zwU-FS-UM3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gYw-bn-p1v"/>
@@ -86,31 +77,194 @@ you have to sign in.</string>
             </objects>
             <point key="canvasLocation" x="147.82608695652175" y="172.76785714285714"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="D6R-Iu-v5l">
+        <!--Welcome View Controller-->
+        <scene sceneID="6ro-e0-y9v">
             <objects>
-                <viewController id="VMf-WZ-JNz" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ndI-ce-L0h">
+                <viewController storyboardIdentifier="PickUsernameVC" title="SignInVC" id="Nfq-be-M2n" userLabel="Welcome View Controller" customClass="PickUsernameViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ith-Bq-z1T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="wrh-Dk-l2v"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIi-ee-cdq" customClass="CustomButton" customModule="Yogogo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="742" width="374" height="60"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="jT6-bM-aR8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="nextButtonDidTap:" destination="Nfq-be-M2n" eventType="touchUpInside" id="iKk-EU-8F6"/>
+                                    <action selector="signInWithAppleButtonDidTap:" destination="Nfq-be-M2n" eventType="touchUpInside" id="aWc-cf-2eX"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gfW-YG-72V">
+                                <rect key="frame" x="66.5" y="144" width="281" height="156"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDf-WS-x3f">
+                                        <rect key="frame" x="30" y="0.0" width="221.5" height="71"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="50"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Peh-zH-4aT">
+                                        <rect key="frame" x="0.0" y="71" width="281" height="85"/>
+                                        <string key="text">To enjoy Yogogo, 
+you have to pick a username.
+You can always change it later.</string>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="20"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wmB-tf-YEW">
+                                <rect key="frame" x="65" y="320" width="284" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gy9-wQ-Sre"/>
+                        <color key="backgroundColor" red="0.68329036239999996" green="0.90281301739999997" blue="0.89990013840000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="JIi-ee-cdq" firstAttribute="leading" secondItem="gy9-wQ-Sre" secondAttribute="leading" constant="20" id="AdU-km-xeu"/>
+                            <constraint firstItem="gy9-wQ-Sre" firstAttribute="trailing" secondItem="wmB-tf-YEW" secondAttribute="trailing" constant="65" id="GKZ-Rv-N1j"/>
+                            <constraint firstItem="wmB-tf-YEW" firstAttribute="top" secondItem="gfW-YG-72V" secondAttribute="bottom" constant="20" id="K58-4s-293"/>
+                            <constraint firstItem="gfW-YG-72V" firstAttribute="centerX" secondItem="ith-Bq-z1T" secondAttribute="centerX" id="MIM-8g-Jua"/>
+                            <constraint firstItem="gy9-wQ-Sre" firstAttribute="bottom" secondItem="JIi-ee-cdq" secondAttribute="bottom" constant="60" id="Mke-46-UVb"/>
+                            <constraint firstItem="wmB-tf-YEW" firstAttribute="centerX" secondItem="ith-Bq-z1T" secondAttribute="centerX" id="cXS-kq-NDV"/>
+                            <constraint firstItem="wmB-tf-YEW" firstAttribute="leading" secondItem="gy9-wQ-Sre" secondAttribute="leading" constant="65" id="fHf-jm-bQR"/>
+                            <constraint firstItem="gy9-wQ-Sre" firstAttribute="trailing" secondItem="JIi-ee-cdq" secondAttribute="trailing" constant="20" id="qje-m9-pjc"/>
+                            <constraint firstItem="gfW-YG-72V" firstAttribute="top" secondItem="gy9-wQ-Sre" secondAttribute="top" constant="100" id="wnd-Kp-tsF"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="rRN-Az-AIa"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="usernameTextField" destination="wmB-tf-YEW" id="hTE-Qy-EsL"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LkZ-KR-Am9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RNe-Xc-2n7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1151" y="173"/>
+            <point key="canvasLocation" x="990" y="173"/>
+        </scene>
+        <!--Welcome View Controller-->
+        <scene sceneID="0fT-HO-8ot">
+            <objects>
+                <viewController storyboardIdentifier="PickProfilePhotoVC" title="SignInVC" id="F8c-W1-6QY" userLabel="Welcome View Controller" customClass="PickProfilePhotoViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LiG-LT-Xlf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BW7-i0-mLv" customClass="CustomButton" customModule="Yogogo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="742" width="374" height="60"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="g9P-zB-XcQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="OkButtonDidTap:" destination="F8c-W1-6QY" eventType="touchUpInside" id="49t-tn-Jes"/>
+                                    <action selector="signInWithAppleButtonDidTap:" destination="F8c-W1-6QY" eventType="touchUpInside" id="SJ8-Xt-UtK"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XPA-FB-3gZ">
+                                <rect key="frame" x="62" y="144" width="290.5" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FA5-32-acr">
+                                        <rect key="frame" x="3" y="0.0" width="284" height="71"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="50"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uU-in-P6z">
+                                        <rect key="frame" x="0.0" y="71" width="290.5" height="57"/>
+                                        <string key="text">To enjoy Yogogo, 
+you have to pick a profile photo.</string>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="20"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YoD-Mf-ba3">
+                                <rect key="frame" x="147" y="292.5" width="120" height="119"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="geO-7O-aGH"/>
+                                    <constraint firstAttribute="width" constant="120" id="iI7-zI-pM3"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHL-zk-I9h">
+                                <rect key="frame" x="141.5" y="412" width="131" height="41"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="20"/>
+                                <state key="normal" title="Select a photo"/>
+                                <connections>
+                                    <action selector="selectPhotoButtonDidTap:" destination="F8c-W1-6QY" eventType="touchUpInside" id="DOD-DJ-LLx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QJ4-p2-Uq5"/>
+                        <color key="backgroundColor" red="0.68329036239999996" green="0.90281301739999997" blue="0.89990013840000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YoD-Mf-ba3" firstAttribute="centerX" secondItem="LiG-LT-Xlf" secondAttribute="centerX" id="A3h-WJ-OiW"/>
+                            <constraint firstItem="QJ4-p2-Uq5" firstAttribute="trailing" secondItem="BW7-i0-mLv" secondAttribute="trailing" constant="20" id="AE7-Qa-xbW"/>
+                            <constraint firstItem="fHL-zk-I9h" firstAttribute="top" secondItem="YoD-Mf-ba3" secondAttribute="bottom" id="KgO-Io-d2d"/>
+                            <constraint firstItem="fHL-zk-I9h" firstAttribute="centerX" secondItem="LiG-LT-Xlf" secondAttribute="centerX" id="MVC-EC-92I"/>
+                            <constraint firstItem="YoD-Mf-ba3" firstAttribute="top" secondItem="XPA-FB-3gZ" secondAttribute="bottom" constant="20" id="MsN-c2-TGh"/>
+                            <constraint firstItem="BW7-i0-mLv" firstAttribute="leading" secondItem="QJ4-p2-Uq5" secondAttribute="leading" constant="20" id="jlA-bc-cU0"/>
+                            <constraint firstItem="XPA-FB-3gZ" firstAttribute="top" secondItem="QJ4-p2-Uq5" secondAttribute="top" constant="100" id="otn-OR-Zes"/>
+                            <constraint firstItem="QJ4-p2-Uq5" firstAttribute="bottom" secondItem="BW7-i0-mLv" secondAttribute="bottom" constant="60" id="sHV-xO-h8D"/>
+                            <constraint firstItem="XPA-FB-3gZ" firstAttribute="centerX" secondItem="LiG-LT-Xlf" secondAttribute="centerX" id="wa3-MD-9KT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="IWn-td-528"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="profilePhotoImageView" destination="YoD-Mf-ba3" id="C0X-I5-zOa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3tf-7V-AKY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1828" y="173"/>
         </scene>
     </scenes>
     <designables>
+        <designable name="BW7-i0-mLv">
+            <size key="intrinsicContentSize" width="30" height="36"/>
+        </designable>
+        <designable name="JIi-ee-cdq">
+            <size key="intrinsicContentSize" width="43" height="36"/>
+        </designable>
         <designable name="L9v-97-d4c">
             <size key="intrinsicContentSize" width="176" height="24"/>
         </designable>
     </designables>
     <resources>
         <image name="applelogo" catalog="system" width="103" height="128"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="person.crop.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

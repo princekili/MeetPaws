@@ -67,7 +67,6 @@ class FeedTableViewCell: UITableViewCell {
         captionLabel.text = "\(post.caption)"
         
         let stringTimestamp = String(post.timestamp / 1000)
-//        let date = DataClass.timeStampToString(stringTimestamp)
         let date = DataClass.compareCurrentTime(str: stringTimestamp)
         timestampLabel.text = "\(date)"
         

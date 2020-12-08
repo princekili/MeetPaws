@@ -15,5 +15,4 @@ class ProfileManager {
     
     var username: String?
     
-    
 }

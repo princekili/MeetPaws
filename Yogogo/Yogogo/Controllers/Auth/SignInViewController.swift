@@ -58,14 +58,22 @@ class SignInViewController: UIViewController {
     }
     
     func showNextVC() {
+        
+        // if username == ""
+        // show 'PickUsernameVC'
+        
+        // if profileImage == ""
+        // show 'PickProfilePhotoVC'
+        
+        // if username != ""
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nextController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
         nextController.modalPresentationStyle = .fullScreen
         present(nextController, animated: true, completion: nil)
         SceneDelegate().window?.rootViewController = nextController
         
-        //        guard let uid = Auth.auth().currentUser?.uid else { return }
-        //        setupUserInfo(uid)
+//        guard let uid = Auth.auth().currentUser?.uid else { return }
+//        setupUserInfo(uid)
     }
 }
 

@@ -68,7 +68,7 @@ final class PostManager {
                 // Add a reference in the database
                 let imageFileURL = url.absoluteString
                 
-                let userDidLike: [String] = ["me"]
+                let userDidLike: [String] = []
                 
                 let caption = caption
                 

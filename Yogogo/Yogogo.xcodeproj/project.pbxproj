@@ -21,6 +21,10 @@
 		A316BE512575245D00989152 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE502575245C00989152 /* UIViewController + Extension.swift */; };
 		A316BED82575323700989152 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BED72575323700989152 /* CameraViewController.swift */; };
 		A331583E257F931F004CC86C /* DataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A331583D257F931F004CC86C /* DataClass.swift */; };
+		A3315841257FB1FB004CC86C /* launchscreen_logo_0.png in Resources */ = {isa = PBXBuildFile; fileRef = A3315840257FB1FB004CC86C /* launchscreen_logo_0.png */; };
+		A3315844257FC072004CC86C /* PickUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3315843257FC072004CC86C /* PickUsernameViewController.swift */; };
+		A3315847257FC07F004CC86C /* PickProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3315846257FC07F004CC86C /* PickProfilePhotoViewController.swift */; };
+		A331584B257FC950004CC86C /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A331584A257FC950004CC86C /* DatabaseManager.swift */; };
 		A344F41C257A61CA0048B754 /* RoundedCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */; };
 		A3551E46257252490006099A /* MapsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551E45257252480006099A /* MapsNetworking.swift */; };
 		A3551E4B257256110006099A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551E4A257256110006099A /* User.swift */; };
@@ -55,7 +59,6 @@
 		A3C195C92577783800BAB46B /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195C82577783800BAB46B /* UserListViewController.swift */; };
 		A3C195CC257778F200BAB46B /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195CB257778F200BAB46B /* PostEditorViewController.swift */; };
 		A3C195CF2577790600BAB46B /* PublishPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195CE2577790600BAB46B /* PublishPostViewController.swift */; };
-		A3C195DA25778E4500BAB46B /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195D925778E4500BAB46B /* AuthManager.swift */; };
 		A3C195DD25778FD600BAB46B /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195DC25778FD600BAB46B /* FirestoreManager.swift */; };
 		A3C195E02577902100BAB46B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195DF2577902100BAB46B /* StorageManager.swift */; };
 		A3C195E32577934C00BAB46B /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3C195E22577934C00BAB46B /* Auth.storyboard */; };
@@ -73,7 +76,6 @@
 		A3EE02E9257B489800459C54 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EE02E8257B489700459C54 /* WelcomeViewController.swift */; };
 		A3EE02ED257B5FEB00459C54 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3EE02EC257B5FEB00459C54 /* Camera.storyboard */; };
 		A3EE02F9257B6D7300459C54 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3EE02F8257B6D7300459C54 /* Launch Screen.storyboard */; };
-		A3EE0309257B7B2500459C54 /* launchscreen_logo_0.png in Resources */ = {isa = PBXBuildFile; fileRef = A3EE0308257B7B2500459C54 /* launchscreen_logo_0.png */; };
 		A3EE0318257BB57600459C54 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3EE0317257BB57600459C54 /* Settings.storyboard */; };
 		A3EE0328257BB98500459C54 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EE0327257BB98500459C54 /* SettingsTableViewController.swift */; };
 		EBA0C7B7CB20B17C5302B71E /* Pods_Yogogo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F10A593450A151479F13EE /* Pods_Yogogo.framework */; };
@@ -95,6 +97,10 @@
 		A316BE502575245C00989152 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		A316BED72575323700989152 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		A331583D257F931F004CC86C /* DataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClass.swift; sourceTree = "<group>"; };
+		A3315840257FB1FB004CC86C /* launchscreen_logo_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen_logo_0.png; sourceTree = "<group>"; };
+		A3315843257FC072004CC86C /* PickUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUsernameViewController.swift; sourceTree = "<group>"; };
+		A3315846257FC07F004CC86C /* PickProfilePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickProfilePhotoViewController.swift; sourceTree = "<group>"; };
+		A331584A257FC950004CC86C /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerButton.swift; sourceTree = "<group>"; };
 		A3551E45257252480006099A /* MapsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsNetworking.swift; sourceTree = "<group>"; };
 		A3551E4A257256110006099A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -129,7 +135,6 @@
 		A3C195C82577783800BAB46B /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		A3C195CB257778F200BAB46B /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		A3C195CE2577790600BAB46B /* PublishPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishPostViewController.swift; sourceTree = "<group>"; };
-		A3C195D925778E4500BAB46B /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		A3C195DC25778FD600BAB46B /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		A3C195DF2577902100BAB46B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		A3C195E22577934C00BAB46B /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
@@ -227,10 +232,10 @@
 				A3551E45257252480006099A /* MapsNetworking.swift */,
 				A3551EA425734E260006099A /* LocationNetworking.swift */,
 				A3551EC02573901A0006099A /* UserListNetworking.swift */,
-				A3C195D925778E4500BAB46B /* AuthManager.swift */,
 				A3C195DC25778FD600BAB46B /* FirestoreManager.swift */,
 				A3C195DF2577902100BAB46B /* StorageManager.swift */,
 				A313700E257E58C400CEA185 /* PostManager.swift */,
+				A331584A257FC950004CC86C /* DatabaseManager.swift */,
 				A3137014257E872500CEA185 /* CacheManager.swift */,
 				A3137017257EB45C00CEA185 /* ProfileManager.swift */,
 			);
@@ -387,6 +392,8 @@
 				A3EE02E8257B489700459C54 /* WelcomeViewController.swift */,
 				A3C195B12577746C00BAB46B /* SignInViewController.swift */,
 				A3C195B42577747D00BAB46B /* SignUpViewController.swift */,
+				A3315843257FC072004CC86C /* PickUsernameViewController.swift */,
+				A3315846257FC07F004CC86C /* PickProfilePhotoViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -394,6 +401,7 @@
 		A3CEA98E256F87F1001DA842 = {
 			isa = PBXGroup;
 			children = (
+				A3315840257FB1FB004CC86C /* launchscreen_logo_0.png */,
 				A3CEA999256F87F1001DA842 /* Yogogo */,
 				A3EE0308257B7B2500459C54 /* launchscreen_logo_0.png */,
 				A3CEA998256F87F1001DA842 /* Products */,
@@ -507,10 +515,10 @@
 				A35BCC1D2570C6290090B95E /* GoogleService-Info.plist in Resources */,
 				A3CEA9A7256F87F4001DA842 /* Assets.xcassets in Resources */,
 				A3EE0318257BB57600459C54 /* Settings.storyboard in Resources */,
-				A3EE0309257B7B2500459C54 /* launchscreen_logo_0.png in Resources */,
 				A3C195E32577934C00BAB46B /* Auth.storyboard in Resources */,
 				A3C136A5257BE0C200960B4C /* EditProfile.storyboard in Resources */,
 				A3CEA9A2256F87F1001DA842 /* Main.storyboard in Resources */,
+				A3315841257FB1FB004CC86C /* launchscreen_logo_0.png in Resources */,
 				A3EE02F9257B6D7300459C54 /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,16 +604,17 @@
 				A3551E46257252490006099A /* MapsNetworking.swift in Sources */,
 				A3C195CF2577790600BAB46B /* PublishPostViewController.swift in Sources */,
 				A316BE512575245D00989152 /* UIViewController + Extension.swift in Sources */,
+				A331584B257FC950004CC86C /* DatabaseManager.swift in Sources */,
 				A3551E7C25728FCC0006099A /* Comment.swift in Sources */,
 				A38293922578DF770064D971 /* PostTableViewCell.swift in Sources */,
 				A3CEA99F256F87F1001DA842 /* MapsViewController.swift in Sources */,
+				A3315847257FC07F004CC86C /* PickProfilePhotoViewController.swift in Sources */,
 				A3C195B22577746C00BAB46B /* SignInViewController.swift in Sources */,
 				A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */,
 				A3C136D4257CBC9500960B4C /* UITextView + Extension.swift in Sources */,
 				A316BE4A2575070D00989152 /* SearchTableViewCell.swift in Sources */,
 				A3137015257E872500CEA185 /* CacheManager.swift in Sources */,
 				A344F41C257A61CA0048B754 /* RoundedCornerButton.swift in Sources */,
-				A3C195DA25778E4500BAB46B /* AuthManager.swift in Sources */,
 				A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */,
 				A3551E7725728F610006099A /* Post.swift in Sources */,
 				A38293B025793CF50064D971 /* UserLocation.swift in Sources */,
@@ -616,6 +625,7 @@
 				A3551E9F2572A5F10006099A /* AnnotationPin.swift in Sources */,
 				A3551EB5257363D70006099A /* UserInfoTab.swift in Sources */,
 				A316BE402574F30700989152 /* FeedViewController.swift in Sources */,
+				A3315844257FC072004CC86C /* PickUsernameViewController.swift in Sources */,
 				A3C136A9257BE3C500960B4C /* EditProfileTableViewController.swift in Sources */,
 				A3EE02E9257B489800459C54 /* WelcomeViewController.swift in Sources */,
 				A3C195C0257777A500BAB46B /* PostViewController.swift in Sources */,
