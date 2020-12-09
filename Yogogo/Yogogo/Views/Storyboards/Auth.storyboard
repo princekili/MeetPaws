@@ -6,6 +6,7 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -80,7 +81,7 @@ you have to sign in.</string>
         <!--Welcome View Controller-->
         <scene sceneID="6ro-e0-y9v">
             <objects>
-                <viewController storyboardIdentifier="PickUsernameVC" title="SignInVC" id="Nfq-be-M2n" userLabel="Welcome View Controller" customClass="PickUsernameViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PickUsernameVC" title="PickUsernameVC" id="Nfq-be-M2n" userLabel="Welcome View Controller" customClass="PickUsernameViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ith-Bq-z1T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -104,7 +105,6 @@ you have to sign in.</string>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="nextButtonDidTap:" destination="Nfq-be-M2n" eventType="touchUpInside" id="iKk-EU-8F6"/>
-                                    <action selector="signInWithAppleButtonDidTap:" destination="Nfq-be-M2n" eventType="touchUpInside" id="aWc-cf-2eX"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gfW-YG-72V">
@@ -127,11 +127,18 @@ You can always change it later.</string>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wmB-tf-YEW">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wmB-tf-YEW">
                                 <rect key="frame" x="65" y="320" width="284" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" textContentType="username"/>
                             </textField>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="968-xo-Ksl">
+                                <rect key="frame" x="65" y="362" width="41.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gy9-wQ-Sre"/>
                         <color key="backgroundColor" red="0.68329036239999996" green="0.90281301739999997" blue="0.89990013840000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -141,8 +148,10 @@ You can always change it later.</string>
                             <constraint firstItem="wmB-tf-YEW" firstAttribute="top" secondItem="gfW-YG-72V" secondAttribute="bottom" constant="20" id="K58-4s-293"/>
                             <constraint firstItem="gfW-YG-72V" firstAttribute="centerX" secondItem="ith-Bq-z1T" secondAttribute="centerX" id="MIM-8g-Jua"/>
                             <constraint firstItem="gy9-wQ-Sre" firstAttribute="bottom" secondItem="JIi-ee-cdq" secondAttribute="bottom" constant="60" id="Mke-46-UVb"/>
+                            <constraint firstItem="968-xo-Ksl" firstAttribute="leading" secondItem="wmB-tf-YEW" secondAttribute="leading" id="RRN-Nd-O3q"/>
                             <constraint firstItem="wmB-tf-YEW" firstAttribute="centerX" secondItem="ith-Bq-z1T" secondAttribute="centerX" id="cXS-kq-NDV"/>
                             <constraint firstItem="wmB-tf-YEW" firstAttribute="leading" secondItem="gy9-wQ-Sre" secondAttribute="leading" constant="65" id="fHf-jm-bQR"/>
+                            <constraint firstItem="968-xo-Ksl" firstAttribute="top" secondItem="wmB-tf-YEW" secondAttribute="bottom" constant="8" symbolic="YES" id="kRI-Qn-K1q"/>
                             <constraint firstItem="gy9-wQ-Sre" firstAttribute="trailing" secondItem="JIi-ee-cdq" secondAttribute="trailing" constant="20" id="qje-m9-pjc"/>
                             <constraint firstItem="gfW-YG-72V" firstAttribute="top" secondItem="gy9-wQ-Sre" secondAttribute="top" constant="100" id="wnd-Kp-tsF"/>
                         </constraints>
@@ -151,6 +160,8 @@ You can always change it later.</string>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="alertLabel" destination="968-xo-Ksl" id="Dmb-QH-JAG"/>
+                        <outlet property="nextButton" destination="JIi-ee-cdq" id="1hh-46-V1J"/>
                         <outlet property="usernameTextField" destination="wmB-tf-YEW" id="hTE-Qy-EsL"/>
                     </connections>
                 </viewController>
@@ -161,7 +172,7 @@ You can always change it later.</string>
         <!--Welcome View Controller-->
         <scene sceneID="0fT-HO-8ot">
             <objects>
-                <viewController storyboardIdentifier="PickProfilePhotoVC" title="SignInVC" id="F8c-W1-6QY" userLabel="Welcome View Controller" customClass="PickProfilePhotoViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PickProfilePhotoVC" title="PickProfilePhotoVC" id="F8c-W1-6QY" userLabel="Welcome View Controller" customClass="PickProfilePhotoViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LiG-LT-Xlf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,10 +194,6 @@ You can always change it later.</string>
                                         <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="OkButtonDidTap:" destination="F8c-W1-6QY" eventType="touchUpInside" id="49t-tn-Jes"/>
-                                    <action selector="signInWithAppleButtonDidTap:" destination="F8c-W1-6QY" eventType="touchUpInside" id="SJ8-Xt-UtK"/>
-                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XPA-FB-3gZ">
                                 <rect key="frame" x="62" y="144" width="290.5" height="128"/>
@@ -266,5 +273,8 @@ you have to pick a profile photo.</string>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

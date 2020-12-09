@@ -24,5 +24,7 @@ enum StoryboardId: String {
     
     case pickUsernameVC = "PickUsernameVC"
     
+    case pickProfilePhotoVC = "PickProfilePhotoVC"
+    
     case cameraVC = "CameraVC"
 }

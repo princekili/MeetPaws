@@ -19,17 +19,17 @@ struct User {
     
     var bio: String
     
-    var posts: [String] // Post.id
+    var posts: [String] // postId
     
-    var followRequests: [String] // User.id
+    var followRequests: [String] // userId
     
-    var followers: [String] // User.id
+    var followers: [String] // userId
     
-    var following: [String] // User.id
+    var following: [String] // userId
     
-    var postDidLike: [String] // Post.id
+    var postDidLike: [String] // postId
     
-    var bookmarks: [String] // Post.id
+    var bookmarks: [String] // postId
     
     var ignoreList: [String]
     

@@ -19,26 +19,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        // MARK: -
 //        guard let _ = (scene as? UIWindowScene) else { return }
         
-        // MARK: -
+        // MARK: - Determine the initial page
+        
         guard let sceneWindow = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: sceneWindow)
         
-        if let uid = Auth.auth().currentUser?.uid {
-            authManager.getUserInfo(userId: uid) { (user) in
-                if user.username == "" {
-                    self.showPickUsernameVC(sceneWindow)
-                }
-            }
-            showMainView(sceneWindow)
+        if let _ = Auth.auth().currentUser?.uid {
+            // MARK: - For test
+            self.showPickUsernameVC(sceneWindow)
+            // MARK: -
+            
+            // Check the username
+//            authManager.getUserInfo(userId: uid) { (user) in
+//                if user.username == "" {
+//                    self.showPickUsernameVC(sceneWindow)
+//                } else {
+//                    self.showMainView(sceneWindow)
+//                }
+//            }
             
         } else {
             showSignInVC(sceneWindow)
         }
     }
+    
+    // MARK: -
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
