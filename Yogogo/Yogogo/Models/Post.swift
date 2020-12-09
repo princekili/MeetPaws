@@ -61,7 +61,6 @@ struct Post {
          caption: String,
          timestamp: Int
     ) {
-        
         self.postId = postId
         self.userId = userId
         self.userProfileImage = userProfileImage
@@ -76,7 +75,6 @@ struct Post {
     init?(postId: String,
           postInfo: [String: Any]
     ) {
-        
         guard let userId = postInfo[PostInfoKey.userId] as? String,
               let username = postInfo[PostInfoKey.username] as? String,
               let userProfileImage = postInfo[PostInfoKey.userProfileImage] as? String,

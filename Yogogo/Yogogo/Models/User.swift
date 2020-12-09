@@ -5,78 +5,160 @@
 //  Created by prince on 2020/11/28.
 //
 
-import Foundation
 import Firebase
-
-// MARK: - User Info Model
 
 struct User {
     
-    var userId: String?
+    var userId: String
     
-    var email: String?
+    var username: String
     
-    var username: String?
+    var profileImage: String
     
-    var name: String?
+    var fullName: String
     
-    var profileImage: String?
+    var bio: String
     
-    var bio: String?
+    var posts: [String] // Post.id
     
-    var posts: [String]? // Post.id
+    var followRequests: [String] // User.id
     
-    var followRequests: [String]? // User.id
+    var followers: [String] // User.id
     
-    var followers: [String]? // User.id
+    var following: [String] // User.id
     
-    var following: [String]? // User.id
+    var postDidLike: [String] // Post.id
     
-    var postDidLike: [String]? // Post.id
+    var bookmarks: [String] // Post.id
     
-    var bookmarks: [String]? // Post.id
+    var ignoreList: [String]
     
-    var ignoreList: [String]?
+    var joinedDate: Int // Timestamp yyyy-MM-dd
     
-    var joinedDate: NSNumber? // Date?
+    var lastLogin: Int // Timestamp yyyy-MM-dd HH:MM:SS
     
-    var lastLogin: NSNumber? // Date?
+    var isPrivate: Bool
     
-    var isPrivate: Bool?
+    var isOnline: Bool
     
-    var isOnline: Bool?
+    var isMapLocationEnabled: Bool
     
-    var isMapLocationEnabled: Bool?
-
-    func userCheck() -> Bool {
-        if userId == nil || username == nil || profileImage == nil, email == nil {
-            return false
-        }
-        return true
+    // MARK: - Firebase Keys
+    
+    enum UserInfoKey {
+        
+        static let username = "username"
+        
+        static let profileImage = "profileImage"
+        
+        static let fullName = "fullName"
+        
+        static let bio = "bio"
+        
+        static let posts = "posts"
+        
+        static let followRequests = "followRequests"
+        
+        static let followers = "followers"
+        
+        static let following = "following"
+        
+        static let postDidLike = "postDidLike"
+        
+        static let bookmarks = "bookmarks"
+        
+        static let ignoreList = "ignoreList"
+        
+        static let joinedDate = "joinedDate"
+        
+        static let lastLogin = "lastLogin"
+        
+        static let isPrivate = "isPrivate"
+        
+        static let isOnline = "isOnline"
+        
+        static let isMapLocationEnabled = "isMapLocationEnabled"
     }
-}
-
-class Users {
     
-    static var list = [User]()
+    // MARK: - Initialization
     
-//    static var conversationsVC: ConversationsVC?
+    init(userId: String,
+         username: String,
+         profileImage: String,
+         fullName: String,
+         bio: String,
+         posts: [String],
+         followRequests: [String],
+         followers: [String],
+         following: [String],
+         postDidLike: [String],
+         bookmarks: [String],
+         ignoreList: [String],
+         joinedDate: Int,
+         lastLogin: Int,
+         isPrivate: Bool,
+         isOnline: Bool,
+         isMapLocationEnabled: Bool
+    ) {
+        self.userId = userId
+        self.username = username
+        self.profileImage = profileImage
+        self.fullName = fullName
+        self.bio = bio
+        self.posts = posts
+        self.followRequests = followRequests
+        self.followers = followers
+        self.following = following
+        self.postDidLike = postDidLike
+        self.bookmarks = bookmarks
+        self.ignoreList = ignoreList
+        self.joinedDate = joinedDate
+        self.lastLogin = lastLogin
+        self.isPrivate = isPrivate
+        self.isOnline = isOnline
+        self.isMapLocationEnabled = isMapLocationEnabled
+    }
     
-//    let userForTest = User(id: "J2jPvTNePXRWmngioPzA",
-//                           accessToken: "",
-//                           profileImage: "https://firebasestorage.googleapis.com/v0/b/mchat-764dc.appspot.com/o/ProfileImages%2F4C68F0A3-C6B7-43DB-96D2-391EB16D4953.jpg?alt=media&token=96ad3668-96d2-4739-90cd-4dd1e74060f2",
-//                           name: "Meitzu",
-//                           bio: nil,
-//                           posts: nil,
-//                           followRequests: nil,
-//                           followers: nil,
-//                           following: nil,
-//                           postDidLike: nil,
-//                           collections: nil,
-//                           ignoreList: nil,
-//                           registeredTime: nil,
-//                           isPrivate: nil,
-//                           isOnline: true,
-//                           lastLogin: 1606566756.480166,
-//                           isMapLocationEnabled: true)
+    // for Dictionary object
+    init?(userId: String,
+          userInfo: [String: Any]
+    ) {
+        guard let username = userInfo[UserInfoKey.username] as? String,
+              let profileImage = userInfo[UserInfoKey.profileImage] as? String,
+              let fullName = userInfo[UserInfoKey.fullName] as? String,
+              let bio = userInfo[UserInfoKey.bio] as? String,
+              let posts = userInfo[UserInfoKey.posts] as? [String],
+              let followRequests = userInfo[UserInfoKey.followRequests] as? [String],
+              let followers = userInfo[UserInfoKey.followers] as? [String],
+              let following = userInfo[UserInfoKey.following] as? [String],
+              let postDidLike = userInfo[UserInfoKey.postDidLike] as? [String],
+              let bookmarks = userInfo[UserInfoKey.bookmarks] as? [String],
+              let ignoreList = userInfo[UserInfoKey.ignoreList] as? [String],
+              let joinedDate = userInfo[UserInfoKey.joinedDate] as? Int,
+              let lastLogin = userInfo[UserInfoKey.lastLogin] as? Int,
+              let isPrivate = userInfo[UserInfoKey.isPrivate] as? Bool,
+              let isOnline = userInfo[UserInfoKey.isOnline] as? Bool,
+              let isMapLocationEnabled = userInfo[UserInfoKey.isMapLocationEnabled] as? Bool
+        
+        else { return nil }
+        
+        self = User(userId: userId,
+                    username: username,
+                    profileImage: profileImage,
+                    fullName: fullName,
+                    bio: bio,
+                    posts: posts,
+                    followRequests: followRequests,
+                    followers: followers,
+                    following: following,
+                    postDidLike: postDidLike,
+                    bookmarks: bookmarks,
+                    ignoreList: ignoreList,
+                    joinedDate: joinedDate,
+                    lastLogin: lastLogin,
+                    isPrivate: isPrivate,
+                    isOnline: isOnline,
+                    isMapLocationEnabled: isMapLocationEnabled
+        )
+    }
 }

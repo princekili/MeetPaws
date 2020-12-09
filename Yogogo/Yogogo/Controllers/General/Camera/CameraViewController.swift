@@ -50,6 +50,7 @@ class CameraViewController: UIViewController {
     }
     
     // MARK: -
+    
     func observePosts() {
         let ref = PostManager.shared.postDbRef
         ref.observeSingleEvent(of: .value) { (snapshot) in
