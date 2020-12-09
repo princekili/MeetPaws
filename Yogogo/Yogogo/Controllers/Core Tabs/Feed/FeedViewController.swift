@@ -55,9 +55,9 @@ class FeedViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "CameraVC" {
-            let storyboard = UIStoryboard(name: "Camera", bundle: nil)
-            guard let cameraVC = storyboard.instantiateViewController(identifier: "CameraVC") as? CameraViewController else { return }
+        if segue.identifier == StoryboardId.cameraVC.rawValue {
+            let storyboard = UIStoryboard(name: StoryboardName.camera.rawValue, bundle: nil)
+            guard let cameraVC = storyboard.instantiateViewController(identifier: StoryboardId.cameraVC.rawValue) as? CameraViewController else { return }
             cameraVC.delegate = self
         }
     }
@@ -155,6 +155,8 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             isLoadingPost = false
             return
         }
+        
+        print("👉 Loading Old Posts...")
         
         PostManager.shared.getOldPosts(start: lastPostTimestamp, limit: 10) { (oldPosts) in
             

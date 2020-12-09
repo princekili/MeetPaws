@@ -24,7 +24,8 @@
 		A3315841257FB1FB004CC86C /* launchscreen_logo_0.png in Resources */ = {isa = PBXBuildFile; fileRef = A3315840257FB1FB004CC86C /* launchscreen_logo_0.png */; };
 		A3315844257FC072004CC86C /* PickUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3315843257FC072004CC86C /* PickUsernameViewController.swift */; };
 		A3315847257FC07F004CC86C /* PickProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3315846257FC07F004CC86C /* PickProfilePhotoViewController.swift */; };
-		A331584B257FC950004CC86C /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A331584A257FC950004CC86C /* DatabaseManager.swift */; };
+		A331584B257FC950004CC86C /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A331584A257FC950004CC86C /* AuthManager.swift */; };
+		A33EFB432580FF0F00E9F336 /* Storyboard + Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33EFB422580FF0F00E9F336 /* Storyboard + Enum.swift */; };
 		A344F41C257A61CA0048B754 /* RoundedCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */; };
 		A3551E46257252490006099A /* MapsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551E45257252480006099A /* MapsNetworking.swift */; };
 		A3551E4B257256110006099A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551E4A257256110006099A /* User.swift */; };
@@ -100,7 +101,8 @@
 		A3315840257FB1FB004CC86C /* launchscreen_logo_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen_logo_0.png; sourceTree = "<group>"; };
 		A3315843257FC072004CC86C /* PickUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUsernameViewController.swift; sourceTree = "<group>"; };
 		A3315846257FC07F004CC86C /* PickProfilePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickProfilePhotoViewController.swift; sourceTree = "<group>"; };
-		A331584A257FC950004CC86C /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		A331584A257FC950004CC86C /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		A33EFB422580FF0F00E9F336 /* Storyboard + Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard + Enum.swift"; sourceTree = "<group>"; };
 		A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerButton.swift; sourceTree = "<group>"; };
 		A3551E45257252480006099A /* MapsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsNetworking.swift; sourceTree = "<group>"; };
 		A3551E4A257256110006099A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -235,7 +237,7 @@
 				A3C195DC25778FD600BAB46B /* FirestoreManager.swift */,
 				A3C195DF2577902100BAB46B /* StorageManager.swift */,
 				A313700E257E58C400CEA185 /* PostManager.swift */,
-				A331584A257FC950004CC86C /* DatabaseManager.swift */,
+				A331584A257FC950004CC86C /* AuthManager.swift */,
 				A3137014257E872500CEA185 /* CacheManager.swift */,
 				A3137017257EB45C00CEA185 /* ProfileManager.swift */,
 			);
@@ -268,6 +270,7 @@
 				A3137011257E5C4100CEA185 /* UIImage + Extension.swift */,
 				A313701A257EBB1D00CEA185 /* UINavigationController + Extension.swift */,
 				A331583D257F931F004CC86C /* DataClass.swift */,
+				A33EFB422580FF0F00E9F336 /* Storyboard + Enum.swift */,
 			);
 			path = "Helpers + Extension";
 			sourceTree = "<group>";
@@ -604,13 +607,14 @@
 				A3551E46257252490006099A /* MapsNetworking.swift in Sources */,
 				A3C195CF2577790600BAB46B /* PublishPostViewController.swift in Sources */,
 				A316BE512575245D00989152 /* UIViewController + Extension.swift in Sources */,
-				A331584B257FC950004CC86C /* DatabaseManager.swift in Sources */,
+				A331584B257FC950004CC86C /* AuthManager.swift in Sources */,
 				A3551E7C25728FCC0006099A /* Comment.swift in Sources */,
 				A38293922578DF770064D971 /* PostTableViewCell.swift in Sources */,
 				A3CEA99F256F87F1001DA842 /* MapsViewController.swift in Sources */,
 				A3315847257FC07F004CC86C /* PickProfilePhotoViewController.swift in Sources */,
 				A3C195B22577746C00BAB46B /* SignInViewController.swift in Sources */,
 				A3C195A225765F0200BAB46B /* UILabel + Extension.swift in Sources */,
+				A33EFB432580FF0F00E9F336 /* Storyboard + Enum.swift in Sources */,
 				A3C136D4257CBC9500960B4C /* UITextView + Extension.swift in Sources */,
 				A316BE4A2575070D00989152 /* SearchTableViewCell.swift in Sources */,
 				A3137015257E872500CEA185 /* CacheManager.swift in Sources */,

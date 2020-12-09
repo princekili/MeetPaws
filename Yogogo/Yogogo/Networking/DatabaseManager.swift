@@ -7,23 +7,79 @@
 
 import Foundation
 import FirebaseDatabase
+import Firebase
 
-class DatabaseManager {
+class AuthManager {
     
-    static let shared: DatabaseManager = DatabaseManager()
+    static let shared: AuthManager = AuthManager()
     
     private init() {}
     
     // MARK: Firebase Reference
     
-    let baseDbRef = Database.database().reference()
+    let ref = Database.database().reference()
     
-    let usersDbRef = Database.database().reference().child("users")
+    // MARK: - Check if first time sign in
     
-    // MARK: - Check Username
-    
-    func checkUsername(_ username: String, completion: @escaping (String) -> Void) {
+    func checkFirstTimeSignIn(completion: @escaping (Bool?) -> Void) {
         
-        let usernameQuery = usersDbRef.queryOrdered(byChild: "username")
+        ref.child("users").observeSingleEvent(of: .value) { (snapshot) in
+            
+            var isFirstTime: Bool? = nil
+            
+            let uid = Auth.auth().currentUser?.uid
+            
+            guard let allUsers = snapshot.children.allObjects as? [DataSnapshot] else {
+                print("There's no user.")
+                return
+            }
+            
+            for user in allUsers {
+//                let value = user.value as? [String: Any] ?? [:]
+                if user.key == uid {
+                    isFirstTime = false
+                } else {
+                    isFirstTime = true
+                }
+            }
+            completion(isFirstTime)
+        }
+    }
+    
+    // MARK: - Get the user info
+    
+    func getUserInfo(userId: String, completion: @escaping (User) -> Void) {
+        
+        // Call Firebase API to retrieve the user info
+        ref.child("users").child(userId).observeSingleEvent(of: .value) { (snapshot) in
+            
+            let userInfo = snapshot.value as? [String: Any] ?? [:]
+            
+            guard let user = User(userId: userId, userInfo: userInfo) else {
+                print("User not found!")
+                return
+            }
+            
+            // Save user info to UserDefaults?
+            
+            completion(user)
+        }
+    }
+    
+    // MARK: - Check if the username exists
+    
+    func checkUsername(_ userId: String, completion: @escaping (Bool?) -> Void) {
+        
+        var hasUsername: Bool? = nil
+            
+        getUserInfo(userId: userId) { (user) in
+            
+            if user.username == "" {
+                hasUsername = false
+            } else {
+                hasUsername = true
+            }
+        }
+        completion(hasUsername)
     }
 }

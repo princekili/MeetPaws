@@ -15,7 +15,6 @@ class MessagesViewController: UIViewController {
 //        navigationController?.navigationBar.barTintColor = .white
     }
     
-
     /*
     // MARK: - Navigation
 

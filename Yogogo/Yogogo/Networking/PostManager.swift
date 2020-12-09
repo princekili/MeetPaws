@@ -56,8 +56,7 @@ final class PostManager {
             
             guard let userId = Auth.auth().currentUser?.uid else { return }
             
-//            guard let username = Auth.auth().currentUser?.displayName else { return }
-            let username = Auth.auth().currentUser?.displayName ?? "princekili"
+            let username = "princekili"
             
             let userProfileImage = "https://firebasestorage.googleapis.com/v0/b/yogogo-ddcf9.appspot.com/o/photos%2F-MO0EB0y1ajvJekzDzMJ.jpg?alt=media&token=f2b84345-d7a1-4b87-9602-d4823c6154cb"
             
@@ -74,13 +73,14 @@ final class PostManager {
                 
                 let timestamp = Int(Date().timeIntervalSince1970 * 1000)
                 
-                let post: [String: Any] = ["userId": userId,
-                                           "username": username,
-                                           "userProfileImage": userProfileImage,
-                                           "imageFileURL": imageFileURL,
-                                           "userDidLike": userDidLike,
-                                           "caption": caption,
-                                           "timestamp": timestamp
+                let post: [String: Any] = [
+                    "userId": userId,
+                    "username": username,
+                    "userProfileImage": userProfileImage,
+                    "imageFileURL": imageFileURL,
+                    "userDidLike": userDidLike,
+                    "caption": caption,
+                    "timestamp": timestamp
                 ]
                 
                 postDatabaseRef.setValue(post)
@@ -165,6 +165,8 @@ final class PostManager {
         postLimitedQuery.observeSingleEvent(of: .value, with: { (snapshot) in
             
             var oldPosts: [Post] = []
+            
+            print("👉 Total number of old posts: \(snapshot.childrenCount)")
             
             guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
                 print("There's no post.")

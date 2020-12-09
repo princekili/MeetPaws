@@ -19,10 +19,10 @@ class AnnotationPin: MGLPointAnnotation {
         self.coordinate = coordinate
         self.title = user.username
         
-        if user.isOnline ?? false {
+        if user.isOnline {
             self.subtitle = "Online"
         } else {
-            let date = Date(timeIntervalSince1970: (user.lastLogin ?? 0).doubleValue)
+            let date = Date(timeIntervalSince1970: TimeInterval((user.lastLogin)))
             self.subtitle = calendar.calculateLastLogin(date as NSDate)
         }
     }

@@ -11,26 +11,43 @@ import FirebaseAuth
 
 class SignInViewController: UIViewController {
     
+    let authManager = AuthManager.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        setupSignInButton()
     }
     
-    // MARK: - Default 'Sign in with Apple' button
+    // MARK: - Show next view
     
-    private func setupSignInButton() {
-        let button = ASAuthorizationAppleIDButton()
-        button.addTarget(self, action: #selector(handleSignInWithAppleButtonDidTap), for: .touchUpInside)
-        button.center = view.center
-        view.addSubview(button)
+    func showNextVC() {
+        // first time sign in?
+        authManager.checkFirstTimeSignIn { (isFirstTime) in
+            if isFirstTime == true {
+                self.showPickUsernameVC()
+            } else {
+                self.showMainView()
+            }
+        }
     }
     
-    @objc private func handleSignInWithAppleButtonDidTap() {
-        performSignIn()
+    func showPickUsernameVC() {
+        let storyboard = UIStoryboard(name: StoryboardName.auth.rawValue, bundle: nil)
+        let nextController = storyboard.instantiateViewController(withIdentifier: StoryboardId.pickUsernameVC.rawValue)
+        nextController.modalPresentationStyle = .fullScreen
+        present(nextController, animated: true, completion: nil)
     }
     
-    // MARK: -
+    func showMainView() {
+        let storyboard = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
+        let nextController = storyboard.instantiateViewController(withIdentifier: StoryboardId.tabBarController.rawValue)
+        nextController.modalPresentationStyle = .fullScreen
+        present(nextController, animated: true, completion: nil)
+        
+        SceneDelegate().window?.rootViewController = nextController
+    }
+    
+    // MARK: - Handle sign in
     
     @IBAction func signInWithAppleButtonDidTap(_ sender: CustomButton) {
         performSignIn()
@@ -42,7 +59,6 @@ class SignInViewController: UIViewController {
         
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
-        
         authorizationController.performRequests()
     }
     
@@ -57,23 +73,17 @@ class SignInViewController: UIViewController {
         return request
     }
     
-    func showNextVC() {
-        
-        // if username == ""
-        // show 'PickUsernameVC'
-        
-        // if profileImage == ""
-        // show 'PickProfilePhotoVC'
-        
-        // if username != ""
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
-        nextController.modalPresentationStyle = .fullScreen
-        present(nextController, animated: true, completion: nil)
-        SceneDelegate().window?.rootViewController = nextController
-        
-//        guard let uid = Auth.auth().currentUser?.uid else { return }
-//        setupUserInfo(uid)
+    // MARK: - Default 'Sign in with Apple' button
+    
+    private func setupSignInButton() {
+        let button = ASAuthorizationAppleIDButton()
+        button.addTarget(self, action: #selector(handleSignInWithAppleButtonDidTap), for: .touchUpInside)
+        button.center = view.center
+        view.addSubview(button)
+    }
+    
+    @objc private func handleSignInWithAppleButtonDidTap() {
+        performSignIn()
     }
 }
 
@@ -125,9 +135,9 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                 // MARK: - User is signed in to Firebase with Apple successfully.
                 
                 if let user = authResult?.user {
-                    print("Your're signed in as \(user.displayName ?? "unknown name"), id: \(user.uid), email: \(user.email ?? "unknown email").")
+                    print("Your're signed in as: \(user.displayName ?? "You know who I am"), id: \(user.uid), email: \(user.email ?? "unknown email").")
                     
-                    // Present the main view
+                    // Present next view
                     self.showNextVC()
                 }
             }

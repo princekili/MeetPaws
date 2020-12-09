@@ -12,6 +12,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
+    let authManager = AuthManager.shared
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -25,21 +27,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: sceneWindow)
         
-        if Auth.auth().currentUser?.uid != nil {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialVC = storyboard.instantiateViewController(withIdentifier: "TabBarController")
-            
-            window = UIWindow(windowScene: sceneWindow)
-            window?.rootViewController = initialVC
-            window?.makeKeyAndVisible()
+        if let uid = Auth.auth().currentUser?.uid {
+            authManager.getUserInfo(userId: uid) { (user) in
+                if user.username == "" {
+                    self.showPickUsernameVC(sceneWindow)
+                }
+            }
+            showMainView(sceneWindow)
             
         } else {
-            let storyboard = UIStoryboard(name: "Auth", bundle: nil)
-            let initialVC = storyboard.instantiateViewController(withIdentifier: "SignInVC")
-            
-            window = UIWindow(windowScene: sceneWindow)
-            window?.rootViewController = initialVC
-            window?.makeKeyAndVisible()
+            showSignInVC(sceneWindow)
         }
     }
 
@@ -74,4 +71,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
+}
+
+extension SceneDelegate {
+    
+    func showMainView(_ sceneWindow: UIWindowScene) {
+        let storyboard = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
+        let initialVC = storyboard.instantiateViewController(withIdentifier: StoryboardId.tabBarController.rawValue)
+        
+        window = UIWindow(windowScene: sceneWindow)
+        window?.rootViewController = initialVC
+        window?.makeKeyAndVisible()
+    }
+    
+    func showSignInVC(_ sceneWindow: UIWindowScene) {
+        let storyboard = UIStoryboard(name: StoryboardName.auth.rawValue, bundle: nil)
+        let initialVC = storyboard.instantiateViewController(withIdentifier: StoryboardId.signInVC.rawValue)
+        
+        window = UIWindow(windowScene: sceneWindow)
+        window?.rootViewController = initialVC
+        window?.makeKeyAndVisible()
+    }
+    
+    func showPickUsernameVC(_ sceneWindow: UIWindowScene) {
+        let storyboard = UIStoryboard(name: StoryboardName.auth.rawValue, bundle: nil)
+        let initialVC = storyboard.instantiateViewController(withIdentifier: StoryboardId.pickUsernameVC.rawValue)
+        initialVC.modalPresentationStyle = .fullScreen
+        
+        window = UIWindow(windowScene: sceneWindow)
+        window?.rootViewController = initialVC
+        window?.makeKeyAndVisible()
+    }
 }

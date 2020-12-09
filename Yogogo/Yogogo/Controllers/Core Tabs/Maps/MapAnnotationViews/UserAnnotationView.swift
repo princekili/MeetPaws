@@ -18,7 +18,7 @@ class UserAnnotationView: MGLAnnotationView {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
         let imageView = UIImageView()
-        imageView.loadImage(url: user.profileImage ?? "")
+        imageView.loadImage(url: user.profileImagew)
         
         frame = CGRect(x: 0, y: 0, width: size, height: size)
         imageLayer.frame = CGRect(x: 0, y: 0, width: size, height: size)

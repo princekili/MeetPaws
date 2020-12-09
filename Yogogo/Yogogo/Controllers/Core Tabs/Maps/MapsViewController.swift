@@ -17,7 +17,7 @@ class MapsViewController: UIViewController {
     
     var isUserSelected = false
     
-    var selectedUser = User()
+    var selectedUser: User?
     
     var userCoordinates = [String: CLLocationCoordinate2D]()
     
@@ -37,14 +37,14 @@ class MapsViewController: UIViewController {
         userMapHandler()
         
         // MARK: - For test
-        getUsers()
+//        getUsers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         mapNetworking.mapsVC = self
-        mapNetworking.observeUserLocation()
+//        mapNetworking.observeUserLocation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -127,12 +127,12 @@ class MapsViewController: UIViewController {
     
     var users = [User]()
     
-    private func getUsers() {
-        UserListNetworking().fetchUsers { (usersList) in
-            let sortedUserList = Array(usersList.values).sorted { (friend1, friend2) -> Bool in
-                return friend1.username ?? "" < friend2.username ?? ""
-            }
-            self.users = sortedUserList
-        }
-    }
+//    private func getUsers() {
+//        UserListNetworking().fetchUsers { (usersList) in
+//            let sortedUserList = Array(usersList.values).sorted { (friend1, friend2) -> Bool in
+//                return friend1.username ?? "" < friend2.username ?? ""
+//            }
+//            self.users = sortedUserList
+//        }
+//    }
 }

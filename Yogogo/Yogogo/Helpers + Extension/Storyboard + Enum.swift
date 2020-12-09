@@ -1,0 +1,28 @@
+//
+//  Storyboard + Enum.swift
+//  Yogogo
+//
+//  Created by prince on 2020/12/9.
+//
+
+import Foundation
+
+enum StoryboardName: String {
+    
+    case main = "Main"
+    
+    case auth = "Auth"
+    
+    case camera = "Camera"
+}
+
+enum StoryboardId: String {
+    
+    case tabBarController = "TabBarController"
+    
+    case signInVC = "SignInVC"
+    
+    case pickUsernameVC = "PickUsernameVC"
+    
+    case cameraVC = "CameraVC"
+}

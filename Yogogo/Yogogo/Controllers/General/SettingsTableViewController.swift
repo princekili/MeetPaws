@@ -39,8 +39,8 @@ class SettingsTableViewController: UITableViewController {
         }
         
         // Show Sign in page
-        let storyboard = UIStoryboard(name: "Auth", bundle: nil)
-        let nextController = storyboard.instantiateViewController(identifier: "SignInVC")
+        let storyboard = UIStoryboard(name: StoryboardName.auth.rawValue, bundle: nil)
+        let nextController = storyboard.instantiateViewController(identifier: StoryboardId.signInVC.rawValue)
         
         nextController.modalPresentationStyle = .fullScreen
         present(nextController, animated: true, completion: nil)
