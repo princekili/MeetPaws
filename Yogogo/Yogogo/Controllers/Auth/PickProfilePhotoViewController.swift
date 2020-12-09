@@ -11,7 +11,6 @@ class PickProfilePhotoViewController: UIViewController {
 
     @IBOutlet weak var profilePhotoImageView: UIImageView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +20,7 @@ class PickProfilePhotoViewController: UIViewController {
     @IBAction func selectPhotoButtonDidTap(_ sender: UIButton) {
     }
 
-    @IBAction func OkButtonDidTap(_ sender: CustomButton) {
+    @IBAction func okButtonDidTap(_ sender: CustomButton) {
     }
     
 }

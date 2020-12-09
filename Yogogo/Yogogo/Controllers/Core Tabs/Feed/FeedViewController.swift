@@ -156,15 +156,15 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             return
         }
         
-        PostManager.shared.getOldPosts(start: lastPostTimestamp, limit: 10) { (newPosts) in
+        PostManager.shared.getOldPosts(start: lastPostTimestamp, limit: 10) { (oldPosts) in
             
-            // Add new posts to existing arrays and table view
+            // Add old posts to existing arrays and table view
             var indexPaths: [IndexPath] = []
             
             self.tableView.beginUpdates()
             
-            for newPost in newPosts {
-                self.postFeed.append(newPost)
+            for oldPost in oldPosts {
+                self.postFeed.append(oldPost)
                 let indexPath = IndexPath(row: self.postFeed.count - 1, section: 0)
                 indexPaths.append(indexPath)
             }

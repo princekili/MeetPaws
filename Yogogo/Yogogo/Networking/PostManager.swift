@@ -57,9 +57,9 @@ final class PostManager {
             guard let userId = Auth.auth().currentUser?.uid else { return }
             
 //            guard let username = Auth.auth().currentUser?.displayName else { return }
-            let username = Auth.auth().currentUser?.displayName
+            let username = Auth.auth().currentUser?.displayName ?? "princekili"
             
-            let userProfileImage = "https://firebasestorage.googleapis.com/v0/b/yogogo-ddcf9.appspot.com/o/photos%2F-MO-4gw5z5qCMbKHKzRl.jpg?alt=media&token=2330abe3-98bb-4a9d-b8e6-7929e58da0de"
+            let userProfileImage = "https://firebasestorage.googleapis.com/v0/b/yogogo-ddcf9.appspot.com/o/photos%2F-MO0EB0y1ajvJekzDzMJ.jpg?alt=media&token=f2b84345-d7a1-4b87-9602-d4823c6154cb"
             
             // Add a reference in the database
             snapshot.reference.downloadURL(completion: { (url, error) in
@@ -75,7 +75,7 @@ final class PostManager {
                 let timestamp = Int(Date().timeIntervalSince1970 * 1000)
                 
                 let post: [String: Any] = ["userId": userId,
-                                           "username": username ?? "Unknown name",
+                                           "username": username,
                                            "userProfileImage": userProfileImage,
                                            "imageFileURL": imageFileURL,
                                            "userDidLike": userDidLike,
@@ -85,6 +85,8 @@ final class PostManager {
                 
                 postDatabaseRef.setValue(post)
             })
+            
+            // Describe what to do at where uploadPost() is called.
             completion()
         }
         
@@ -107,16 +109,18 @@ final class PostManager {
     
     func getRecentPosts(start timestamp: Int? = nil, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
         
+        // Ordered by timestamp
         var postQuery = postDbRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
         
         if let latestPostTimestamp = timestamp, latestPostTimestamp > 0 {
             
             // If the timestamp is specified, we will get the posts with timestamp newer than the given value
-            postQuery = postQuery.queryStarting(atValue: latestPostTimestamp + 1, childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
+            postQuery = postQuery.queryStarting(atValue: latestPostTimestamp + 1,
+                                                childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
         
         } else {
             
-            // Otherwise, we will just get the most recent posts
+            // Otherwise(Default timestamp = nil), we will just get the most recent posts
             postQuery = postQuery.queryLimited(toLast: limit)
         }
         
@@ -125,7 +129,7 @@ final class PostManager {
             
             var newPosts: [Post] = []
             
-//            print("👉 Total number of posts: \(snapshot.childrenCount)")
+            print("👉 Total number of new posts: \(snapshot.childrenCount)")
             
             guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
                 print("There's no post.")
@@ -139,6 +143,7 @@ final class PostManager {
                     newPosts.append(post)
                 }
             }
+            
             if newPosts.count > 0 {
                 
                 // Order in descending order (i.e. the latest post becomes the first post)
@@ -153,11 +158,13 @@ final class PostManager {
     func getOldPosts(start timestamp: Int, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
         
         let postOrderedQuery = postDbRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
-        let postLimitedQuery = postOrderedQuery.queryEnding(atValue: timestamp - 1, childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
+        
+        let postLimitedQuery = postOrderedQuery.queryEnding(atValue: timestamp - 1,
+                                                            childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
         
         postLimitedQuery.observeSingleEvent(of: .value, with: { (snapshot) in
             
-            var newPosts: [Post] = []
+            var oldPosts: [Post] = []
             
             guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
                 print("There's no post.")
@@ -169,14 +176,14 @@ final class PostManager {
                 let postInfo = item.value as? [String: Any] ?? [:]
                 
                 if let post = Post(postId: item.key, postInfo: postInfo) {
-                    newPosts.append(post)
+                    oldPosts.append(post)
                 }
             }
             
             // Order in descending order (i.e. the latest post becomes the first post)
-            newPosts.sort(by: { $0.timestamp > $1.timestamp })
+            oldPosts.sort(by: { $0.timestamp > $1.timestamp })
             
-            completionHandler(newPosts)
+            completionHandler(oldPosts)
         })
         
     }
