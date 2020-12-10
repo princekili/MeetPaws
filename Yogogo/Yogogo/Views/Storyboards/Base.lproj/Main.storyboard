@@ -30,22 +30,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aZk-gG-smH">
-                                                    <rect key="frame" x="12" y="8" width="238" height="36"/>
+                                                    <rect key="frame" x="12" y="8" width="194" height="36"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ywk-3b-0Lv">
-                                                            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dlg-tl-Q1l">
+                                                            <rect key="frame" x="0.0" y="0.5" width="36" height="35"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="36" id="R6j-VR-r3g"/>
-                                                                <constraint firstAttribute="width" secondItem="Ywk-3b-0Lv" secondAttribute="height" multiplier="1:1" id="jsd-md-E8u"/>
+                                                                <constraint firstAttribute="width" constant="36" id="QYH-V3-hU7"/>
+                                                                <constraint firstAttribute="height" constant="36" id="pPl-hh-RPp"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                            <state key="normal" image="dog_profileImage">
-                                                                <color key="titleColor" systemColor="labelColor"/>
-                                                            </state>
-                                                            <connections>
-                                                                <segue destination="z8X-2O-y8n" kind="show" id="gG7-UW-RZV"/>
-                                                            </connections>
-                                                        </button>
+                                                            <imageReference key="image" image="person.circle" catalog="system" renderingMode="original"/>
+                                                        </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wM1-oA-mzh">
                                                             <rect key="frame" x="44" y="0.0" width="150" height="33"/>
                                                             <constraints>
@@ -59,13 +53,6 @@
                                                                 <segue destination="z8X-2O-y8n" kind="show" id="dtZ-oy-n6N"/>
                                                             </connections>
                                                         </button>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dlg-tl-Q1l">
-                                                            <rect key="frame" x="202" y="0.0" width="36" height="36"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="36" id="QYH-V3-hU7"/>
-                                                                <constraint firstAttribute="height" constant="36" id="pPl-hh-RPp"/>
-                                                            </constraints>
-                                                        </imageView>
                                                     </subviews>
                                                 </stackView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog_postImage" translatesAutoresizingMaskIntoConstraints="NO" id="aLy-ka-vix">
@@ -182,10 +169,9 @@
                                             <outlet property="messageButton" destination="Uw6-KL-KYe" id="hfN-hy-yb6"/>
                                             <outlet property="moreButton" destination="Izd-qv-7pw" id="eHN-7d-312"/>
                                             <outlet property="postImageView" destination="aLy-ka-vix" id="RX5-Ao-lkt"/>
-                                            <outlet property="profileImageButton" destination="Ywk-3b-0Lv" id="4ob-r2-gLo"/>
+                                            <outlet property="profileImage" destination="dlg-tl-Q1l" id="HEG-as-RC5"/>
                                             <outlet property="settingButton" destination="TAb-gS-6WF" id="zUA-IA-nkY"/>
                                             <outlet property="shareButton" destination="Yh3-XO-R7t" id="YZ3-6s-gvD"/>
-                                            <outlet property="testImageView" destination="dlg-tl-Q1l" id="HEG-as-RC5"/>
                                             <outlet property="timestampLabel" destination="j40-rr-Tm0" id="vde-rR-ogT"/>
                                             <outlet property="usernameButton" destination="wM1-oA-mzh" id="RUy-yo-kO9"/>
                                             <outlet property="viewCommentButton" destination="H74-Fm-Ia7" id="Ldg-UP-Ugf"/>
@@ -941,14 +927,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYV-B3-gRR">
-                                            <rect key="frame" x="20" y="20" width="100" height="100"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Whd-wc-RXH"/>
-                                                <constraint firstAttribute="width" constant="100" id="xSv-rP-h0g"/>
-                                            </constraints>
-                                            <state key="normal" image="dog_profileImage"/>
-                                        </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="h9t-zn-yXQ">
                                             <rect key="frame" x="154" y="43" width="240" height="54"/>
                                             <subviews>
@@ -1089,18 +1067,25 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vKu-g1-K0E" userLabel="Profile Image View">
+                                            <rect key="frame" x="20" y="20.5" width="100" height="99"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="911-Ii-u8j"/>
+                                                <constraint firstAttribute="width" secondItem="vKu-g1-K0E" secondAttribute="height" multiplier="1:1" id="iUQ-un-M2u"/>
+                                            </constraints>
+                                            <imageReference key="image" image="person.circle" catalog="system" renderingMode="original"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="HYV-B3-gRR" firstAttribute="top" secondItem="rCy-JV-HVP" secondAttribute="top" constant="20" id="00C-Y3-rdj"/>
-                                        <constraint firstItem="h9t-zn-yXQ" firstAttribute="centerY" secondItem="HYV-B3-gRR" secondAttribute="centerY" id="3Vd-Oc-sey"/>
+                                        <constraint firstItem="vKu-g1-K0E" firstAttribute="leading" secondItem="rCy-JV-HVP" secondAttribute="leading" constant="20" id="5Ls-Gj-2eR"/>
                                         <constraint firstItem="XxV-zP-gwb" firstAttribute="top" secondItem="FH5-eG-gYb" secondAttribute="bottom" constant="14" id="GW7-2Q-679"/>
-                                        <constraint firstItem="HYV-B3-gRR" firstAttribute="leading" secondItem="rCy-JV-HVP" secondAttribute="leading" constant="20" id="XLa-st-zAF"/>
-                                        <constraint firstItem="HYV-B3-gRR" firstAttribute="width" secondItem="HYV-B3-gRR" secondAttribute="height" multiplier="1:1" id="Yc6-mq-JGl"/>
+                                        <constraint firstItem="vKu-g1-K0E" firstAttribute="top" secondItem="rCy-JV-HVP" secondAttribute="top" constant="20" id="L7x-s8-r4t"/>
+                                        <constraint firstItem="FH5-eG-gYb" firstAttribute="leading" secondItem="rCy-JV-HVP" secondAttribute="leading" constant="20" id="Y65-hh-tmz"/>
                                         <constraint firstAttribute="trailing" secondItem="h9t-zn-yXQ" secondAttribute="trailing" constant="20" id="bQr-Vz-dy8"/>
+                                        <constraint firstItem="vKu-g1-K0E" firstAttribute="centerY" secondItem="h9t-zn-yXQ" secondAttribute="centerY" id="fPv-hU-SvB"/>
                                         <constraint firstAttribute="trailing" secondItem="XxV-zP-gwb" secondAttribute="trailing" constant="20" id="fra-ZX-URS"/>
                                         <constraint firstItem="XxV-zP-gwb" firstAttribute="leading" secondItem="rCy-JV-HVP" secondAttribute="leading" constant="20" id="gWk-YP-KyU"/>
-                                        <constraint firstItem="FH5-eG-gYb" firstAttribute="top" secondItem="HYV-B3-gRR" secondAttribute="bottom" constant="16" id="kX9-g9-6Rt"/>
-                                        <constraint firstItem="FH5-eG-gYb" firstAttribute="leading" secondItem="HYV-B3-gRR" secondAttribute="leading" id="sWD-m6-KLv"/>
+                                        <constraint firstItem="FH5-eG-gYb" firstAttribute="top" secondItem="vKu-g1-K0E" secondAttribute="bottom" constant="16" id="wZP-ze-NWA"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="bioLabel" destination="rGA-dz-Xzn" id="KGJ-G5-NQy"/>
@@ -1109,7 +1094,7 @@
                                         <outlet property="followingCountButton" destination="c39-YH-3mX" id="Oui-pB-zsK"/>
                                         <outlet property="nameLabel" destination="Xi8-kg-k7d" id="8cp-dD-uOY"/>
                                         <outlet property="postsCountButton" destination="MGd-AA-oAf" id="CX4-dd-pL4"/>
-                                        <outlet property="profileImageButton" destination="HYV-B3-gRR" id="DYG-Fr-g03"/>
+                                        <outlet property="profileImageView" destination="vKu-g1-K0E" id="EdB-Ds-1eO"/>
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
@@ -1138,8 +1123,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gG7-UW-RZV"/>
-        <segue reference="LwI-kW-ddj"/>
+        <segue reference="N3A-wu-T8P"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IU_profileImage" width="640" height="640"/>
@@ -1158,6 +1142,7 @@
         <image name="paperplane" catalog="system" width="128" height="118"/>
         <image name="paperplane.fill" catalog="system" width="128" height="118"/>
         <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="placeholdertext.fill" catalog="system" width="80" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>

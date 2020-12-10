@@ -54,30 +54,6 @@ class AuthManager {
         }
     }
     
-    // MARK: - Get the user info
-    
-    func getUserInfo(userId: String, completion: @escaping (User) -> Void) {
-        
-        // Call Firebase API to retrieve the user info
-        ref.child("users").child(userId).observeSingleEvent(of: .value) { (snapshot) in
-            
-            let userInfo = snapshot.value as? [String: Any] ?? [:]
-            
-            guard let user = User(userId: userId, userInfo: userInfo) else {
-                print("😭 User not found!")
-                return
-            }
-            
-            // Save user info to AuthManager
-            AuthManager.shared.currentUser = user
-
-//            print("Get the user info successfully!")
-//            print(user)
-            
-            completion(user)
-        }
-    }
-    
     // MARK: - Check if the username has been used
     
     func checkUsername(username: String, completion: @escaping (Bool?) -> Void) {
@@ -108,6 +84,31 @@ class AuthManager {
             completion(hasBeenUsed)
         }
     }
+    
+    // MARK: - Get the user info
+    
+    func getUserInfo(userId: String, completion: @escaping (User) -> Void) {
+        
+        // Call Firebase API to retrieve the user info
+        ref.child("users").child(userId).observeSingleEvent(of: .value) { (snapshot) in
+            
+            let userInfo = snapshot.value as? [String: Any] ?? [:]
+            
+            guard let user = User(userId: userId, userInfo: userInfo) else {
+                print("------ User not found ------")
+                return
+            }
+            
+            // Save user info to AuthManager
+            self.currentUser = user
+
+            print("------ Get the user info successfully ------")
+            print(self.currentUser ?? "------ There's no currentUser ------")
+            
+            completion(user)
+        }
+    }
+   
     
     // MARK: - Add a user on DB
     

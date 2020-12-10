@@ -9,22 +9,14 @@ import UIKit
 import Kingfisher
 
 class FeedTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var profileImageButton: UIButton! {
+    
+    @IBOutlet weak var profileImage: UIImageView! {
         didSet {
-            profileImageButton.layer.cornerRadius = profileImageButton.frame.size.width / 2
-            profileImageButton.layer.masksToBounds = true
+            profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+            profileImage.layer.masksToBounds = true
+            profileImage.translatesAutoresizingMaskIntoConstraints = false
         }
     }
-    
-    @IBOutlet weak var testImageView: UIImageView! {
-        didSet {
-            profileImageButton.layer.cornerRadius = profileImageButton.frame.size.width / 2
-            profileImageButton.layer.masksToBounds = true
-        }
-    }
-    
-    var profileImage: UIImageView = UIImageView(image: #imageLiteral(resourceName: "dog_profileImage"))
     
     @IBOutlet weak var usernameButton: UIButton!
     
@@ -72,27 +64,16 @@ class FeedTableViewCell: UITableViewCell {
         // Set the cell style
         selectionStyle = .none
 
-        // Set up
-//        usernameButton.setTitle(post.username, for: .normal)
-        
-        // MARK: - For test
+        // Get user info from DB
         authManager.getUserInfo(userId: post.userId) { (user) in
             self.usernameButton.setTitle(user.username, for: .normal)
-            
+
             self.profileImage.image = nil
-            let profileImageUrl = URL(string: user.profileImage)
-            self.profileImage.kf.setImage(with: profileImageUrl)
-            self.profileImageButton.setImage(self.profileImage.image, for: .normal)
-            
-            self.testImageView.kf.setImage(with: profileImageUrl)
+            let url = URL(string: user.profileImage)
+            self.profileImage.kf.setImage(with: url)
         }
-        // MARK: -
-        
-//        profileImage.image = nil
-//        let profileImageUrl = URL(string: post.userProfileImage)
-//        profileImage.kf.setImage(with: profileImageUrl)
-//        profileImageButton.setImage(profileImage.image, for: .normal)
-        
+
+        // Set up
         captionLabel.text = "\(post.caption)"
         
         let stringTimestamp = String(post.timestamp / 1000)

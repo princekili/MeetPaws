@@ -8,6 +8,8 @@
 import UIKit
 
 class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
+    
+    let authManager = AuthManager.shared
         
     static let identifier = "ProfileInfoHeaderCollectionReusableView"
     
@@ -15,6 +17,15 @@ class ProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
         didSet {
             profileImageButton.layer.cornerRadius = 100 / 2
             profileImageButton.layer.masksToBounds = true
+        }
+    }
+    
+    @IBOutlet weak var profileImageView: UIImageView! {
+        didSet {
+            profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+            
+            let url = URL(string: authManager.profileImage)
+            profileImageView.kf.setImage(with: url)
         }
     }
     

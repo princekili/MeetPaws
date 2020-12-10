@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PickProfilePhotoViewController: UIViewController {
 
@@ -49,8 +50,11 @@ class PickProfilePhotoViewController: UIViewController {
         
         authManager.addUser(image: image) {
             print("Upload user '\(username)' data successfully!")
-            
             self.showMainView()
+            
+            guard let userId = Auth.auth().currentUser?.uid else { return }
+            self.authManager.getUserInfo(userId: userId) { (user) in
+            }
         }
     }
     

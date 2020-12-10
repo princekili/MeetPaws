@@ -58,10 +58,6 @@ final class PostManager {
             
             guard let userId = Auth.auth().currentUser?.uid else { return }
             
-//            let username = self.authManager.username
-            
-//            let userProfileImage = self.authManager.profileImage
-            
             // Add a reference in the database
             snapshot.reference.downloadURL(completion: { (url, error) in
                 guard let url = url else { return }
@@ -74,8 +70,6 @@ final class PostManager {
                 
                 let post: [String: Any] = [
                     "userId": userId,
-//                    "username": username,
-//                    "userProfileImage": userProfileImage,
                     "imageFileURL": imageFileURL,
                     "userDidLike": userDidLike,
                     "caption": caption,
