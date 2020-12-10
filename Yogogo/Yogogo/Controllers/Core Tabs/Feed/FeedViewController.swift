@@ -24,6 +24,7 @@ class FeedViewController: UIViewController {
         setupTableView()
         setupNavigation()
         setupRefresher()
+//        getUserInfo()
     }
  
     override func viewDidAppear(_ animated: Bool) {
@@ -66,6 +67,15 @@ class FeedViewController: UIViewController {
 // MARK: - Managing Post Download and Display
 
 extension FeedViewController: LoadRecentPostsDelegate {
+    
+    func getUserInfo() {
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        
+        AuthManager.shared.getUserInfo(userId: userId) { (user) in
+            print("Get the user info successfully!")
+            print(user)
+        }
+    }
     
     func loadRecentPost() {
         loadRecentPosts()

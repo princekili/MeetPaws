@@ -17,6 +17,8 @@ final class PostManager {
     
     private init() {}
     
+    let authManager = AuthManager.shared
+    
     // MARK: Firebase Reference
     
     let baseDbRef: DatabaseReference = Database.database().reference()
@@ -56,9 +58,9 @@ final class PostManager {
             
             guard let userId = Auth.auth().currentUser?.uid else { return }
             
-            let username = "princekili"
+//            let username = self.authManager.username
             
-            let userProfileImage = "https://firebasestorage.googleapis.com/v0/b/yogogo-ddcf9.appspot.com/o/photos%2F-MO0EB0y1ajvJekzDzMJ.jpg?alt=media&token=f2b84345-d7a1-4b87-9602-d4823c6154cb"
+//            let userProfileImage = self.authManager.profileImage
             
             // Add a reference in the database
             snapshot.reference.downloadURL(completion: { (url, error) in
@@ -66,17 +68,14 @@ final class PostManager {
                 
                 // Add a reference in the database
                 let imageFileURL = url.absoluteString
-                
-                let userDidLike: [String] = []
-                
+                let userDidLike: [String] = [""]
                 let caption = caption
-                
                 let timestamp = Int(Date().timeIntervalSince1970 * 1000)
                 
                 let post: [String: Any] = [
                     "userId": userId,
-                    "username": username,
-                    "userProfileImage": userProfileImage,
+//                    "username": username,
+//                    "userProfileImage": userProfileImage,
                     "imageFileURL": imageFileURL,
                     "userDidLike": userDidLike,
                     "caption": caption,

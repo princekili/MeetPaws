@@ -16,6 +16,12 @@ class AuthManager {
     
     private init() {}
     
+    var username = "No Username"
+    
+    var profileImage = ""
+    
+    var currentUser: User?
+    
     // MARK: Firebase Reference
     
     let ref: DatabaseReference = Database.database().reference()
@@ -58,17 +64,16 @@ class AuthManager {
             let userInfo = snapshot.value as? [String: Any] ?? [:]
             
             guard let user = User(userId: userId, userInfo: userInfo) else {
-                print("User not found!")
+                print("😭 User not found!")
                 return
             }
             
-            // Save user info to UserDefaults
-            UserDefaults.standard.setValue(user, forKey: "user")
-            
-//            if let data = UserDefaults.standard.object(forKey: "user") as? User {
-//                data.username
-//            }
+            // Save user info to AuthManager
+            AuthManager.shared.currentUser = user
 
+//            print("Get the user info successfully!")
+//            print(user)
+            
             completion(user)
         }
     }
@@ -104,9 +109,9 @@ class AuthManager {
         }
     }
     
-    // MARK: - Create the user info on DB (username, profile photo...)
+    // MARK: - Add a user on DB
     
-    func addUser(username: String, image: UIImage, completion: @escaping () -> Void) {
+    func addUser(image: UIImage, completion: @escaping () -> Void) {
         
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
@@ -118,7 +123,7 @@ class AuthManager {
         let imageStorageRef = profilePhotoStorageRef.child("\(imageKey).jpg")
         
         // Resize the image
-        let scaledImage = image.scale(newWidth: 300)
+        let scaledImage = image.scale(newWidth: 200)
         
         guard let imageData = scaledImage.jpegData(compressionQuality: 0.7) else { return }
         
@@ -132,24 +137,42 @@ class AuthManager {
         // Observe the upload status
         uploadTask.observe(.success) { (snapshot) in
             
-            let fullName = ""
-            let bio = ""
-            let posts: [String] = []
-            let followRequests: [String] = []
-            let followers: [String] = []
-            let following: [String] = []
-            let postDidLike: [String] = []
-            let bookmarks: [String] = []
-            let ignoreList: [String] = []
-            let joinedDate = Int(Date().timeIntervalSince1970 * 1000)
-            let lastLogin = Int(Date().timeIntervalSince1970 * 1000)
-            let isPrivate = false
-            let isOnline = true
-            let isMapLocationEnabled = false
-            
+            // Add a reference in the database
             snapshot.reference.downloadURL(completion: { (url, error) in
                 
+                let username = self.username
+                
+                guard let url = url else { return }
+                let profileImage = url.absoluteString
+                self.profileImage = profileImage
+                
+                let fullName = ""
+                let bio = ""
+    //            let posts: [String] = [""]
+    //            let followRequests: [String] = [""]
+    //            let followers: [String] = [""]
+    //            let following: [String] = [""]
+    //            let postDidLike: [String] = [""]
+    //            let bookmarks: [String] = [""]
+    //            let ignoreList: [String] = [""]
+                // MARK: - For test
+                let posts: [String] = ["-MO0EB0y1ajvJekzDzMJ"]
+                let followRequests: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
+                let followers: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
+                let following: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
+                let postDidLike: [String] = ["-MO0EB0y1ajvJekzDzMJ"]
+                let bookmarks: [String] = ["-MO0EB0y1ajvJekzDzMJ"]
+                let ignoreList: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
+                // MARK: -
+                let joinedDate = Int(Date().timeIntervalSince1970 * 1000)
+                let lastLogin = Int(Date().timeIntervalSince1970 * 1000)
+                let isPrivate = false
+                let isOnline = true
+                let isMapLocationEnabled = false
+                
                 let user: [String: Any] = [
+                    "username": username,
+                    "profileImage": profileImage,
                     "fullName": fullName,
                     "bio": bio,
                     "posts": posts,

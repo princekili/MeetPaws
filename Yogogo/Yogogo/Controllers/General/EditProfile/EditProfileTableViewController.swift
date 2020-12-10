@@ -11,7 +11,7 @@ class EditProfileTableViewController: UITableViewController {
     
     @IBOutlet weak var profileImage: UIImageView! {
         didSet {
-            profileImage.layer.cornerRadius = 50
+            profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
         }
     }
     
@@ -21,7 +21,11 @@ class EditProfileTableViewController: UITableViewController {
     
     @IBOutlet weak var bioLabel: UILabel!
     
-    @IBOutlet weak var bioTextView: UITextView!
+    @IBOutlet weak var bioTextView: UITextView! {
+        didSet {
+            bioTextView.placeholder = "Write your bio..."
+        }
+    }
     
     var imagePickerController: UIImagePickerController?
     

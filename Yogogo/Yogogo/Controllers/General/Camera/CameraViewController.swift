@@ -45,41 +45,13 @@ class CameraViewController: UIViewController {
         super.viewDidLoad()
         showPicker()
         hideButtons()
-        
 //        observePosts()
-    }
-    
-    // MARK: -
-    
-    func observePosts() {
-        let ref = PostManager.shared.postDbRef
-        ref.observeSingleEvent(of: .value) { (snapshot) in
-            
-            print("👉 Total number of posts: \(snapshot.childrenCount)")
-            
-            guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
-                print("😭 There's no post.")
-                return
-            }
-            
-            for item in allObjects {
-                let postInfo = item.value as? [String: Any] ?? [:]
-                
-                print("-------")
-                print("Post ID: \(item.key)")
-                print("userId: \(postInfo["userId"] ?? "")")
-                print("username: \(postInfo["username"] ?? "")")
-                print("Image URL: \(postInfo["imageFileURL"] ?? "")")
-                print("userDidLike: \(postInfo["userDidLike"] ?? "")")
-                print("caption: \(postInfo["caption"] ?? "")")
-                print("Timestamp: \(postInfo["timestamp"] ?? "")")
-            }
-        }
     }
     
     // MARK: - Upload Post
     
     @IBAction func shareButtonDidTap(_ sender: UIBarButtonItem) {
+        shareButton.isEnabled = false
         
         guard let image = selectedItems.singlePhoto?.image else {
             dismiss(animated: true, completion: nil)
@@ -326,6 +298,34 @@ class CameraViewController: UIViewController {
 // Support methods
 extension CameraViewController {
     
+    // MARK: - Observe Posts
+    
+    func observePosts() {
+        let ref = PostManager.shared.postDbRef
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            
+            print("👉 Total number of posts: \(snapshot.childrenCount)")
+            
+            guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
+                print("😭 There's no post.")
+                return
+            }
+            
+            for item in allObjects {
+                let postInfo = item.value as? [String: Any] ?? [:]
+                
+                print("-------")
+                print("Post ID: \(item.key)")
+                print("userId: \(postInfo["userId"] ?? "")")
+                print("username: \(postInfo["username"] ?? "")")
+                print("Image URL: \(postInfo["imageFileURL"] ?? "")")
+                print("userDidLike: \(postInfo["userDidLike"] ?? "")")
+                print("caption: \(postInfo["caption"] ?? "")")
+                print("Timestamp: \(postInfo["timestamp"] ?? "")")
+            }
+        }
+    }
+    
     // MARK: - Default
     
     /* Gives a resolution for the video by URL */
@@ -333,52 +333,6 @@ extension CameraViewController {
         guard let track = AVURLAsset(url: url).tracks(withMediaType: AVMediaType.video).first else { return nil }
         let size = track.naturalSize.applying(track.preferredTransform)
         return CGSize(width: abs(size.width), height: abs(size.height))
-    }
-    
-    private func setupSelectedImageV() {
-        self.view.backgroundColor = .white
-        
-        selectedImageV.contentMode = .scaleAspectFit
-        selectedImageV.frame = CGRect(x: 0,
-                                      y: 100,
-                                      width: UIScreen.main.bounds.width,
-                                      height: UIScreen.main.bounds.height * 0.45)
-        view.addSubview(selectedImageV)
-    }
-    
-    // for test only
-    private func setupPickButton() {
-        pickButton.setTitle("Pick", for: .normal)
-        pickButton.setTitleColor(.black, for: .normal)
-        pickButton.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        pickButton.addTarget(self, action: #selector(showPicker), for: .touchUpInside)
-        view.addSubview(pickButton)
-        pickButton.center = view.center
-        pickButton.isHidden = true
-    }
-    
-    private func setupResultsButton() {
-        resultsButton.setTitle("Show selected", for: .normal)
-        resultsButton.setTitleColor(.black, for: .normal)
-        resultsButton.frame = CGRect(x: 0,
-                                     y: UIScreen.main.bounds.height - 200,
-                                     width: UIScreen.main.bounds.width,
-                                     height: 100)
-        resultsButton.addTarget(self, action: #selector(showResults), for: .touchUpInside)
-        view.addSubview(resultsButton)
-        resultsButton.isHidden = true
-    }
-    
-    @objc func showResults() {
-        if selectedItems.count > 0 {
-            let gallery = YPSelectionsGalleryVC(items: selectedItems) { gallery, _ in
-                gallery.dismiss(animated: true, completion: nil)
-            }
-            let navC = UINavigationController(rootViewController: gallery)
-            self.present(navC, animated: true, completion: nil)
-        } else {
-            print("No items selected yet.")
-        }
     }
 }
 

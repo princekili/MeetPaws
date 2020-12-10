@@ -17,6 +17,15 @@ class FeedTableViewCell: UITableViewCell {
         }
     }
     
+    @IBOutlet weak var testImageView: UIImageView! {
+        didSet {
+            profileImageButton.layer.cornerRadius = profileImageButton.frame.size.width / 2
+            profileImageButton.layer.masksToBounds = true
+        }
+    }
+    
+    var profileImage: UIImageView = UIImageView(image: #imageLiteral(resourceName: "dog_profileImage"))
+    
     @IBOutlet weak var usernameButton: UIButton!
     
     @IBOutlet weak var settingButton: UIButton!
@@ -45,6 +54,8 @@ class FeedTableViewCell: UITableViewCell {
     
     private var currentPost: Post?
     
+    let authManager = AuthManager.shared
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -62,8 +73,26 @@ class FeedTableViewCell: UITableViewCell {
         selectionStyle = .none
 
         // Set up
-        usernameButton.setTitle(post.username, for: .normal)
-        profileImageButton.setTitle(post.userProfileImage, for: .normal)
+//        usernameButton.setTitle(post.username, for: .normal)
+        
+        // MARK: - For test
+        authManager.getUserInfo(userId: post.userId) { (user) in
+            self.usernameButton.setTitle(user.username, for: .normal)
+            
+            self.profileImage.image = nil
+            let profileImageUrl = URL(string: user.profileImage)
+            self.profileImage.kf.setImage(with: profileImageUrl)
+            self.profileImageButton.setImage(self.profileImage.image, for: .normal)
+            
+            self.testImageView.kf.setImage(with: profileImageUrl)
+        }
+        // MARK: -
+        
+//        profileImage.image = nil
+//        let profileImageUrl = URL(string: post.userProfileImage)
+//        profileImage.kf.setImage(with: profileImageUrl)
+//        profileImageButton.setImage(profileImage.image, for: .normal)
+        
         captionLabel.text = "\(post.caption)"
         
         let stringTimestamp = String(post.timestamp / 1000)

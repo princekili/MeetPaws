@@ -194,6 +194,9 @@ You can always change it later.</string>
                                         <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="okButtonDidTap:" destination="F8c-W1-6QY" eventType="touchUpInside" id="ZUG-MD-YSe"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XPA-FB-3gZ">
                                 <rect key="frame" x="62" y="144" width="290.5" height="128"/>
@@ -248,6 +251,7 @@ you have to pick a profile photo.</string>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="okButton" destination="BW7-i0-mLv" id="HSD-vk-ECc"/>
                         <outlet property="profilePhotoImageView" destination="YoD-Mf-ba3" id="C0X-I5-zOa"/>
                     </connections>
                 </viewController>

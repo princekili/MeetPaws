@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aZk-gG-smH">
-                                                    <rect key="frame" x="12" y="8" width="117" height="36"/>
+                                                    <rect key="frame" x="12" y="8" width="238" height="36"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ywk-3b-0Lv">
                                                             <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
@@ -38,21 +38,34 @@
                                                                 <constraint firstAttribute="width" constant="36" id="R6j-VR-r3g"/>
                                                                 <constraint firstAttribute="width" secondItem="Ywk-3b-0Lv" secondAttribute="height" multiplier="1:1" id="jsd-md-E8u"/>
                                                             </constraints>
-                                                            <state key="normal" image="dog_profileImage"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <state key="normal" image="dog_profileImage">
+                                                                <color key="titleColor" systemColor="labelColor"/>
+                                                            </state>
                                                             <connections>
                                                                 <segue destination="z8X-2O-y8n" kind="show" id="gG7-UW-RZV"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wM1-oA-mzh">
-                                                            <rect key="frame" x="44" y="0.0" width="73" height="33"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wM1-oA-mzh">
+                                                            <rect key="frame" x="44" y="0.0" width="150" height="33"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="3RR-H1-UBr"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                            <state key="normal" title="princekili">
+                                                            <state key="normal" title="username">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <connections>
                                                                 <segue destination="z8X-2O-y8n" kind="show" id="dtZ-oy-n6N"/>
                                                             </connections>
                                                         </button>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dlg-tl-Q1l">
+                                                            <rect key="frame" x="202" y="0.0" width="36" height="36"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="36" id="QYH-V3-hU7"/>
+                                                                <constraint firstAttribute="height" constant="36" id="pPl-hh-RPp"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                 </stackView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog_postImage" translatesAutoresizingMaskIntoConstraints="NO" id="aLy-ka-vix">
@@ -135,7 +148,7 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAb-gS-6WF">
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAb-gS-6WF">
                                                     <rect key="frame" x="372" y="11.5" width="30" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="•••">
@@ -172,6 +185,7 @@
                                             <outlet property="profileImageButton" destination="Ywk-3b-0Lv" id="4ob-r2-gLo"/>
                                             <outlet property="settingButton" destination="TAb-gS-6WF" id="zUA-IA-nkY"/>
                                             <outlet property="shareButton" destination="Yh3-XO-R7t" id="YZ3-6s-gvD"/>
+                                            <outlet property="testImageView" destination="dlg-tl-Q1l" id="HEG-as-RC5"/>
                                             <outlet property="timestampLabel" destination="j40-rr-Tm0" id="vde-rR-ogT"/>
                                             <outlet property="usernameButton" destination="wM1-oA-mzh" id="RUy-yo-kO9"/>
                                             <outlet property="viewCommentButton" destination="H74-Fm-Ia7" id="Ldg-UP-Ugf"/>
@@ -1124,7 +1138,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dtZ-oy-n6N"/>
+        <segue reference="gG7-UW-RZV"/>
         <segue reference="LwI-kW-ddj"/>
     </inferredMetricsTieBreakers>
     <resources>
