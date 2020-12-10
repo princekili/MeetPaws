@@ -350,10 +350,10 @@
             </objects>
             <point key="canvasLocation" x="2859" y="60"/>
         </scene>
-        <!--princekili-->
+        <!--username-->
         <scene sceneID="hET-qn-wW8">
             <objects>
-                <viewController storyboardIdentifier="ProfileVC" id="v5s-mV-UN2" customClass="ProfileViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileVC" id="v5s-mV-UN2" customClass="MyProfileViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uLH-DE-CII">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -368,7 +368,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="wMk-Nk-DLg" customClass="PhotoCollectionViewCell" customModule="Yogogo" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="wMk-Nk-DLg" customClass="MyPhotoCollectionViewCell" customModule="Yogogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="251" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FZr-sE-PuK">
@@ -392,18 +392,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileInfoHeaderCollectionReusableView" id="rs9-Db-LkJ" customClass="ProfileInfoHeaderCollectionReusableView" customModule="Yogogo" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyProfileInfoHeaderCollectionReusableView" id="rs9-Db-LkJ" customClass="MyProfileInfoHeaderCollectionReusableView" customModule="Yogogo" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nJ-b4-PVW">
-                                            <rect key="frame" x="20" y="20" width="100" height="100"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="0ip-6w-ZF6"/>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="HLI-4l-RJi"/>
-                                            </constraints>
-                                            <state key="normal" image="dog_profileImage"/>
-                                        </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="OOp-vG-jyd">
                                             <rect key="frame" x="154" y="43" width="240" height="54"/>
                                             <subviews>
@@ -503,20 +495,19 @@
                                                 <color key="titleColor" systemColor="labelColor"/>
                                             </state>
                                             <connections>
-                                                <action selector="editProfileButtonDidTap:" destination="rs9-Db-LkJ" eventType="touchUpInside" id="1i4-DT-IeD"/>
                                                 <segue destination="k03-TF-3DC" kind="presentation" modalPresentationStyle="fullScreen" id="ogl-pT-ZWv"/>
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-2" translatesAutoresizingMaskIntoConstraints="NO" id="nQ2-2J-MIl">
                                             <rect key="frame" x="20" y="136" width="374" height="52"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prince" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqj-YB-DLw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="66.5" height="27.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit your name..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqj-YB-DLw">
+                                                    <rect key="frame" x="0.0" y="0.0" width="173" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇹🇼Taiwan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smm-og-ALP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit your bio..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smm-og-ALP">
                                                     <rect key="frame" x="0.0" y="25.5" width="374" height="26.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
@@ -528,28 +519,35 @@
                                                 <constraint firstAttribute="trailing" secondItem="smm-og-ALP" secondAttribute="trailing" id="Oso-Rn-cjG"/>
                                             </constraints>
                                         </stackView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DzS-1b-h5G" userLabel="Profile Image View">
+                                            <rect key="frame" x="20" y="20.5" width="100" height="99"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="DzS-1b-h5G" secondAttribute="height" multiplier="1:1" id="cbi-Cu-qs9"/>
+                                                <constraint firstAttribute="width" constant="100" id="dcC-jb-LFa"/>
+                                            </constraints>
+                                            <imageReference key="image" image="person.circle" catalog="system" renderingMode="original"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="nQ2-2J-MIl" firstAttribute="leading" secondItem="7nJ-b4-PVW" secondAttribute="leading" id="93m-Pd-rrD"/>
                                         <constraint firstAttribute="trailing" secondItem="nQ2-2J-MIl" secondAttribute="trailing" constant="20" id="A7k-pn-wBE"/>
-                                        <constraint firstItem="7nJ-b4-PVW" firstAttribute="leading" secondItem="rs9-Db-LkJ" secondAttribute="leading" constant="20" id="DJC-SI-roc"/>
+                                        <constraint firstItem="nQ2-2J-MIl" firstAttribute="leading" secondItem="rs9-Db-LkJ" secondAttribute="leading" constant="20" id="C3G-P8-Mul"/>
+                                        <constraint firstItem="DzS-1b-h5G" firstAttribute="centerY" secondItem="9bG-Kn-Rkj" secondAttribute="centerY" id="HlM-JP-0T8"/>
                                         <constraint firstAttribute="trailing" secondItem="t7W-0y-5lZ" secondAttribute="trailing" constant="20" id="IA9-OV-HpH"/>
-                                        <constraint firstItem="OOp-vG-jyd" firstAttribute="centerY" secondItem="7nJ-b4-PVW" secondAttribute="centerY" id="VTO-z0-EDO"/>
-                                        <constraint firstItem="7nJ-b4-PVW" firstAttribute="width" secondItem="7nJ-b4-PVW" secondAttribute="height" multiplier="1:1" id="dHG-dB-kax"/>
+                                        <constraint firstItem="nQ2-2J-MIl" firstAttribute="top" secondItem="DzS-1b-h5G" secondAttribute="bottom" constant="16" id="bNh-JC-bUq"/>
                                         <constraint firstItem="t7W-0y-5lZ" firstAttribute="leading" secondItem="rs9-Db-LkJ" secondAttribute="leading" constant="20" id="edi-rL-hF0"/>
                                         <constraint firstAttribute="trailing" secondItem="OOp-vG-jyd" secondAttribute="trailing" constant="20" id="eeV-co-Z1r"/>
+                                        <constraint firstItem="DzS-1b-h5G" firstAttribute="top" secondItem="rs9-Db-LkJ" secondAttribute="top" constant="20" id="iTR-mq-VcY"/>
                                         <constraint firstItem="t7W-0y-5lZ" firstAttribute="top" secondItem="nQ2-2J-MIl" secondAttribute="bottom" constant="14" id="k92-e8-82y"/>
-                                        <constraint firstItem="7nJ-b4-PVW" firstAttribute="top" secondItem="rs9-Db-LkJ" secondAttribute="top" constant="20" id="wsR-da-cVS"/>
-                                        <constraint firstItem="nQ2-2J-MIl" firstAttribute="top" secondItem="7nJ-b4-PVW" secondAttribute="bottom" constant="16" id="zeO-kU-J8M"/>
+                                        <constraint firstItem="DzS-1b-h5G" firstAttribute="leading" secondItem="rs9-Db-LkJ" secondAttribute="leading" constant="20" id="sNX-cG-MhU"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="bioLabel" destination="smm-og-ALP" id="pVt-lt-eIE"/>
-                                        <outlet property="editProfileButton" destination="t7W-0y-5lZ" id="SqM-HU-tSs"/>
+                                        <outlet property="editProfileButton" destination="t7W-0y-5lZ" id="Xjq-Fd-3kC"/>
                                         <outlet property="followersCountButton" destination="Ke8-MM-NZB" id="Zx5-rO-zpd"/>
                                         <outlet property="followingCountButton" destination="7sM-yl-Ned" id="d7Q-R7-nZj"/>
                                         <outlet property="nameLabel" destination="aqj-YB-DLw" id="YX2-pr-ByQ"/>
                                         <outlet property="postsCountButton" destination="IxL-WB-nEJ" id="HMP-eN-cBU"/>
-                                        <outlet property="profileImageButton" destination="7nJ-b4-PVW" id="ztp-Sw-PWh"/>
+                                        <outlet property="profileImageView" destination="DzS-1b-h5G" id="6Y9-B9-OVX"/>
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
@@ -563,7 +561,7 @@
                             <constraint firstItem="9Wg-fg-OSp" firstAttribute="leading" secondItem="wcC-uf-tbp" secondAttribute="leading" id="SpD-sm-pcs"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="princekili" id="MER-db-j5K">
+                    <navigationItem key="navigationItem" title="username" id="MER-db-j5K">
                         <barButtonItem key="leftBarButtonItem" id="mfS-xS-smg">
                             <imageReference key="image" image="plus" catalog="system" symbolScale="large" renderingMode="original"/>
                             <connections>
@@ -885,7 +883,7 @@
         <!--princekili-->
         <scene sceneID="0oj-0N-RLM">
             <objects>
-                <viewController id="z8X-2O-y8n" customClass="ProfileViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="z8X-2O-y8n" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w1l-Tw-DGk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -900,7 +898,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="rxN-5X-nRi" customClass="PhotoCollectionViewCell" customModule="Yogogo" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="rxN-5X-nRi">
                                         <rect key="frame" x="0.0" y="251" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="t37-le-4Fv">
@@ -918,12 +916,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="9nd-Kg-Lk0" secondAttribute="trailing" id="wM3-bk-OKP"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <connections>
-                                            <outlet property="photoImageView" destination="9nd-Kg-Lk0" id="L0H-jl-BMh"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileInfoHeaderCollectionReusableView" id="rCy-JV-HVP" customClass="ProfileInfoHeaderCollectionReusableView" customModule="Yogogo" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileInfoHeaderCollectionReusableView" id="rCy-JV-HVP">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -942,9 +937,6 @@
                                                             <state key="normal" title="129">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="postsButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="GBh-7Z-YTB"/>
-                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KB-jQ-jJg">
                                                             <rect key="frame" x="15.5" y="26" width="45" height="28"/>
@@ -970,9 +962,6 @@
                                                             <state key="normal" title="235">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="followerButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="S1i-tc-4NH"/>
-                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vR-5n-9fu">
                                                             <rect key="frame" x="0.0" y="26" width="76" height="28"/>
@@ -998,9 +987,6 @@
                                                             <state key="normal" title="570">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="followingButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="NNq-yj-ktj"/>
-                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6UD-b2-no1">
                                                             <rect key="frame" x="0.0" y="26" width="76" height="28"/>
@@ -1028,9 +1014,6 @@
                                                     <state key="normal" title="Following">
                                                         <color key="titleColor" systemColor="labelColor"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="editProfileButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="jgr-Hf-OEr"/>
-                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPd-4H-Ela">
                                                     <rect key="frame" x="189" y="0.0" width="185" height="35"/>
@@ -1041,9 +1024,6 @@
                                                     <state key="normal" title="Message">
                                                         <color key="titleColor" systemColor="labelColor"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="editProfileButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="Rfq-zP-5mF"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1087,15 +1067,6 @@
                                         <constraint firstItem="XxV-zP-gwb" firstAttribute="leading" secondItem="rCy-JV-HVP" secondAttribute="leading" constant="20" id="gWk-YP-KyU"/>
                                         <constraint firstItem="FH5-eG-gYb" firstAttribute="top" secondItem="vKu-g1-K0E" secondAttribute="bottom" constant="16" id="wZP-ze-NWA"/>
                                     </constraints>
-                                    <connections>
-                                        <outlet property="bioLabel" destination="rGA-dz-Xzn" id="KGJ-G5-NQy"/>
-                                        <outlet property="editProfileButton" destination="xcT-FZ-xQ5" id="jCc-u7-HIX"/>
-                                        <outlet property="followersCountButton" destination="9Pq-0N-3NY" id="KHb-IC-o61"/>
-                                        <outlet property="followingCountButton" destination="c39-YH-3mX" id="Oui-pB-zsK"/>
-                                        <outlet property="nameLabel" destination="Xi8-kg-k7d" id="8cp-dD-uOY"/>
-                                        <outlet property="postsCountButton" destination="MGd-AA-oAf" id="CX4-dd-pL4"/>
-                                        <outlet property="profileImageView" destination="vKu-g1-K0E" id="EdB-Ds-1eO"/>
-                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>
@@ -1113,9 +1084,6 @@
                             <color key="tintColor" systemColor="labelColor"/>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="collectionView" destination="SIC-aE-p8g" id="w9X-9L-evw"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="df2-Ne-Ez5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

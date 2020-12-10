@@ -36,7 +36,7 @@ class FeedViewController: UIViewController {
     private func getUserInfo() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
-        AuthManager.shared.getUserInfo(userId: userId) { (user) in
+        UserManager.shared.getUserInfo(userId: userId) { (user) in
             
         }
     }

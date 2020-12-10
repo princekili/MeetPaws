@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class SignInViewController: UIViewController {
     
-    let authManager = AuthManager.shared
+    let UserManager = UserManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class SignInViewController: UIViewController {
     
     func showNextVC() {
         // first time sign in?
-        authManager.checkFirstTimeSignIn { (isFirstTime) in
+        UserManager.checkFirstTimeSignIn { (isFirstTime) in
             if isFirstTime == true {
                 self.showPickUsernameVC()
             } else {

@@ -13,7 +13,7 @@ protocol ProfileTabsCollectionReusableViewDelegate: AnyObject {
     func listButtonDidTap()
 }
 
-class ProfileTabsCollectionReusableView: UICollectionReusableView {
+class MyProfileTabsCollectionReusableView: UICollectionReusableView {
         
     static let identifier = "ProfileTabsCollectionReusableView"
     

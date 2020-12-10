@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
-    let authManager = AuthManager.shared
+    let UserManager = UserManager.shared
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -33,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // MARK: -
             
             // Check the username
-//            authManager.getUserInfo(userId: uid) { (user) in
+//            UserManager.getUserInfo(userId: uid) { (user) in
 //                if user.username == "" {
 //                    self.showPickUsernameVC(sceneWindow)
 //                } else {

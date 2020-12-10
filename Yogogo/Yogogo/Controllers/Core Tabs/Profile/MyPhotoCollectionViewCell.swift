@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class PhotoCollectionViewCell: UICollectionViewCell {
+class MyPhotoCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "PhotoCollectionViewCell"
 

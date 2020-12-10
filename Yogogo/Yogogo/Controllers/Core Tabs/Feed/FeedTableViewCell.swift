@@ -46,7 +46,7 @@ class FeedTableViewCell: UITableViewCell {
     
     private var currentPost: Post?
     
-    let authManager = AuthManager.shared
+    let UserManager = UserManager.shared
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -65,7 +65,7 @@ class FeedTableViewCell: UITableViewCell {
         selectionStyle = .none
 
         // Get user info from DB
-        authManager.getUserInfo(userId: post.userId) { (user) in
+        UserManager.getUserInfo(userId: post.userId) { (user) in
             self.usernameButton.setTitle(user.username, for: .normal)
 
             self.profileImage.image = nil

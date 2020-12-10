@@ -9,23 +9,27 @@ import UIKit
 
 class EditProfileTableViewController: UITableViewController {
     
+    let UserManager = UserManager.shared
+    
     @IBOutlet weak var profileImage: UIImageView! {
         didSet {
             profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
         }
     }
     
-    @IBOutlet weak var nameLabel: UILabel!
-    
-    @IBOutlet weak var usernameLabel: UILabel!
-    
-    @IBOutlet weak var bioLabel: UILabel!
-    
-    @IBOutlet weak var bioTextView: UITextView! {
+    @IBOutlet weak var nameLabel: UILabel! {
         didSet {
-            bioTextView.placeholder = "Write your bio..."
+            
         }
     }
+    
+    @IBOutlet weak var usernameLabel: UILabel! {
+        didSet {
+            usernameLabel.text = UserManager.username
+        }
+    }
+    
+    @IBOutlet weak var bioTextView: UITextView!
     
     var imagePickerController: UIImagePickerController?
     
@@ -40,6 +44,12 @@ class EditProfileTableViewController: UITableViewController {
     
     @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Update user info
+    
+    private func updateUserInfo() {
+        
     }
     
     // MARK: - show next VC

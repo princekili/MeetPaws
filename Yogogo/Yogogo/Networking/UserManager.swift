@@ -10,9 +10,9 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 
-class AuthManager {
+class UserManager {
     
-    static let shared: AuthManager = AuthManager()
+    static let shared: UserManager = UserManager()
     
     private init() {}
     
@@ -210,5 +210,11 @@ class AuthManager {
                 print("Upload error -> ", error.localizedDescription)
             }
         }
+    }
+    
+    // MARK: - Update User Info
+    
+    func updateUserInfo(userId: String, completion: @escaping () -> Void) {
+        
     }
 }
