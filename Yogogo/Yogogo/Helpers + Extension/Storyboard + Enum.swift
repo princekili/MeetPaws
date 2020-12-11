@@ -14,6 +14,8 @@ enum StoryboardName: String {
     case auth = "Auth"
     
     case camera = "Camera"
+    
+    case editProfile = "EditProfile"
 }
 
 enum StoryboardId: String {
@@ -27,4 +29,6 @@ enum StoryboardId: String {
     case pickProfilePhotoVC = "PickProfilePhotoVC"
     
     case cameraVC = "CameraVC"
+    
+    case editProfileNC = "EditProfileNC"
 }

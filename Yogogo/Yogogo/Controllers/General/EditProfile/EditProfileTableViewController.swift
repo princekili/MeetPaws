@@ -7,15 +7,9 @@
 
 import UIKit
 
-protocol EditProfileDelegate: class {
-    func didClickDone()
-}
-
 class EditProfileTableViewController: UITableViewController {
     
     let userManager = UserManager.shared
-    
-    weak var delegate: EditProfileDelegate?
     
     @IBOutlet weak var profileImage: UIImageView! {
         didSet {
@@ -63,8 +57,6 @@ class EditProfileTableViewController: UITableViewController {
         
         userManager.updateUserInfo(image: profileImage, fullName: fullName, username: username, bio: bio) {
         }
-        
-        delegate?.didClickDone()
         
         dismiss(animated: true, completion: nil)
     }

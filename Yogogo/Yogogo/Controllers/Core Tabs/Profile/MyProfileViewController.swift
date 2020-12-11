@@ -29,13 +29,6 @@ class MyProfileViewController: UIViewController {
         collectionView.reloadData()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EditProfileSegueId" {
-            guard let nextVC = segue.destination as? EditProfileTableViewController else { return }
-            nextVC.delegate = self
-        }
-    }
-    
     private func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -148,17 +141,5 @@ extension MyProfileViewController: ProfileTabsCollectionReusableViewDelegate {
     
     func listButtonDidTap() {
         // Reload collection view
-    }
-}
-
-extension MyProfileViewController: EditProfileDelegate {
-    
-    func didClickDone() {
-//        guard let userId = Auth.auth().currentUser?.uid else { return }
-//        userManager.getUserInfo(userId: userId) { (user) in
-//            print("------  Get the currentUser info successfully in MyProfileViewController ------")
-//            print(user)
-//            self.collectionView.reloadData()
-//        }
     }
 }
