@@ -9,7 +9,7 @@ import UIKit
 
 class EditProfileTableViewController: UITableViewController {
     
-    let UserManager = UserManager.shared
+    let userManager = UserManager.shared
     
     @IBOutlet weak var profileImage: UIImageView! {
         didSet {
@@ -25,11 +25,13 @@ class EditProfileTableViewController: UITableViewController {
     
     @IBOutlet weak var usernameLabel: UILabel! {
         didSet {
-            usernameLabel.text = UserManager.username
+            usernameLabel.text = userManager.username
         }
     }
     
     @IBOutlet weak var bioTextView: UITextView!
+    
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     var imagePickerController: UIImagePickerController?
     
@@ -39,6 +41,16 @@ class EditProfileTableViewController: UITableViewController {
     }
     
     @IBAction func doneButtonDidTap(_ sender: UIBarButtonItem) {
+        doneButton.isEnabled = false
+        
+        guard let userId = userManager.currentUser?.userId else { return }
+        guard let fullName = nameLabel.text else { return }
+        guard let username = usernameLabel.text else { return }
+        guard let bio = bioTextView.text else { return }
+        userManager.updateUserInfo(userId: userId, fullName: fullName, username: username, bio: bio) {
+            print("------ Updates completed ------")
+        }
+        
         dismiss(animated: true, completion: nil)
     }
     

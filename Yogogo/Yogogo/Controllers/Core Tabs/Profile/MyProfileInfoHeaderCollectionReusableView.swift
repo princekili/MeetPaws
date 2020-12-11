@@ -9,7 +9,7 @@ import UIKit
 
 class MyProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
     
-    let UserManager = UserManager.shared
+    let userManager = UserManager.shared
         
     static let identifier = "MyProfileInfoHeaderCollectionReusableView"
     
@@ -17,7 +17,7 @@ class MyProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
         didSet {
             profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
             
-            let url = URL(string: UserManager.profileImage)
+            let url = URL(string: userManager.profileImage)
             profileImageView.kf.setImage(with: url)
         }
     }
@@ -33,29 +33,33 @@ class MyProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
     
     @IBOutlet weak var nameLabel: UILabel! {
         didSet {
-            
+            nameLabel.text = userManager.currentUser?.fullName
         }
     }
     
-    @IBOutlet weak var bioLabel: UILabel!
+    @IBOutlet weak var bioLabel: UILabel! {
+        didSet {
+            bioLabel.text = userManager.currentUser?.bio
+        }
+    }
     
     @IBOutlet weak var postsCountButton: UIButton! {
         didSet {
-            let count = String(UserManager.currentUser?.posts.count ?? 0)
+            let count = String(userManager.currentUser?.posts.count ?? 0)
                 postsCountButton.setTitle(count, for: .normal)
         }
     }
     
     @IBOutlet weak var followersCountButton: UIButton! {
         didSet {
-            let count = String(UserManager.currentUser?.followers.count ?? 0)
+            let count = String(userManager.currentUser?.followers.count ?? 0)
             followersCountButton.setTitle(count, for: .normal)
         }
     }
     
     @IBOutlet weak var followingCountButton: UIButton! {
         didSet {
-            let count = String(UserManager.currentUser?.following.count ?? 0)
+            let count = String(userManager.currentUser?.following.count ?? 0)
             followingCountButton.setTitle(count, for: .normal)
         }
     }
@@ -63,7 +67,7 @@ class MyProfileInfoHeaderCollectionReusableView: UICollectionReusableView {
     @IBAction func postsButtonDidTap(_ sender: UIButton) {
     }
     
-    @IBAction func followerButtonDidTap(_ sender: UIButton) {
+    @IBAction func followersButtonDidTap(_ sender: UIButton) {
     }
     
     @IBAction func followingButtonDidTap(_ sender: UIButton) {

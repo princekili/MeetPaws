@@ -29,7 +29,7 @@ class PickUsernameViewController: UIViewController {
     
     @IBOutlet weak var nextButton: CustomButton!
     
-    let UserManager = UserManager.shared
+    let userManager = UserManager.shared
     
     var isAvailable = false
     
@@ -52,7 +52,7 @@ class PickUsernameViewController: UIViewController {
         
         // Save Username
         guard let username = usernameTextField.text else { return }
-        UserManager.username = username
+        userManager.username = username
         
         // Show next page
         showNextVC()
@@ -62,7 +62,7 @@ class PickUsernameViewController: UIViewController {
         
         guard let username = usernameTextField.text else { return }
         
-        UserManager.checkUsername(username: username, completion: { (hasBeenUsed) in
+        userManager.checkUsername(username: username, completion: { (hasBeenUsed) in
             
             if hasBeenUsed! {
                 self.alertLabel.text = "The username \(username) is not available."

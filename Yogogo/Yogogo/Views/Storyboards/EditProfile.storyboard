@@ -211,6 +211,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bioTextView" destination="JeT-NZ-ime" id="fmX-cD-HG5"/>
+                        <outlet property="doneButton" destination="3nZ-8r-3os" id="rFZ-a6-LpL"/>
                         <outlet property="nameLabel" destination="ES6-0P-jUb" id="gQG-Hs-LLV"/>
                         <outlet property="profileImage" destination="6FO-1y-u9k" id="ei9-6D-IlZ"/>
                         <outlet property="usernameLabel" destination="Xns-rI-E3W" id="KJX-Ox-nMp"/>
@@ -223,7 +224,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ikR-0f-t66">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rHr-4R-m0J" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="EditProfileNC" automaticallyAdjustsScrollViewInsets="NO" id="rHr-4R-m0J" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gfb-Ak-SqT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

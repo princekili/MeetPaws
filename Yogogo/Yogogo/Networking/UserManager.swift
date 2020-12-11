@@ -214,7 +214,26 @@ class UserManager {
     
     // MARK: - Update User Info
     
-    func updateUserInfo(userId: String, completion: @escaping () -> Void) {
+    func updateUserInfo(userId: String, profilePhoto: UIImage, fullName: String, username: String, bio: String, completion: @escaping () -> Void) {
+        // Save to UserManager
+        currentUser?.fullName = fullName
+        currentUser?.username = username
+        currentUser?.bio = bio
+        print("------ Save user info to UserManager ------")
+        print(currentUser ?? "------ currentUser == nil ------")
         
+        // Save to DB
+        let user = [
+            "fullName": fullName,
+            "username": username,
+            "bio": bio
+        ]
+        
+        let childUpdates = ["\(userId)": user]
+        
+        ref.child("users").updateChildValues(childUpdates)
+        print("------ Save user info to Database ------")
+        
+        completion()
     }
 }

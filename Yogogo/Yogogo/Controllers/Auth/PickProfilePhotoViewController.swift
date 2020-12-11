@@ -20,7 +20,7 @@ class PickProfilePhotoViewController: UIViewController {
     
     var imagePickerController: UIImagePickerController?
     
-    let UserManager = UserManager.shared
+    let userManager = UserManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class PickProfilePhotoViewController: UIViewController {
     
     private func addUser() {
         // Save data
-        let username = UserManager.username
+        let username = userManager.username
         
         guard let image = profilePhotoImageView.image else {
             // Show alert
@@ -48,12 +48,12 @@ class PickProfilePhotoViewController: UIViewController {
             return
         }
         
-        UserManager.addUser(image: image) {
+        userManager.addUser(image: image) {
             print("Upload user '\(username)' data successfully!")
             self.showMainView()
             
             guard let userId = Auth.auth().currentUser?.uid else { return }
-            self.UserManager.getUserInfo(userId: userId) { (user) in
+            self.userManager.getUserInfo(userId: userId) { (user) in
             }
         }
     }

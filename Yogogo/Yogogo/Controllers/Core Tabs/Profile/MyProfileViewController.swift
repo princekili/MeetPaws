@@ -14,7 +14,7 @@ class MyProfileViewController: UIViewController {
     
     private var posts: [Post] = []
     
-    let UserManager = UserManager.shared
+    let userManager = UserManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class MyProfileViewController: UIViewController {
         navigationItem.backBarButtonItem?.tintColor = .label
         navigationItem.backButtonTitle = ""
         
-        let title = UserManager.username
+        let title = userManager.username
         navigationItem.title = title
     }
 }

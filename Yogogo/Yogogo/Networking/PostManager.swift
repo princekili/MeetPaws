@@ -17,7 +17,7 @@ final class PostManager {
     
     private init() {}
     
-    let UserManager = UserManager.shared
+    let userManager = UserManager.shared
     
     // MARK: Firebase Reference
     

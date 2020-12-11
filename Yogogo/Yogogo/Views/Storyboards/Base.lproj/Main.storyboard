@@ -440,7 +440,7 @@
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="followerButtonDidTap:" destination="rs9-Db-LkJ" eventType="touchUpInside" id="PCI-QQ-lVA"/>
+                                                                <action selector="followersButtonDidTap:" destination="rs9-Db-LkJ" eventType="touchUpInside" id="PCI-QQ-lVA"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3D-hx-FUB">
