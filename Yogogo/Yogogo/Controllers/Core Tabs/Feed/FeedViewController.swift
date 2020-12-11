@@ -31,13 +31,15 @@ class FeedViewController: UIViewController {
         
         tableView.reloadData()
         loadRecentPosts()
+        getUserInfo()
     }
     
     private func getUserInfo() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
         UserManager.shared.getUserInfo(userId: userId) { (user) in
-            
+            print("------  Get the currentUser info successfully in FeedVC ------")
+            print(user)
         }
     }
     
@@ -81,7 +83,7 @@ extension FeedViewController: LoadRecentPostsDelegate {
     
     @objc private func loadRecentPosts() {
         
-        print("👉 Loading Recent Posts...")
+        print("------ Loading Recent Posts... ------")
         
         isLoadingPost = true
         
@@ -164,7 +166,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             return
         }
         
-        print("👉 Loading Old Posts...")
+        print("------ Loading Old Posts... ------")
         
         PostManager.shared.getOldPosts(start: lastPostTimestamp, limit: 10) { (oldPosts) in
             

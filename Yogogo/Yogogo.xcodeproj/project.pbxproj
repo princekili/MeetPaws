@@ -67,7 +67,7 @@
 		A3C195E725779A9C00BAB46B /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195E625779A9C00BAB46B /* UIView + Extension.swift */; };
 		A3C195EA2577D6E600BAB46B /* MyPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195E92577D6E600BAB46B /* MyPhotoCollectionViewCell.swift */; };
 		A3C195ED2577E35F00BAB46B /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195EC2577E35F00BAB46B /* MyProfileViewController.swift */; };
-		A3C195F02577E7CF00BAB46B /* MyProfileInfoHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195EF2577E7CF00BAB46B /* MyProfileInfoHeaderCollectionReusableView.swift */; };
+		A3C195F02577E7CF00BAB46B /* MyProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195EF2577E7CF00BAB46B /* MyProfileHeaderCollectionReusableView.swift */; };
 		A3C195F32577E80900BAB46B /* MyProfileTabsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195F22577E80900BAB46B /* MyProfileTabsCollectionReusableView.swift */; };
 		A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99A256F87F1001DA842 /* AppDelegate.swift */; };
 		A3CEA99D256F87F1001DA842 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */; };
@@ -145,7 +145,7 @@
 		A3C195E625779A9C00BAB46B /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		A3C195E92577D6E600BAB46B /* MyPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A3C195EC2577E35F00BAB46B /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
-		A3C195EF2577E7CF00BAB46B /* MyProfileInfoHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileInfoHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		A3C195EF2577E7CF00BAB46B /* MyProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		A3C195F22577E80900BAB46B /* MyProfileTabsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTabsCollectionReusableView.swift; sourceTree = "<group>"; };
 		A3CEA997256F87F1001DA842 /* Yogogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yogogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3CEA99A256F87F1001DA842 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 			children = (
 				A3C195EC2577E35F00BAB46B /* MyProfileViewController.swift */,
 				A3C195E92577D6E600BAB46B /* MyPhotoCollectionViewCell.swift */,
-				A3C195EF2577E7CF00BAB46B /* MyProfileInfoHeaderCollectionReusableView.swift */,
+				A3C195EF2577E7CF00BAB46B /* MyProfileHeaderCollectionReusableView.swift */,
 				A3C195F22577E80900BAB46B /* MyProfileTabsCollectionReusableView.swift */,
 			);
 			path = Profile;
@@ -626,7 +626,7 @@
 				A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */,
 				A3551E7725728F610006099A /* Post.swift in Sources */,
 				A38293B025793CF50064D971 /* UserLocation.swift in Sources */,
-				A3C195F02577E7CF00BAB46B /* MyProfileInfoHeaderCollectionReusableView.swift in Sources */,
+				A3C195F02577E7CF00BAB46B /* MyProfileHeaderCollectionReusableView.swift in Sources */,
 				A3C195B82577751600BAB46B /* MessagesViewController.swift in Sources */,
 				A3C195E02577902100BAB46B /* StorageManager.swift in Sources */,
 				A3551EC12573901A0006099A /* UserListNetworking.swift in Sources */,

@@ -25,7 +25,7 @@ class AuthManager {
         
         ref.child("users").observeSingleEvent(of: .value) { (snapshot) in
             
-            var isFirstTime: Bool? = nil
+            var isFirstTime: Bool?
             
             let uid = Auth.auth().currentUser?.uid
             
@@ -70,7 +70,7 @@ class AuthManager {
     
     func checkUsername(_ userId: String, completion: @escaping (Bool?) -> Void) {
         
-        var hasUsername: Bool? = nil
+        var hasUsername: Bool?
             
         getUserInfo(userId: userId) { (user) in
             

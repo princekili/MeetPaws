@@ -304,10 +304,10 @@ extension CameraViewController {
         let ref = PostManager.shared.postDbRef
         ref.observeSingleEvent(of: .value) { (snapshot) in
             
-            print("👉 Total number of posts: \(snapshot.childrenCount)")
+            print("------ Total number of posts: \(snapshot.childrenCount) ------")
             
             guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
-                print("😭 There's no post.")
+                print("------ There's no post. ------")
                 return
             }
             

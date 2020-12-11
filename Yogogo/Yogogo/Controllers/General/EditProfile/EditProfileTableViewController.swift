@@ -7,29 +7,42 @@
 
 import UIKit
 
+protocol EditProfileDelegate: class {
+    func didClickDone()
+}
+
 class EditProfileTableViewController: UITableViewController {
     
     let userManager = UserManager.shared
     
+    weak var delegate: EditProfileDelegate?
+    
     @IBOutlet weak var profileImage: UIImageView! {
         didSet {
             profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+            
+            let url = URL(string: userManager.profileImage)
+            profileImage.kf.setImage(with: url)
         }
     }
     
     @IBOutlet weak var nameLabel: UILabel! {
         didSet {
-            
+            nameLabel.text = userManager.currentUser?.fullName
         }
     }
     
     @IBOutlet weak var usernameLabel: UILabel! {
         didSet {
-            usernameLabel.text = userManager.username
+            usernameLabel.text = userManager.currentUser?.username
         }
     }
     
-    @IBOutlet weak var bioTextView: UITextView!
+    @IBOutlet weak var bioTextView: UITextView! {
+        didSet {
+            bioTextView.text = userManager.currentUser?.bio
+        }
+    }
     
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
@@ -42,14 +55,16 @@ class EditProfileTableViewController: UITableViewController {
     
     @IBAction func doneButtonDidTap(_ sender: UIBarButtonItem) {
         doneButton.isEnabled = false
-        
-        guard let userId = userManager.currentUser?.userId else { return }
+
+        guard let profileImage = profileImage.image else { return }
         guard let fullName = nameLabel.text else { return }
         guard let username = usernameLabel.text else { return }
         guard let bio = bioTextView.text else { return }
-        userManager.updateUserInfo(userId: userId, fullName: fullName, username: username, bio: bio) {
-            print("------ Updates completed ------")
+        
+        userManager.updateUserInfo(image: profileImage, fullName: fullName, username: username, bio: bio) {
         }
+        
+        delegate?.didClickDone()
         
         dismiss(animated: true, completion: nil)
     }

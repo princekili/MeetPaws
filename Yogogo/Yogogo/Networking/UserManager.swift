@@ -16,7 +16,7 @@ class UserManager {
     
     private init() {}
     
-    var username = "No Username"
+    var username = "No Username" // for addUser()
     
     var profileImage = ""
     
@@ -85,6 +85,26 @@ class UserManager {
         }
     }
     
+    // MARK: - Get the author info
+    
+    func getAuthorInfo(userId: String, completion: @escaping (User) -> Void) {
+        
+        // Call Firebase API to retrieve the user info
+        ref.child("users").child(userId).observeSingleEvent(of: .value) { (snapshot) in
+            
+            let userInfo = snapshot.value as? [String: Any] ?? [:]
+            
+            guard let user = User(userId: userId, userInfo: userInfo) else {
+                print("------ User not found ------")
+                return
+            }
+
+            print("------ Get the post author info 'ID: \(user.username)' successfully ------")
+            
+            completion(user)
+        }
+    }
+    
     // MARK: - Get the user info
     
     func getUserInfo(userId: String, completion: @escaping (User) -> Void) {
@@ -99,16 +119,12 @@ class UserManager {
                 return
             }
             
-            // Save user info to AuthManager
+            // Save user info to currentUser of UserManager
             self.currentUser = user
-
-            print("------ Get the user info successfully ------")
-            print(self.currentUser ?? "------ There's no currentUser ------")
             
             completion(user)
         }
     }
-   
     
     // MARK: - Add a user on DB
     
@@ -147,8 +163,8 @@ class UserManager {
                 let profileImage = url.absoluteString
                 self.profileImage = profileImage
                 
-                let fullName = ""
-                let bio = ""
+                let fullName = "Edit your name..."
+                let bio = "Edit your bio..."
     //            let posts: [String] = [""]
     //            let followRequests: [String] = [""]
     //            let followers: [String] = [""]
@@ -214,26 +230,76 @@ class UserManager {
     
     // MARK: - Update User Info
     
-    func updateUserInfo(userId: String, profilePhoto: UIImage, fullName: String, username: String, bio: String, completion: @escaping () -> Void) {
-        // Save to UserManager
+    func updateUserInfo(image: UIImage, fullName: String, username: String, bio: String, completion: @escaping () -> Void) {
+        
+        // MARK: Update (local) currentUser of UserManager for instantly use
         currentUser?.fullName = fullName
         currentUser?.username = username
         currentUser?.bio = bio
-        print("------ Save user info to UserManager ------")
+        print("------ Update user info in UserManager ------")
         print(currentUser ?? "------ currentUser == nil ------")
         
-        // Save to DB
-        let user = [
-            "fullName": fullName,
-            "username": username,
-            "bio": bio
-        ]
+        // MARK: Update DB
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        let userRef = ref.child("users").child(userId)
+        guard let imageKey = userRef.key else { return }
+        let imageStorageRef = profilePhotoStorageRef.child("\(imageKey).jpg")
         
-        let childUpdates = ["\(userId)": user]
+        let scaledImage = image.scale(newWidth: 200)
+        guard let imageData = scaledImage.jpegData(compressionQuality: 0.7) else { return }
         
-        ref.child("users").updateChildValues(childUpdates)
-        print("------ Save user info to Database ------")
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpg"
         
-        completion()
+        let uploadTask = imageStorageRef.putData(imageData, metadata: metadata)
+
+        uploadTask.observe(.success) { (snapshot) in
+            
+            snapshot.reference.downloadURL { (url, error) in
+                
+                guard let url = url else { return }
+                let profileImage = url.absoluteString
+                self.profileImage = profileImage // for local use
+            
+                guard let posts: [String] = self.currentUser?.posts else { return }
+                guard let followRequests: [String] = self.currentUser?.followRequests else { return }
+                guard let followers: [String] = self.currentUser?.followers else { return }
+                guard let following: [String] = self.currentUser?.following else { return }
+                guard let postDidLike: [String] = self.currentUser?.postDidLike else { return }
+                guard let bookmarks: [String] = self.currentUser?.bookmarks else { return }
+                guard let ignoreList: [String] = self.currentUser?.ignoreList else { return }
+                guard let joinedDate = self.currentUser?.joinedDate else { return }
+                let lastLogin = Int(Date().timeIntervalSince1970 * 1000)
+                guard let isPrivate = self.currentUser?.isPrivate else { return }
+                guard let isOnline = self.currentUser?.isOnline else { return }
+                guard let isMapLocationEnabled = self.currentUser?.isMapLocationEnabled else { return }
+                
+                let user: [String: Any] = [
+                    "username": username,
+                    "profileImage": profileImage,
+                    "fullName": fullName,
+                    "bio": bio,
+                    "posts": posts,
+                    "followRequests": followRequests,
+                    "followers": followers,
+                    "following": following,
+                    "postDidLike": postDidLike,
+                    "bookmarks": bookmarks,
+                    "ignoreList": ignoreList,
+                    "joinedDate": joinedDate,
+                    "lastLogin": lastLogin,
+                    "isPrivate": isPrivate,
+                    "isOnline": isOnline,
+                    "isMapLocationEnabled": isMapLocationEnabled
+                ]
+                
+                let childUpdates = ["\(userId)": user]
+                
+                self.ref.child("users").updateChildValues(childUpdates)
+                print("------ Update user info in Database ------")
+            }
+        }
+        
+        completion() // do something after updating
     }
 }

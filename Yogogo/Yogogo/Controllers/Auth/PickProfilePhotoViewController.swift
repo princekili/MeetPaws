@@ -38,13 +38,13 @@ class PickProfilePhotoViewController: UIViewController {
     
     // MARK: - Upload data to add a new user
     
-    private func addUser() {
+    private func addUser() { 
         // Save data
         let username = userManager.username
         
         guard let image = profilePhotoImageView.image else {
             // Show alert
-            print("👉 Please select a profile photo!")
+            print("------ Please select a profile photo! ------")
             return
         }
         
@@ -52,9 +52,9 @@ class PickProfilePhotoViewController: UIViewController {
             print("Upload user '\(username)' data successfully!")
             self.showMainView()
             
-            guard let userId = Auth.auth().currentUser?.uid else { return }
-            self.userManager.getUserInfo(userId: userId) { (user) in
-            }
+//            guard let userId = Auth.auth().currentUser?.uid else { return }
+//            self.userManager.getUserInfo(userId: userId) { (user) in
+//            }
         }
     }
     

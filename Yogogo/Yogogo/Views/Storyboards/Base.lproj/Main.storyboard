@@ -392,7 +392,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyProfileInfoHeaderCollectionReusableView" id="rs9-Db-LkJ" customClass="MyProfileInfoHeaderCollectionReusableView" customModule="Yogogo" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyProfileInfoHeaderCollectionReusableView" id="rs9-Db-LkJ" customClass="MyProfileHeaderCollectionReusableView" customModule="Yogogo" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -495,7 +495,7 @@
                                                 <color key="titleColor" systemColor="labelColor"/>
                                             </state>
                                             <connections>
-                                                <segue destination="k03-TF-3DC" kind="presentation" modalPresentationStyle="fullScreen" id="ogl-pT-ZWv"/>
+                                                <segue destination="k03-TF-3DC" kind="presentation" identifier="EditProfileSegueId" modalPresentationStyle="fullScreen" id="ogl-pT-ZWv"/>
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-2" translatesAutoresizingMaskIntoConstraints="NO" id="nQ2-2J-MIl">

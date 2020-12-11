@@ -64,8 +64,8 @@ class FeedTableViewCell: UITableViewCell {
         // Set the cell style
         selectionStyle = .none
 
-        // Get user info from DB
-        userManager.getUserInfo(userId: post.userId) { (user) in
+        // Get post's author info from DB
+        userManager.getAuthorInfo(userId: post.userId) { (user) in
             self.usernameButton.setTitle(user.username, for: .normal)
 
             self.profileImage.image = nil

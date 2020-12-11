@@ -10,7 +10,7 @@ import Firebase
 struct User {
     
     var userId: String
-    
+
     var username: String
     
     var profileImage: String

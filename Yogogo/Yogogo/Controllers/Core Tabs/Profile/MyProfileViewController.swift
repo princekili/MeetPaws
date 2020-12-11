@@ -20,7 +20,20 @@ class MyProfileViewController: UIViewController {
         super.viewDidLoad()
 
         setupCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         setupNavigation()
+        collectionView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditProfileSegueId" {
+            guard let nextVC = segue.destination as? EditProfileTableViewController else { return }
+            nextVC.delegate = self
+        }
     }
     
     private func setupCollectionView() {
@@ -39,7 +52,7 @@ class MyProfileViewController: UIViewController {
         navigationItem.backBarButtonItem?.tintColor = .label
         navigationItem.backButtonTitle = ""
         
-        let title = userManager.username
+        let title = userManager.currentUser?.username
         navigationItem.title = title
     }
 }
@@ -108,9 +121,11 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
         }
         
         guard let headerForInfo = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                     withReuseIdentifier: MyProfileInfoHeaderCollectionReusableView.identifier,
-                                                                     for: indexPath) as? MyProfileInfoHeaderCollectionReusableView
+                                                                     withReuseIdentifier: MyProfileHeaderCollectionReusableView.identifier,
+                                                                     for: indexPath) as? MyProfileHeaderCollectionReusableView
         else { return UICollectionReusableView() }
+        
+        headerForInfo.setup()
         return headerForInfo
     }
     
@@ -133,5 +148,17 @@ extension MyProfileViewController: ProfileTabsCollectionReusableViewDelegate {
     
     func listButtonDidTap() {
         // Reload collection view
+    }
+}
+
+extension MyProfileViewController: EditProfileDelegate {
+    
+    func didClickDone() {
+//        guard let userId = Auth.auth().currentUser?.uid else { return }
+//        userManager.getUserInfo(userId: userId) { (user) in
+//            print("------  Get the currentUser info successfully in MyProfileViewController ------")
+//            print(user)
+//            self.collectionView.reloadData()
+//        }
     }
 }

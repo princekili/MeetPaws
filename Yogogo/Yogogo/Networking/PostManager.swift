@@ -122,7 +122,7 @@ final class PostManager {
             
             var newPosts: [Post] = []
             
-            print("👉 Total number of new posts: \(snapshot.childrenCount)")
+            print("------ Total number of new posts: \(snapshot.childrenCount) ------")
             
             guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
                 print("There's no post.")
@@ -159,7 +159,7 @@ final class PostManager {
             
             var oldPosts: [Post] = []
             
-            print("👉 Total number of old posts: \(snapshot.childrenCount)")
+            print("------ Total number of old posts: \(snapshot.childrenCount) ------")
             
             guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
                 print("There's no post.")
