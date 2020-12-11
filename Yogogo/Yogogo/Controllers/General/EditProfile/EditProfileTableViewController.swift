@@ -55,7 +55,7 @@ class EditProfileTableViewController: UITableViewController {
         guard let username = usernameLabel.text else { return }
         guard let bio = bioTextView.text else { return }
         
-        userManager.updateUserInfo(image: profileImage, fullName: fullName, username: username, bio: bio) {
+        userManager.updateEditProfile(image: profileImage, fullName: fullName, username: username, bio: bio) {
         }
         
         dismiss(animated: true, completion: nil)

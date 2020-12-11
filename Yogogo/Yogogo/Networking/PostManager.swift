@@ -36,6 +36,15 @@ final class PostManager {
         // Generate a unique ID for the post and prepare the post database reference
         let postDatabaseRef = postDbRef.childByAutoId()
         
+        // Save postId to UserManager
+        guard let postId = postDatabaseRef.key else { return }
+        userManager.currentUser?.posts.insert(postId, at: 0)
+        
+        userManager.updateLocalUserInfo {
+            print("------ postId: \(postId) ------")
+            print(self.userManager.currentUser?.posts ?? "------ No posts ------ ")
+        }
+        
         // Use the unique key as the image name and prepare the storage reference
         guard let imageKey = postDatabaseRef.key else { return }
 

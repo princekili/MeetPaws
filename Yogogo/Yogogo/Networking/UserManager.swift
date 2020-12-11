@@ -165,21 +165,21 @@ class UserManager {
                 
                 let fullName = "Edit your name..."
                 let bio = "Edit your bio..."
-    //            let posts: [String] = [""]
-    //            let followRequests: [String] = [""]
-    //            let followers: [String] = [""]
-    //            let following: [String] = [""]
-    //            let postDidLike: [String] = [""]
-    //            let bookmarks: [String] = [""]
-    //            let ignoreList: [String] = [""]
+                let posts: [String] = [""]
+                let followRequests: [String] = [""]
+                let followers: [String] = [""]
+                let following: [String] = [""]
+                let postDidLike: [String] = [""]
+                let bookmarks: [String] = [""]
+                let ignoreList: [String] = [""]
                 // MARK: - For test
-                let posts: [String] = ["-MO0EB0y1ajvJekzDzMJ"]
-                let followRequests: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
-                let followers: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
-                let following: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
-                let postDidLike: [String] = ["-MO0EB0y1ajvJekzDzMJ"]
-                let bookmarks: [String] = ["-MO0EB0y1ajvJekzDzMJ"]
-                let ignoreList: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
+//                let posts: [String] = ["-MO0EB0y1ajvJekzDzMJ"]
+//                let followRequests: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
+//                let followers: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
+//                let following: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
+//                let postDidLike: [String] = ["-MO0EB0y1ajvJekzDzMJ"]
+//                let bookmarks: [String] = ["-MO0EB0y1ajvJekzDzMJ"]
+//                let ignoreList: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
                 // MARK: -
                 let joinedDate = Int(Date().timeIntervalSince1970 * 1000)
                 let lastLogin = Int(Date().timeIntervalSince1970 * 1000)
@@ -228,9 +228,9 @@ class UserManager {
         }
     }
     
-    // MARK: - Update User Info
+    // MARK: - Update User Profile Info
     
-    func updateUserInfo(image: UIImage, fullName: String, username: String, bio: String, completion: @escaping () -> Void) {
+    func updateEditProfile(image: UIImage, fullName: String, username: String, bio: String, completion: @escaping () -> Void) {
         
         // MARK: Update (local) currentUser of UserManager for instantly use
         currentUser?.fullName = fullName
@@ -299,6 +299,59 @@ class UserManager {
                 print("------ Update user info in Database ------")
             }
         }
+        
+        completion() // do something after updating
+    }
+    
+    // MARK: - Update User Posts to DB
+    
+    func updateLocalUserInfo(completion: @escaping () -> Void) {
+        
+        print("------ Update local user info to DB ------")
+        print(currentUser ?? "------ currentUser == nil ------")
+        
+        // MARK: Update DB
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        guard let username = currentUser?.username else { return }
+        guard let profileImage = currentUser?.profileImage else { return }
+        guard let fullName = currentUser?.fullName else { return }
+        guard let bio = currentUser?.bio else { return }
+        guard let posts: [String] = self.currentUser?.posts else { return }
+        guard let followRequests: [String] = self.currentUser?.followRequests else { return }
+        guard let followers: [String] = self.currentUser?.followers else { return }
+        guard let following: [String] = self.currentUser?.following else { return }
+        guard let postDidLike: [String] = self.currentUser?.postDidLike else { return }
+        guard let bookmarks: [String] = self.currentUser?.bookmarks else { return }
+        guard let ignoreList: [String] = self.currentUser?.ignoreList else { return }
+        guard let joinedDate = self.currentUser?.joinedDate else { return }
+        let lastLogin = Int(Date().timeIntervalSince1970 * 1000)
+        guard let isPrivate = self.currentUser?.isPrivate else { return }
+        guard let isOnline = self.currentUser?.isOnline else { return }
+        guard let isMapLocationEnabled = self.currentUser?.isMapLocationEnabled else { return }
+        
+        let user: [String: Any] = [
+            "username": username,
+            "profileImage": profileImage,
+            "fullName": fullName,
+            "bio": bio,
+            "posts": posts,
+            "followRequests": followRequests,
+            "followers": followers,
+            "following": following,
+            "postDidLike": postDidLike,
+            "bookmarks": bookmarks,
+            "ignoreList": ignoreList,
+            "joinedDate": joinedDate,
+            "lastLogin": lastLogin,
+            "isPrivate": isPrivate,
+            "isOnline": isOnline,
+            "isMapLocationEnabled": isMapLocationEnabled
+        ]
+        
+        let childUpdates = ["\(userId)": user]
+        
+        self.ref.child("users").updateChildValues(childUpdates)
+        print("------ Update user info in Database ------")
         
         completion() // do something after updating
     }

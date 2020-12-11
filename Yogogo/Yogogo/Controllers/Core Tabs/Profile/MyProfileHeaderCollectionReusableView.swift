@@ -54,13 +54,13 @@ class MyProfileHeaderCollectionReusableView: UICollectionReusableView {
         nameLabel.text = userManager.currentUser?.fullName
         bioLabel.text = userManager.currentUser?.bio
         
-        let postsCount = String(userManager.currentUser?.posts.count ?? 0)
+        let postsCount = String((userManager.currentUser?.posts.count ?? 1) - 1)
             postsCountButton.setTitle(postsCount, for: .normal)
         
-        let followersCount = String(userManager.currentUser?.followers.count ?? 0)
+        let followersCount = String((userManager.currentUser?.followers.count ?? 1) - 1)
         followersCountButton.setTitle(followersCount, for: .normal)
         
-        let followingCount = String(userManager.currentUser?.following.count ?? 0)
+        let followingCount = String((userManager.currentUser?.following.count ?? 1) - 1)
         followingCountButton.setTitle(followingCount, for: .normal)
     }
 }
