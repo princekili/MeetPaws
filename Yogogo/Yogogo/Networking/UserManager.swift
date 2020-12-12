@@ -26,6 +26,8 @@ class UserManager {
     
     let ref: DatabaseReference = Database.database().reference()
     
+    let usersRef: DatabaseReference = Database.database().reference().child("users")
+    
     let profilePhotoStorageRef: StorageReference = Storage.storage().reference().child("profilePhotos")
     
     // MARK: - Check if first time sign in
@@ -227,17 +229,68 @@ class UserManager {
             }
         }
     }
+   
+    // MARK: - Update All User Info
+    
+    func updateAllUserInfo(completion: @escaping () -> Void) {
+
+        print("------ Update local user info to DB ------")
+        print(currentUser ?? "------ currentUser == nil ------")
+        print("-----^ Update local user info to DB ^-----")
+
+        // MARK: Update DB
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        guard let username = currentUser?.username else { return }
+        guard let profileImage = currentUser?.profileImage else { return }
+        guard let fullName = currentUser?.fullName else { return }
+        guard let bio = currentUser?.bio else { return }
+        guard let posts: [String] = self.currentUser?.posts else { return }
+        guard let followRequests: [String] = self.currentUser?.followRequests else { return }
+        guard let followers: [String] = self.currentUser?.followers else { return }
+        guard let following: [String] = self.currentUser?.following else { return }
+        guard let postDidLike: [String] = self.currentUser?.postDidLike else { return }
+        guard let bookmarks: [String] = self.currentUser?.bookmarks else { return }
+        guard let ignoreList: [String] = self.currentUser?.ignoreList else { return }
+        guard let joinedDate = self.currentUser?.joinedDate else { return }
+        let lastLogin = Int(Date().timeIntervalSince1970 * 1000)
+        guard let isPrivate = self.currentUser?.isPrivate else { return }
+        guard let isOnline = self.currentUser?.isOnline else { return }
+        guard let isMapLocationEnabled = self.currentUser?.isMapLocationEnabled else { return }
+
+        let user: [String: Any] = [
+            "username": username,
+            "profileImage": profileImage,
+            "fullName": fullName,
+            "bio": bio,
+            "posts": posts,
+            "followRequests": followRequests,
+            "followers": followers,
+            "following": following,
+            "postDidLike": postDidLike,
+            "bookmarks": bookmarks,
+            "ignoreList": ignoreList,
+            "joinedDate": joinedDate,
+            "lastLogin": lastLogin,
+            "isPrivate": isPrivate,
+            "isOnline": isOnline,
+            "isMapLocationEnabled": isMapLocationEnabled
+        ]
+
+        let childUpdates = ["\(userId)": user]
+
+        self.ref.child("users").updateChildValues(childUpdates)
+
+        completion() // do something after updating
+    }
     
     // MARK: - Update User Profile Info
     
-    func updateEditProfile(image: UIImage, fullName: String, username: String, bio: String, completion: @escaping () -> Void) {
+    func updateUserProfile(image: UIImage, fullName: String, username: String, bio: String, completion: @escaping () -> Void) {
         
-        // MARK: Update (local) currentUser of UserManager for instantly use
+        // MARK: Update local UserManager for instantly use
         currentUser?.fullName = fullName
         currentUser?.username = username
         currentUser?.bio = bio
-        print("------ Update user info in UserManager ------")
-        print(currentUser ?? "------ currentUser == nil ------")
         
         // MARK: Update DB
         guard let userId = Auth.auth().currentUser?.uid else { return }
@@ -270,82 +323,52 @@ class UserManager {
                 self.ref.child("users").child(userId).updateChildValues(profileImageUpdates)
                 self.ref.child("users").child(userId).updateChildValues(fullNameUpdates)
                 self.ref.child("users").child(userId).updateChildValues(bioUpdates)
-                print("------ Update user info in Database ------")
+                
+                print("------ Update Database ------")
+                print(usernameUpdates)
+                print(profileImageUpdates)
+                print(fullNameUpdates)
+                print(bioUpdates)
+                print("------------")
             }
         }
         
         completion() // do something after updating
     }
     
-    // MARK: - Update User Posts to DB
+    // MARK: - Update User Posts
     
-//    func updateLocalUserInfo(completion: @escaping () -> Void) {
-//
-//        print("------ Update local user info to DB ------")
-//        print(currentUser ?? "------ currentUser == nil ------")
-//
-//        // MARK: Update DB
-//        guard let userId = Auth.auth().currentUser?.uid else { return }
-//        guard let username = currentUser?.username else { return }
-//        guard let profileImage = currentUser?.profileImage else { return }
-//        guard let fullName = currentUser?.fullName else { return }
-//        guard let bio = currentUser?.bio else { return }
-//        guard let posts: [String] = self.currentUser?.posts else { return }
-//        guard let followRequests: [String] = self.currentUser?.followRequests else { return }
-//        guard let followers: [String] = self.currentUser?.followers else { return }
-//        guard let following: [String] = self.currentUser?.following else { return }
-//        guard let postDidLike: [String] = self.currentUser?.postDidLike else { return }
-//        guard let bookmarks: [String] = self.currentUser?.bookmarks else { return }
-//        guard let ignoreList: [String] = self.currentUser?.ignoreList else { return }
-//        guard let joinedDate = self.currentUser?.joinedDate else { return }
-//        let lastLogin = Int(Date().timeIntervalSince1970 * 1000)
-//        guard let isPrivate = self.currentUser?.isPrivate else { return }
-//        guard let isOnline = self.currentUser?.isOnline else { return }
-//        guard let isMapLocationEnabled = self.currentUser?.isMapLocationEnabled else { return }
-//
-//        let user: [String: Any] = [
-//            "username": username,
-//            "profileImage": profileImage,
-//            "fullName": fullName,
-//            "bio": bio,
-//            "posts": posts,
-//            "followRequests": followRequests,
-//            "followers": followers,
-//            "following": following,
-//            "postDidLike": postDidLike,
-//            "bookmarks": bookmarks,
-//            "ignoreList": ignoreList,
-//            "joinedDate": joinedDate,
-//            "lastLogin": lastLogin,
-//            "isPrivate": isPrivate,
-//            "isOnline": isOnline,
-//            "isMapLocationEnabled": isMapLocationEnabled
-//        ]
-//
-//        let childUpdates = ["\(userId)": user]
-//
-//        self.ref.child("users").updateChildValues(childUpdates)
-//        print("------ Update user info in Database ------")
-//
-//        completion() // do something after updating
-//    }
-    
-    func updateLocalUserInfo(completion: @escaping () -> Void) {
+    func updateUserPosts(completion: @escaping () -> Void) {
         
-        print("------ Update local user info to DB ------")
-        print(currentUser ?? "------ currentUser == nil ------")
-        
-        // MARK: Update DB
         guard let userId = Auth.auth().currentUser?.uid else { return }
-        guard let username = currentUser?.username else { return }
-        guard let posts: [String] = self.currentUser?.posts else { return }
+        guard let posts = self.currentUser?.posts else { return }
         
-        let usernameUpdates = ["username": username]
-        let postsUpdates = ["posts": posts]
+        let postsUpdate = ["posts": posts]
         
-        self.ref.child("users").child(userId).updateChildValues(usernameUpdates)
-        self.ref.child("users").child(userId).updateChildValues(postsUpdates)
-        print("------ Update user info in Database ------")
+//        self.ref.child("users").child(userId).updateChildValues(postsUpdate)
+        self.usersRef.child(userId).updateChildValues(postsUpdate)
+        
+        print("------ Update Database ------")
+        print(postsUpdate)
+        print("------------")
+        
+        completion() // do something after updating
+    }
+    
+    // MARK: - Update Post Like Count
+    
+    func updateLikeCount(completion: @escaping () -> Void) {
+        
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        guard let postDidLike = self.currentUser?.postDidLike else { return }
+        
+        let postDidLikeUpdate = ["postDidLike": postDidLike]
+        
+        self.usersRef.child(userId).updateChildValues(postDidLikeUpdate)
+        
+        print("------ Update Database ------")
+        print(postDidLikeUpdate)
+        print("------------")
         
         completion() // do something after updating
     }

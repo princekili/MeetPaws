@@ -40,9 +40,9 @@ final class PostManager {
         guard let postId = postDatabaseRef.key else { return }
         userManager.currentUser?.posts.insert(postId, at: 0)
         
-        userManager.updateLocalUserInfo {
-            print("------ postId: \(postId) ------")
-            print(self.userManager.currentUser?.posts ?? "------ No posts ------ ")
+        userManager.updateUserPosts {
+            print("------ New added postId: \(postId) ------")
+            print("------------")
         }
         
         // Use the unique key as the image name and prepare the storage reference
@@ -191,4 +191,12 @@ final class PostManager {
         })
         
     }
+    
+    // MARK: - Handle post's ❤️ (userDidLike)
+    
+//    func uploadPostUserDidLike(postId: String, completion: @escaping () -> Void) {
+//
+//        guard let userId = Auth.auth().currentUser?.uid else { return }
+//
+//    }
 }
