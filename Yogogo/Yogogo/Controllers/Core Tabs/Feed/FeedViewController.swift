@@ -31,10 +31,10 @@ class FeedViewController: UIViewController {
         
         tableView.reloadData()
         loadRecentPosts()
-        getUserInfo()
+        getCurrentUserInfo()
     }
     
-    private func getUserInfo() {
+    private func getCurrentUserInfo() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
         UserManager.shared.getUserInfo(userId: userId) { (user) in

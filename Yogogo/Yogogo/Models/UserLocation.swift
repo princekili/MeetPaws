@@ -9,7 +9,7 @@ import Foundation
 
 struct UserLocation {
     
-    var id: String
+    var userId: String
     
     var latitude: Double
     

@@ -35,16 +35,14 @@ class MapsViewController: UIViewController {
 //        checkStatus()
         setupMapView()
         userMapHandler()
-        
-        // MARK: - For test
-//        getUsers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         mapNetworking.mapsVC = self
-//        mapNetworking.observeUserLocation()
+        mapNetworking.observeUserLocation()
+        mapNetworking.observeUsers()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -15,14 +15,6 @@ struct Post {
 
     var userId: String // User.id
     
-//    var username: String
-    
-//    var userProfileImage: String // User.profileImage -> URL
-
-//    var thumbnailImage: String // URL
-    
-//    var images: [String] // [URL]
-    
     var imageFileURL: String
     
     var userDidLike: [String] // [User.id]
@@ -36,10 +28,6 @@ struct Post {
     enum PostInfoKey {
         
         static let userId = "userId"
-
-//        static let username = "username"
-        
-//        static let userProfileImage = "userProfileImage"
         
         static let imageFileURL = "imageFileURL"
         
@@ -54,8 +42,6 @@ struct Post {
     
     init(postId: String,
          userId: String,
-//         userProfileImage: String,
-//         username: String,
          imageFileURL: String,
          userDidLike: [String],
          caption: String,
@@ -63,8 +49,6 @@ struct Post {
     ) {
         self.postId = postId
         self.userId = userId
-//        self.userProfileImage = userProfileImage
-//        self.username = username
         self.imageFileURL = imageFileURL
         self.userDidLike = userDidLike
         self.caption = caption
@@ -76,8 +60,6 @@ struct Post {
           postInfo: [String: Any]
     ) {
         guard let userId = postInfo[PostInfoKey.userId] as? String,
-//              let username = postInfo[PostInfoKey.username] as? String,
-//              let userProfileImage = postInfo[PostInfoKey.userProfileImage] as? String,
               let imageFileURL = postInfo[PostInfoKey.imageFileURL] as? String,
               let userDidLike = postInfo[PostInfoKey.userDidLike] as? [String],
               let caption = postInfo[PostInfoKey.caption] as? String,
@@ -86,8 +68,6 @@ struct Post {
         
         self = Post(postId: postId,
                     userId: userId,
-//                    userProfileImage: userProfileImage,
-//                    username: username,
                     imageFileURL: imageFileURL,
                     userDidLike: userDidLike,
                     caption: caption,

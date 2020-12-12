@@ -15,9 +15,10 @@ class LocationNetworking {
     
     static var map = MGLMapView()
     
-    static let database = Firestore.firestore()
+    static let userManager = UserManager.shared
     
     static func startUpdatingUserLocation() {
+        
         LocationNetworking.mapTimer = Timer(timeInterval: 10,
                                      target: self,
                                      selector: #selector(LocationNetworking.updateCurrentLocation),
@@ -28,12 +29,14 @@ class LocationNetworking {
     }
     
     @objc static func updateCurrentLocation() {
-        guard CurrentUser.isMapLocationEnabled ?? false else { return }
+        
+        guard userManager.currentUser?.isMapLocationEnabled ?? false else { return }
         guard let currentLocation = LocationNetworking.map.userLocation?.coordinate else { return }
         
-        let ref = database.collection("userLocation").document(CurrentUser.uid)
-        let value = ["longitude": currentLocation.longitude, "latitude": currentLocation.latitude]
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference().child("userLocations").child(userId)
+        let values = ["longitude": currentLocation.longitude, "latitude": currentLocation.latitude]
         
-        ref.updateData(value)
+        ref.updateChildValues(values)
     }
 }

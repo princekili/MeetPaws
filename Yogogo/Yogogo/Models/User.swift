@@ -162,3 +162,10 @@ struct User {
         )
     }
 }
+
+// MARK: - Other Users List
+
+class Users {
+    
+    static var list = [User]()
+}

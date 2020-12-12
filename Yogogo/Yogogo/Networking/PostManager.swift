@@ -21,9 +21,7 @@ final class PostManager {
     
     // MARK: Firebase Reference
     
-    let baseDbRef: DatabaseReference = Database.database().reference()
-    
-    let postDbRef: DatabaseReference = Database.database().reference().child("posts")
+    let postsRef: DatabaseReference = Database.database().reference().child("posts")
     
     // MARK: Firebase Storage Reference
 
@@ -34,7 +32,7 @@ final class PostManager {
     func uploadPost(image: UIImage, caption: String, completion: @escaping () -> Void) {
         
         // Generate a unique ID for the post and prepare the post database reference
-        let postDatabaseRef = postDbRef.childByAutoId()
+        let postDatabaseRef = postsRef.childByAutoId()
         
         // Save postId to UserManager
         guard let postId = postDatabaseRef.key else { return }
@@ -112,7 +110,7 @@ final class PostManager {
     func getRecentPosts(start timestamp: Int? = nil, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
         
         // Ordered by timestamp
-        var postQuery = postDbRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
+        var postQuery = postsRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
         
         if let latestPostTimestamp = timestamp, latestPostTimestamp > 0 {
             
@@ -159,7 +157,7 @@ final class PostManager {
     
     func getOldPosts(start timestamp: Int, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
         
-        let postOrderedQuery = postDbRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
+        let postOrderedQuery = postsRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
         
         let postLimitedQuery = postOrderedQuery.queryEnding(atValue: timestamp - 1,
                                                             childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)

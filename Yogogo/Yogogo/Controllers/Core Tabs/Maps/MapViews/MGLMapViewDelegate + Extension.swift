@@ -22,15 +22,15 @@ extension MapsViewController: MGLMapViewDelegate {
             
         // Other users
         } else {
-            guard let pin = annotation as? AnnotationPin else { return nil }
+            guard let annotation = annotation as? AnnotationPin else { return nil }
             let reuseIdentifier = "UserAnnotation"
-            return UserAnnotationView(annotation: pin,
+            return UserAnnotationView(annotation: annotation,
                                       reuseIdentifier: reuseIdentifier,
-                                      user: pin.user)
+                                      user: annotation.user)
         }
     }
     
-    // MARK: - tap the user location annotation to toggle heading tracking mode.
+    // MARK: - didSelect - tap the user location annotation to toggle heading tracking mode.
     
     func mapView(_ mapView: MGLMapView, didSelect annotation: MGLAnnotation) {
         
@@ -87,7 +87,7 @@ extension MapsViewController: MGLMapViewDelegate {
         }
     }
     
-    // MARK: -
+    // MARK: - didDeselect
     
     func mapView(_ mapView: MGLMapView, didDeselect annotation: MGLAnnotation) {
         self.userInfoTab?.removeFromSuperview()

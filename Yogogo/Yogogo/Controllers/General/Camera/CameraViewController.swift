@@ -301,7 +301,7 @@ extension CameraViewController {
     // MARK: - Observe Posts
     
     func observePosts() {
-        let ref = PostManager.shared.postDbRef
+        let ref = PostManager.shared.postsRef
         ref.observeSingleEvent(of: .value) { (snapshot) in
             
             print("------ Total number of posts: \(snapshot.childrenCount) ------")

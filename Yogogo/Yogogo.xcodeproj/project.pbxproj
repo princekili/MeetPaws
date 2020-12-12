@@ -12,7 +12,6 @@
 		A313700F257E58C400CEA185 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A313700E257E58C400CEA185 /* PostManager.swift */; };
 		A3137012257E5C4100CEA185 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3137011257E5C4100CEA185 /* UIImage + Extension.swift */; };
 		A3137015257E872500CEA185 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3137014257E872500CEA185 /* CacheManager.swift */; };
-		A3137018257EB45C00CEA185 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3137017257EB45C00CEA185 /* ProfileManager.swift */; };
 		A313701B257EBB1D00CEA185 /* UINavigationController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A313701A257EBB1D00CEA185 /* UINavigationController + Extension.swift */; };
 		A316BE402574F30700989152 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE3F2574F30700989152 /* FeedViewController.swift */; };
 		A316BE432574F3F400989152 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE422574F3F400989152 /* FeedTableViewCell.swift */; };
@@ -90,7 +89,6 @@
 		A313700E257E58C400CEA185 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		A3137011257E5C4100CEA185 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		A3137014257E872500CEA185 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
-		A3137017257EB45C00CEA185 /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		A313701A257EBB1D00CEA185 /* UINavigationController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController + Extension.swift"; sourceTree = "<group>"; };
 		A316BE3F2574F30700989152 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		A316BE422574F3F400989152 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 				A313700E257E58C400CEA185 /* PostManager.swift */,
 				A331584A257FC950004CC86C /* UserManager.swift */,
 				A3137014257E872500CEA185 /* CacheManager.swift */,
-				A3137017257EB45C00CEA185 /* ProfileManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -638,7 +635,6 @@
 				A3EE02E9257B489800459C54 /* WelcomeViewController.swift in Sources */,
 				A3C195C0257777A500BAB46B /* PostViewController.swift in Sources */,
 				A3551EAE25735B000006099A /* UIImageView + Extension.swift in Sources */,
-				A3137018257EB45C00CEA185 /* ProfileManager.swift in Sources */,
 				A3CEA99D256F87F1001DA842 /* SceneDelegate.swift in Sources */,
 				A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */,
 				A3136FC4257DF3C000CEA185 /* EditUsernameViewController.swift in Sources */,
