@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9v-97-d4c" customClass="CustomButton" customModule="Yogogo" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9v-97-d4c">
                                 <rect key="frame" x="20" y="742" width="374" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -73,6 +73,9 @@ you have to sign in.</string>
                     <navigationItem key="navigationItem" id="gYw-bn-p1v"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="signInWithAppleButton" destination="L9v-97-d4c" id="IYb-LV-aBk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xzC-cO-0fU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -86,7 +89,7 @@ you have to sign in.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIi-ee-cdq" customClass="CustomButton" customModule="Yogogo" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIi-ee-cdq">
                                 <rect key="frame" x="20" y="742" width="374" height="60"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
@@ -177,7 +180,7 @@ You can always change it later.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BW7-i0-mLv" customClass="CustomButton" customModule="Yogogo" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BW7-i0-mLv">
                                 <rect key="frame" x="20" y="742" width="374" height="60"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
@@ -260,17 +263,6 @@ please pick a profile photo.</string>
             <point key="canvasLocation" x="1828" y="173"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="BW7-i0-mLv">
-            <size key="intrinsicContentSize" width="30" height="36"/>
-        </designable>
-        <designable name="JIi-ee-cdq">
-            <size key="intrinsicContentSize" width="43" height="36"/>
-        </designable>
-        <designable name="L9v-97-d4c">
-            <size key="intrinsicContentSize" width="176" height="24"/>
-        </designable>
-    </designables>
     <resources>
         <image name="applelogo" catalog="system" width="103" height="128"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>

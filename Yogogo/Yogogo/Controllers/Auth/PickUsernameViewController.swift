@@ -27,7 +27,12 @@ class PickUsernameViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var nextButton: CustomButton!
+    @IBOutlet weak var nextButton: UIButton! {
+        didSet {
+            nextButton.layer.cornerRadius = 8
+            nextButton.layer.masksToBounds = true
+        }
+    }
     
     let userManager = UserManager.shared
     

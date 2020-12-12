@@ -21,28 +21,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
 //        guard let _ = (scene as? UIWindowScene) else { return }
         
-        // MARK: - Determine the initial page
+        // MARK: - Determine the Initial Page
         
         guard let sceneWindow = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: sceneWindow)
         
-        if let _ = Auth.auth().currentUser?.uid {
-            // MARK: - For test
-            self.showPickUsernameVC(sceneWindow)
-            // MARK: -
-            
-            // Check the username
-//            UserManager.getUserInfo(userId: uid) { (user) in
-//                if user.username == "" {
-//                    self.showPickUsernameVC(sceneWindow)
-//                } else {
-//                    self.showMainView(sceneWindow)
-//                }
-//            }
-            
+        if Auth.auth().currentUser?.uid != nil {
+            self.showMainView(sceneWindow)
+//            showSignInVC(sceneWindow)
+            print("------ Auth.auth().currentUser?.uid != nil ------")
         } else {
             showSignInVC(sceneWindow)
+            print("------ Auth.auth().currentUser?.uid == nil ------")
         }
     }
     

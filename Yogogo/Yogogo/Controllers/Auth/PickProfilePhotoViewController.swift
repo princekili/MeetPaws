@@ -16,7 +16,12 @@ class PickProfilePhotoViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var okButton: CustomButton!
+    @IBOutlet weak var okButton: UIButton! {
+        didSet {
+            okButton.layer.cornerRadius = 8
+            okButton.layer.masksToBounds = true
+        }
+    }
     
     var imagePickerController: UIImagePickerController?
     
@@ -49,7 +54,7 @@ class PickProfilePhotoViewController: UIViewController {
         }
         
         userManager.addUser(image: image) {
-            print("Upload user '\(username)' data successfully!")
+            print("------ Upload new added user '\(username)' data successfully! ------")
             self.showMainView()
             
 //            guard let userId = Auth.auth().currentUser?.uid else { return }

@@ -13,19 +13,28 @@ class SignInViewController: UIViewController {
     
     let userManager = UserManager.shared
     
+    @IBOutlet weak var signInWithAppleButton: UIButton! {
+        didSet {
+            signInWithAppleButton.layer.cornerRadius = 8
+            signInWithAppleButton.layer.masksToBounds = true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
     // MARK: - Show next view
+    // MARK: First time sign in?
     
     func showNextVC() {
-        // first time sign in?
         userManager.checkFirstTimeSignIn { (isFirstTime) in
             if isFirstTime == true {
+                print("------ isFirstTime = true ------")
                 self.showPickUsernameVC()
             } else {
+                print("------ isFirstTime = false ------")
                 self.showMainView()
             }
         }
@@ -75,16 +84,16 @@ class SignInViewController: UIViewController {
     
     // MARK: - Default 'Sign in with Apple' button
     
-    private func setupSignInButton() {
-        let button = ASAuthorizationAppleIDButton()
-        button.addTarget(self, action: #selector(handleSignInWithAppleButtonDidTap), for: .touchUpInside)
-        button.center = view.center
-        view.addSubview(button)
-    }
-    
-    @objc private func handleSignInWithAppleButtonDidTap() {
-        performSignIn()
-    }
+//    private func setupSignInButton() {
+//        let button = ASAuthorizationAppleIDButton()
+//        button.addTarget(self, action: #selector(handleSignInWithAppleButtonDidTap), for: .touchUpInside)
+//        button.center = view.center
+//        view.addSubview(button)
+//    }
+//
+//    @objc private func handleSignInWithAppleButtonDidTap() {
+//        performSignIn()
+//    }
 }
 
 // MARK: - ASAuthorizationControllerDelegate
@@ -135,9 +144,10 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                 // MARK: - User is signed in to Firebase with Apple successfully.
                 
                 if let user = authResult?.user {
-                    print("Your're signed in as: \(user.displayName ?? "You know who I am"), id: \(user.uid), email: \(user.email ?? "unknown email").")
+                    let username = UserManager.shared.currentUser?.username
+                    print("Your're signed in as: \(username ?? "You know who I am"), id: \(user.uid), email: \(user.email ?? "unknown email").")
                     
-                    // Present next view
+                    // Show next view
                     self.showNextVC()
                 }
             }

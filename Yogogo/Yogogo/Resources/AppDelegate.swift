@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         if let user = Auth.auth().currentUser {
-            print("Your're signed in as \(user.displayName ?? "unknown name"), id: \(user.uid), email: \(user.email ?? "unknown email").")
+            let name = UserManager.shared.currentUser?.username
+            print("Your're signed in as \(name ?? "Unknown name"), id: \(user.uid), email: \(user.email ?? "unknown email").")
         }
         
         // MARK: -

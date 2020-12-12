@@ -15,7 +15,8 @@ class EditProfileTableViewController: UITableViewController {
         didSet {
             profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
             
-            let url = URL(string: userManager.profileImage)
+            guard let image = userManager.currentUser?.profileImage else { return }
+            let url = URL(string: image)
             profileImage.kf.setImage(with: url)
         }
     }
@@ -56,9 +57,9 @@ class EditProfileTableViewController: UITableViewController {
         guard let bio = bioTextView.text else { return }
         
         userManager.updateUserProfile(image: profileImage, fullName: fullName, username: username, bio: bio) {
-            print("------ Print currentUser in UserManager ------")
-            print(self.userManager.currentUser ?? "------ currentUser == nil ------")
-            print("------------")
+//            print("------ Print currentUser in UserManager ------")
+//            print(self.userManager.currentUser ?? "------ currentUser == nil ------")
+//            print("------------")
         }
         
         dismiss(animated: true, completion: nil)

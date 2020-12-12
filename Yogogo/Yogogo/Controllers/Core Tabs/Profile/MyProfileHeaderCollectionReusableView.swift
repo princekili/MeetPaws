@@ -48,7 +48,8 @@ class MyProfileHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     func setup() {
-        let url = URL(string: userManager.profileImage)
+        guard let profileImage = userManager.currentUser?.profileImage else { return }
+        let url = URL(string: profileImage)
         profileImageView.kf.setImage(with: url)
         
         nameLabel.text = userManager.currentUser?.fullName

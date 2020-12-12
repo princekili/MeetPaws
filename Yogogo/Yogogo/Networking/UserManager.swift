@@ -36,7 +36,7 @@ class UserManager {
         
         ref.child("users").observeSingleEvent(of: .value) { (snapshot) in
             
-            var isFirstTime: Bool?
+            var isFirstTime = true
             
             let uid = Auth.auth().currentUser?.uid
             
@@ -48,6 +48,7 @@ class UserManager {
             for user in allUsers {
                 if user.key == uid {
                     isFirstTime = false
+                    break
                 } else {
                     isFirstTime = true
                 }
@@ -121,7 +122,7 @@ class UserManager {
                 return
             }
             
-            // Save user info to currentUser of UserManager
+            // Save user info to local UserManager
             self.currentUser = user
             
             completion(user)
@@ -312,7 +313,10 @@ class UserManager {
                 
                 guard let url = url else { return }
                 let profileImage = url.absoluteString
-                self.profileImage = profileImage // for local use
+                
+                // for local use
+                self.profileImage = profileImage
+                self.currentUser?.profileImage = profileImage
                 
                 let usernameUpdates = ["username": username]
                 let profileImageUpdates = ["profileImage": profileImage]
