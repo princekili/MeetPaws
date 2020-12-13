@@ -31,4 +31,6 @@ enum StoryboardId: String {
     case cameraVC = "CameraVC"
     
     case editProfileNC = "EditProfileNC"
+    
+    case profileVC = "ProfileVC"
 }

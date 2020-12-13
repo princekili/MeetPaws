@@ -55,12 +55,15 @@ extension MapsViewController: MGLMapViewDelegate {
                            animations: {
                             
                 self.userInfoTab = UserInfoTab(annotation: annotation)
-//                let tapGesture = UITapGestureRecognizer(target: self,
-//                                                        action: #selector(self.openMapsSettings))
-//                self.userInfoTab?.addGestureRecognizer(tapGesture)
-//                self.userInfoTab?.actionButton.addTarget(self,
-//                                                         action: #selector(self.openMapsSettings),
-//                                                         for: .touchUpInside)
+                            
+                let tapGesture = UITapGestureRecognizer(target: self,
+                                                        action: #selector(self.showUserProfile))
+                self.userInfoTab?.addGestureRecognizer(tapGesture)
+                            
+                self.userInfoTab?.actionButton.addTarget(self,
+                                                         action: #selector(self.showUserProfile),
+                                                         for: .touchUpInside)
+                            
                 self.view.addSubview(self.userInfoTab!)
             })
             

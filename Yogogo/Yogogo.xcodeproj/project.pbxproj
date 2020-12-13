@@ -404,9 +404,9 @@
 		A3CEA98E256F87F1001DA842 = {
 			isa = PBXGroup;
 			children = (
-				A3315840257FB1FB004CC86C /* launchscreen_logo_0.png */,
 				A3CEA999256F87F1001DA842 /* Yogogo */,
 				A3EE0308257B7B2500459C54 /* launchscreen_logo_0.png */,
+				A3315840257FB1FB004CC86C /* launchscreen_logo_0.png */,
 				A3CEA998256F87F1001DA842 /* Products */,
 				85420101885810C289ADB45C /* Pods */,
 				C2A847738FFA764735640344 /* Frameworks */,

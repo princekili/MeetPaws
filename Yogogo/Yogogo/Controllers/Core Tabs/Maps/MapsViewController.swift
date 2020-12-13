@@ -79,6 +79,13 @@ class MapsViewController: UIViewController {
         }
     }
     
+    @objc func showUserProfile() {
+        let storyboard = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
+        let profileVC = storyboard.instantiateViewController(identifier: StoryboardId.profileVC.rawValue)
+        
+        present(profileVC, animated: true, completion: nil)
+    }
+    
     // MARK: - Check user authorization of location
     
     private func deniedAlert() {
