@@ -29,6 +29,8 @@ class MapsNetworking {
         
         for user in Users.list {
             
+//            guard user.userId != Auth.auth().currentUser?.uid else { continue }
+            
             guard user.isMapLocationEnabled else { continue }
             
             userLocationsRef.child(user.userId).observe(.value) { (snapshot) in
@@ -83,6 +85,7 @@ class MapsNetworking {
             guard let users = snapshot.value as? [String: Any] else { return }
             
             for userId in users.keys {
+                guard userId != Auth.auth().currentUser?.uid else { continue }
                 self.userIds.append(userId)
                 print("------ userId: \(userId) ------")
             }

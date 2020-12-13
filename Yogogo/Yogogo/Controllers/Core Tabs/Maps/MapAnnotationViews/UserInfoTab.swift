@@ -7,6 +7,7 @@
 
 import UIKit
 import Mapbox
+import Kingfisher
 
 class UserInfoTab: UIView {
 
@@ -75,7 +76,9 @@ class UserInfoTab: UIView {
         // Other users
         if let pin = annotation as? AnnotationPin {
             self.pin = pin
-            profileImage.loadImage(url: pin.user.profileImage)
+            let url = URL(string: pin.user.profileImage)
+            profileImage.kf.setImage(with: url)
+//            profileImage.loadImage(url: pin.user.profileImage)
             actionButton.setImage(UIImage(systemName: "bubble.right"), for: .normal)
 
             guard let title = annotation.title,

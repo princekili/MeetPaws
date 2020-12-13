@@ -57,11 +57,11 @@ extension MapsViewController: MGLMapViewDelegate {
                 self.userInfoTab = UserInfoTab(annotation: annotation)
                             
                 let tapGesture = UITapGestureRecognizer(target: self,
-                                                        action: #selector(self.showUserProfile))
+                                                        action: #selector(self.showMyProfileVC))
                 self.userInfoTab?.addGestureRecognizer(tapGesture)
                             
                 self.userInfoTab?.actionButton.addTarget(self,
-                                                         action: #selector(self.showUserProfile),
+                                                         action: #selector(self.showMyProfileVC),
                                                          for: .touchUpInside)
                             
                 self.view.addSubview(self.userInfoTab!)
@@ -69,7 +69,7 @@ extension MapsViewController: MGLMapViewDelegate {
             
         // Other users
         } else {
-            guard let pin = annotation as? AnnotationPin else { return }
+            guard let annotation = annotation as? AnnotationPin else { return }
             UIView.animate(withDuration: 0.3,
                            delay: 0,
                            usingSpringWithDamping: 0.7,
@@ -77,14 +77,14 @@ extension MapsViewController: MGLMapViewDelegate {
                            options: .curveEaseIn,
                            animations: {
                             
-                self.userInfoTab = UserInfoTab(annotation: pin)
-//                let tapGesture = UITapGestureRecognizer(target: self,
-//                                                        action: #selector(self.openUserMessagesHandler))
-                self.selectedUser = pin.user
-//                self.userInfoTab?.addGestureRecognizer(tapGesture)
-//                self.userInfoTab?.actionButton.addTarget(self,
-//                                                         action: #selector(self.openUserMessagesHandler),
-//                                                         for: .touchUpInside)
+                self.userInfoTab = UserInfoTab(annotation: annotation)
+                let tapGesture = UITapGestureRecognizer(target: self,
+                                                        action: #selector(self.showUserProfileVC))
+                self.selectedUser = annotation.user
+                self.userInfoTab?.addGestureRecognizer(tapGesture)
+                self.userInfoTab?.actionButton.addTarget(self,
+                                                         action: #selector(self.showUserProfileVC),
+                                                         for: .touchUpInside)
                 self.view.addSubview(self.userInfoTab!)
             })
         }
