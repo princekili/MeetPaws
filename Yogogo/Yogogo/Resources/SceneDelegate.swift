@@ -28,12 +28,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: sceneWindow)
         
         if Auth.auth().currentUser?.uid != nil {
-            self.showMainView(sceneWindow)
-//            showSignInVC(sceneWindow)
             print("------ Auth.auth().currentUser?.uid != nil ------")
+            showNextVC(sceneWindow)
         } else {
-            showSignInVC(sceneWindow)
             print("------ Auth.auth().currentUser?.uid == nil ------")
+            showSignInVC(sceneWindow)
         }
     }
     
@@ -73,6 +72,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 }
 
 extension SceneDelegate {
+    
+    func showNextVC(_ sceneWindow: UIWindowScene) {
+        userManager.checkFirstTimeSignIn { (isFirstTime) in
+            if isFirstTime == true {
+                print("------ isFirstTime = true ------")
+                self.showPickUsernameVC(sceneWindow)
+            } else {
+                print("------ isFirstTime = false ------")
+                self.showMainView(sceneWindow)
+            }
+        }
+    }
     
     func showMainView(_ sceneWindow: UIWindowScene) {
         let storyboard = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)

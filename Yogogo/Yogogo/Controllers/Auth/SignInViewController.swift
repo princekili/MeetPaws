@@ -11,6 +11,8 @@ import FirebaseAuth
 
 class SignInViewController: UIViewController {
     
+    static let shared = SignInViewController()
+    
     let userManager = UserManager.shared
     
     @IBOutlet weak var signInWithAppleButton: UIButton! {
