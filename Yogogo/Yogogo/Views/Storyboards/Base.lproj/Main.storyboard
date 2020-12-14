@@ -368,14 +368,14 @@
                                     <inset key="sectionInset" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="wMk-Nk-DLg" customClass="MyPhotoCollectionViewCell" customModule="Yogogo" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyPostCollectionViewCell" id="wMk-Nk-DLg" userLabel="PostCollectionViewCell" customClass="MyPostCollectionViewCell" customModule="Yogogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="251" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FZr-sE-PuK">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholdertext.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YCg-xC-Rd3">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholdertext.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YCg-xC-Rd3" userLabel="Post Image View">
                                                     <rect key="frame" x="0.0" y="1" width="128" height="125.5"/>
                                                 </imageView>
                                             </subviews>
@@ -387,12 +387,12 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <outlet property="photoImageView" destination="YCg-xC-Rd3" id="4kZ-ae-uho"/>
+                                            <outlet property="postImageView" destination="YCg-xC-Rd3" id="uYb-bl-L2z"/>
                                             <segue destination="hqz-xZ-NLG" kind="show" id="OWB-mP-dw3"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyProfileInfoHeaderCollectionReusableView" id="rs9-Db-LkJ" customClass="MyProfileHeaderCollectionReusableView" customModule="Yogogo" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyProfileHeaderCollectionReusableView" id="rs9-Db-LkJ" customClass="MyProfileHeaderCollectionReusableView" customModule="Yogogo" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -883,7 +883,7 @@
         <!--username-->
         <scene sceneID="0oj-0N-RLM">
             <objects>
-                <viewController storyboardIdentifier="UserProfileVC" id="z8X-2O-y8n" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserProfileVC" id="z8X-2O-y8n" customClass="UserProfileViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w1l-Tw-DGk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -898,7 +898,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="rxN-5X-nRi">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserPostCollectionViewCell" id="rxN-5X-nRi" userLabel="PostCollectionViewCell" customClass="UserPostCollectionViewCell" customModule="Yogogo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="251" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="t37-le-4Fv">
@@ -916,9 +916,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="9nd-Kg-Lk0" secondAttribute="trailing" id="wM3-bk-OKP"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="postImageView" destination="9nd-Kg-Lk0" id="87f-Pl-gX7"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileInfoHeaderCollectionReusableView" id="rCy-JV-HVP">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserProfileHeaderCollectionReusableView" id="rCy-JV-HVP" customClass="UserProfileHeaderCollectionReusableView" customModule="Yogogo" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -937,6 +940,9 @@
                                                             <state key="normal" title="129">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="postsButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="w3p-Mk-3bM"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KB-jQ-jJg">
                                                             <rect key="frame" x="15.5" y="26" width="45" height="28"/>
@@ -962,6 +968,9 @@
                                                             <state key="normal" title="235">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="followersButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="KcA-5G-dwi"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vR-5n-9fu">
                                                             <rect key="frame" x="0.0" y="26" width="76" height="28"/>
@@ -987,6 +996,9 @@
                                                             <state key="normal" title="570">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="followingButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="lBI-0h-Alr"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6UD-b2-no1">
                                                             <rect key="frame" x="0.0" y="26" width="76" height="28"/>
@@ -1005,7 +1017,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="XxV-zP-gwb">
                                             <rect key="frame" x="20" y="202" width="374" height="35"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcT-FZ-xQ5">
+                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcT-FZ-xQ5">
                                                     <rect key="frame" x="0.0" y="0.0" width="185" height="35"/>
                                                     <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                     <constraints>
@@ -1015,8 +1027,11 @@
                                                     <state key="normal" title="Follow">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="followButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="Wyp-bm-sW8"/>
+                                                    </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPd-4H-Ela">
+                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPd-4H-Ela">
                                                     <rect key="frame" x="189" y="0.0" width="185" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="mWs-kc-f9A"/>
@@ -1025,6 +1040,9 @@
                                                     <state key="normal" title="Message">
                                                         <color key="titleColor" systemColor="labelColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="messageButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="tN6-kA-Nqp"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1068,6 +1086,16 @@
                                         <constraint firstItem="XxV-zP-gwb" firstAttribute="leading" secondItem="rCy-JV-HVP" secondAttribute="leading" constant="20" id="gWk-YP-KyU"/>
                                         <constraint firstItem="FH5-eG-gYb" firstAttribute="top" secondItem="vKu-g1-K0E" secondAttribute="bottom" constant="16" id="wZP-ze-NWA"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="bioLabel" destination="rGA-dz-Xzn" id="Ozr-Us-MaB"/>
+                                        <outlet property="followButton" destination="xcT-FZ-xQ5" id="m0Y-fo-UeH"/>
+                                        <outlet property="followersCountButton" destination="9Pq-0N-3NY" id="mo2-so-SEb"/>
+                                        <outlet property="followingCountButton" destination="c39-YH-3mX" id="Mur-Hd-L0c"/>
+                                        <outlet property="messageButton" destination="bPd-4H-Ela" id="8p6-Wc-Iza"/>
+                                        <outlet property="nameLabel" destination="Xi8-kg-k7d" id="1s0-gY-8YE"/>
+                                        <outlet property="postsCountButton" destination="MGd-AA-oAf" id="bmq-R5-0Qf"/>
+                                        <outlet property="profileImageView" destination="vKu-g1-K0E" id="CJI-kb-Yev"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>
@@ -1085,6 +1113,9 @@
                             <color key="tintColor" systemColor="labelColor"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="SIC-aE-p8g" id="iA8-2y-fmC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="df2-Ne-Ez5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

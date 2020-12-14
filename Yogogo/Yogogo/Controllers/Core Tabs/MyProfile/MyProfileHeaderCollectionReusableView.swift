@@ -11,7 +11,7 @@ class MyProfileHeaderCollectionReusableView: UICollectionReusableView {
     
     let userManager = UserManager.shared
         
-    static let identifier = "MyProfileInfoHeaderCollectionReusableView"
+    static let identifier = "MyProfileHeaderCollectionReusableView"
     
     @IBOutlet weak var profileImageView: UIImageView! {
         didSet {

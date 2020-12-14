@@ -1,15 +1,15 @@
 //
-//  ProfileViewController.swift
+//  UserProfileViewController.swift
 //  Yogogo
 //
-//  Created by prince on 2020/12/2.
+//  Created by prince on 2020/12/14.
 //
 
 import UIKit
 import Firebase
 
-class MyProfileViewController: UIViewController {
-
+class UserProfileViewController: UIViewController {
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var posts: [Post] = []
@@ -35,9 +35,9 @@ class MyProfileViewController: UIViewController {
 
         // Header for tabs
         // It's necessary for programming UI
-        collectionView.register(MyProfileTabsCollectionReusableView.self,
+        collectionView.register(UserProfileTabsCollectionReusableView.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                withReuseIdentifier: MyProfileTabsCollectionReusableView.identifier)
+                                withReuseIdentifier: UserProfileTabsCollectionReusableView.identifier)
     }
     
     private func setupNavigation() {
@@ -50,7 +50,7 @@ class MyProfileViewController: UIViewController {
     }
 }
 
-extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension UserProfileViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -68,8 +68,8 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
 //        let model = posts[indexPath.item]
         
         guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: MyPostCollectionViewCell.identifier,
-                for: indexPath) as? MyPostCollectionViewCell
+                withReuseIdentifier: UserPostCollectionViewCell.identifier,
+                for: indexPath) as? UserPostCollectionViewCell
         else {
             return UICollectionViewCell()
         }
@@ -107,16 +107,16 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
         if indexPath.section == 1 {
             // tabs header
             guard let headerForTabs = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                         withReuseIdentifier: MyProfileTabsCollectionReusableView.identifier,
-                                                                         for: indexPath) as? MyProfileTabsCollectionReusableView
+                                                                         withReuseIdentifier: UserProfileTabsCollectionReusableView.identifier,
+                                                                         for: indexPath) as? UserProfileTabsCollectionReusableView
             else { return UICollectionReusableView() }
             headerForTabs.delegate = self
             return headerForTabs
         }
         
         guard let headerForInfo = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                     withReuseIdentifier: MyProfileHeaderCollectionReusableView.identifier,
-                                                                     for: indexPath) as? MyProfileHeaderCollectionReusableView
+                                                                     withReuseIdentifier: UserProfileHeaderCollectionReusableView.identifier,
+                                                                     for: indexPath) as? UserProfileHeaderCollectionReusableView
         else { return UICollectionReusableView() }
         
         headerForInfo.setup()
@@ -125,16 +125,14 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 {
-            return CGSize(width: collectionView.width,
-                          height: 250)
+            return CGSize(width: collectionView.width, height: 250)
         }
         // Size of section tabs
-        return CGSize(width: collectionView.width,
-                      height: 50)
-    }
+        return CGSize(width: collectionView.width, height: 50)
+    }   
 }
 
-extension MyProfileViewController: MyProfileTabsCollectionReusableViewDelegate {
+extension UserProfileViewController: UserProfileTabsCollectionReusableViewDelegate {
     
     func gridButtonDidTap() {
         // Reload collection view

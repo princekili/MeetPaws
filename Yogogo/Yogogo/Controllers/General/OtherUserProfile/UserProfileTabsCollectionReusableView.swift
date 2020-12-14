@@ -1,23 +1,23 @@
 //
-//  ProfileTabsCollectionReusableView.swift
+//  UserProfileTabsCollectionReusableView.swift
 //  Yogogo
 //
-//  Created by prince on 2020/12/2.
+//  Created by prince on 2020/12/15.
 //
 
 import UIKit
 
-protocol MyProfileTabsCollectionReusableViewDelegate: AnyObject {
+protocol UserProfileTabsCollectionReusableViewDelegate: AnyObject {
     
     func gridButtonDidTap()
     func listButtonDidTap()
 }
 
-class MyProfileTabsCollectionReusableView: UICollectionReusableView {
+class UserProfileTabsCollectionReusableView: UICollectionReusableView {
         
-    static let identifier = "MyProfileTabsCollectionReusableView"
+    static let identifier = "UserProfileTabsCollectionReusableView"
     
-    weak var delegate: MyProfileTabsCollectionReusableViewDelegate?
+    weak var delegate: UserProfileTabsCollectionReusableViewDelegate?
     
     struct Constants {
         static let padding: CGFloat = 12
