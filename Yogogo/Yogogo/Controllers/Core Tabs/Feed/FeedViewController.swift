@@ -87,7 +87,7 @@ extension FeedViewController: LoadRecentPostsDelegate {
         
         isLoadingPost = true
         
-        PostManager.shared.getRecentPosts(start: postFeed.first?.timestamp, limit: 10) { (newPosts) in
+        PostManager.shared.getRecentPosts(start: postFeed.first?.timestamp, limit: 5) { (newPosts) in
             
             if newPosts.count > 0 {
                 // Add the array to the beginning of the posts arrays
@@ -168,7 +168,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         
         print("------ Loading Old Posts... ------")
         
-        PostManager.shared.getOldPosts(start: lastPostTimestamp, limit: 10) { (oldPosts) in
+        PostManager.shared.getOldPosts(start: lastPostTimestamp, limit: 5) { (oldPosts) in
             
             // Add old posts to existing arrays and table view
             var indexPaths: [IndexPath] = []

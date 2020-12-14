@@ -12,14 +12,24 @@ class PostTableViewCell: UITableViewCell {
     
     static let identifier = "PostTableViewCell"
     
-    @IBOutlet weak var profileImageButton: UIButton! {
+    @IBOutlet weak var profileImage: UIImageView! {
         didSet {
-            profileImageButton.layer.cornerRadius = 36 / 2
-            profileImageButton.layer.masksToBounds = true
+            profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+            profileImage.layer.masksToBounds = true
+            profileImage.translatesAutoresizingMaskIntoConstraints = false
+            
+            guard let imageUrl = UserManager.shared.currentUser?.profileImage else { return }
+            let url = URL(string: imageUrl)
+            profileImage.kf.setImage(with: url)
         }
     }
     
-    @IBOutlet weak var usernameButton: UIButton!
+    @IBOutlet weak var usernameButton: UIButton! {
+        didSet {
+            guard let username = UserManager.shared.currentUser?.username else { return }
+            usernameButton.setTitle(username, for: .normal)
+        }
+    }
     
     @IBOutlet weak var settingButton: UIButton!
     
@@ -45,13 +55,10 @@ class PostTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

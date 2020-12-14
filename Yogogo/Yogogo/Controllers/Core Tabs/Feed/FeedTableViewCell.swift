@@ -10,6 +10,12 @@ import Kingfisher
 
 class FeedTableViewCell: UITableViewCell {
     
+    static let identifier = "FeedTableViewCell"
+    
+    private var currentPost: Post?
+    
+    let userManager = UserManager.shared
+    
     @IBOutlet weak var profileImage: UIImageView! {
         didSet {
             profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
@@ -41,12 +47,6 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     
     @IBOutlet weak var postImageView: UIImageView!
-    
-    static let identifier = "FeedTableViewCell"
-    
-    private var currentPost: Post?
-    
-    let userManager = UserManager.shared
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -80,11 +80,11 @@ class FeedTableViewCell: UITableViewCell {
         let date = DataClass.compareCurrentTime(str: stringTimestamp)
         timestampLabel.text = "\(date)"
         
-        let count = post.userDidLike.count
+        let count = post.userDidLike.count - 1
         if count > 1 {
-            likeCount.setTitle("\(post.userDidLike.count) likes", for: .normal)
+            likeCount.setTitle("\(count) likes", for: .normal)
         } else {
-            likeCount.setTitle("\(post.userDidLike.count) like", for: .normal)
+            likeCount.setTitle("\(count) like", for: .normal)
         }
         
         // Reset image view's image

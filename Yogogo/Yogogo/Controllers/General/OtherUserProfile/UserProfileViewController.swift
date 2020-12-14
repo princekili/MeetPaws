@@ -45,8 +45,7 @@ class UserProfileViewController: UIViewController {
         navigationItem.backBarButtonItem?.tintColor = .label
         navigationItem.backButtonTitle = ""
         
-        let title = userManager.currentUser?.username
-        navigationItem.title = title
+        navigationItem.title = "yooonova"
     }
 }
 
@@ -119,7 +118,7 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
                                                                      for: indexPath) as? UserProfileHeaderCollectionReusableView
         else { return UICollectionReusableView() }
         
-        headerForInfo.setup()
+//        headerForInfo.setup()
         return headerForInfo
     }
     

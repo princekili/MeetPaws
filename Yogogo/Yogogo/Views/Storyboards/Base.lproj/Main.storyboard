@@ -718,20 +718,20 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ERy-By-Jla">
-                                                    <rect key="frame" x="12" y="8" width="117" height="36"/>
+                                                    <rect key="frame" x="12" y="8" width="124" height="36"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taV-xA-sYl">
-                                                            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CHO-be-7hN">
+                                                            <rect key="frame" x="0.0" y="0.5" width="36" height="35"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="taV-xA-sYl" secondAttribute="height" multiplier="1:1" id="2yI-WI-PtT"/>
-                                                                <constraint firstAttribute="width" constant="36" id="RJW-o4-xRD"/>
+                                                                <constraint firstAttribute="height" constant="36" id="mIR-yC-yOq"/>
+                                                                <constraint firstAttribute="width" constant="36" id="oZe-Oi-eV9"/>
                                                             </constraints>
-                                                            <state key="normal" image="dog_profileImage"/>
-                                                        </button>
+                                                            <imageReference key="image" image="person.circle" catalog="system" renderingMode="original"/>
+                                                        </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLS-ga-lxF">
-                                                            <rect key="frame" x="44" y="0.0" width="73" height="33"/>
+                                                            <rect key="frame" x="44" y="0.0" width="80" height="33"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                            <state key="normal" title="princekili">
+                                                            <state key="normal" title="username">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                         </button>
@@ -851,7 +851,7 @@
                                             <outlet property="messageButton" destination="LLB-ZZ-REt" id="tAe-TC-eF6"/>
                                             <outlet property="moreButton" destination="BJ1-WE-qKW" id="el0-PA-tNm"/>
                                             <outlet property="postImageView" destination="Tcr-hN-E9K" id="TDt-jC-JIL"/>
-                                            <outlet property="profileImageButton" destination="taV-xA-sYl" id="wd1-QD-cNO"/>
+                                            <outlet property="profileImage" destination="CHO-be-7hN" id="byp-62-V8T"/>
                                             <outlet property="settingButton" destination="kgR-Ql-Noy" id="n3h-RY-lNb"/>
                                             <outlet property="shareButton" destination="9hC-IZ-Zfv" id="XOT-Dl-0PU"/>
                                             <outlet property="timestampLabel" destination="fWC-SO-MSU" id="PtA-n0-4l5"/>
@@ -932,12 +932,12 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="76" height="54"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGd-AA-oAf">
-                                                            <rect key="frame" x="18" y="0.0" width="40" height="28"/>
+                                                            <rect key="frame" x="23" y="0.0" width="30" height="28"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="28" id="bUp-IL-x5N"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
-                                                            <state key="normal" title="129">
+                                                            <state key="normal" title="23">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <connections>
@@ -960,12 +960,12 @@
                                                     <rect key="frame" x="82" y="0.0" width="76" height="54"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Pq-0N-3NY">
-                                                            <rect key="frame" x="16.5" y="0.0" width="43" height="28"/>
+                                                            <rect key="frame" x="23" y="0.0" width="30" height="28"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="28" id="fG2-6K-7dx"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
-                                                            <state key="normal" title="235">
+                                                            <state key="normal" title="77">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <connections>
@@ -988,12 +988,12 @@
                                                     <rect key="frame" x="164" y="0.0" width="76" height="54"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c39-YH-3mX">
-                                                            <rect key="frame" x="17" y="0.0" width="42" height="28"/>
+                                                            <rect key="frame" x="23" y="0.0" width="30" height="28"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="28" id="HX0-2j-r89"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
-                                                            <state key="normal" title="570">
+                                                            <state key="normal" title="38">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <connections>
@@ -1041,7 +1041,7 @@
                                                         <color key="titleColor" systemColor="labelColor"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="messageButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="tN6-kA-Nqp"/>
+                                                        <action selector="messageButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="mFv-Qc-dBX"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1123,14 +1123,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="N3A-wu-T8P"/>
+        <segue reference="LwI-kW-ddj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IU_profileImage" width="640" height="640"/>
         <image name="bell" catalog="system" width="128" height="124"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="dog_postImage" width="426" height="421"/>
-        <image name="dog_profileImage" width="230" height="230"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.text.square" catalog="system" width="128" height="114"/>
         <image name="heart.text.square.fill" catalog="system" width="128" height="114"/>
