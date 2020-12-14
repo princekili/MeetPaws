@@ -23,60 +23,9 @@ class MapsNetworking {
     
     let usersRef = Database.database().reference().child("users")
     
-    // MARK: - observe User Location
-    
-    func observeUserLocation() {
-        
-        for user in Users.list {
-            
-//            guard user.userId != Auth.auth().currentUser?.uid else { continue }
-            
-            guard user.isMapLocationEnabled else { continue }
-            
-            userLocationsRef.child(user.userId).observe(.value) { (snapshot) in
-                
-                guard let values = snapshot.value as? [String: Any] else { return }
-                guard let latitude = values["latitude"] as? Double else { return }
-                guard let longitude = values["longitude"] as? Double else { return }
-                
-                let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                self.handleUserLocation(user, coordinate)
-            }
-            
-            print("------ observe User Location... ------")
-        }
-    }
-    
-    // MARK: - handle User Location
-    
-    func handleUserLocation(_ user: User, _ coordinate: CLLocationCoordinate2D) {
-
-        let userPin = AnnotationPin(user, coordinate)
-        var annotationToRemove: AnnotationPin!
-        
-        let status = mapsVC.mapView?.annotations?.contains(where: { (annotation) -> Bool in
-            guard let oldAnnotation = annotation as? AnnotationPin else { return false }
-            annotationToRemove = oldAnnotation
-            
-            return oldAnnotation.user.userId == userPin.user.userId
-        })
-        
-        if status ?? false {
-            mapsVC.mapView?.removeAnnotation(annotationToRemove)
-        }
-        
-        mapsVC.userCoordinates[user.userId] = coordinate
-        mapsVC.mapView?.addAnnotation(userPin)
-        
-        if mapsVC.isUserSelected && mapsVC.selectedUser?.userId != nil {
-            guard let coordinate = mapsVC.userCoordinates[mapsVC.selectedUser!.userId] else { return }
-            mapsVC.mapView?.setCenter(coordinate, zoomLevel: 16, animated: true)
-        }
-    }
-    
     // MARK: - observe Users to get userIds
     
-    func observeUsers() {
+    func observeUsers(completion: @escaping ([String]) -> Void) {
         
         print("------ observe Users to get userIds... ------")
         
@@ -84,38 +33,35 @@ class MapsNetworking {
             
             guard let users = snapshot.value as? [String: Any] else { return }
             
+            var userIds: [String] = []
+            
             for userId in users.keys {
                 guard userId != Auth.auth().currentUser?.uid else { continue }
-                self.userIds.append(userId)
+                userIds.append(userId)
                 print("------ userId: \(userId) ------")
             }
-            
-            self.getUserInfo()
+            completion(userIds)
         }
     }
     
     // MARK: - get User Info
     
-    private func getUserInfo() {
+    func getUserInfo(userId: String, completion: @escaping (String, [String: Any]) -> Void) {
         
         print("------ get User Info... ------")
+        print("------ setup User Info... ------")
         
-        for userId in userIds {
+        usersRef.child(userId).observeSingleEvent(of: .value) { (snapshot) in
             
-            usersRef.child(userId).observeSingleEvent(of: .value) { (snapshot) in
-                
-                guard let values = snapshot.value as? [String: Any] else { return }
-                
-                self.setupUserInfo(userId: userId, values: values)
-            }
+            guard let values = snapshot.value as? [String: Any] else { return }
+            
+            completion(userId, values)
         }
     }
     
-    // MARK: - setup User Info
+    // MARK: - decode User = setup User Info
     
-    private func setupUserInfo(userId: String, values: [String: Any]) {
-        
-        print("------ setup User Info... ------")
+    func decodeUser(userId: String, values: [String: Any], completion: @escaping (User) -> Void) {
         
         guard let username = values["username"] as? String else { return }
         guard let profileImage = values["profileImage"] as? String else { return }
@@ -153,11 +99,56 @@ class MapsNetworking {
                         isMapLocationEnabled: isMapLocationEnabled
         )
         usersDict[userId] = user
-        
-        // MARK: Save to Users.list
-        Users.list.append(user)
         print("------ Users.list.append(user) ------")
         print(user)
-        print("------------")
+        
+        completion(user)
+    }
+    
+    // MARK: - observe User Location
+    
+    func observeUserLocation(user: User) {
+        
+        print("------ observe User Location... ------")
+        
+        if user.isMapLocationEnabled {
+            
+            userLocationsRef.child(user.userId).observe(.value) { (snapshot) in
+                
+                guard let values = snapshot.value as? [String: Any] else { return }
+                guard let latitude = values["latitude"] as? Double else { return }
+                guard let longitude = values["longitude"] as? Double else { return }
+                
+                let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                self.handleUserLocation(user, coordinate)
+            }
+        }
+    }
+    
+    // MARK: - handle User Location
+    
+    func handleUserLocation(_ user: User, _ coordinate: CLLocationCoordinate2D) {
+
+        let userPin = AnnotationPin(user, coordinate)
+        var annotationToRemove: AnnotationPin!
+        
+        let status = mapsVC.mapView?.annotations?.contains(where: { (annotation) -> Bool in
+            guard let oldAnnotation = annotation as? AnnotationPin else { return false }
+            annotationToRemove = oldAnnotation
+            
+            return oldAnnotation.user.userId == userPin.user.userId
+        })
+        
+        if status ?? false {
+            mapsVC.mapView?.removeAnnotation(annotationToRemove)
+        }
+        
+        mapsVC.userCoordinates[user.userId] = coordinate
+        mapsVC.mapView?.addAnnotation(userPin)
+        
+        if mapsVC.isUserSelected && mapsVC.selectedUser?.userId != nil {
+            guard let coordinate = mapsVC.userCoordinates[mapsVC.selectedUser!.userId] else { return }
+            mapsVC.mapView?.setCenter(coordinate, zoomLevel: 16, animated: true)
+        }
     }
 }

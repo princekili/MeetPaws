@@ -7,6 +7,7 @@
 
 import UIKit
 import Mapbox
+import Kingfisher
 
 class UserAnnotationView: MGLAnnotationView {
     
@@ -18,7 +19,9 @@ class UserAnnotationView: MGLAnnotationView {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
         let imageView = UIImageView()
-        imageView.loadImage(url: user.profileImage)
+        imageView.image = UIImage(systemName: "person.circle.fill")?.withTintColor(.white)
+        let url = URL(string: user.profileImage)
+        imageView.kf.setImage(with: url)
         
         frame = CGRect(x: 0, y: 0, width: size, height: size)
         imageLayer.frame = CGRect(x: 0, y: 0, width: size, height: size)

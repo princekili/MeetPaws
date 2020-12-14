@@ -23,6 +23,8 @@ class MapsViewController: UIViewController {
     
     var userInfoTab: UserInfoTab?
     
+    @objc let goButton = UIButton()
+    
 //    var settingsButton: MapSettingsButton!
     
 //    let point = MGLPointAnnotation()
@@ -35,14 +37,13 @@ class MapsViewController: UIViewController {
 //        checkStatus()
         setupMapView()
         userMapHandler()
+        setupGoButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         mapNetworking.mapsVC = self
-        mapNetworking.observeUserLocation()
-        mapNetworking.observeUsers()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,7 +51,7 @@ class MapsViewController: UIViewController {
         
     }
     
-    // MARK: -
+    // MARK: - setup MapView
     
     func setupMapView() {
         let mapView = MGLMapView(frame: view.bounds)
@@ -72,12 +73,58 @@ class MapsViewController: UIViewController {
         view.addSubview(mapView)
     }
     
+    // MARK: - setup StartButton
+    
+    private func setupGoButton() {
+        view.addSubview(goButton)
+        
+        let size: CGFloat = 70
+        let image = UIImage(named: "go_yellow")
+        goButton.setImage(image, for: .normal)
+        goButton.contentMode = .scaleAspectFill
+        goButton.backgroundColor = .white
+        goButton.clipsToBounds = true
+        goButton.layer.cornerRadius = size / 2
+        goButton.layer.borderWidth = 3
+        goButton.layer.borderColor = UIColor.white.cgColor
+        goButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraints = [
+            goButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            goButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 280),
+            goButton.widthAnchor.constraint(equalToConstant: size),
+            goButton.heightAnchor.constraint(equalToConstant: size)
+        ]
+        NSLayoutConstraint.activate(constraints)
+        
+        goButton.addTarget(self, action: #selector(goButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc private func goButtonDidTap() {
+        mapNetworking.observeUsers { [weak self] userIds in
+            
+            for userId in userIds {
+                self?.mapNetworking.getUserInfo(userId: userId) { [weak self] (userId, values) in
+                    
+                    self?.mapNetworking.decodeUser(userId: userId, values: values) { [weak self] user in
+                        
+                        self?.mapNetworking.observeUserLocation(user: user)
+                    }
+                }
+            }
+        }
+    }
+
+    // MARK: - user Map Handler
+    
     private func userMapHandler() {
         if !LocationNetworking.mapTimer.isValid {
             LocationNetworking.map.showsUserLocation = true
             LocationNetworking.startUpdatingUserLocation()
         }
     }
+    
+    // MARK: - show nextVC
     
     @objc func showMyProfileVC() {
         let storyboard = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
@@ -92,8 +139,11 @@ class MapsViewController: UIViewController {
         
         present(userProfileVC, animated: true, completion: nil)
     }
-    
-    // MARK: - Check user authorization of location
+}
+
+// MARK: - Check user authorization of location
+
+extension MapsViewController {
     
     private func deniedAlert() {
         let message = "To see the map you need to change your location settings. Please go to Settings/Yogogo/Location/ and allow location access.(While Using the App)"
@@ -133,18 +183,5 @@ class MapsViewController: UIViewController {
 //                        break
 //                }
 //            }
-//    }
-    
-    // MARK: - For test
-    
-    var users = [User]()
-    
-//    private func getUsers() {
-//        UserListNetworking().fetchUsers { (usersList) in
-//            let sortedUserList = Array(usersList.values).sorted { (friend1, friend2) -> Bool in
-//                return friend1.username ?? "" < friend2.username ?? ""
-//            }
-//            self.users = sortedUserList
-//        }
 //    }
 }

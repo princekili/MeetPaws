@@ -19,7 +19,7 @@ class LocationNetworking {
     
     static func startUpdatingUserLocation() {
         
-        LocationNetworking.mapTimer = Timer(timeInterval: 10,
+        LocationNetworking.mapTimer = Timer(timeInterval: 5,
                                      target: self,
                                      selector: #selector(LocationNetworking.updateCurrentLocation),
                                      userInfo: nil,
@@ -28,6 +28,7 @@ class LocationNetworking {
         RunLoop.current.add(LocationNetworking.mapTimer, forMode: RunLoop.Mode.common)
     }
     
+    // Update my location
     @objc static func updateCurrentLocation() {
         
         guard userManager.currentUser?.isMapLocationEnabled ?? false else { return }

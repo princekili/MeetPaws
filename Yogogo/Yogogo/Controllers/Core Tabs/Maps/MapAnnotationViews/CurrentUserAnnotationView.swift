@@ -7,6 +7,7 @@
 
 import UIKit
 import Mapbox
+import Kingfisher
 
 class CurrentUserAnnotationView: MGLUserLocationAnnotationView {
     
@@ -14,42 +15,24 @@ class CurrentUserAnnotationView: MGLUserLocationAnnotationView {
     
     let imageLayer = CALayer()
     
-    // MARK: - Mock data for test
-    
     override func update() {
         if frame.isNull {
             frame = CGRect(x: 0, y: 0, width: size, height: size)
             return setNeedsLayout()
         }
+        
         let imageView = UIImageView()
-        let url = UserManager.shared.currentUser?.profileImage
-        imageView.loadImage(url: url ?? "")
+        let url = URL(string: UserManager.shared.currentUser?.profileImage ?? "")
+        imageView.kf.setImage(with: url)
         
         imageLayer.bounds = CGRect(x: 0, y: 0, width: size, height: size)
         imageLayer.contents = imageView.image?.cgImage
         imageLayer.cornerRadius = imageLayer.frame.size.width / 2
         imageLayer.masksToBounds = true
         imageLayer.borderWidth = 2
+//        imageLayer.borderColor = UIColor().hexStringToUIColor(hex: "aee6e6").cgColor // light blue
+//        imageLayer.borderColor = UIColor().hexStringToUIColor(hex: "ffa45b").cgColor // orange
         imageLayer.borderColor = UIColor.systemBlue.cgColor
         layer.addSublayer(imageLayer)
     }
-    
-    // MARK: - the real one
-    
-//    override func update() {
-//        if frame.isNull {
-//            frame = CGRect(x: 0, y: 0, width: size, height: size)
-//            return setNeedsLayout()
-//        }
-//        let imageView = UIImageView()
-//        imageView.loadImage(url: CurrentUser.profileImage ?? "")
-//
-//        imageLayer.bounds = CGRect(x: 0, y: 0, width: size, height: size)
-//        imageLayer.contents = imageView.image?.cgImage
-//        imageLayer.cornerRadius = imageLayer.frame.size.width / 2
-//        imageLayer.masksToBounds = true
-//        imageLayer.borderWidth = 2
-//        imageLayer.borderColor = UIColor.white.cgColor
-//        layer.addSublayer(imageLayer)
-//    }
 }

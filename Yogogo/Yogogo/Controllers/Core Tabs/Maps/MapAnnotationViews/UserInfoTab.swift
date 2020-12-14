@@ -46,31 +46,6 @@ class UserInfoTab: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Mock data for test
-    
-//    private func setupUserInfo(_ annotation: MGLAnnotation) {
-//
-//        let url = "https://firebasestorage.googleapis.com/v0/b/mchat-764dc.appspot.com/o/ProfileImages%2F57ACD8E0-ED89-4BF0-93C1-BD1EB162C253.jpg?alt=media&token=f0520034-1b44-41d5-a0bb-53e2d3a0f323"
-//
-//        // Other users
-//        if let pin = annotation as? AnnotationPin {
-//            self.pin = pin
-//            profileImage.loadImage(url: url)
-//            actionButton.setImage(UIImage(systemName: "bubble.right"), for: .normal)
-//            nameLabel.text = "Test"
-//            lastSeenLabel.text = "Test"
-//
-//        // Me
-//        } else {
-//            profileImage.loadImage(url: url)
-//            actionButton.setImage(UIImage(systemName: "gear"), for: .normal)
-//            nameLabel.text = "Me"
-//            lastSeenLabel.text = "Online"
-//        }
-//    }
-    
-    // MARK: - the real one
-    
     private func setupUserInfo(_ annotation: MGLAnnotation) {
         
         // Other users
@@ -78,7 +53,6 @@ class UserInfoTab: UIView {
             self.pin = pin
             let url = URL(string: pin.user.profileImage)
             profileImage.kf.setImage(with: url)
-//            profileImage.loadImage(url: pin.user.profileImage)
             actionButton.setImage(UIImage(systemName: "bubble.right"), for: .normal)
 
             guard let title = annotation.title,
@@ -89,15 +63,16 @@ class UserInfoTab: UIView {
         // Me
         } else {
             guard let url = userManager.currentUser?.profileImage else { return }
-            profileImage.loadImage(url: url)
+            profileImage.kf.setImage(with: URL(string: url))
             actionButton.setImage(UIImage(systemName: "gear"), for: .normal)
+//            actionButton.setImage(UIImage(systemName: "person.circle"), for: .normal)
             nameLabel.text = "Me"
 
             guard let isMapLocationEnabled = userManager.currentUser?.isMapLocationEnabled else { return }
             var status: String?
             
             if isMapLocationEnabled {
-                status = "Online"
+                status = "Online - other users can see where I am"
             } else {
                 status = "Offline"
             }
@@ -173,7 +148,7 @@ class UserInfoTab: UIView {
         
         let constraints = [
             actionButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
         ]
         NSLayoutConstraint.activate(constraints)
     }
