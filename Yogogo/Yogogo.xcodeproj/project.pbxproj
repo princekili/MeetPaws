@@ -204,7 +204,7 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		A316BF082575805500989152 /* Profile */ = {
+		A316BF082575805500989152 /* MyProfile */ = {
 			isa = PBXGroup;
 			children = (
 				A3C195EC2577E35F00BAB46B /* MyProfileViewController.swift */,
@@ -212,7 +212,7 @@
 				A3C195EF2577E7CF00BAB46B /* MyProfileHeaderCollectionReusableView.swift */,
 				A3C195F22577E80900BAB46B /* MyProfileTabsCollectionReusableView.swift */,
 			);
-			path = Profile;
+			path = MyProfile;
 			sourceTree = "<group>";
 		};
 		A3551E49257255F50006099A /* Models */ = {
@@ -305,6 +305,13 @@
 			path = Maps;
 			sourceTree = "<group>";
 		};
+		A36B4BC82587B8F3005DAC50 /* OtherUserProfile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OtherUserProfile;
+			sourceTree = "<group>";
+		};
 		A3C136AC257C778F00960B4C /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,7 +376,7 @@
 				A316BE47257504E700989152 /* Search */,
 				A35BCC222570EFED0090B95E /* Maps */,
 				A3C195A72577672B00BAB46B /* Messages */,
-				A316BF082575805500989152 /* Profile */,
+				A316BF082575805500989152 /* MyProfile */,
 			);
 			path = "Core Tabs";
 			sourceTree = "<group>";
@@ -377,6 +384,7 @@
 		A3C195AF2577724500BAB46B /* General */ = {
 			isa = PBXGroup;
 			children = (
+				A36B4BC82587B8F3005DAC50 /* OtherUserProfile */,
 				A3EE0314257BB42E00459C54 /* Post */,
 				A3C136AC257C778F00960B4C /* Camera */,
 				A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */,

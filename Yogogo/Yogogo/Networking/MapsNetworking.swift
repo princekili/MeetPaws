@@ -49,7 +49,6 @@ class MapsNetworking {
     func getUserInfo(userId: String, completion: @escaping (String, [String: Any]) -> Void) {
         
         print("------ get User Info... ------")
-        print("------ setup User Info... ------")
         
         usersRef.child(userId).observeSingleEvent(of: .value) { (snapshot) in
             
@@ -111,6 +110,7 @@ class MapsNetworking {
         
         print("------ observe User Location... ------")
         
+        // Add users' pin
         if user.isMapLocationEnabled {
             
             userLocationsRef.child(user.userId).observe(.value) { (snapshot) in
@@ -121,6 +121,19 @@ class MapsNetworking {
                 
                 let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                 self.handleUserLocation(user, coordinate)
+            }
+            
+        // Remove users' pin
+        } else {
+        
+            userLocationsRef.child(user.userId).observe(.value) { (snapshot) in
+                
+                guard let values = snapshot.value as? [String: Any] else { return }
+                guard let latitude = values["latitude"] as? Double else { return }
+                guard let longitude = values["longitude"] as? Double else { return }
+                
+                let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                self.removeUserPin(user, coordinate)
             }
         }
     }
@@ -149,6 +162,33 @@ class MapsNetworking {
         if mapsVC.isUserSelected && mapsVC.selectedUser?.userId != nil {
             guard let coordinate = mapsVC.userCoordinates[mapsVC.selectedUser!.userId] else { return }
             mapsVC.mapView?.setCenter(coordinate, zoomLevel: 16, animated: true)
+        }
+    }
+    
+    func removeUserPin(_ user: User, _ coordinate: CLLocationCoordinate2D) {
+        
+        let userPin = AnnotationPin(user, coordinate)
+        mapsVC.userCoordinates[user.userId] = coordinate
+        mapsVC.mapView?.removeAnnotation(userPin)
+    }
+}
+
+// MARK: - Remove all users' pin
+
+extension MapsNetworking {
+    
+    func removeUserLocation(user: User) {
+        
+        print("------ remove User Location... ------")
+        
+        userLocationsRef.child(user.userId).observe(.value) { (snapshot) in
+            
+            guard let values = snapshot.value as? [String: Any] else { return }
+            guard let latitude = values["latitude"] as? Double else { return }
+            guard let longitude = values["longitude"] as? Double else { return }
+            
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            self.removeUserPin(user, coordinate)
         }
     }
 }

@@ -376,4 +376,20 @@ class UserManager {
         
         completion() // do something after updating
     }
+    
+    // MARK: - Update isMapLocationEnabled
+    
+    func updateIsMapLocationEnabled() {
+        
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        guard let isMapLocationEnabled = self.currentUser?.isMapLocationEnabled else { return }
+        
+        let isMapLocationEnabledUpdate = ["isMapLocationEnabled": isMapLocationEnabled]
+        
+        self.usersRef.child(userId).updateChildValues(isMapLocationEnabledUpdate)
+        
+        print("------ Update Database ------")
+        print("users/\(userId)/isMapLocationEnabled: \(isMapLocationEnabled)")
+        print("------------")
+    }
 }

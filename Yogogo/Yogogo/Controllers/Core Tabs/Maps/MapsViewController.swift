@@ -23,8 +23,10 @@ class MapsViewController: UIViewController {
     
     var userInfoTab: UserInfoTab?
     
-    @objc let goButton = UIButton()
+    let goButton = UIButton()
     
+    var isMapLocationEnabled = UserManager.shared.currentUser?.isMapLocationEnabled ?? false
+        
 //    var settingsButton: MapSettingsButton!
     
 //    let point = MGLPointAnnotation()
@@ -73,20 +75,21 @@ class MapsViewController: UIViewController {
         view.addSubview(mapView)
     }
     
-    // MARK: - setup StartButton
+    // MARK: - setup GoButton
     
     private func setupGoButton() {
         view.addSubview(goButton)
         
-        let size: CGFloat = 70
-        let image = UIImage(named: "go_yellow")
+        let image = isMapLocationEnabled ? UIImage(named: "stop_red") : UIImage(named: "go_yellow")
         goButton.setImage(image, for: .normal)
         goButton.contentMode = .scaleAspectFill
         goButton.backgroundColor = .white
-        goButton.clipsToBounds = true
+        
+        let size: CGFloat = 70
         goButton.layer.cornerRadius = size / 2
         goButton.layer.borderWidth = 3
         goButton.layer.borderColor = UIColor.white.cgColor
+        goButton.clipsToBounds = true
         goButton.translatesAutoresizingMaskIntoConstraints = false
         
         let constraints = [
@@ -101,6 +104,30 @@ class MapsViewController: UIViewController {
     }
     
     @objc private func goButtonDidTap() {
+        
+        isMapLocationEnabled.toggle()
+        UserManager.shared.currentUser?.isMapLocationEnabled = isMapLocationEnabled
+        UserManager.shared.updateIsMapLocationEnabled()
+        
+        setupGoButton()
+        
+        guard isMapLocationEnabled else {
+            
+//            mapNetworking.observeUsers { [weak self] userIds in
+//
+//                for userId in userIds {
+//                    self?.mapNetworking.getUserInfo(userId: userId) { [weak self] (userId, values) in
+//
+//                        self?.mapNetworking.decodeUser(userId: userId, values: values) { [weak self] user in
+//
+//                            self?.mapNetworking.removeUserLocation(user: user)
+//                        }
+//                    }
+//                }
+//            }
+            return
+        }
+        
         mapNetworking.observeUsers { [weak self] userIds in
             
             for userId in userIds {

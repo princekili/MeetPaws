@@ -73,6 +73,7 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
         else {
             return UICollectionViewCell()
         }
+        
         cell.setupForTest()
 //        cell.setup(with: model)
         
