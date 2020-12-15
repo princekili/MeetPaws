@@ -65,12 +65,12 @@ class FeedTableViewCell: UITableViewCell {
         selectionStyle = .none
 
         // Get post's author info from DB
-        userManager.getAuthorInfo(userId: post.userId) { (user) in
-            self.usernameButton.setTitle(user.username, for: .normal)
+        userManager.getAuthorInfo(userId: post.userId) { [weak self] (user) in
+            self?.usernameButton.setTitle(user.username, for: .normal)
 
-            self.profileImage.image = nil
+            self?.profileImage.image = nil
             let url = URL(string: user.profileImage)
-            self.profileImage.kf.setImage(with: url)
+            self?.profileImage.kf.setImage(with: url)
         }
 
         // Set up

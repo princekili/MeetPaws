@@ -1014,11 +1014,11 @@
                                                 </stackView>
                                             </subviews>
                                         </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="XxV-zP-gwb">
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="XxV-zP-gwb">
                                             <rect key="frame" x="20" y="202" width="374" height="35"/>
                                             <subviews>
                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcT-FZ-xQ5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="185" height="35"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="184" height="35"/>
                                                     <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="4rH-92-0hF"/>
@@ -1032,7 +1032,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPd-4H-Ela">
-                                                    <rect key="frame" x="189" y="0.0" width="185" height="35"/>
+                                                    <rect key="frame" x="190" y="0.0" width="184" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="mWs-kc-f9A"/>
                                                     </constraints>

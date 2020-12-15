@@ -60,8 +60,8 @@ class CameraViewController: UIViewController {
         }
         let caption = captionTextView.text ?? ""
         
-        PostManager.shared.uploadPost(image: image, caption: caption) {
-            self.delegate?.loadRecentPost()
+        PostManager.shared.uploadPost(image: image, caption: caption) { [weak self] in
+            self?.delegate?.loadRecentPost()
         }
         self.dismiss(animated: true, completion: nil)
     }

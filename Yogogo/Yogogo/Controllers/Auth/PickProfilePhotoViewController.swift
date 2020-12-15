@@ -53,9 +53,9 @@ class PickProfilePhotoViewController: UIViewController {
             return
         }
         
-        userManager.addUser(image: image) {
+        userManager.addUser(image: image) { [weak self] in
             print("------ Upload new added user '\(username)' data successfully! ------")
-            self.showMainView()
+            self?.showMainView()
             
 //            guard let userId = Auth.auth().currentUser?.uid else { return }
 //            self.userManager.getUserInfo(userId: userId) { (user) in

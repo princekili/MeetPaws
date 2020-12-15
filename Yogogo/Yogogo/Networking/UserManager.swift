@@ -349,7 +349,6 @@ class UserManager {
         
         let postsUpdate = ["posts": posts]
         
-//        self.ref.child("users").child(userId).updateChildValues(postsUpdate)
         self.usersRef.child(userId).updateChildValues(postsUpdate)
         
         print("------ Update Database ------")

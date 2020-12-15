@@ -67,16 +67,17 @@ class PickUsernameViewController: UIViewController {
         
         guard let username = usernameTextField.text else { return }
         
-        userManager.checkUsername(username: username, completion: { (hasBeenUsed) in
+        userManager.checkUsername(username: username, completion: { [weak self] (hasBeenUsed) in
             
             if hasBeenUsed! {
-                self.alertLabel.text = "The username \(username) is not available."
-                self.alertLabel.isHidden = false
-                self.redTextField()
-                self.isAvailable = false
+                self?.alertLabel.text = "The username \(username) is not available."
+                self?.alertLabel.isHidden = false
+                self?.redTextField()
+                self?.isAvailable = false
                 return
+                
             } else {
-                self.alertLabel.isHidden = true
+                self?.alertLabel.isHidden = true
             }
         })
         

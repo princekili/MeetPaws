@@ -38,8 +38,10 @@ class FeedViewController: UIViewController {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
         UserManager.shared.getUserInfo(userId: userId) { (user) in
+            
+            let myUser = user
             print("------  Get the currentUser info successfully in FeedVC ------")
-            print(user)
+            print(myUser)
         }
     }
     
@@ -87,25 +89,25 @@ extension FeedViewController: LoadRecentPostsDelegate {
         
         isLoadingPost = true
         
-        PostManager.shared.getRecentPosts(start: postFeed.first?.timestamp, limit: 5) { (newPosts) in
+        PostManager.shared.getRecentPosts(start: postFeed.first?.timestamp, limit: 5) { [weak self] (newPosts) in
             
             if newPosts.count > 0 {
                 // Add the array to the beginning of the posts arrays
-                self.postFeed.insert(contentsOf: newPosts, at: 0)
+                self?.postFeed.insert(contentsOf: newPosts, at: 0)
             }
             
-            self.isLoadingPost = false
+            self?.isLoadingPost = false
             
-            if self.refreshControl.isRefreshing {
+            if ((self?.refreshControl.isRefreshing) != nil) == true {
                 
                 // Delay 0.5 second before ending the refreshing in order to make the animation look better
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
-                    self.refreshControl.endRefreshing()
-                    self.displayNewPosts(newPosts: newPosts)
+                    self?.refreshControl.endRefreshing()
+                    self?.displayNewPosts(newPosts: newPosts)
                 })
                 
             } else {
-                self.displayNewPosts(newPosts: newPosts)
+                self?.displayNewPosts(newPosts: newPosts)
             }
         }
     }
@@ -168,22 +170,23 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         
         print("------ Loading Old Posts... ------")
         
-        PostManager.shared.getOldPosts(start: lastPostTimestamp, limit: 5) { (oldPosts) in
+        PostManager.shared.getOldPosts(start: lastPostTimestamp, limit: 5) { [weak self] (oldPosts) in
             
             // Add old posts to existing arrays and table view
             var indexPaths: [IndexPath] = []
             
-            self.tableView.beginUpdates()
+            self?.tableView.beginUpdates()
             
             for oldPost in oldPosts {
-                self.postFeed.append(oldPost)
-                let indexPath = IndexPath(row: self.postFeed.count - 1, section: 0)
+                self?.postFeed.append(oldPost)
+                guard let count = self?.postFeed.count else { return }
+                let indexPath = IndexPath(row: count - 1, section: 0)
                 indexPaths.append(indexPath)
             }
-            self.tableView.insertRows(at: indexPaths, with: .fade)
-            self.tableView.endUpdates()
+            self?.tableView.insertRows(at: indexPaths, with: .fade)
+            self?.tableView.endUpdates()
             
-            self.isLoadingPost = false
+            self?.isLoadingPost = false
         }
     }
 }

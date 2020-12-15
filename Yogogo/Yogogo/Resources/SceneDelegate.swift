@@ -74,13 +74,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension SceneDelegate {
     
     func showNextVC(_ sceneWindow: UIWindowScene) {
-        userManager.checkFirstTimeSignIn { (isFirstTime) in
+        userManager.checkFirstTimeSignIn { [weak self] (isFirstTime) in
             if isFirstTime == true {
                 print("------ isFirstTime = true ------")
-                self.showPickUsernameVC(sceneWindow)
+                self?.showPickUsernameVC(sceneWindow)
             } else {
                 print("------ isFirstTime = false ------")
-                self.showMainView(sceneWindow)
+                self?.showMainView(sceneWindow)
             }
         }
     }

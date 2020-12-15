@@ -31,13 +31,13 @@ class SignInViewController: UIViewController {
     // MARK: First time sign in?
     
     func showNextVC() {
-        userManager.checkFirstTimeSignIn { (isFirstTime) in
+        userManager.checkFirstTimeSignIn { [weak self] (isFirstTime) in
             if isFirstTime == true {
                 print("------ isFirstTime = true ------")
-                self.showPickUsernameVC()
+                self?.showPickUsernameVC()
             } else {
                 print("------ isFirstTime = false ------")
-                self.showMainView()
+                self?.showMainView()
             }
         }
     }
