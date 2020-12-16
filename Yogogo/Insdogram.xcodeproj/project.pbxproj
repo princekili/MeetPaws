@@ -153,7 +153,7 @@
 		A3C195EC2577E35F00BAB46B /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		A3C195EF2577E7CF00BAB46B /* MyProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		A3C195F22577E80900BAB46B /* MyProfileTabsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTabsCollectionReusableView.swift; sourceTree = "<group>"; };
-		A3CEA997256F87F1001DA842 /* Yogogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yogogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3CEA997256F87F1001DA842 /* Insdogram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insdogram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3CEA99A256F87F1001DA842 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A3CEA99E256F87F1001DA842 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
@@ -436,7 +436,7 @@
 		A3CEA998256F87F1001DA842 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A3CEA997256F87F1001DA842 /* Yogogo.app */,
+				A3CEA997256F87F1001DA842 /* Insdogram.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -477,9 +477,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A3CEA996256F87F1001DA842 /* Yogogo */ = {
+		A3CEA996256F87F1001DA842 /* Insdogram */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A3CEA9AE256F87F4001DA842 /* Build configuration list for PBXNativeTarget "Yogogo" */;
+			buildConfigurationList = A3CEA9AE256F87F4001DA842 /* Build configuration list for PBXNativeTarget "Insdogram" */;
 			buildPhases = (
 				9FC4F9586A534861E9DB182A /* [CP] Check Pods Manifest.lock */,
 				A3CEA993256F87F1001DA842 /* Sources */,
@@ -492,9 +492,9 @@
 			);
 			dependencies = (
 			);
-			name = Yogogo;
+			name = Insdogram;
 			productName = Yogogo;
-			productReference = A3CEA997256F87F1001DA842 /* Yogogo.app */;
+			productReference = A3CEA997256F87F1001DA842 /* Insdogram.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -511,7 +511,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A3CEA992256F87F1001DA842 /* Build configuration list for PBXProject "Yogogo" */;
+			buildConfigurationList = A3CEA992256F87F1001DA842 /* Build configuration list for PBXProject "Insdogram" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -524,7 +524,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A3CEA996256F87F1001DA842 /* Yogogo */,
+				A3CEA996256F87F1001DA842 /* Insdogram */,
 			);
 		};
 /* End PBXProject section */
@@ -859,7 +859,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A3CEA992256F87F1001DA842 /* Build configuration list for PBXProject "Yogogo" */ = {
+		A3CEA992256F87F1001DA842 /* Build configuration list for PBXProject "Insdogram" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A3CEA9AC256F87F4001DA842 /* Debug */,
@@ -868,7 +868,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A3CEA9AE256F87F4001DA842 /* Build configuration list for PBXNativeTarget "Yogogo" */ = {
+		A3CEA9AE256F87F4001DA842 /* Build configuration list for PBXNativeTarget "Insdogram" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A3CEA9AF256F87F4001DA842 /* Debug */,

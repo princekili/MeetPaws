@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-30" translatesAutoresizingMaskIntoConstraints="NO" id="PPA-Dy-rSQ">
-                                <rect key="frame" x="107" y="305.5" width="200" height="229"/>
+                                <rect key="frame" x="107" y="308" width="200" height="224.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen_logo_0.png" translatesAutoresizingMaskIntoConstraints="NO" id="9hd-ZS-L6W">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="202"/>
@@ -25,9 +25,9 @@
                                             <constraint firstAttribute="width" constant="200" id="k8X-vE-bNR"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yogogo" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lr-ed-QNm">
-                                        <rect key="frame" x="38" y="172" width="124" height="57"/>
-                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="40"/>
+                                    <label opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insdogram" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lr-ed-QNm">
+                                        <rect key="frame" x="15" y="172" width="170.5" height="52.5"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="37"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
