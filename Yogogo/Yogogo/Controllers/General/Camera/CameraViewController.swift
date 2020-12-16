@@ -104,9 +104,9 @@ class CameraViewController: UIViewController {
         var config = YPImagePickerConfiguration()
         
         /* Set this to true if you want to force the  library output to be a squared image. Defaults to false */
-        //         config.library.onlySquare = true
+        config.library.onlySquare = true
         /* Set this to true if you want to force the camera output to be a squared image. Defaults to true */
-        // config.onlySquareImagesFromCamera = false
+        config.onlySquareImagesFromCamera = true
         /* Ex: cappedTo:1024 will make sure images from the library or the camera will be
          resized to fit in a 1024x1024 box. Defaults to original image size. */
         config.targetImageSize = .cappedTo(size: 1024)
