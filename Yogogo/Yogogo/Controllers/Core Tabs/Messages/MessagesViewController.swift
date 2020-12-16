@@ -12,7 +12,6 @@ class MessagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        navigationController?.navigationBar.barTintColor = .white
     }
     
     /*

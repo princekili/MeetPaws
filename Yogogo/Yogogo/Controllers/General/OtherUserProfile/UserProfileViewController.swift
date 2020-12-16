@@ -41,7 +41,6 @@ class UserProfileViewController: UIViewController {
     }
     
     private func setupNavigation() {
-//        navigationController?.navigationBar.barTintColor = .white
         navigationItem.backBarButtonItem?.tintColor = .label
         navigationItem.backButtonTitle = ""
         
