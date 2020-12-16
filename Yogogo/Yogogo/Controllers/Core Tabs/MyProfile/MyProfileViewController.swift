@@ -14,12 +14,17 @@ class MyProfileViewController: UIViewController {
     
     let userManager = UserManager.shared
     
-    private var posts: [Post] = []
+    var myPosts: [Post] = []
+    
+    var isLoadingPost = false
+    
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupCollectionView()
+        setupRefresher()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,11 +53,80 @@ class MyProfileViewController: UIViewController {
         navigationItem.title = title
     }
     
-    private func setupPosts() {
-        guard var postIds = UserManager.shared.currentUser?.posts else { return }
-//        postIds = postIds.filter { $0.count > 0 }
-        postIds = postIds.filter { $0 != "" }
-        
+    private func setupRefresher() {
+        collectionView.refreshControl = refreshControl
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.tintColor = UIColor.lightGray
+        refreshControl.addTarget(self,
+                                 action: #selector(loadMyRecentPosts),
+                                 for: UIControl.Event.valueChanged
+        )
+    }
+}
+
+// MARK: - load My Recent Posts
+
+extension MyProfileViewController {
+    
+    @objc private func loadMyRecentPosts() {
+        guard let userId = UserManager.shared.currentUser?.userId else { return }
+        userManager.getUserInfo(userId: userId) { (user) in
+            
+            var postIds = user.posts
+            postIds = postIds.filter { $0 != "" }
+            
+            for postId in postIds {
+                
+                print("------ Loading My Recent Post: \(postId) ------")
+                
+                self.isLoadingPost = true
+                
+                PostManager.shared.getMyRecentPost(postId: postId, start: self.myPosts.first?.timestamp, limit: 18) { [weak self] (newPost) in
+                    
+                    // Add the array to the beginning of the posts arrays
+                    self?.myPosts.append(newPost)
+                    
+                    self?.myPosts.sort(by: { $0.timestamp > $1.timestamp })
+                    
+                    // Save to local PostManager
+                    guard let myPosts = self?.myPosts else { return }
+                    PostManager.shared.postsOfCurrentUser = myPosts
+                    
+                    self?.isLoadingPost = false
+                    
+                    if ((self?.refreshControl.isRefreshing) != nil) == true {
+                        
+                        // Delay 0.5 second before ending the refreshing in order to make the animation look better
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                            self?.refreshControl.endRefreshing()
+                            self?.displayNewPost(newPost: newPost)
+                        })
+                        
+                    } else {
+                        self?.displayNewPost(newPost: newPost)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func displayNewPost(newPost post: Post) {
+//        // Make sure we got some new posts to display
+//        guard posts.count > 0 else {
+//            return
+//        }
+//
+//        // Display the posts by inserting them to the table view
+//        var indexPaths: [IndexPath] = []
+//
+////        self.tableView.beginUpdates()
+//
+//        for num in 0...(posts.count - 1) {
+//            let indexPath = IndexPath(item: num, section: 0)
+//            indexPaths.append(indexPath)
+//        }
+//        self.collectionView.insertItems(at: indexPaths)
+////        self.tableView.endUpdates()
     }
 }
 
@@ -66,16 +140,15 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
         if section == 0 {
             return 0
         }
-        return 30
-//        return posts.count
+//        return 30
+        return myPosts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let model = posts[indexPath.item]
+        let model = myPosts[indexPath.item]
         
-        guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: MyPostCollectionViewCell.identifier,
-                for: indexPath) as? MyPostCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPostCollectionViewCell.identifier,
+                                                            for: indexPath) as? MyPostCollectionViewCell
         else {
             return UICollectionViewCell()
         }

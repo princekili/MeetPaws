@@ -19,6 +19,8 @@ final class PostManager {
     
     let userManager = UserManager.shared
     
+    var postsOfCurrentUser: [Post]?
+    
     // MARK: Firebase Reference
     
     let postsRef: DatabaseReference = Database.database().reference().child("posts")
@@ -190,52 +192,43 @@ final class PostManager {
         
     }
     
-    // MARK: - Download Posts for Feed
+    // MARK: - Download My Posts
     
-    func getMyRecentPosts(start timestamp: Int? = nil, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
+    func getMyRecentPost(postId: String, start timestamp: Int? = nil, limit: UInt, completionHandler: @escaping (Post) -> Void) {
         
         // Ordered by timestamp
-        var postQuery = postsRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
+//        var postQuery = postsRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
         
-        if let latestPostTimestamp = timestamp, latestPostTimestamp > 0 {
-            
-            // If the timestamp is specified, we will get the posts with timestamp newer than the given value
-            postQuery = postQuery.queryStarting(atValue: latestPostTimestamp + 1,
-                                                childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
+//        if let latestPostTimestamp = timestamp, latestPostTimestamp > 0 {
+//
+//            // If the timestamp is specified, we will get the posts with timestamp newer than the given value
+//            postQuery = postQuery.queryStarting(atValue: latestPostTimestamp + 1,
+//                                                childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
+//
+//        } else {
+//
+//            // Otherwise(Default timestamp = nil), we will just get the most recent posts
+//            postQuery = postQuery.queryLimited(toLast: limit)
+//        }
         
-        } else {
-            
-            // Otherwise(Default timestamp = nil), we will just get the most recent posts
-            postQuery = postQuery.queryLimited(toLast: limit)
-        }
+        // Filter via postId
+        let postQuery = postsRef.child(postId)
         
         // Call Firebase API to retrieve the latest records
         postQuery.observeSingleEvent(of: .value, with: { (snapshot) in
             
-            var newPosts: [Post] = []
+//            var newPosts: [Post] = []
             
-            print("------ Total number of new posts: \(snapshot.childrenCount) ------")
+            let postInfo = snapshot.value as? [String: Any] ?? [:]
             
-            guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
-                print("There's no post.")
+            guard let newPost = Post(postId: snapshot.key, postInfo: postInfo) else {
+                print("------ Post not found: \(snapshot.key) ------")
                 return
             }
             
-            for item in allObjects {
-                let postInfo = item.value as? [String: Any] ?? [:]
-                
-                if let post = Post(postId: item.key, postInfo: postInfo) {
-                    newPosts.append(post)
-                }
-            }
+            print("------ newPost: \(newPost) ------")
             
-            if newPosts.count > 0 {
-                
-                // Order in descending order (i.e. the latest post becomes the first post)
-                newPosts.sort(by: { $0.timestamp > $1.timestamp })
-            }
-            
-            completionHandler(newPosts)
+            completionHandler(newPost)
         })
         
     }
