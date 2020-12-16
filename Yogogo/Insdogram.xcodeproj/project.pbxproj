@@ -49,7 +49,7 @@
 		A36B4BCE2587BDF0005DAC50 /* UserPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B4BCD2587BDF0005DAC50 /* UserPostCollectionViewCell.swift */; };
 		A36B4BD22587C07E005DAC50 /* UserProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B4BD12587C07E005DAC50 /* UserProfileHeaderCollectionReusableView.swift */; };
 		A36B4BD52587D7C4005DAC50 /* UserProfileTabsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B4BD42587D7C4005DAC50 /* UserProfileTabsCollectionReusableView.swift */; };
-		A38293922578DF770064D971 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38293912578DF770064D971 /* PostTableViewCell.swift */; };
+		A38293922578DF770064D971 /* MyPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38293912578DF770064D971 /* MyPostTableViewCell.swift */; };
 		A38293B025793CF50064D971 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38293AF25793CF50064D971 /* UserLocation.swift */; };
 		A3C136A5257BE0C200960B4C /* EditProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3C136A4257BE0C200960B4C /* EditProfile.storyboard */; };
 		A3C136A9257BE3C500960B4C /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C136A8257BE3C500960B4C /* EditProfileTableViewController.swift */; };
@@ -60,7 +60,7 @@
 		A3C195B52577747D00BAB46B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B42577747D00BAB46B /* SignUpViewController.swift */; };
 		A3C195B82577751600BAB46B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195B72577751600BAB46B /* MessagesViewController.swift */; };
 		A3C195BC257775FF00BAB46B /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */; };
-		A3C195C0257777A500BAB46B /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195BF257777A500BAB46B /* PostViewController.swift */; };
+		A3C195C0257777A500BAB46B /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195BF257777A500BAB46B /* MyPostViewController.swift */; };
 		A3C195C92577783800BAB46B /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195C82577783800BAB46B /* UserListViewController.swift */; };
 		A3C195CC257778F200BAB46B /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195CB257778F200BAB46B /* PostEditorViewController.swift */; };
 		A3C195CF2577790600BAB46B /* PublishPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195CE2577790600BAB46B /* PublishPostViewController.swift */; };
@@ -130,7 +130,7 @@
 		A36B4BCD2587BDF0005DAC50 /* UserPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		A36B4BD12587C07E005DAC50 /* UserProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		A36B4BD42587D7C4005DAC50 /* UserProfileTabsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTabsCollectionReusableView.swift; sourceTree = "<group>"; };
-		A38293912578DF770064D971 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		A38293912578DF770064D971 /* MyPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostTableViewCell.swift; sourceTree = "<group>"; };
 		A38293AF25793CF50064D971 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		A3C136A4257BE0C200960B4C /* EditProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditProfile.storyboard; sourceTree = "<group>"; };
 		A3C136A8257BE3C500960B4C /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 		A3C195B42577747D00BAB46B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A3C195B72577751600BAB46B /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
-		A3C195BF257777A500BAB46B /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		A3C195BF257777A500BAB46B /* MyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewController.swift; sourceTree = "<group>"; };
 		A3C195C82577783800BAB46B /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		A3C195CB257778F200BAB46B /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		A3C195CE2577790600BAB46B /* PublishPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishPostViewController.swift; sourceTree = "<group>"; };
@@ -459,8 +459,8 @@
 		A3EE0314257BB42E00459C54 /* Post */ = {
 			isa = PBXGroup;
 			children = (
-				A3C195BF257777A500BAB46B /* PostViewController.swift */,
-				A38293912578DF770064D971 /* PostTableViewCell.swift */,
+				A3C195BF257777A500BAB46B /* MyPostViewController.swift */,
+				A38293912578DF770064D971 /* MyPostTableViewCell.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -633,7 +633,7 @@
 				A331584B257FC950004CC86C /* UserManager.swift in Sources */,
 				A36B4BCB2587BBF1005DAC50 /* UserProfileViewController.swift in Sources */,
 				A3551E7C25728FCC0006099A /* Comment.swift in Sources */,
-				A38293922578DF770064D971 /* PostTableViewCell.swift in Sources */,
+				A38293922578DF770064D971 /* MyPostTableViewCell.swift in Sources */,
 				A3CEA99F256F87F1001DA842 /* MapsViewController.swift in Sources */,
 				A3315847257FC07F004CC86C /* PickProfilePhotoViewController.swift in Sources */,
 				A3C195B22577746C00BAB46B /* SignInViewController.swift in Sources */,
@@ -657,7 +657,7 @@
 				A3315844257FC072004CC86C /* PickUsernameViewController.swift in Sources */,
 				A3C136A9257BE3C500960B4C /* EditProfileTableViewController.swift in Sources */,
 				A3EE02E9257B489800459C54 /* WelcomeViewController.swift in Sources */,
-				A3C195C0257777A500BAB46B /* PostViewController.swift in Sources */,
+				A3C195C0257777A500BAB46B /* MyPostViewController.swift in Sources */,
 				A3551EAE25735B000006099A /* UIImageView + Extension.swift in Sources */,
 				A3CEA99D256F87F1001DA842 /* SceneDelegate.swift in Sources */,
 				A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */,

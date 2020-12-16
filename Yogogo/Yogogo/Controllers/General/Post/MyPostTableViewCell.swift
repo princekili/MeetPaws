@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class PostTableViewCell: UITableViewCell {
+class MyPostTableViewCell: UITableViewCell {
     
     static let identifier = "PostTableViewCell"
     
@@ -33,13 +33,41 @@ class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var settingButton: UIButton!
     
-    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likeButton: UIButton! {
+        didSet {
+            let config = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium)
+            let image = UIImage(systemName: "heart", withConfiguration: config)
+            likeButton.setImage(image, for: .normal)
+            likeButton.tintColor = .label
+        }
+    }
     
-    @IBOutlet weak var messageButton: UIButton!
+    @IBOutlet weak var messageButton: UIButton! {
+        didSet {
+            let config = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)
+            let image = UIImage(systemName: "message", withConfiguration: config)
+            messageButton.setImage(image, for: .normal)
+            messageButton.tintColor = .label
+        }
+    }
     
-    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton! {
+        didSet {
+            let config = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)
+            let image = UIImage(systemName: "paperplane", withConfiguration: config)
+            shareButton.setImage(image, for: .normal)
+            shareButton.tintColor = .label
+        }
+    }
     
-    @IBOutlet weak var bookmarkButton: UIButton!
+    @IBOutlet weak var bookmarkButton: UIButton! {
+        didSet {
+            let config = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)
+            let image = UIImage(systemName: "bookmark", withConfiguration: config)
+            bookmarkButton.setImage(image, for: .normal)
+            bookmarkButton.tintColor = .label
+        }
+    }
     
     @IBOutlet weak var likeCount: UIButton!
     

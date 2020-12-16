@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PostViewController: UIViewController {
+class MyPostViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -30,7 +30,7 @@ class PostViewController: UIViewController {
     }
 }
 
-extension PostViewController: UITableViewDataSource, UITableViewDelegate {
+extension MyPostViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -41,8 +41,8 @@ extension PostViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier,
-                                                 for: indexPath) as? PostTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPostTableViewCell.identifier,
+                                                 for: indexPath) as? MyPostTableViewCell
         else { return UITableViewCell() }
         
         return cell

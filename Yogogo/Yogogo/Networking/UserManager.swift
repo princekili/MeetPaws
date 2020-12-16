@@ -98,7 +98,7 @@ class UserManager {
             let userInfo = snapshot.value as? [String: Any] ?? [:]
             
             guard let user = User(userId: userId, userInfo: userInfo) else {
-                print("------ User not found ------")
+                print("------ Author not found ------")
                 return
             }
 
