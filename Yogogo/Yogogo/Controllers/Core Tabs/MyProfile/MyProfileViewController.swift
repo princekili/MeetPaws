@@ -12,9 +12,9 @@ class MyProfileViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var posts: [Post] = []
-    
     let userManager = UserManager.shared
+    
+    private var posts: [Post] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +47,13 @@ class MyProfileViewController: UIViewController {
         
         let title = userManager.currentUser?.username
         navigationItem.title = title
+    }
+    
+    private func setupPosts() {
+        guard var postIds = UserManager.shared.currentUser?.posts else { return }
+//        postIds = postIds.filter { $0.count > 0 }
+        postIds = postIds.filter { $0 != "" }
+        
     }
 }
 
@@ -120,6 +127,7 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
         else { return UICollectionReusableView() }
         
         headerForInfo.setup()
+        headerForInfo.delegate = self
         return headerForInfo
     }
     
@@ -134,6 +142,8 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
     }
 }
 
+// MARK: - MyProfileTabsCollectionReusableViewDelegate
+
 extension MyProfileViewController: MyProfileTabsCollectionReusableViewDelegate {
     
     func gridButtonDidTap() {
@@ -142,5 +152,16 @@ extension MyProfileViewController: MyProfileTabsCollectionReusableViewDelegate {
     
     func listButtonDidTap() {
         // Reload collection view
+    }
+}
+
+// MARK: - MyProfileHeaderCollectionReusableViewDelegate
+
+extension MyProfileViewController: MyProfileHeaderCollectionReusableViewDelegate {
+    
+    func myProfileHeaderDidTapPostsButton(_ header: MyProfileHeaderCollectionReusableView) {
+        // scroll to the posts
+        let indexPath = IndexPath(row: 0, section: 1)
+        collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
     }
 }

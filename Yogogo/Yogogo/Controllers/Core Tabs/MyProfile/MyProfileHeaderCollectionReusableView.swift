@@ -7,11 +7,18 @@
 
 import UIKit
 
-class MyProfileHeaderCollectionReusableView: UICollectionReusableView {
+protocol MyProfileHeaderCollectionReusableViewDelegate: AnyObject {
+    
+    func myProfileHeaderDidTapPostsButton(_ header: MyProfileHeaderCollectionReusableView)
+}
+
+final class MyProfileHeaderCollectionReusableView: UICollectionReusableView {
+    
+    static let identifier = "MyProfileHeaderCollectionReusableView"
     
     let userManager = UserManager.shared
-        
-    static let identifier = "MyProfileHeaderCollectionReusableView"
+    
+    weak var delegate: MyProfileHeaderCollectionReusableViewDelegate?
     
     @IBOutlet weak var profileImageView: UIImageView! {
         didSet {
@@ -39,6 +46,7 @@ class MyProfileHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var followingCountButton: UIButton!
     
     @IBAction func postsButtonDidTap(_ sender: UIButton) {
+        delegate?.myProfileHeaderDidTapPostsButton(self)
     }
     
     @IBAction func followersButtonDidTap(_ sender: UIButton) {

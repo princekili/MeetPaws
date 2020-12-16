@@ -175,15 +175,6 @@ class UserManager {
                 let postDidLike: [String] = [""]
                 let bookmarks: [String] = [""]
                 let ignoreList: [String] = [""]
-                // MARK: - For test
-//                let posts: [String] = ["-MO0EB0y1ajvJekzDzMJ"]
-//                let followRequests: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
-//                let followers: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
-//                let following: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
-//                let postDidLike: [String] = ["-MO0EB0y1ajvJekzDzMJ"]
-//                let bookmarks: [String] = ["-MO0EB0y1ajvJekzDzMJ"]
-//                let ignoreList: [String] = ["rYak2LOQTZR3y370Nx6hXHP5AhO2"]
-                // MARK: -
                 let joinedDate = Int(Date().timeIntervalSince1970 * 1000)
                 let lastLogin = Int(Date().timeIntervalSince1970 * 1000)
                 let isPrivate = false

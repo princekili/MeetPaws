@@ -105,7 +105,7 @@ final class PostManager {
         }
     }
     
-    // MARK: - Download Post
+    // MARK: - Download Posts for Feed
     
     func getRecentPosts(start timestamp: Int? = nil, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
         
@@ -156,6 +156,91 @@ final class PostManager {
     }
     
     func getOldPosts(start timestamp: Int, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
+        
+        let postOrderedQuery = postsRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
+        
+        let postLimitedQuery = postOrderedQuery.queryEnding(atValue: timestamp - 1,
+                                                            childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
+        
+        postLimitedQuery.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var oldPosts: [Post] = []
+            
+            print("------ Total number of old posts: \(snapshot.childrenCount) ------")
+            
+            guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
+                print("There's no post.")
+                return
+            }
+            
+            for item in allObjects {
+                print("Post key: \(item.key)")
+                let postInfo = item.value as? [String: Any] ?? [:]
+                
+                if let post = Post(postId: item.key, postInfo: postInfo) {
+                    oldPosts.append(post)
+                }
+            }
+            
+            // Order in descending order (i.e. the latest post becomes the first post)
+            oldPosts.sort(by: { $0.timestamp > $1.timestamp })
+            
+            completionHandler(oldPosts)
+        })
+        
+    }
+    
+    // MARK: - Download Posts for Feed
+    
+    func getMyRecentPosts(start timestamp: Int? = nil, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
+        
+        // Ordered by timestamp
+        var postQuery = postsRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
+        
+        if let latestPostTimestamp = timestamp, latestPostTimestamp > 0 {
+            
+            // If the timestamp is specified, we will get the posts with timestamp newer than the given value
+            postQuery = postQuery.queryStarting(atValue: latestPostTimestamp + 1,
+                                                childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
+        
+        } else {
+            
+            // Otherwise(Default timestamp = nil), we will just get the most recent posts
+            postQuery = postQuery.queryLimited(toLast: limit)
+        }
+        
+        // Call Firebase API to retrieve the latest records
+        postQuery.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var newPosts: [Post] = []
+            
+            print("------ Total number of new posts: \(snapshot.childrenCount) ------")
+            
+            guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
+                print("There's no post.")
+                return
+            }
+            
+            for item in allObjects {
+                let postInfo = item.value as? [String: Any] ?? [:]
+                
+                if let post = Post(postId: item.key, postInfo: postInfo) {
+                    newPosts.append(post)
+                }
+            }
+            
+            if newPosts.count > 0 {
+                
+                // Order in descending order (i.e. the latest post becomes the first post)
+                newPosts.sort(by: { $0.timestamp > $1.timestamp })
+            }
+            
+            completionHandler(newPosts)
+        })
+        
+    }
+    
+    func getMyOldPosts(start timestamp: Int, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
         
         let postOrderedQuery = postsRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
         
