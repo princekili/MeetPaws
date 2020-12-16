@@ -217,8 +217,6 @@ final class PostManager {
         // Call Firebase API to retrieve the latest records
         postQuery.observeSingleEvent(of: .value, with: { (snapshot) in
             
-//            var newPosts: [Post] = []
-            
             let postInfo = snapshot.value as? [String: Any] ?? [:]
             
             guard let newPost = Post(postId: snapshot.key, postInfo: postInfo) else {

@@ -75,6 +75,8 @@ extension MyProfileViewController {
             var postIds = user.posts
             postIds = postIds.filter { $0 != "" }
             
+            var myPosts: [Post] = []
+            
             for postId in postIds {
                 
                 print("------ Loading My Recent Post: \(postId) ------")
@@ -84,13 +86,15 @@ extension MyProfileViewController {
                 PostManager.shared.getMyRecentPost(postId: postId, start: self.myPosts.first?.timestamp, limit: 18) { [weak self] (newPost) in
                     
                     // Add the array to the beginning of the posts arrays
-                    self?.myPosts.append(newPost)
+                    myPosts.append(newPost)
                     
-                    self?.myPosts.sort(by: { $0.timestamp > $1.timestamp })
+                    myPosts.sort(by: { $0.timestamp > $1.timestamp })
                     
                     // Save to local PostManager
-                    guard let myPosts = self?.myPosts else { return }
+//                    guard let myPosts = self?.myPosts else { return }
                     PostManager.shared.postsOfCurrentUser = myPosts
+                    
+                    self?.myPosts = myPosts
                     
                     self?.isLoadingPost = false
                     
@@ -111,6 +115,8 @@ extension MyProfileViewController {
     }
     
     private func displayNewPost(newPost post: Post) {
+        
+        collectionView.reloadData()
 //        // Make sure we got some new posts to display
 //        guard posts.count > 0 else {
 //            return
@@ -153,8 +159,8 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
             return UICollectionViewCell()
         }
         
-        cell.setupForTest()
-//        cell.setup(with: model)
+//        cell.setupForTest()
+        cell.setup(with: model)
         
         return cell
     }
