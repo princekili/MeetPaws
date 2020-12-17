@@ -31,7 +31,7 @@ class MyProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupNavigation()
-        collectionView.reloadData()
+        loadAndReloadData()
     }
     
     private func setupCollectionView() {
@@ -61,6 +61,11 @@ class MyProfileViewController: UIViewController {
                                  action: #selector(loadMyRecentPosts),
                                  for: UIControl.Event.valueChanged
         )
+    }
+    
+    private func loadAndReloadData() {
+        loadMyRecentPosts()
+        collectionView.reloadData()
     }
 }
 
@@ -118,7 +123,7 @@ extension MyProfileViewController {
     private func displayNewPost(newPost post: Post) {
         
         collectionView.reloadData()
-//        // Make sure we got some new posts to display
+        // Make sure we got some new posts to display
 //        guard posts.count > 0 else {
 //            return
 //        }
@@ -126,14 +131,14 @@ extension MyProfileViewController {
 //        // Display the posts by inserting them to the table view
 //        var indexPaths: [IndexPath] = []
 //
-////        self.tableView.beginUpdates()
+//        self.tableView.beginUpdates()
 //
 //        for num in 0...(posts.count - 1) {
 //            let indexPath = IndexPath(item: num, section: 0)
 //            indexPaths.append(indexPath)
 //        }
 //        self.collectionView.insertItems(at: indexPaths)
-////        self.tableView.endUpdates()
+//        self.tableView.endUpdates()
     }
 }
 
@@ -147,7 +152,6 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
         if section == 0 {
             return 0
         }
-//        return 30
         return myPosts.count
     }
     

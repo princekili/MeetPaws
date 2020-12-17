@@ -8,6 +8,11 @@
 import UIKit
 import Kingfisher
 
+protocol FeedTableViewCellPresentAlertDelegate: AnyObject {
+    
+    func presentAlert()
+}
+
 class FeedTableViewCell: UITableViewCell {
     
     static let identifier = "FeedTableViewCell"
@@ -15,6 +20,10 @@ class FeedTableViewCell: UITableViewCell {
     private var currentPost: Post?
     
     let userManager = UserManager.shared
+    
+    weak var delegate: FeedTableViewCellPresentAlertDelegate?
+    
+    // MARK: - @IBOutlet
     
     @IBOutlet weak var profileImage: UIImageView! {
         didSet {
@@ -26,7 +35,7 @@ class FeedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var usernameButton: UIButton!
     
-    @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var moreActionsButton: UIButton!
     
     @IBOutlet weak var likeButton: UIButton! {
         didSet {
@@ -66,7 +75,7 @@ class FeedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var likeCount: UIButton!
     
-    @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var moreContentButton: UIButton!
     
     @IBOutlet weak var viewCommentButton: UIButton!
     
@@ -76,6 +85,14 @@ class FeedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var postImageView: UIImageView!
     
+    // MARK: - @IBAction
+    
+    @IBAction func moreActionsButtonDidTap(_ sender: UIButton) {
+        self.delegate?.presentAlert()
+    }
+    
+    // MARK: -
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -83,6 +100,11 @@ class FeedTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+}
+
+// MARK: - Set up posts
+
+extension FeedTableViewCell {
     
     func setup(post: Post) {
 
@@ -152,5 +174,4 @@ class FeedTableViewCell: UITableViewCell {
 //            }
 //        }
     }
-
 }

@@ -142,6 +142,9 @@
                                                     <state key="normal" title="•••">
                                                         <color key="titleColor" systemColor="labelColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="moreActionsButtonDidTap:" destination="Gj1-kw-ZQO" eventType="touchUpInside" id="cuC-2N-Buz"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -168,10 +171,10 @@
                                             <outlet property="likeButton" destination="Iys-6H-yaL" id="3aQ-Lc-eKv"/>
                                             <outlet property="likeCount" destination="lPe-uL-2GY" id="Tz6-y5-dZf"/>
                                             <outlet property="messageButton" destination="Uw6-KL-KYe" id="hfN-hy-yb6"/>
-                                            <outlet property="moreButton" destination="Izd-qv-7pw" id="eHN-7d-312"/>
+                                            <outlet property="moreActionsButton" destination="TAb-gS-6WF" id="zUA-IA-nkY"/>
+                                            <outlet property="moreContentButton" destination="Izd-qv-7pw" id="eHN-7d-312"/>
                                             <outlet property="postImageView" destination="aLy-ka-vix" id="RX5-Ao-lkt"/>
                                             <outlet property="profileImage" destination="dlg-tl-Q1l" id="HEG-as-RC5"/>
-                                            <outlet property="settingButton" destination="TAb-gS-6WF" id="zUA-IA-nkY"/>
                                             <outlet property="shareButton" destination="Yh3-XO-R7t" id="YZ3-6s-gvD"/>
                                             <outlet property="timestampLabel" destination="j40-rr-Tm0" id="vde-rR-ogT"/>
                                             <outlet property="usernameButton" destination="wM1-oA-mzh" id="RUy-yo-kO9"/>
@@ -1133,7 +1136,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="N3A-wu-T8P"/>
+        <segue reference="LwI-kW-ddj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IU_profileImage" width="640" height="640"/>

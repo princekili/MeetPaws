@@ -57,6 +57,7 @@ Package.resolved
 Pods/
 GoogleService-Info.plist
 Yogogo/GoogleService-Info.plist
+Insdogram/GoogleService-Info.plist
 #
 # Add this line if you want to avoid checking in source code from the Xcode workspace
 # *.xcworkspace

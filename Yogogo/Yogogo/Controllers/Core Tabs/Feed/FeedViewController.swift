@@ -149,6 +149,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         
         let currentPost = postFeed[indexPath.row]
         cell.setup(post: currentPost)
+        cell.delegate = self
         
         return cell
     }
@@ -187,5 +188,33 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             
             self?.isLoadingPost = false
         }
+    }
+}
+
+// MARK: - Present Alert
+
+extension FeedViewController: FeedTableViewCellPresentAlertDelegate {
+
+    func presentAlert() {
+        
+        // UIAlertController
+        let moreActionsAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // UIAlertAction
+        let cameraAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            
+            // More to do
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            
+            moreActionsAlertController.dismiss(animated: true, completion: nil)
+        }
+        
+        // addAction
+        moreActionsAlertController.addAction(cameraAction)
+        moreActionsAlertController.addAction(cancelAction)
+        
+        self.present(moreActionsAlertController, animated: true, completion: nil)
     }
 }
