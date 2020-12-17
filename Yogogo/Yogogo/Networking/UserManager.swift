@@ -166,8 +166,10 @@ class UserManager {
                 let profileImage = url.absoluteString
                 self.profileImage = profileImage
                 
-                let fullName = "Edit your name..."
-                let bio = "Edit your bio..."
+//                let fullName = "Edit your name..."
+//                let bio = "Edit your bio..."
+                let fullName = ""
+                let bio = ""
                 let posts: [String] = [""]
                 let followRequests: [String] = [""]
                 let followers: [String] = [""]

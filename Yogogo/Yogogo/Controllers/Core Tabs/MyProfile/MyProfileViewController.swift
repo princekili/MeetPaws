@@ -69,6 +69,7 @@ class MyProfileViewController: UIViewController {
 extension MyProfileViewController {
     
     @objc private func loadMyRecentPosts() {
+        
         guard let userId = UserManager.shared.currentUser?.userId else { return }
         userManager.getUserInfo(userId: userId) { (user) in
             

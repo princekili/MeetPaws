@@ -231,40 +231,39 @@ final class PostManager {
         
     }
     
-    func getMyOldPosts(start timestamp: Int, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
-        
-        let postOrderedQuery = postsRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
-        
-        let postLimitedQuery = postOrderedQuery.queryEnding(atValue: timestamp - 1,
-                                                            childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
-        
-        postLimitedQuery.observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            var oldPosts: [Post] = []
-            
-            print("------ Total number of old posts: \(snapshot.childrenCount) ------")
-            
-            guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
-                print("There's no post.")
-                return
-            }
-            
-            for item in allObjects {
-                print("Post key: \(item.key)")
-                let postInfo = item.value as? [String: Any] ?? [:]
-                
-                if let post = Post(postId: item.key, postInfo: postInfo) {
-                    oldPosts.append(post)
-                }
-            }
-            
-            // Order in descending order (i.e. the latest post becomes the first post)
-            oldPosts.sort(by: { $0.timestamp > $1.timestamp })
-            
-            completionHandler(oldPosts)
-        })
-        
-    }
+//    func getMyOldPosts(start timestamp: Int, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
+//
+//        let postOrderedQuery = postsRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
+//
+//        let postLimitedQuery = postOrderedQuery.queryEnding(atValue: timestamp - 1,
+//                                                            childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
+//
+//        postLimitedQuery.observeSingleEvent(of: .value, with: { (snapshot) in
+//
+//            var oldPosts: [Post] = []
+//
+//            print("------ Total number of old posts: \(snapshot.childrenCount) ------")
+//
+//            guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
+//                print("There's no post.")
+//                return
+//            }
+//
+//            for item in allObjects {
+//                print("Post key: \(item.key)")
+//                let postInfo = item.value as? [String: Any] ?? [:]
+//
+//                if let post = Post(postId: item.key, postInfo: postInfo) {
+//                    oldPosts.append(post)
+//                }
+//            }
+//
+//            // Order in descending order (i.e. the latest post becomes the first post)
+//            oldPosts.sort(by: { $0.timestamp > $1.timestamp })
+//
+//            completionHandler(oldPosts)
+//        })
+//    }
     
     // MARK: - Handle post's ❤️ (userDidLike)
     
