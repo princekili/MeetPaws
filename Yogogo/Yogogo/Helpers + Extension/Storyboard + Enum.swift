@@ -35,4 +35,6 @@ enum StoryboardId: String {
     case myProfileVC = "MyProfileVC"
     
     case userProfileVC = "UserProfileVC"
+    
+    case myPostVC = "MyPostVC"
 }

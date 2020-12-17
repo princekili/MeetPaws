@@ -16,10 +16,13 @@ class MyProfileViewController: UIViewController {
     
     var myPosts: [Post] = []
     
+    var post: Post?
+    
     var isLoadingPost = false
     
     let refreshControl = UIRefreshControl()
     
+    // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +36,17 @@ class MyProfileViewController: UIViewController {
         setupNavigation()
         loadAndReloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueMyPostVC" {
+            
+            guard let myPostVC = segue.destination as? MyPostViewController else { return }
+            
+            myPostVC.post = post
+        }
+    }
+    
+    // MARK: -
     
     private func setupCollectionView() {
         collectionView.dataSource = self
@@ -128,6 +142,7 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         if section == 0 {
             return 0
         }
@@ -135,7 +150,8 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let model = myPosts[indexPath.item]
+        
+        let post = myPosts[indexPath.item]
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPostCollectionViewCell.identifier,
                                                             for: indexPath) as? MyPostCollectionViewCell
@@ -143,19 +159,23 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
             return UICollectionViewCell()
         }
         
-//        cell.setupForTest()
-        cell.setup(with: model)
+        cell.setup(with: post)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         let size = (view.width - 2)/3
         return CGSize(width: size, height: size)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        
+        post = myPosts[indexPath.item]
+        
+        performSegue(withIdentifier: "SegueMyPostVC", sender: nil)
         
         // get the model and open the PostVC
 //        let model = posts[indexPath.item]

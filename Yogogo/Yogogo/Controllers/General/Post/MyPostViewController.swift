@@ -11,22 +11,29 @@ class MyPostViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var model: Post?
+    var post: Post?
     
-//    init(model: Post?) {
-//        super.init(nibName: nil, bundle: nil)
-//        self.model = model
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    var deleteHandler: (() -> Void)?
+    
+    // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavigation()
+        setupTableView()
+    }
+    
+    // MARK: -
+    
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    private func setupNavigation() {
+        navigationItem.backBarButtonItem?.tintColor = .label
+        navigationItem.backButtonTitle = ""
     }
 }
 
@@ -37,7 +44,7 @@ extension MyPostViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,10 +52,84 @@ extension MyPostViewController: UITableViewDataSource, UITableViewDelegate {
                                                  for: indexPath) as? MyPostTableViewCell
         else { return UITableViewCell() }
         
+        guard let currentPost = post else { return UITableViewCell() }
+        cell.setup(post: currentPost)
+        cell.delegate = self
+        
+        // Delete the post
+        self.deleteHandler = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+            print("------ Delete the post: \(currentPost.postId) ------")
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension MyPostViewController: MyPostTableViewCellPresentAlertDelegate {
+
+    func presentAlert(postId: String) {
+        
+        // UIAlertController
+        let moreActionsAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // UIAlertAction - Check the author
+        guard let posts = UserManager.shared.currentUser?.posts else { return }
+        
+        var action: UIAlertAction
+        
+        if posts.contains(postId) {
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
+                
+                self?.confirmAlert(postId: postId)
+            }
+            action = deleteAction
+            
+        } else {
+            let reportAction = UIAlertAction(title: "Report", style: .destructive) { _ in
+                
+                // To report
+            }
+            action = reportAction
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            moreActionsAlertController.dismiss(animated: true, completion: nil)
+        }
+        
+        // addAction
+        moreActionsAlertController.addAction(action)
+        moreActionsAlertController.addAction(cancelAction)
+        
+        self.present(moreActionsAlertController, animated: true, completion: nil)
+    }
+    
+    func confirmAlert(postId: String) {
+        
+        // UIAlertController
+        let confirmAlertController = UIAlertController(title: nil, message: "Delete Post?", preferredStyle: .alert)
+        
+        // UIAlertAction
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            
+            PostManager.shared.deletePost(postId: postId) {
+                // Delete the post on tableView
+                self.deleteHandler?()
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            confirmAlertController.dismiss(animated: true, completion: nil)
+        }
+        
+        // addAction
+        confirmAlertController.addAction(deleteAction)
+        confirmAlertController.addAction(cancelAction)
+        
+        self.present(confirmAlertController, animated: true, completion: nil)
     }
 }

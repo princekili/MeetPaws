@@ -8,9 +8,20 @@
 import UIKit
 import Kingfisher
 
+protocol MyPostTableViewCellPresentAlertDelegate: AnyObject {
+    
+    func presentAlert(postId: String)
+}
+
 class MyPostTableViewCell: UITableViewCell {
     
-    static let identifier = "PostTableViewCell"
+    static let identifier = "MyPostTableViewCell"
+    
+    private var currentPost: Post?
+    
+    weak var delegate: MyPostTableViewCellPresentAlertDelegate?
+    
+    // MARK: -
     
     @IBOutlet weak var profileImage: UIImageView! {
         didSet {
@@ -31,7 +42,7 @@ class MyPostTableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var moreActionsButton: UIButton!
     
     @IBOutlet weak var likeButton: UIButton! {
         didSet {
@@ -81,6 +92,15 @@ class MyPostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var postImageView: UIImageView!
 
+    // MARK: - @IBAction
+    
+    @IBAction func moreActionsButtonDidTap(_ sender: UIButton) {
+        guard let postId = currentPost?.postId else { return }
+        self.delegate?.presentAlert(postId: postId)
+    }
+    
+    // MARK: -
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -89,4 +109,30 @@ class MyPostTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
+    // MARK: -
+    
+    func setup(post: Post) {
+
+        selectionStyle = .none
+        
+        currentPost = post
+        
+        postImageView.image = nil
+        let url = URL(string: post.imageFileURL)
+        postImageView.kf.setImage(with: url)
+        
+        captionLabel.text = post.caption
+        
+        let stringTimestamp = String(post.timestamp / 1000)
+        let date = DataClass.compareCurrentTime(str: stringTimestamp)
+        timestampLabel.text = "\(date)"
+        
+        let count = post.userDidLike.count - 1
+        if count > 1 {
+            likeCount.setTitle("\(count) likes", for: .normal)
+        } else {
+            likeCount.setTitle("\(count) like", for: .normal)
+        }
+    }
 }
+

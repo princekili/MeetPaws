@@ -395,7 +395,6 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="postImageView" destination="YCg-xC-Rd3" id="uYb-bl-L2z"/>
-                                            <segue destination="hqz-xZ-NLG" kind="show" id="OWB-mP-dw3"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -587,6 +586,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="9Wg-fg-OSp" id="hnC-Qf-mL5"/>
+                        <segue destination="hqz-xZ-NLG" kind="show" identifier="SegueMyPostVC" id="oX7-Kt-x0w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eoV-gZ-bu9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -713,7 +713,7 @@
         <!--Post View Controller-->
         <scene sceneID="WBf-Tv-rJZ">
             <objects>
-                <viewController storyboardIdentifier="PostVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hqz-xZ-NLG" userLabel="Post View Controller" customClass="MyPostViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyPostVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hqz-xZ-NLG" userLabel="Post View Controller" customClass="MyPostViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="buR-CD-GzY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -722,7 +722,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostTableViewCell" id="Zye-xK-LHD" userLabel="PostTableViewCell" customClass="MyPostTableViewCell" customModule="Insdogram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyPostTableViewCell" id="Zye-xK-LHD" userLabel="PostTableViewCell" customClass="MyPostTableViewCell" customModule="Insdogram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="649.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zye-xK-LHD" id="Vwz-2f-gch">
@@ -835,6 +835,9 @@
                                                     <state key="normal" title="•••">
                                                         <color key="titleColor" systemColor="labelColor"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="moreActionsButtonDidTap:" destination="Zye-xK-LHD" eventType="touchUpInside" id="reA-p5-zEt"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -861,10 +864,10 @@
                                             <outlet property="likeButton" destination="Et7-wd-1Ev" id="YZx-Mi-691"/>
                                             <outlet property="likeCount" destination="DVV-Zo-UH7" id="yNU-xe-niu"/>
                                             <outlet property="messageButton" destination="LLB-ZZ-REt" id="tAe-TC-eF6"/>
+                                            <outlet property="moreActionsButton" destination="kgR-Ql-Noy" id="uiA-5j-pZW"/>
                                             <outlet property="moreButton" destination="BJ1-WE-qKW" id="el0-PA-tNm"/>
                                             <outlet property="postImageView" destination="Tcr-hN-E9K" id="TDt-jC-JIL"/>
                                             <outlet property="profileImage" destination="CHO-be-7hN" id="byp-62-V8T"/>
-                                            <outlet property="settingButton" destination="kgR-Ql-Noy" id="n3h-RY-lNb"/>
                                             <outlet property="shareButton" destination="9hC-IZ-Zfv" id="XOT-Dl-0PU"/>
                                             <outlet property="timestampLabel" destination="fWC-SO-MSU" id="PtA-n0-4l5"/>
                                             <outlet property="usernameButton" destination="lLS-ga-lxF" id="kVZ-Sd-nye"/>
@@ -1136,7 +1139,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LwI-kW-ddj"/>
+        <segue reference="N3A-wu-T8P"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IU_profileImage" width="640" height="640"/>

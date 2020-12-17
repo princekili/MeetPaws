@@ -72,9 +72,9 @@ class FeedViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardId.cameraVC.rawValue {
-            let storyboard = UIStoryboard(name: StoryboardName.camera.rawValue, bundle: nil)
-            guard let cameraVC = storyboard.instantiateViewController(identifier: StoryboardId.cameraVC.rawValue) as? CameraViewController else { return }
+        if segue.identifier == "CameraVC" {
+        
+            guard let cameraVC = segue.destination as? CameraViewController else { return }
             cameraVC.delegate = self
         }
     }
@@ -162,7 +162,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         self.deleteHandler = { [weak self] index in
             self?.postFeed.remove(at: index)
             tableView.reloadData()
-            print("------ Delete the post via closure ------")
+            print("------ Delete the post: \(currentPost.postId) ------")
         }
         
         return cell
@@ -220,13 +220,9 @@ extension FeedViewController: FeedTableViewCellPresentAlertDelegate {
         var action: UIAlertAction
         
         if posts.contains(postId) {
-            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
                 
-                PostManager.shared.deletePost(postId: postId) {
-                    // Delete the post on tableView
-                    self.deleteHandler?(index)
-                    self.tableView.reloadData()
-                }
+                self?.confirmAlert(postId: postId, at: index)
             }
             action = deleteAction
             
@@ -238,7 +234,6 @@ extension FeedViewController: FeedTableViewCellPresentAlertDelegate {
             action = reportAction
         }
         
-        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             moreActionsAlertController.dismiss(animated: true, completion: nil)
         }
@@ -248,5 +243,31 @@ extension FeedViewController: FeedTableViewCellPresentAlertDelegate {
         moreActionsAlertController.addAction(cancelAction)
         
         self.present(moreActionsAlertController, animated: true, completion: nil)
+    }
+    
+    func confirmAlert(postId: String, at index: Int) {
+        
+        // UIAlertController
+        let confirmAlertController = UIAlertController(title: nil, message: "Delete Post?", preferredStyle: .alert)
+        
+        // UIAlertAction
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            
+            PostManager.shared.deletePost(postId: postId) {
+                // Delete the post on tableView
+                self.deleteHandler?(index)
+                self.tableView.reloadData()
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            confirmAlertController.dismiss(animated: true, completion: nil)
+        }
+        
+        // addAction
+        confirmAlertController.addAction(deleteAction)
+        confirmAlertController.addAction(cancelAction)
+        
+        self.present(confirmAlertController, animated: true, completion: nil)
     }
 }

@@ -128,7 +128,7 @@ extension FeedTableViewCell {
         }
 
         // Set up
-        captionLabel.text = "\(post.caption)"
+        captionLabel.text = post.caption
         
         let stringTimestamp = String(post.timestamp / 1000)
         let date = DataClass.compareCurrentTime(str: stringTimestamp)
