@@ -10,7 +10,7 @@ import Kingfisher
 
 protocol FeedTableViewCellPresentAlertDelegate: AnyObject {
     
-    func presentAlert()
+    func presentAlert(postId: String, at index: Int)
 }
 
 class FeedTableViewCell: UITableViewCell {
@@ -88,7 +88,8 @@ class FeedTableViewCell: UITableViewCell {
     // MARK: - @IBAction
     
     @IBAction func moreActionsButtonDidTap(_ sender: UIButton) {
-        self.delegate?.presentAlert()
+        guard let postId = currentPost?.postId else { return }
+        self.delegate?.presentAlert(postId: postId, at: sender.tag)
     }
     
     // MARK: -
@@ -106,8 +107,11 @@ class FeedTableViewCell: UITableViewCell {
 
 extension FeedTableViewCell {
     
-    func setup(post: Post) {
+    func setup(post: Post, at index: Int) {
 
+        // Set index
+        moreActionsButton.tag = index
+        
         // Set current post
         currentPost = post
         

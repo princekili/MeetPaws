@@ -58,13 +58,13 @@ class MyProfileViewController: UIViewController {
         refreshControl.backgroundColor = UIColor.clear
         refreshControl.tintColor = UIColor.lightGray
         refreshControl.addTarget(self,
-                                 action: #selector(loadMyRecentPosts),
+                                 action: #selector(loadMyPosts),
                                  for: UIControl.Event.valueChanged
         )
     }
     
     private func loadAndReloadData() {
-        loadMyRecentPosts()
+        loadMyPosts()
         collectionView.reloadData()
     }
 }
@@ -73,7 +73,7 @@ class MyProfileViewController: UIViewController {
 
 extension MyProfileViewController {
     
-    @objc private func loadMyRecentPosts() {
+    @objc private func loadMyPosts() {
         
         guard let userId = UserManager.shared.currentUser?.userId else { return }
         userManager.getUserInfo(userId: userId) { (user) in
@@ -89,7 +89,7 @@ extension MyProfileViewController {
                 
                 self.isLoadingPost = true
                 
-                PostManager.shared.getMyRecentPost(postId: postId, start: self.myPosts.first?.timestamp, limit: 18) { [weak self] (newPost) in
+                PostManager.shared.getMyPost(postId: postId) { [weak self] (newPost) in
                     
                     // Add the array to the beginning of the posts arrays
                     myPosts.append(newPost)
@@ -109,36 +109,15 @@ extension MyProfileViewController {
                         // Delay 0.5 second before ending the refreshing in order to make the animation look better
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
                             self?.refreshControl.endRefreshing()
-                            self?.displayNewPost(newPost: newPost)
+                            self?.collectionView.reloadData()
                         })
                         
                     } else {
-                        self?.displayNewPost(newPost: newPost)
+                        self?.collectionView.reloadData()
                     }
                 }
             }
         }
-    }
-    
-    private func displayNewPost(newPost post: Post) {
-        
-        collectionView.reloadData()
-        // Make sure we got some new posts to display
-//        guard posts.count > 0 else {
-//            return
-//        }
-//
-//        // Display the posts by inserting them to the table view
-//        var indexPaths: [IndexPath] = []
-//
-//        self.tableView.beginUpdates()
-//
-//        for num in 0...(posts.count - 1) {
-//            let indexPath = IndexPath(item: num, section: 0)
-//            indexPaths.append(indexPath)
-//        }
-//        self.collectionView.insertItems(at: indexPaths)
-//        self.tableView.endUpdates()
     }
 }
 

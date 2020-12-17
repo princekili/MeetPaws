@@ -18,6 +18,10 @@ class FeedViewController: UIViewController {
     
     let refreshControl = UIRefreshControl()
     
+    var deleteHandler: ((Int) -> Void)?
+    
+    // MARK: -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +37,8 @@ class FeedViewController: UIViewController {
         loadRecentPosts()
         getCurrentUserInfo()
     }
+    
+    // MARK: -
     
     private func getCurrentUserInfo() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
@@ -82,7 +88,7 @@ extension FeedViewController: LoadRecentPostsDelegate {
         loadRecentPosts()
     }
     
-    @objc private func loadRecentPosts() {
+    @objc func loadRecentPosts() {
         
         print("------ Loading Recent Posts... ------")
         
@@ -145,11 +151,19 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.identifier, for: indexPath) as? FeedTableViewCell else { return UITableViewCell() }
         
         let currentPost = postFeed[indexPath.row]
-        cell.setup(post: currentPost)
+        cell.setup(post: currentPost, at: indexPath.row)
         cell.delegate = self
+        
+        // Delete the post on tableView
+        self.deleteHandler = { [weak self] index in
+            self?.postFeed.remove(at: index)
+            tableView.reloadData()
+            print("------ Delete the post via closure ------")
+        }
         
         return cell
     }
@@ -195,24 +209,42 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension FeedViewController: FeedTableViewCellPresentAlertDelegate {
 
-    func presentAlert() {
+    func presentAlert(postId: String, at index: Int) {
         
         // UIAlertController
         let moreActionsAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        // UIAlertAction
-        let cameraAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+        // UIAlertAction - Check the author
+        guard let posts = UserManager.shared.currentUser?.posts else { return }
+        
+        var action: UIAlertAction
+        
+        if posts.contains(postId) {
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                
+                PostManager.shared.deletePost(postId: postId) {
+                    // Delete the post on tableView
+                    self.deleteHandler?(index)
+                    self.tableView.reloadData()
+                }
+            }
+            action = deleteAction
             
-            // More to do
+        } else {
+            let reportAction = UIAlertAction(title: "Report", style: .destructive) { _ in
+                
+                // To report
+            }
+            action = reportAction
         }
         
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            
             moreActionsAlertController.dismiss(animated: true, completion: nil)
         }
         
         // addAction
-        moreActionsAlertController.addAction(cameraAction)
+        moreActionsAlertController.addAction(action)
         moreActionsAlertController.addAction(cancelAction)
         
         self.present(moreActionsAlertController, animated: true, completion: nil)

@@ -344,9 +344,7 @@ class UserManager {
         
         self.usersRef.child(userId).updateChildValues(postsUpdate)
         
-        print("------ Update Database ------")
-        print(postsUpdate)
-        print("------------")
+        print("------ Update Database: \(postsUpdate) ------")
         
         completion() // do something after updating
     }

@@ -42,7 +42,6 @@ final class PostManager {
         
         userManager.updateUserPosts {
             print("------ New added postId: \(postId) ------")
-            print("------------")
         }
         
         // Use the unique key as the image name and prepare the storage reference
@@ -109,7 +108,7 @@ final class PostManager {
     
     // MARK: - Download Posts for Feed
     
-    func getRecentPosts(start timestamp: Int? = nil, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
+    func getRecentPosts(start timestamp: Int? = nil, limit: UInt, completion: @escaping ([Post]) -> Void) {
         
         // Ordered by timestamp
         var postQuery = postsRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
@@ -152,12 +151,12 @@ final class PostManager {
                 newPosts.sort(by: { $0.timestamp > $1.timestamp })
             }
             
-            completionHandler(newPosts)
+            completion(newPosts)
         })
         
     }
     
-    func getOldPosts(start timestamp: Int, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
+    func getOldPosts(start timestamp: Int, limit: UInt, completion: @escaping ([Post]) -> Void) {
         
         let postOrderedQuery = postsRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
         
@@ -187,29 +186,14 @@ final class PostManager {
             // Order in descending order (i.e. the latest post becomes the first post)
             oldPosts.sort(by: { $0.timestamp > $1.timestamp })
             
-            completionHandler(oldPosts)
+            completion(oldPosts)
         })
         
     }
     
     // MARK: - Download My Posts
     
-    func getMyRecentPost(postId: String, start timestamp: Int? = nil, limit: UInt, completionHandler: @escaping (Post) -> Void) {
-        
-        // Ordered by timestamp
-//        var postQuery = postsRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
-        
-//        if let latestPostTimestamp = timestamp, latestPostTimestamp > 0 {
-//
-//            // If the timestamp is specified, we will get the posts with timestamp newer than the given value
-//            postQuery = postQuery.queryStarting(atValue: latestPostTimestamp + 1,
-//                                                childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
-//
-//        } else {
-//
-//            // Otherwise(Default timestamp = nil), we will just get the most recent posts
-//            postQuery = postQuery.queryLimited(toLast: limit)
-//        }
+    func getMyPost(postId: String, completion: @escaping (Post) -> Void) {
         
         // Filter via postId
         let postQuery = postsRef.child(postId)
@@ -226,44 +210,33 @@ final class PostManager {
             
             print("------ newPost: \(newPost) ------")
             
-            completionHandler(newPost)
+            completion(newPost)
         })
-        
     }
     
-//    func getMyOldPosts(start timestamp: Int, limit: UInt, completionHandler: @escaping ([Post]) -> Void) {
-//
-//        let postOrderedQuery = postsRef.queryOrdered(byChild: Post.PostInfoKey.timestamp)
-//
-//        let postLimitedQuery = postOrderedQuery.queryEnding(atValue: timestamp - 1,
-//                                                            childKey: Post.PostInfoKey.timestamp).queryLimited(toLast: limit)
-//
-//        postLimitedQuery.observeSingleEvent(of: .value, with: { (snapshot) in
-//
-//            var oldPosts: [Post] = []
-//
-//            print("------ Total number of old posts: \(snapshot.childrenCount) ------")
-//
-//            guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
-//                print("There's no post.")
-//                return
-//            }
-//
-//            for item in allObjects {
-//                print("Post key: \(item.key)")
-//                let postInfo = item.value as? [String: Any] ?? [:]
-//
-//                if let post = Post(postId: item.key, postInfo: postInfo) {
-//                    oldPosts.append(post)
-//                }
-//            }
-//
-//            // Order in descending order (i.e. the latest post becomes the first post)
-//            oldPosts.sort(by: { $0.timestamp > $1.timestamp })
-//
-//            completionHandler(oldPosts)
-//        })
-//    }
+    // MARK: - Delete the Post
+    
+    func deletePost(postId: String, completion: @escaping () -> Void) {
+        
+        // Update local currentUser.posts
+        guard let posts = userManager.currentUser?.posts else { return }
+        let filtered = posts.filter { $0 != postId }
+        userManager.currentUser?.posts = filtered
+        print("------ userManager.currentUser.posts: \(filtered) ------")
+        
+        // Update /users/userId/posts on firebase
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        userManager.updateUserPosts {
+            print("------ Delete /users/\(userId)/posts/\(postId) ------")
+        }
+        
+        // Update /posts on firebase
+        postsRef.child(postId).removeValue()
+        print("------ Delete /posts/\(postId) ------")
+        
+        // Download posts & Reload data
+        completion()
+    }
     
     // MARK: - Handle post's ❤️ (userDidLike)
     
