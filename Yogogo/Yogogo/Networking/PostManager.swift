@@ -193,7 +193,7 @@ final class PostManager {
     
     // MARK: - Download My Posts
     
-    func getMyPost(postId: String, completion: @escaping (Post) -> Void) {
+    func getUserPost(postId: String, completion: @escaping (Post) -> Void) {
         
         // Filter via postId
         let postQuery = postsRef.child(postId)

@@ -29,16 +29,16 @@ class MyPostTableViewCell: UITableViewCell {
             profileImage.layer.masksToBounds = true
             profileImage.translatesAutoresizingMaskIntoConstraints = false
             
-            guard let imageUrl = UserManager.shared.currentUser?.profileImage else { return }
-            let url = URL(string: imageUrl)
-            profileImage.kf.setImage(with: url)
+//            guard let imageUrl = UserManager.shared.currentUser?.profileImage else { return }
+//            let url = URL(string: imageUrl)
+//            profileImage.kf.setImage(with: url)
         }
     }
     
     @IBOutlet weak var usernameButton: UIButton! {
         didSet {
-            guard let username = UserManager.shared.currentUser?.username else { return }
-            usernameButton.setTitle(username, for: .normal)
+//            guard let username = UserManager.shared.currentUser?.username else { return }
+//            usernameButton.setTitle(username, for: .normal)
         }
     }
     
@@ -117,6 +117,15 @@ class MyPostTableViewCell: UITableViewCell {
         
         currentPost = post
         
+        // Get post's author info from DB
+        UserManager.shared.getAuthorInfo(userId: post.userId) { [weak self] (user) in
+            
+            let url = URL(string: user.profileImage)
+            self?.profileImage.kf.setImage(with: url)
+            
+            self?.usernameButton.setTitle(user.username, for: .normal)
+        }
+        
         postImageView.image = nil
         let url = URL(string: post.imageFileURL)
         postImageView.kf.setImage(with: url)
@@ -135,4 +144,3 @@ class MyPostTableViewCell: UITableViewCell {
         }
     }
 }
-

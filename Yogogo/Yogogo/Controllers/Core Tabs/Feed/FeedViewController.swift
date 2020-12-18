@@ -14,6 +14,8 @@ class FeedViewController: UIViewController {
     
     var postFeed: [Post] = []
     
+    var user: User?
+    
     var isLoadingPost = false
     
     let refreshControl = UIRefreshControl()
@@ -26,7 +28,7 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        setupNavigation()
+        setupNavigationBar()
         setupRefresher()
     }
  
@@ -56,8 +58,7 @@ class FeedViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    private func setupNavigation() {
-        navigationItem.backBarButtonItem?.tintColor = .label
+    private func setupNavigationBar() {
         navigationItem.backButtonTitle = ""
     }
     
@@ -72,10 +73,16 @@ class FeedViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
         if segue.identifier == "CameraVC" {
-        
             guard let cameraVC = segue.destination as? CameraViewController else { return }
             cameraVC.delegate = self
+            
+        } else if segue.identifier == "SegueUserProfile" {
+            guard let userProfileVC = segue.destination as? UserProfileViewController else { return }
+            
+            // Pass user data to userProfileVC
+            userProfileVC.user = self.user
         }
     }
 }
@@ -156,7 +163,8 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         
         let currentPost = postFeed[indexPath.row]
         cell.setup(post: currentPost, at: indexPath.row)
-        cell.delegate = self
+        cell.delegatePresentAlert = self
+        cell.delegatePresentUser = self
         
         // Delete the post on tableView
         self.deleteHandler = { [weak self] index in
@@ -269,5 +277,30 @@ extension FeedViewController: FeedTableViewCellPresentAlertDelegate {
         confirmAlertController.addAction(cancelAction)
         
         self.present(confirmAlertController, animated: true, completion: nil)
+    }
+}
+
+extension FeedViewController: FeedTableViewCellPresentUserDelegate {
+    
+    func presentUser(user: User, at index: Int) {
+        
+        // Get user data from cell
+        self.user = user
+        
+        guard let myself = Auth.auth().currentUser?.uid else { return }
+        
+        if user.userId == myself {
+            showMyProfileVC()
+        
+        } else {
+            performSegue(withIdentifier: "SegueUserProfile", sender: nil)
+        }
+    }
+    
+    func showMyProfileVC() {
+        let storyboard = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
+        let myProfileVC = storyboard.instantiateViewController(identifier: StoryboardId.myProfileVC.rawValue)
+        
+        self.navigationController?.pushViewController(myProfileVC, animated: true)
     }
 }

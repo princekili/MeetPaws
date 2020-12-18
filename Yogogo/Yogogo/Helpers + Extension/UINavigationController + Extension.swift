@@ -9,14 +9,17 @@ import UIKit
 
 extension UINavigationController {
     
+    var rootViewController: UIViewController? {
+        return self.viewControllers.first
+    }
+    
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.backButtonTitle = ""
-        self.navigationItem.backBarButtonItem?.tintColor = .label
+        navigationBar.tintColor = .label
         
         // Make the navigation bar transparent
-        self.navigationBar.isTranslucent = false
+        navigationBar.isTranslucent = false
         
 //        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
 //        self.navigationBar.shadowImage = UIImage()

@@ -12,22 +12,42 @@ class UserProfileViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var posts: [Post] = []
+    var userPosts: [Post] = []
+    
+    var post: Post?
+    
+    var user: User?
+    
+    var isLoadingPost = false
+    
+    let refreshControl = UIRefreshControl()
     
     let userManager = UserManager.shared
+    
+    // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavigationBar()
         setupCollectionView()
+        setupRefresher()
+        loadAndReloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        setupNavigation()
-        collectionView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "SegueUserPostVC" {
+            guard let myPostVC = segue.destination as? MyPostViewController else { return }
+            myPostVC.post = post
+        }
+    }
+    
+    // MARK: -
     
     private func setupCollectionView() {
         collectionView.dataSource = self
@@ -40,11 +60,72 @@ class UserProfileViewController: UIViewController {
                                 withReuseIdentifier: UserProfileTabsCollectionReusableView.identifier)
     }
     
-    private func setupNavigation() {
-        navigationItem.backBarButtonItem?.tintColor = .label
+    private func setupNavigationBar() {
         navigationItem.backButtonTitle = ""
         
-        navigationItem.title = "yooonova"
+        guard let user = self.user else { return }
+        navigationItem.title = user.username
+    }
+    
+    private func setupRefresher() {
+        collectionView.refreshControl = refreshControl
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.tintColor = UIColor.lightGray
+        refreshControl.addTarget(self,
+                                 action: #selector(loadUserPosts),
+                                 for: UIControl.Event.valueChanged
+        )
+    }
+    
+    private func loadAndReloadData() {
+        loadUserPosts()
+        collectionView.reloadData()
+    }
+}
+
+// MARK: - load User Posts
+
+extension UserProfileViewController {
+    
+    @objc private func loadUserPosts() {
+        
+        guard let user = user else { return }
+        
+        var postIds = user.posts
+        postIds = postIds.filter { $0 != "" }
+        
+        var userPosts: [Post] = []
+        
+        for postId in postIds {
+            
+            print("------ Loading User Post: \(postId) ------")
+            
+            self.isLoadingPost = true
+            
+            PostManager.shared.getUserPost(postId: postId) { [weak self] (newPost) in
+                
+                // Add the array to the beginning of the posts arrays
+                userPosts.append(newPost)
+                
+                userPosts.sort(by: { $0.timestamp > $1.timestamp })
+                
+                self?.userPosts = userPosts
+                
+                self?.isLoadingPost = false
+                
+                if ((self?.refreshControl.isRefreshing) != nil) == true {
+                    
+                    // Delay 0.5 second before ending the refreshing in order to make the animation look better
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                        self?.refreshControl.endRefreshing()
+                        self?.collectionView.reloadData()
+                    })
+                    
+                } else {
+                    self?.collectionView.reloadData()
+                }
+            }
+        }
     }
 }
 
@@ -58,12 +139,10 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
         if section == 0 {
             return 0
         }
-        return 30
-//        return posts.count
+        return userPosts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let model = posts[indexPath.item]
         
         guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: UserPostCollectionViewCell.identifier,
@@ -72,8 +151,8 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
             return UICollectionViewCell()
         }
         
-        cell.setupForTest()
-//        cell.setup(with: model)
+        let post = userPosts[indexPath.item]
+        cell.setup(post: post)
         
         return cell
     }
@@ -86,12 +165,9 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        // get the model and open the PostVC
-//        let model = posts[indexPath.item]
-//        let postVC = PostViewController(model: nil)
-//        postVC.title = "Posts"
-//        postVC.navigationItem.largeTitleDisplayMode = .never
-//        navigationController?.pushViewController(postVC, animated: true)
+        post = userPosts[indexPath.item]
+        
+        performSegue(withIdentifier: "SegueUserPostVC", sender: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -117,7 +193,9 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
                                                                      for: indexPath) as? UserProfileHeaderCollectionReusableView
         else { return UICollectionReusableView() }
         
-//        headerForInfo.setup()
+        guard let user = self.user else { return UICollectionReusableView() }
+        headerForInfo.setup(user: user)
+//        headerForInfo.delegate = self
         return headerForInfo
     }
     

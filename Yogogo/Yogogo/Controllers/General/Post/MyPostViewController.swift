@@ -20,7 +20,7 @@ class MyPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupNavigation()
+        setupNavigationBar()
         setupTableView()
     }
     
@@ -31,8 +31,7 @@ class MyPostViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    private func setupNavigation() {
-        navigationItem.backBarButtonItem?.tintColor = .label
+    private func setupNavigationBar() {
         navigationItem.backButtonTitle = ""
     }
 }

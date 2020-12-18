@@ -12,6 +12,8 @@ class UserProfileHeaderCollectionReusableView: UICollectionReusableView {
         
     let userManager = UserManager.shared
     
+    var user: User?
+    
     var isFollowing = false
         
     static let identifier = "UserProfileHeaderCollectionReusableView"
@@ -19,9 +21,6 @@ class UserProfileHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var profileImageView: UIImageView! {
         didSet {
             profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
-            
-            let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/yogogo-ddcf9.appspot.com/o/profilePhotos%2FybdK3sBSu8d6gx3XNrsvgf8HLBo2.jpg?alt=media&token=acfe0404-0247-4e44-a261-bd64436b55ff")
-            profileImageView.kf.setImage(with: url)
         }
     }
     
@@ -45,17 +44,9 @@ class UserProfileHeaderCollectionReusableView: UICollectionReusableView {
         }
     }
     
-    @IBOutlet weak var nameLabel: UILabel! {
-        didSet {
-            nameLabel.text = "來自北一の阿雙"
-        }
-    }
+    @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet weak var bioLabel: UILabel! {
-        didSet {
-            bioLabel.text = "如果我沒在笑，那就是在準備笑🐱"
-        }
-    }
+    @IBOutlet weak var bioLabel: UILabel!
     
     @IBOutlet weak var postsCountButton: UIButton!
     
@@ -81,23 +72,25 @@ class UserProfileHeaderCollectionReusableView: UICollectionReusableView {
     @IBAction func messageButtonDidTap(_ sender: UIButton) {
     }
     
-    func setup() {
+    func setup(user: User) {
         
-//        guard let profileImage = userManager.currentUser?.profileImage else { return }
-//        let url = URL(string: profileImage)
-//        profileImageView.kf.setImage(with: url)
-//
-//        nameLabel.text = userManager.currentUser?.fullName
-//        bioLabel.text = userManager.currentUser?.bio
-//
-//        let postsCount = String((userManager.currentUser?.posts.count ?? 1) - 1)
-//            postsCountButton.setTitle(postsCount, for: .normal)
-//
-//        let followersCount = String((userManager.currentUser?.followers.count ?? 1) - 1)
-//        followersCountButton.setTitle(followersCount, for: .normal)
-//
-//        let followingCount = String((userManager.currentUser?.following.count ?? 1) - 1)
-//        followingCountButton.setTitle(followingCount, for: .normal)
+        self.user = user
+        
+        let profileImage = user.profileImage
+        let url = URL(string: profileImage)
+        profileImageView.kf.setImage(with: url)
+
+        nameLabel.text = user.fullName
+        bioLabel.text = user.bio
+
+        let postsCount = String((user.posts.count) - 1)
+            postsCountButton.setTitle(postsCount, for: .normal)
+
+        let followersCount = String((user.followers.count) - 1)
+        followersCountButton.setTitle(followersCount, for: .normal)
+
+        let followingCount = String((user.following.count) - 1)
+        followingCountButton.setTitle(followingCount, for: .normal)
     }
 }
 

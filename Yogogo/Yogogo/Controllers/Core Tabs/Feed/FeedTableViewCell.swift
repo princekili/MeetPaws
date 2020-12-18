@@ -13,15 +13,24 @@ protocol FeedTableViewCellPresentAlertDelegate: AnyObject {
     func presentAlert(postId: String, at index: Int)
 }
 
+protocol FeedTableViewCellPresentUserDelegate: AnyObject {
+    
+    func presentUser(user: User, at index: Int)
+}
+
 class FeedTableViewCell: UITableViewCell {
     
     static let identifier = "FeedTableViewCell"
     
     private var currentPost: Post?
     
+    private var currentUser: User?
+    
     let userManager = UserManager.shared
     
-    weak var delegate: FeedTableViewCellPresentAlertDelegate?
+    weak var delegatePresentAlert: FeedTableViewCellPresentAlertDelegate?
+    
+    weak var delegatePresentUser: FeedTableViewCellPresentUserDelegate?
     
     // MARK: - @IBOutlet
     
@@ -89,7 +98,12 @@ class FeedTableViewCell: UITableViewCell {
     
     @IBAction func moreActionsButtonDidTap(_ sender: UIButton) {
         guard let postId = currentPost?.postId else { return }
-        self.delegate?.presentAlert(postId: postId, at: sender.tag)
+        self.delegatePresentAlert?.presentAlert(postId: postId, at: sender.tag)
+    }
+    
+    @IBAction func usernameButtonDidTap(_ sender: UIButton) {
+        guard let user = currentUser else { return }
+        self.delegatePresentUser?.presentUser(user: user, at: sender.tag)
     }
     
     // MARK: -
@@ -125,6 +139,8 @@ extension FeedTableViewCell {
             self?.profileImage.image = nil
             let url = URL(string: user.profileImage)
             self?.profileImage.kf.setImage(with: url)
+            
+            self?.currentUser = user
         }
 
         // Set up

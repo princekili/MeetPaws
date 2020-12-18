@@ -50,7 +50,7 @@
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <connections>
-                                                                <segue destination="z8X-2O-y8n" kind="show" id="dtZ-oy-n6N"/>
+                                                                <action selector="usernameButtonDidTap:" destination="Gj1-kw-ZQO" eventType="touchUpInside" id="21T-zc-r2L"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -207,6 +207,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Pjr-xg-Nsj" id="oRM-ip-r0M"/>
+                        <segue destination="z8X-2O-y8n" kind="show" identifier="SegueUserProfile" id="ykH-sw-wtH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pid-eU-f7S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -382,8 +383,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholdertext.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YCg-xC-Rd3" userLabel="Post Image View">
-                                                    <rect key="frame" x="0.0" y="1" width="128" height="125.5"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YCg-xC-Rd3" userLabel="Post Image View">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -730,7 +731,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ERy-By-Jla">
-                                                    <rect key="frame" x="12" y="8" width="124" height="36"/>
+                                                    <rect key="frame" x="12" y="8" width="74" height="36"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CHO-be-7hN">
                                                             <rect key="frame" x="0.0" y="0.5" width="36" height="35"/>
@@ -741,9 +742,9 @@
                                                             <imageReference key="image" image="person.circle" catalog="system" renderingMode="original"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLS-ga-lxF">
-                                                            <rect key="frame" x="44" y="0.0" width="80" height="33"/>
+                                                            <rect key="frame" x="44" y="0.0" width="30" height="33"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                            <state key="normal" title="username">
+                                                            <state key="normal" title="   ">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                         </button>
@@ -886,7 +887,7 @@
                             <constraint firstItem="lOr-O6-N1T" firstAttribute="bottom" secondItem="0Dc-Vz-fFV" secondAttribute="bottom" id="cxF-PG-qvi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Posts" largeTitleDisplayMode="never" id="Qhs-Cs-N4P"/>
+                    <navigationItem key="navigationItem" title="Post" largeTitleDisplayMode="never" id="Qhs-Cs-N4P"/>
                     <connections>
                         <outlet property="tableView" destination="0Dc-Vz-fFV" id="LjG-mt-yae"/>
                     </connections>
@@ -920,8 +921,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholdertext.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9nd-Kg-Lk0">
-                                                    <rect key="frame" x="0.0" y="1" width="128" height="125.5"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9nd-Kg-Lk0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -1131,6 +1132,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="SIC-aE-p8g" id="iA8-2y-fmC"/>
+                        <segue destination="hqz-xZ-NLG" kind="show" identifier="SegueUserPostVC" id="8OA-UW-21c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="df2-Ne-Ez5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1139,6 +1141,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="oX7-Kt-x0w"/>
         <segue reference="N3A-wu-T8P"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1160,7 +1163,6 @@
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
-        <image name="placeholdertext.fill" catalog="system" width="80" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

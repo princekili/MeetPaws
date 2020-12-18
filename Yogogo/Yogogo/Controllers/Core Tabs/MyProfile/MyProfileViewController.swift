@@ -26,6 +26,7 @@ class MyProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavigationBar()
         setupCollectionView()
         setupRefresher()
     }
@@ -33,15 +34,13 @@ class MyProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupNavigation()
         loadAndReloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "SegueMyPostVC" {
-            
             guard let myPostVC = segue.destination as? MyPostViewController else { return }
-            
             myPostVC.post = post
         }
     }
@@ -59,12 +58,22 @@ class MyProfileViewController: UIViewController {
                                 withReuseIdentifier: MyProfileTabsCollectionReusableView.identifier)
     }
     
-    private func setupNavigation() {
-        navigationItem.backBarButtonItem?.tintColor = .label
+    private func setupNavigationBar() {
         navigationItem.backButtonTitle = ""
         
         let title = userManager.currentUser?.username
         navigationItem.title = title
+        
+        if let rootVC = navigationController?.rootViewController {
+            let isPushFromFeed = (rootVC is FeedViewController)
+            
+            switch isPushFromFeed {
+            case true:
+                navigationItem.leftBarButtonItem = nil
+            case false:
+                break
+            }
+        }
     }
     
     private func setupRefresher() {
@@ -83,7 +92,7 @@ class MyProfileViewController: UIViewController {
     }
 }
 
-// MARK: - load My Recent Posts
+// MARK: - load My Posts
 
 extension MyProfileViewController {
     
@@ -99,11 +108,11 @@ extension MyProfileViewController {
             
             for postId in postIds {
                 
-                print("------ Loading My Recent Post: \(postId) ------")
+                print("------ Loading My Post: \(postId) ------")
                 
                 self.isLoadingPost = true
                 
-                PostManager.shared.getMyPost(postId: postId) { [weak self] (newPost) in
+                PostManager.shared.getUserPost(postId: postId) { [weak self] (newPost) in
                     
                     // Add the array to the beginning of the posts arrays
                     myPosts.append(newPost)
@@ -150,15 +159,14 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let post = myPosts[indexPath.item]
-        
+
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPostCollectionViewCell.identifier,
                                                             for: indexPath) as? MyPostCollectionViewCell
         else {
             return UICollectionViewCell()
         }
         
+        let post = myPosts[indexPath.item]
         cell.setup(with: post)
         
         return cell
@@ -176,13 +184,6 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
         post = myPosts[indexPath.item]
         
         performSegue(withIdentifier: "SegueMyPostVC", sender: nil)
-        
-        // get the model and open the PostVC
-//        let model = posts[indexPath.item]
-//        let postVC = PostViewController(model: nil)
-//        postVC.title = "Posts"
-//        postVC.navigationItem.largeTitleDisplayMode = .never
-//        navigationController?.pushViewController(postVC, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
