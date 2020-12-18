@@ -127,6 +127,7 @@ final class PostManager {
         
         // Call Firebase API to retrieve the latest records
         postQuery.observeSingleEvent(of: .value, with: { (snapshot) in
+//        postQuery.observe(.value, with: { (snapshot) in
             
             var newPosts: [Post] = []
             
@@ -240,9 +241,29 @@ final class PostManager {
     
     // MARK: - Handle post's ❤️ (userDidLike)
     
-//    func uploadPostUserDidLike(postId: String, completion: @escaping () -> Void) {
-//
-//        guard let userId = Auth.auth().currentUser?.uid else { return }
-//
-//    }
+    func updateUserDidLike(post: Post, completion: @escaping () -> Void) {
+
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+
+        var userDidLikeUpdate: [String: Any]
+        
+        var userDidLike = post.userDidLike
+        
+        if userDidLike.contains(userId) {
+            
+            let filtered = userDidLike.filter { $0 != userId }
+            userDidLikeUpdate = ["userDidLike": filtered]
+            print("------ Dislike💔 ------")
+            
+        } else {
+            
+            userDidLike.append(userId)
+            userDidLikeUpdate = ["userDidLike": userDidLike]
+            print("------ Like❤️ ------")
+        }
+        
+        postsRef.child(post.postId).updateChildValues(userDidLikeUpdate)
+        
+        completion()
+    }
 }

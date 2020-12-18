@@ -165,6 +165,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setup(post: currentPost, at: indexPath.row)
         cell.delegatePresentAlert = self
         cell.delegatePresentUser = self
+        cell.delegateReloadView = self
         
         // Delete the post on tableView
         self.deleteHandler = { [weak self] index in
@@ -302,5 +303,12 @@ extension FeedViewController: FeedTableViewCellPresentUserDelegate {
         let myProfileVC = storyboard.instantiateViewController(identifier: StoryboardId.myProfileVC.rawValue)
         
         self.navigationController?.pushViewController(myProfileVC, animated: true)
+    }
+}
+
+extension FeedViewController: LikeButtonDidTapDelegate {
+    
+    func reloadView(cell: UITableViewCell) {
+        tableView.reloadData()
     }
 }

@@ -18,6 +18,11 @@ protocol FeedTableViewCellPresentUserDelegate: AnyObject {
     func presentUser(user: User, at index: Int)
 }
 
+protocol LikeButtonDidTapDelegate: AnyObject {
+    
+    func reloadView(cell: UITableViewCell)
+}
+
 class FeedTableViewCell: UITableViewCell {
     
     static let identifier = "FeedTableViewCell"
@@ -31,6 +36,8 @@ class FeedTableViewCell: UITableViewCell {
     weak var delegatePresentAlert: FeedTableViewCellPresentAlertDelegate?
     
     weak var delegatePresentUser: FeedTableViewCellPresentUserDelegate?
+    
+    weak var delegateReloadView: LikeButtonDidTapDelegate?
     
     // MARK: - @IBOutlet
     
@@ -106,6 +113,35 @@ class FeedTableViewCell: UITableViewCell {
         self.delegatePresentUser?.presentUser(user: user, at: sender.tag)
     }
     
+//    var isLiked: Bool = false {
+//        didSet {
+//            if isLiked {
+//                self.likeButton.backgroundColor = .red
+//            } else {
+//                self.likeButton.backgroundColor = .blue
+//            }
+//        }
+//    }
+    
+    @IBAction func likeButtonDidTap(_ sender: UIButton) {
+        
+        // Data
+        guard let post = currentPost,
+              let delegate = delegateReloadView
+        else {
+            print("------ post or delegate is nil in FeedTableViewCell")
+            return
+        }
+        
+//        isLiked = !isLiked
+        
+        PostManager.shared.updateUserDidLike(post: post) {
+            // View
+            sender.isSelected = !sender.isSelected
+            delegate.reloadView(cell: self)
+        }
+    }
+    
     // MARK: -
     
     override func awakeFromNib() {
@@ -160,38 +196,12 @@ extension FeedTableViewCell {
         // Reset image view's image
         postImageView.image = nil
         
+        // likeButton
+        guard let userId = userManager.currentUser?.userId else { return }
+        likeButton.isSelected = post.userDidLike.contains(userId)
+        
         // MARK: - Download post image - KingFisher
         let url = URL(string: post.imageFileURL)
         postImageView.kf.setImage(with: url)
-        
-        // MARK: - Download post image - URLSession
-//        if let image = CacheManager.shared.getFromCache(key: post.imageFileURL) as? UIImage {
-//            postImageView.image = image
-//
-//        } else {
-//            if let url = URL(string: post.imageFileURL) {
-//
-//                let downloadTask = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-//
-//                    guard let imageData = data else {
-//                        return
-//                    }
-//
-//                    OperationQueue.main.addOperation {
-//                        guard let image = UIImage(data: imageData) else { return }
-//
-//                        if self.currentPost?.imageFileURL == post.imageFileURL {
-//                            self.postImageView.image = image
-//                        }
-//
-//                        // Add the downloaded image to cache
-//                        CacheManager.shared.cache(object: image, key: post.imageFileURL)
-//                    }
-//
-//                })
-//
-//                downloadTask.resume()
-//            }
-//        }
     }
 }

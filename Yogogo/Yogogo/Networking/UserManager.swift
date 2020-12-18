@@ -358,7 +358,7 @@ class UserManager {
         
         let postDidLikeUpdate = ["postDidLike": postDidLike]
         
-        self.usersRef.child(userId).updateChildValues(postDidLikeUpdate)
+        usersRef.child(userId).updateChildValues(postDidLikeUpdate)
         
         print("------ Update Database ------")
         print(postDidLikeUpdate)

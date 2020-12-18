@@ -66,11 +66,17 @@
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iys-6H-yaL">
                                                             <rect key="frame" x="0.0" y="0.0" width="25.5" height="22"/>
-                                                            <color key="tintColor" systemColor="labelColor"/>
+                                                            <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal">
                                                                 <imageReference key="image" image="heart" catalog="system" renderingMode="original"/>
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                             </state>
+                                                            <state key="selected">
+                                                                <imageReference key="image" image="heart.fill" catalog="system" renderingMode="template"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="likeButtonDidTap:" destination="Gj1-kw-ZQO" eventType="touchUpInside" id="z9P-cQ-DJJ"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uw6-KL-KYe">
                                                             <rect key="frame" x="39.5" y="0.0" width="22" height="22"/>
@@ -761,9 +767,13 @@
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Et7-wd-1Ev">
                                                             <rect key="frame" x="0.0" y="0.0" width="25.5" height="22"/>
+                                                            <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal">
                                                                 <imageReference key="image" image="heart" catalog="system" renderingMode="original"/>
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                            </state>
+                                                            <state key="selected">
+                                                                <imageReference key="image" image="heart.fill" catalog="system" renderingMode="template"/>
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLB-ZZ-REt">
@@ -1151,6 +1161,7 @@
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="dog_postImage" width="426" height="421"/>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="heart.text.square" catalog="system" width="128" height="114"/>
         <image name="heart.text.square.fill" catalog="system" width="128" height="114"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
