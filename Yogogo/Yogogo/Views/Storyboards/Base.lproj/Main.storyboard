@@ -41,11 +41,11 @@
                                                             <imageReference key="image" image="person.circle" catalog="system" renderingMode="original"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wM1-oA-mzh">
-                                                            <rect key="frame" x="44" y="0.0" width="150" height="33"/>
+                                                            <rect key="frame" x="44" y="0.0" width="150" height="34"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="3RR-H1-UBr"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                             <state key="normal" title="username">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
@@ -99,8 +99,8 @@
                                                     <rect key="frame" x="16" y="502" width="236" height="135.5"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPe-uL-2GY">
-                                                            <rect key="frame" x="0.0" y="0.0" width="71" height="35"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="69" height="35"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                             <state key="normal" title="99 likes">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
@@ -723,7 +723,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyPostTableViewCell" id="Zye-xK-LHD" userLabel="PostTableViewCell" customClass="MyPostTableViewCell" customModule="Insdogram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostTableViewCell" id="Zye-xK-LHD" userLabel="PostTableViewCell" customClass="PostTableViewCell" customModule="Insdogram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="649.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zye-xK-LHD" id="Vwz-2f-gch">
@@ -742,8 +742,8 @@
                                                             <imageReference key="image" image="person.circle" catalog="system" renderingMode="original"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLS-ga-lxF">
-                                                            <rect key="frame" x="44" y="0.0" width="30" height="33"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <rect key="frame" x="44" y="0.0" width="30" height="34"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                             <state key="normal" title="   ">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
@@ -793,8 +793,8 @@
                                                     <rect key="frame" x="16" y="502" width="236" height="135.5"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVV-Zo-UH7">
-                                                            <rect key="frame" x="0.0" y="0.0" width="71" height="35"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="69" height="35"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                             <state key="normal" title="99 likes">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
@@ -1142,7 +1142,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="oX7-Kt-x0w"/>
-        <segue reference="N3A-wu-T8P"/>
+        <segue reference="LwI-kW-ddj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IU_profileImage" width="640" height="640"/>

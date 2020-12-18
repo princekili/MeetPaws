@@ -8,18 +8,18 @@
 import UIKit
 import Kingfisher
 
-protocol MyPostTableViewCellPresentAlertDelegate: AnyObject {
+protocol PostTableViewCellPresentAlertDelegate: AnyObject {
     
     func presentAlert(postId: String)
 }
 
-class MyPostTableViewCell: UITableViewCell {
+class PostTableViewCell: UITableViewCell {
     
-    static let identifier = "MyPostTableViewCell"
+    static let identifier = "PostTableViewCell"
     
     private var currentPost: Post?
     
-    weak var delegate: MyPostTableViewCellPresentAlertDelegate?
+    weak var delegate: PostTableViewCellPresentAlertDelegate?
     
     // MARK: -
     
@@ -28,19 +28,10 @@ class MyPostTableViewCell: UITableViewCell {
             profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
             profileImage.layer.masksToBounds = true
             profileImage.translatesAutoresizingMaskIntoConstraints = false
-            
-//            guard let imageUrl = UserManager.shared.currentUser?.profileImage else { return }
-//            let url = URL(string: imageUrl)
-//            profileImage.kf.setImage(with: url)
         }
     }
     
-    @IBOutlet weak var usernameButton: UIButton! {
-        didSet {
-//            guard let username = UserManager.shared.currentUser?.username else { return }
-//            usernameButton.setTitle(username, for: .normal)
-        }
-    }
+    @IBOutlet weak var usernameButton: UIButton!
     
     @IBOutlet weak var moreActionsButton: UIButton!
     
@@ -133,7 +124,7 @@ class MyPostTableViewCell: UITableViewCell {
         captionLabel.text = post.caption
         
         let stringTimestamp = String(post.timestamp / 1000)
-        let date = DataClass.compareCurrentTime(str: stringTimestamp)
+        let date = DateClass.compareCurrentTime(str: stringTimestamp)
         timestampLabel.text = "\(date)"
         
         let count = post.userDidLike.count - 1

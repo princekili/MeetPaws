@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DataClass {
+class DateClass {
     
     // MARK: - 時間與時間戳之間的轉化
     
@@ -146,7 +146,7 @@ class DataClass {
     }
 }
 
-extension DataClass {
+extension DateClass {
     
     // MARK: - 當前時間相關
     

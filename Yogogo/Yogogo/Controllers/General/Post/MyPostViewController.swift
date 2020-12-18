@@ -47,8 +47,8 @@ extension MyPostViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPostTableViewCell.identifier,
-                                                 for: indexPath) as? MyPostTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier,
+                                                 for: indexPath) as? PostTableViewCell
         else { return UITableViewCell() }
         
         guard let currentPost = post else { return UITableViewCell() }
@@ -69,7 +69,7 @@ extension MyPostViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension MyPostViewController: MyPostTableViewCellPresentAlertDelegate {
+extension MyPostViewController: PostTableViewCellPresentAlertDelegate {
 
     func presentAlert(postId: String) {
         

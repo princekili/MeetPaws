@@ -147,7 +147,7 @@ extension FeedTableViewCell {
         captionLabel.text = post.caption
         
         let stringTimestamp = String(post.timestamp / 1000)
-        let date = DataClass.compareCurrentTime(str: stringTimestamp)
+        let date = DateClass.compareCurrentTime(str: stringTimestamp)
         timestampLabel.text = "\(date)"
         
         let count = post.userDidLike.count - 1
