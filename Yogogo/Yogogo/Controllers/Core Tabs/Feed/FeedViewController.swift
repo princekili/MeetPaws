@@ -58,7 +58,7 @@ class FeedViewController: UIViewController {
     private func getCurrentUserInfo() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
-        UserManager.shared.getUserInfo(userId: userId) { [weak self] (user) in
+        UserManager.shared.getUserInfo(userId: userId) { (user) in
             
             let myUser = user
             print("------  Get the currentUser info successfully in FeedVC ------")

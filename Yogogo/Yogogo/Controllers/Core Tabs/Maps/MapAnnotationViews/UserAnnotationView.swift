@@ -41,7 +41,7 @@ class UserAnnotationView: MGLAnnotationView {
         imageLayer.masksToBounds = true
         imageLayer.borderWidth = 2
 //        imageLayer.borderColor = UIColor.darkGray.cgColor
-        imageLayer.borderColor = UIColor().hexStringToUIColor(hex: "ffda77").cgColor //
+        imageLayer.borderColor = UIColor().hexStringToUIColor(hex: "ffda77").cgColor // light yellow
         layer.addSublayer(imageLayer)
     }
     

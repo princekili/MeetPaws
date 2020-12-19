@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import Mapbox
+import CoreLocation
 
 class MapsNetworking {
     
@@ -110,7 +111,7 @@ class MapsNetworking {
         
         print("------ observe User Location... ------")
         
-        // Check
+        // Check isMapLocationEnabled
         if user.isMapLocationEnabled {
 
             userLocationsRef.child(user.userId).observe(.value) { (snapshot) in
@@ -119,8 +120,17 @@ class MapsNetworking {
                 guard let latitude = values["latitude"] as? Double else { return }
                 guard let longitude = values["longitude"] as? Double else { return }
                 
-                let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                self.handleUserLocation(user, coordinate)
+                // Check distance
+                guard let myLocation = MapsNetworking.map.userLocation?.coordinate else { return }
+                let myCoordinate = CLLocation(latitude: myLocation.latitude, longitude: myLocation.longitude)
+                let userCoordinate = CLLocation(latitude: latitude, longitude: longitude)
+                let distanceInKiloMeters = myCoordinate.distance(from: userCoordinate) / 1000
+                
+                // Only nearby users will appear
+                if distanceInKiloMeters <= 50 {
+                    let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    self.handleUserLocation(user, coordinate)
+                }
             }
             
         } else {
@@ -220,7 +230,6 @@ extension MapsNetworking {
         RunLoop.current.add(MapsNetworking.mapTimer, forMode: RunLoop.Mode.common)
     }
     
-    //
     @objc static func updateCurrentLocation() {
         
         guard userManager.currentUser?.isMapLocationEnabled ?? false else { return }
