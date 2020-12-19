@@ -378,8 +378,6 @@ class UserManager {
         
         self.usersRef.child(userId).updateChildValues(isMapLocationEnabledUpdate)
         
-        print("------ Update Database ------")
-        print("users/\(userId)/isMapLocationEnabled: \(isMapLocationEnabled)")
-        print("------------")
+        print("------ users/\(userId)/isMapLocationEnabled: \(isMapLocationEnabled) ------")
     }
 }

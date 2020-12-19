@@ -59,17 +59,17 @@ class MyProfileViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        navigationItem.backButtonTitle = ""
         
         let title = userManager.currentUser?.username
         navigationItem.title = title
         
         if let rootVC = navigationController?.rootViewController {
-            let isPushFromFeed = (rootVC is FeedViewController)
+            let isPushFromFeed = (rootVC is FeedViewController) || (rootVC is MapsViewController)
             
             switch isPushFromFeed {
             case true:
                 navigationItem.leftBarButtonItem = nil
+                navigationItem.backButtonTitle = ""
             case false:
                 break
             }

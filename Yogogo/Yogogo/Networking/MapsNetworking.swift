@@ -143,6 +143,7 @@ class MapsNetworking {
     func handleUserLocation(_ user: User, _ coordinate: CLLocationCoordinate2D) {
 
         let userPin = AnnotationPin(user, coordinate)
+        
         var annotationToRemove: AnnotationPin!
         
         let status = mapsVC.mapView?.annotations?.contains(where: { (annotation) -> Bool in

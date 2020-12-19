@@ -36,7 +36,6 @@ class MapsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        checkStatus()
         setupMapView()
         userMapHandler()
         setupGoButton()
@@ -45,12 +44,22 @@ class MapsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.setNavigationBarHidden(true, animated: true)
         mapNetworking.mapsVC = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueMapsToUserProfile" {
+            guard let userProfileVC = segue.destination as? UserProfileViewController else { return }
+            // Pass user data to userProfileVC
+            userProfileVC.user = self.selectedUser
+        }
     }
     
     // MARK: - setup MapView
@@ -109,6 +118,7 @@ class MapsViewController: UIViewController {
         UserManager.shared.currentUser?.isMapLocationEnabled = isMapLocationEnabled
         UserManager.shared.updateIsMapLocationEnabled()
         
+        // GO <--> STOP
         setupGoButton()
         
         guard isMapLocationEnabled else {
@@ -131,6 +141,7 @@ class MapsViewController: UIViewController {
         mapNetworking.observeUsers { [weak self] userIds in
             
             for userId in userIds {
+                
                 self?.mapNetworking.getUserInfo(userId: userId) { [weak self] (userId, values) in
                     
                     self?.mapNetworking.decodeUser(userId: userId, values: values) { [weak self] user in
@@ -157,14 +168,104 @@ class MapsViewController: UIViewController {
         let storyboard = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
         let myProfileVC = storyboard.instantiateViewController(identifier: StoryboardId.myProfileVC.rawValue)
         
-        present(myProfileVC, animated: true, completion: nil)
+        navigationController?.pushViewController(myProfileVC, animated: true)
     }
     
     @objc func showUserProfileVC() {
-        let storyboard = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
-        let userProfileVC = storyboard.instantiateViewController(identifier: StoryboardId.userProfileVC.rawValue)
         
-        present(userProfileVC, animated: true, completion: nil)
+        performSegue(withIdentifier: "SegueMapsToUserProfile", sender: nil)
+    }
+}
+
+// MARK: User location annotation
+
+extension MapsViewController: MGLMapViewDelegate {
+    
+    // Substitute our custom view for the user location annotation.
+    func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
+        
+        // Me
+        if annotation is MGLUserLocation && mapView.userLocation != nil {
+//            return CustomUserLocationAnnotationView()
+            return CurrentUserAnnotationView()
+            
+        // Other users
+        } else {
+            guard let annotation = annotation as? AnnotationPin else { return nil }
+            let reuseIdentifier = "UserAnnotation"
+            return UserAnnotationView(annotation: annotation,
+                                      reuseIdentifier: reuseIdentifier,
+                                      user: annotation.user)
+        }
+    }
+    
+    // MARK: - didSelect - tap the user location annotation to toggle heading tracking mode.
+    
+    func mapView(_ mapView: MGLMapView, didSelect annotation: MGLAnnotation) {
+        
+        mapView.setCenter(annotation.coordinate, zoomLevel: 16, animated: true)
+        
+        tabBarController?.tabBar.isHidden = true
+        
+        // Me
+        if annotation is MGLUserLocation && mapView.userLocation != nil {
+            
+            if mapView.userTrackingMode != .followWithHeading {
+                mapView.userTrackingMode = .followWithHeading
+            } else {
+                mapView.resetNorth()
+            }
+            
+            UIView.animate(withDuration: 0.3,
+                           delay: 0,
+                           usingSpringWithDamping: 0.7,
+                           initialSpringVelocity: 1,
+                           options: .curveEaseIn,
+                           animations: {
+                            
+                self.userInfoTab = UserInfoTab(annotation: annotation)
+                            
+                let tapGesture = UITapGestureRecognizer(target: self,
+                                                        action: #selector(self.showMyProfileVC))
+                self.userInfoTab?.addGestureRecognizer(tapGesture)
+                            
+                self.userInfoTab?.actionButton.addTarget(self,
+                                                         action: #selector(self.showMyProfileVC),
+                                                         for: .touchUpInside)
+                            
+                self.view.addSubview(self.userInfoTab!)
+            })
+            
+        // Other users
+        } else {
+            guard let annotation = annotation as? AnnotationPin else { return }
+            UIView.animate(withDuration: 0.3,
+                           delay: 0,
+                           usingSpringWithDamping: 0.7,
+                           initialSpringVelocity: 1,
+                           options: .curveEaseIn,
+                           animations: {
+                            
+                self.userInfoTab = UserInfoTab(annotation: annotation)
+                let tapGesture = UITapGestureRecognizer(target: self,
+                                                        action: #selector(self.showUserProfileVC))
+                self.selectedUser = annotation.user
+                self.userInfoTab?.addGestureRecognizer(tapGesture)
+                self.userInfoTab?.actionButton.addTarget(self,
+                                                         action: #selector(self.showUserProfileVC),
+                                                         for: .touchUpInside)
+                self.view.addSubview(self.userInfoTab!)
+            })
+        }
+    }
+    
+    // MARK: - didDeselect
+    
+    func mapView(_ mapView: MGLMapView, didDeselect annotation: MGLAnnotation) {
+        self.userInfoTab?.removeFromSuperview()
+        self.userInfoTab = nil
+        
+        tabBarController?.tabBar.isHidden = false
     }
 }
 

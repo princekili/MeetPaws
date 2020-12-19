@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nJw-eL-QhD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -329,14 +329,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="map" catalog="system" id="oru-aX-hGq">
-                        <color key="badgeColor" systemColor="labelColor"/>
-                        <imageReference key="selectedImage" image="map.fill" catalog="system" renderingMode="template"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="As4-pq-Wf8">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Hin-Ic-Ef1"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="z8X-2O-y8n" kind="show" identifier="SegueMapsToUserProfile" id="mE9-ph-545"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="60"/>
+            <point key="canvasLocation" x="1957.9710144927537" y="59.598214285714285"/>
         </scene>
         <!--Messages View Controller-->
         <scene sceneID="9n0-YQ-iR2">
@@ -362,7 +364,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYV-D3-ohG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2859" y="60"/>
+            <point key="canvasLocation" x="3768.840579710145" y="59.598214285714285"/>
         </scene>
         <!--username-->
         <scene sceneID="hET-qn-wW8">
@@ -614,7 +616,7 @@
                     <connections>
                         <segue destination="jSv-8n-T8I" kind="relationship" relationship="viewControllers" id="DnV-Yb-bJ2"/>
                         <segue destination="3Mn-MZ-2et" kind="relationship" relationship="viewControllers" id="XwX-Vd-0Mn"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="MT4-cL-wSk"/>
+                        <segue destination="Dfn-3A-ibT" kind="relationship" relationship="viewControllers" id="MT4-cL-wSk"/>
                         <segue destination="dBA-sM-npu" kind="relationship" relationship="viewControllers" id="rME-yP-fyW"/>
                         <segue destination="oAd-fz-Odl" kind="relationship" relationship="viewControllers" id="edF-kl-XOV"/>
                     </connections>
@@ -722,11 +724,11 @@
             <objects>
                 <viewController storyboardIdentifier="MyPostVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hqz-xZ-NLG" userLabel="Post View Controller" customClass="MyPostViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="buR-CD-GzY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Dc-Vz-fFV">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostTableViewCell" id="Zye-xK-LHD" userLabel="PostTableViewCell" customClass="PostTableViewCell" customModule="Insdogram" customModuleProvider="target">
@@ -911,11 +913,11 @@
             <objects>
                 <viewController storyboardIdentifier="UserProfileVC" id="z8X-2O-y8n" customClass="UserProfileViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w1l-Tw-DGk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SIC-aE-p8g">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="1II-nS-NRS">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1149,9 +1151,32 @@
             </objects>
             <point key="canvasLocation" x="2858" y="-1339"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="AXE-xB-sti">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dfn-3A-ibT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="map" catalog="system" id="oru-aX-hGq">
+                        <color key="badgeColor" systemColor="labelColor"/>
+                        <imageReference key="selectedImage" image="map.fill" catalog="system" renderingMode="template"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fcX-7w-9Zj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Ia4-2g-Lpi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sy7-xz-vWB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="59.598214285714285"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oX7-Kt-x0w"/>
+        <segue reference="mE9-ph-545"/>
+        <segue reference="8OA-UW-21c"/>
         <segue reference="LwI-kW-ddj"/>
     </inferredMetricsTieBreakers>
     <resources>

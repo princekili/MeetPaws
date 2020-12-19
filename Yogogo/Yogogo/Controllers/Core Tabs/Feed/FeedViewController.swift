@@ -80,7 +80,6 @@ class FeedViewController: UIViewController {
             
         } else if segue.identifier == "SegueUserProfile" {
             guard let userProfileVC = segue.destination as? UserProfileViewController else { return }
-            
             // Pass user data to userProfileVC
             userProfileVC.user = self.user
         }

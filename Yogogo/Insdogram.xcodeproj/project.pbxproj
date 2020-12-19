@@ -40,7 +40,6 @@
 		A3551EAE25735B000006099A /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EAD25735B000006099A /* UIImageView + Extension.swift */; };
 		A3551EB2257361820006099A /* CurrentUserAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EB1257361820006099A /* CurrentUserAnnotationView.swift */; };
 		A3551EB5257363D70006099A /* UserInfoTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EB4257363D70006099A /* UserInfoTab.swift */; };
-		A3551EB9257372890006099A /* MGLMapViewDelegate + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EB8257372890006099A /* MGLMapViewDelegate + Extension.swift */; };
 		A3551EBC257378FB0006099A /* CustomUserLocationAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EBB257378FB0006099A /* CustomUserLocationAnnotationView.swift */; };
 		A3551EC12573901A0006099A /* UserListNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EC02573901A0006099A /* UserListNetworking.swift */; };
 		A35BCC1D2570C6290090B95E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */; };
@@ -121,7 +120,6 @@
 		A3551EAD25735B000006099A /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		A3551EB1257361820006099A /* CurrentUserAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserAnnotationView.swift; sourceTree = "<group>"; };
 		A3551EB4257363D70006099A /* UserInfoTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTab.swift; sourceTree = "<group>"; };
-		A3551EB8257372890006099A /* MGLMapViewDelegate + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLMapViewDelegate + Extension.swift"; sourceTree = "<group>"; };
 		A3551EBB257378FB0006099A /* CustomUserLocationAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserLocationAnnotationView.swift; sourceTree = "<group>"; };
 		A3551EC02573901A0006099A /* UserListNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListNetworking.swift; sourceTree = "<group>"; };
 		A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -298,7 +296,6 @@
 		A3551EB7257371F50006099A /* MapViews */ = {
 			isa = PBXGroup;
 			children = (
-				A3551EB8257372890006099A /* MGLMapViewDelegate + Extension.swift */,
 			);
 			path = MapViews;
 			sourceTree = "<group>";
@@ -618,7 +615,6 @@
 				A3551EA525734E260006099A /* LocationNetworking.swift in Sources */,
 				A3551EB2257361820006099A /* CurrentUserAnnotationView.swift in Sources */,
 				A36B4BD52587D7C4005DAC50 /* UserProfileTabsCollectionReusableView.swift in Sources */,
-				A3551EB9257372890006099A /* MGLMapViewDelegate + Extension.swift in Sources */,
 				A316BED82575323700989152 /* CameraViewController.swift in Sources */,
 				A313700F257E58C400CEA185 /* PostManager.swift in Sources */,
 				A3C195C92577783800BAB46B /* UserListViewController.swift in Sources */,
