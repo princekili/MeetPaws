@@ -288,7 +288,7 @@ class UserManager {
         
         // MARK: Update DB
         guard let userId = Auth.auth().currentUser?.uid else { return }
-        let userRef = ref.child("users").child(userId)
+        let userRef = ref.child("users")
         guard let imageKey = userRef.key else { return }
         let imageStorageRef = profilePhotoStorageRef.child("\(imageKey).jpg")
         
@@ -311,22 +311,15 @@ class UserManager {
                 self.profileImage = profileImage
                 self.currentUser?.profileImage = profileImage
                 
-                let usernameUpdates = ["username": username]
-                let profileImageUpdates = ["profileImage": profileImage]
-                let fullNameUpdates = ["fullName": fullName]
-                let bioUpdates = ["bio": bio]
+                userRef.child(userId).child("username").setValue(username)
+                userRef.child(userId).child("profileImage").setValue(profileImage)
+                userRef.child(userId).child("fullName").setValue(fullName)
+                userRef.child(userId).child("bio").setValue(bio)
                 
-                self.ref.child("users").child(userId).updateChildValues(usernameUpdates)
-                self.ref.child("users").child(userId).updateChildValues(profileImageUpdates)
-                self.ref.child("users").child(userId).updateChildValues(fullNameUpdates)
-                self.ref.child("users").child(userId).updateChildValues(bioUpdates)
-                
-                print("------ Update Database ------")
-                print(usernameUpdates)
-                print(profileImageUpdates)
-                print(fullNameUpdates)
-                print(bioUpdates)
-                print("------------")
+                print("------ usersRef.child(\(userId)).child(username).setValue(\(username)) ------")
+                print("------ usersRef.child(\(userId)).child(profileImage).setValue(\(profileImage)) ------")
+                print("------ usersRef.child(\(userId)).child(fullName).setValue(\(fullName)) ------")
+                print("------ usersRef.child(\(userId)).child(bio).setValue(\(bio)) ------")
             }
         }
         
@@ -340,11 +333,9 @@ class UserManager {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         guard let posts = self.currentUser?.posts else { return }
         
-        let postsUpdate = ["posts": posts]
+        usersRef.child(userId).child("posts").setValue(posts)
         
-        self.usersRef.child(userId).updateChildValues(postsUpdate)
-        
-        print("------ Update Database: \(postsUpdate) ------")
+        print("------ usersRef.child(\(userId)).child(posts).setValue(\(posts)) ------")
         
         completion() // do something after updating
     }
@@ -356,13 +347,9 @@ class UserManager {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         guard let postDidLike = self.currentUser?.postDidLike else { return }
         
-        let postDidLikeUpdate = ["postDidLike": postDidLike]
+        usersRef.child(userId).child("postDidLike").setValue(postDidLike)
         
-        usersRef.child(userId).updateChildValues(postDidLikeUpdate)
-        
-        print("------ Update Database ------")
-        print(postDidLikeUpdate)
-        print("------------")
+        print("------ usersRef.child(\(userId)).child(postDidLike).setValue(\(postDidLike)) ------")
         
         completion() // do something after updating
     }
@@ -374,10 +361,8 @@ class UserManager {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         guard let isMapLocationEnabled = self.currentUser?.isMapLocationEnabled else { return }
         
-        let isMapLocationEnabledUpdate = ["isMapLocationEnabled": isMapLocationEnabled]
-        
-        self.usersRef.child(userId).updateChildValues(isMapLocationEnabledUpdate)
-        
+        usersRef.child(userId).child("isMapLocationEnabled").setValue(isMapLocationEnabled)
+
         print("------ users/\(userId)/isMapLocationEnabled: \(isMapLocationEnabled) ------")
     }
 }
