@@ -20,7 +20,6 @@
 		A316BE512575245D00989152 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BE502575245C00989152 /* UIViewController + Extension.swift */; };
 		A316BED82575323700989152 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316BED72575323700989152 /* CameraViewController.swift */; };
 		A331583E257F931F004CC86C /* DateClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A331583D257F931F004CC86C /* DateClass.swift */; };
-		A3315841257FB1FB004CC86C /* launchscreen_logo_0.png in Resources */ = {isa = PBXBuildFile; fileRef = A3315840257FB1FB004CC86C /* launchscreen_logo_0.png */; };
 		A3315844257FC072004CC86C /* PickUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3315843257FC072004CC86C /* PickUsernameViewController.swift */; };
 		A3315847257FC07F004CC86C /* PickProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3315846257FC07F004CC86C /* PickProfilePhotoViewController.swift */; };
 		A331584B257FC950004CC86C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A331584A257FC950004CC86C /* UserManager.swift */; };
@@ -76,6 +75,7 @@
 		A3CEA9A2256F87F1001DA842 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3CEA9A0256F87F1001DA842 /* Main.storyboard */; };
 		A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA9A3256F87F1001DA842 /* Yogogo.xcdatamodeld */; };
 		A3CEA9A7256F87F4001DA842 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3CEA9A6256F87F4001DA842 /* Assets.xcassets */; };
+		A3D9935A258E5FCE001E8EFD /* launchscreen_logo_0.png in Resources */ = {isa = PBXBuildFile; fileRef = A3D99359258E5FCE001E8EFD /* launchscreen_logo_0.png */; };
 		A3EE02E9257B489800459C54 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EE02E8257B489700459C54 /* WelcomeViewController.swift */; };
 		A3EE02ED257B5FEB00459C54 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3EE02EC257B5FEB00459C54 /* Camera.storyboard */; };
 		A3EE02F9257B6D7300459C54 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3EE02F8257B6D7300459C54 /* Launch Screen.storyboard */; };
@@ -99,7 +99,6 @@
 		A316BE502575245C00989152 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		A316BED72575323700989152 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		A331583D257F931F004CC86C /* DateClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateClass.swift; sourceTree = "<group>"; };
-		A3315840257FB1FB004CC86C /* launchscreen_logo_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen_logo_0.png; sourceTree = "<group>"; };
 		A3315843257FC072004CC86C /* PickUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUsernameViewController.swift; sourceTree = "<group>"; };
 		A3315846257FC07F004CC86C /* PickProfilePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickProfilePhotoViewController.swift; sourceTree = "<group>"; };
 		A331584A257FC950004CC86C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -157,10 +156,10 @@
 		A3CEA9A4256F87F1001DA842 /* Yogogo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Yogogo.xcdatamodel; sourceTree = "<group>"; };
 		A3CEA9A6256F87F4001DA842 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3CEA9AB256F87F4001DA842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3D99359258E5FCE001E8EFD /* launchscreen_logo_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen_logo_0.png; sourceTree = "<group>"; };
 		A3EE02E8257B489700459C54 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		A3EE02EC257B5FEB00459C54 /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		A3EE02F8257B6D7300459C54 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		A3EE0308257B7B2500459C54 /* launchscreen_logo_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen_logo_0.png; sourceTree = "<group>"; };
 		A3EE0310257B8E5900459C54 /* Yogogo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yogogo.entitlements; sourceTree = "<group>"; };
 		A3EE0317257BB57600459C54 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		A3EE0327257BB98500459C54 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -419,8 +418,6 @@
 			isa = PBXGroup;
 			children = (
 				A3CEA999256F87F1001DA842 /* Yogogo */,
-				A3EE0308257B7B2500459C54 /* launchscreen_logo_0.png */,
-				A3315840257FB1FB004CC86C /* launchscreen_logo_0.png */,
 				A3CEA998256F87F1001DA842 /* Products */,
 				85420101885810C289ADB45C /* Pods */,
 				C2A847738FFA764735640344 /* Frameworks */,
@@ -446,6 +443,7 @@
 				A3551E83257292950006099A /* Helpers + Extension */,
 				A3CEA9AB256F87F4001DA842 /* Info.plist */,
 				A3EE0310257B8E5900459C54 /* Yogogo.entitlements */,
+				A3D99359258E5FCE001E8EFD /* launchscreen_logo_0.png */,
 			);
 			path = Yogogo;
 			sourceTree = "<group>";
@@ -532,10 +530,10 @@
 				A35BCC1D2570C6290090B95E /* GoogleService-Info.plist in Resources */,
 				A3CEA9A7256F87F4001DA842 /* Assets.xcassets in Resources */,
 				A3EE0318257BB57600459C54 /* Settings.storyboard in Resources */,
+				A3D9935A258E5FCE001E8EFD /* launchscreen_logo_0.png in Resources */,
 				A3C195E32577934C00BAB46B /* Auth.storyboard in Resources */,
 				A3C136A5257BE0C200960B4C /* EditProfile.storyboard in Resources */,
 				A3CEA9A2256F87F1001DA842 /* Main.storyboard in Resources */,
-				A3315841257FB1FB004CC86C /* launchscreen_logo_0.png in Resources */,
 				A3EE02F9257B6D7300459C54 /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

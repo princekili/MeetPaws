@@ -71,16 +71,16 @@ class MapsViewController: UIViewController {
         mapView.delegate = self
         mapView.allowsRotating = false
         mapView.logoView.isHidden = true
+        mapView.attributionButton.tintColor = .white
         mapView.styleURL = URL(string: "mapbox://styles/mapbox/streets-v11")
         
         // Enable heading tracking mode so that the arrow will appear.
-        mapView.userTrackingMode = .followWithHeading
+        mapView.userTrackingMode = .follow
         
         // Enable the permanent heading indicator, which will appear when the tracking mode is not `.followWithHeading`.
         mapView.showsUserHeadingIndicator = true
         
         self.mapView = mapView
-        
         view.addSubview(mapView)
     }
     

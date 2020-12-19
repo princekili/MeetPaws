@@ -120,13 +120,12 @@ class MapsNetworking {
                 guard let latitude = values["latitude"] as? Double else { return }
                 guard let longitude = values["longitude"] as? Double else { return }
                 
-                // Check distance
+                // Check distance -> only nearby users will appear
                 guard let myLocation = MapsNetworking.map.userLocation?.coordinate else { return }
                 let myCoordinate = CLLocation(latitude: myLocation.latitude, longitude: myLocation.longitude)
                 let userCoordinate = CLLocation(latitude: latitude, longitude: longitude)
                 let distanceInKiloMeters = myCoordinate.distance(from: userCoordinate) / 1000
                 
-                // Only nearby users will appear
                 if distanceInKiloMeters <= 50 {
                     let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                     self.handleUserLocation(user, coordinate)
@@ -137,7 +136,7 @@ class MapsNetworking {
             print("------ user.isMapLocationEnabled == false ------")
         }
         
-        // MARK: How to remove the annotation when user's isMapLocationEnabled turn into false ?
+        // MARK: How to remove the annotation instantly when user's isMapLocationEnabled turn into false ?
 //        usersRef.child(user.userId).child("isMapLocationEnabled").observe(.childChanged) { (snapshot) in
 //            guard let isMapLocationEnabled = snapshot.value as? Bool else { return }
 //
