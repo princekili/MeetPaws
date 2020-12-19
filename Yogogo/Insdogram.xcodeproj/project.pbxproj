@@ -34,7 +34,6 @@
 		A3551E7F25728FF10006099A /* UserIsTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551E7E25728FF10006099A /* UserIsTyping.swift */; };
 		A3551E9F2572A5F10006099A /* AnnotationPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551E9E2572A5F10006099A /* AnnotationPin.swift */; };
 		A3551EA22572AEE50006099A /* Calendar + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EA12572AEE50006099A /* Calendar + Extension.swift */; };
-		A3551EA525734E260006099A /* LocationNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EA425734E260006099A /* LocationNetworking.swift */; };
 		A3551EA825734FC10006099A /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EA725734FC10006099A /* CurrentUser.swift */; };
 		A3551EAB257358A30006099A /* UserAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EAA257358A30006099A /* UserAnnotationView.swift */; };
 		A3551EAE25735B000006099A /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EAD25735B000006099A /* UIImageView + Extension.swift */; };
@@ -114,7 +113,6 @@
 		A3551E7E25728FF10006099A /* UserIsTyping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIsTyping.swift; sourceTree = "<group>"; };
 		A3551E9E2572A5F10006099A /* AnnotationPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationPin.swift; sourceTree = "<group>"; };
 		A3551EA12572AEE50006099A /* Calendar + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar + Extension.swift"; sourceTree = "<group>"; };
-		A3551EA425734E260006099A /* LocationNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNetworking.swift; sourceTree = "<group>"; };
 		A3551EA725734FC10006099A /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		A3551EAA257358A30006099A /* UserAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnnotationView.swift; sourceTree = "<group>"; };
 		A3551EAD25735B000006099A /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 			isa = PBXGroup;
 			children = (
 				A3551E45257252480006099A /* MapsNetworking.swift */,
-				A3551EA425734E260006099A /* LocationNetworking.swift */,
 				A3551EC02573901A0006099A /* UserListNetworking.swift */,
 				A3C195DC25778FD600BAB46B /* FirestoreManager.swift */,
 				A3C195DF2577902100BAB46B /* StorageManager.swift */,
@@ -612,7 +609,6 @@
 			files = (
 				A33EFB46258145AF00E9F336 /* UIColor + Extension.swift in Sources */,
 				A3551E7F25728FF10006099A /* UserIsTyping.swift in Sources */,
-				A3551EA525734E260006099A /* LocationNetworking.swift in Sources */,
 				A3551EB2257361820006099A /* CurrentUserAnnotationView.swift in Sources */,
 				A36B4BD52587D7C4005DAC50 /* UserProfileTabsCollectionReusableView.swift in Sources */,
 				A316BED82575323700989152 /* CameraViewController.swift in Sources */,

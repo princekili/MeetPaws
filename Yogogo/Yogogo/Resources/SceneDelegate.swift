@@ -34,6 +34,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             print("------ Auth.auth().currentUser?.uid == nil ------")
             showSignInVC(sceneWindow)
         }
+        
+        activityObservers()
     }
     
     // MARK: -
@@ -72,6 +74,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 }
 
 extension SceneDelegate {
+        
+    // MARK: - activity Observers
+    
+    func activityObservers() {
+        guard let user = Auth.auth().currentUser else { return }
+        let userRef = Database.database().reference().child("users").child(user.uid)
+        
+        userRef.child("isOnline").setValue(true)
+        userRef.child("isOnline").onDisconnectSetValue(false)
+        
+        userRef.child("isMapLocationEnabled").setValue(false)
+        userRef.child("isMapLocationEnabled").onDisconnectSetValue(false)
+        
+        let lastLogin = Int(Date().timeIntervalSince1970 * 1000)
+        userRef.child("lastLogin").setValue(lastLogin)
+    }
+    
+    // MARK: - Show next view
     
     func showNextVC(_ sceneWindow: UIWindowScene) {
         userManager.checkFirstTimeSignIn { [weak self] (isFirstTime) in
