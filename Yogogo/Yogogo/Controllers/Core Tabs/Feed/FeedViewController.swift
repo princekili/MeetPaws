@@ -40,12 +40,25 @@ class FeedViewController: UIViewController {
         getCurrentUserInfo()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+        if segue.identifier == "CameraVC" {
+            guard let cameraVC = segue.destination as? CameraViewController else { return }
+            cameraVC.delegate = self
+            
+        } else if segue.identifier == "SegueUserProfile" {
+            guard let userProfileVC = segue.destination as? UserProfileViewController else { return }
+            // Pass user data to userProfileVC
+            userProfileVC.user = self.user
+        }
+    }
+    
     // MARK: -
     
     private func getCurrentUserInfo() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
-        UserManager.shared.getUserInfo(userId: userId) { (user) in
+        UserManager.shared.getUserInfo(userId: userId) { [weak self] (user) in
             
             let myUser = user
             print("------  Get the currentUser info successfully in FeedVC ------")
@@ -70,19 +83,6 @@ class FeedViewController: UIViewController {
                                  action: #selector(loadRecentPosts),
                                  for: UIControl.Event.valueChanged
         )
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
-        if segue.identifier == "CameraVC" {
-            guard let cameraVC = segue.destination as? CameraViewController else { return }
-            cameraVC.delegate = self
-            
-        } else if segue.identifier == "SegueUserProfile" {
-            guard let userProfileVC = segue.destination as? UserProfileViewController else { return }
-            // Pass user data to userProfileVC
-            userProfileVC.user = self.user
-        }
     }
 }
 

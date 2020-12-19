@@ -110,9 +110,9 @@ class MapsNetworking {
         
         print("------ observe User Location... ------")
         
-        // Add users' pin
+        // Check
         if user.isMapLocationEnabled {
-            
+
             userLocationsRef.child(user.userId).observe(.value) { (snapshot) in
                 
                 guard let values = snapshot.value as? [String: Any] else { return }
@@ -123,22 +123,35 @@ class MapsNetworking {
                 self.handleUserLocation(user, coordinate)
             }
             
-        // Remove users' pin
         } else {
-        
-            userLocationsRef.child(user.userId).observe(.value) { (snapshot) in
-                
-                guard let values = snapshot.value as? [String: Any] else { return }
-                guard let latitude = values["latitude"] as? Double else { return }
-                guard let longitude = values["longitude"] as? Double else { return }
-                
-                let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                self.removeUserPin(user, coordinate)
-            }
+            print("------ user.isMapLocationEnabled == false ------")
         }
+        
+        // MARK: How to remove the annotation when user's isMapLocationEnabled turn into false ?
+//        usersRef.child(user.userId).child("isMapLocationEnabled").observe(.childChanged) { (snapshot) in
+//            guard let isMapLocationEnabled = snapshot.value as? Bool else { return }
+//
+//            if isMapLocationEnabled {
+//                print("------ observe user location: \(user.username) = \(user.userId) ------")
+//
+//                self.userLocationsRef.child(user.userId).observe(.value) { (snapshot) in
+//
+//                    guard let values = snapshot.value as? [String: Any] else { return }
+//                    guard let latitude = values["latitude"] as? Double else { return }
+//                    guard let longitude = values["longitude"] as? Double else { return }
+//
+//                    let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+//                    self.handleUserLocation(user, coordinate)
+//                }
+//
+//            } else {
+//                // Remove the user's annotation
+//
+//            }
+//        }
     }
     
-    // MARK: - handle User Location
+    // MARK: - handle User Location -> Add users' pin
     
     func handleUserLocation(_ user: User, _ coordinate: CLLocationCoordinate2D) {
 
@@ -166,30 +179,57 @@ class MapsNetworking {
         }
     }
     
-    func removeUserPin(_ user: User, _ coordinate: CLLocationCoordinate2D) {
+    // MARK: - Remove all users' pin
+    
+    func removeAllAnnotations() {
         
-        let userPin = AnnotationPin(user, coordinate)
-        mapsVC.userCoordinates[user.userId] = coordinate
-        mapsVC.mapView?.removeAnnotation(userPin)
+        guard let annotations = mapsVC.mapView?.annotations else {
+            print("Annotations Error")
+            return
+        }
+        
+        if annotations.count != 0 {
+            for annotation in annotations {
+                mapsVC.mapView?.removeAnnotation(annotation)
+            }
+
+        } else {
+            return
+        }
     }
 }
 
-// MARK: - Remove all users' pin
+// MARK: - Update my location regularly
 
 extension MapsNetworking {
     
-    func removeUserLocation(user: User) {
+    static var mapTimer = Timer()
+    
+    static var map = MGLMapView()
+    
+    static let userManager = UserManager.shared
+    
+    static func startUpdatingUserLocation() {
         
-        print("------ remove User Location... ------")
+        MapsNetworking.mapTimer = Timer(timeInterval: 5,
+                                     target: self,
+                                     selector: #selector(MapsNetworking.updateCurrentLocation),
+                                     userInfo: nil,
+                                     repeats: true)
         
-        userLocationsRef.child(user.userId).observe(.value) { (snapshot) in
-            
-            guard let values = snapshot.value as? [String: Any] else { return }
-            guard let latitude = values["latitude"] as? Double else { return }
-            guard let longitude = values["longitude"] as? Double else { return }
-            
-            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            self.removeUserPin(user, coordinate)
-        }
+        RunLoop.current.add(MapsNetworking.mapTimer, forMode: RunLoop.Mode.common)
+    }
+    
+    //
+    @objc static func updateCurrentLocation() {
+        
+        guard userManager.currentUser?.isMapLocationEnabled ?? false else { return }
+        guard let currentLocation = MapsNetworking.map.userLocation?.coordinate else { return }
+        
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference().child("userLocations").child(userId)
+        let values = ["longitude": currentLocation.longitude, "latitude": currentLocation.latitude]
+        
+        ref.updateChildValues(values)
     }
 }

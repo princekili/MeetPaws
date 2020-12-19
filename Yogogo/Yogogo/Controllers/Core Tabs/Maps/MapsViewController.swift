@@ -121,31 +121,24 @@ class MapsViewController: UIViewController {
         // GO <--> STOP
         setupGoButton()
         
+        // Check
         guard isMapLocationEnabled else {
-            
-//            mapNetworking.observeUsers { [weak self] userIds in
-//
-//                for userId in userIds {
-//                    self?.mapNetworking.getUserInfo(userId: userId) { [weak self] (userId, values) in
-//
-//                        self?.mapNetworking.decodeUser(userId: userId, values: values) { [weak self] user in
-//
-//                            self?.mapNetworking.removeUserLocation(user: user)
-//                        }
-//                    }
-//                }
-//            }
+            mapNetworking.removeAllAnnotations()
             return
         }
         
+        // Get all userIds
         mapNetworking.observeUsers { [weak self] userIds in
             
             for userId in userIds {
                 
+                // Get user's info - Step.1
                 self?.mapNetworking.getUserInfo(userId: userId) { [weak self] (userId, values) in
                     
+                    // Get user's info - Step.2
                     self?.mapNetworking.decodeUser(userId: userId, values: values) { [weak self] user in
                         
+                        // Check user's isMapLocationEnabled & Handle user's location
                         self?.mapNetworking.observeUserLocation(user: user)
                     }
                 }
@@ -156,9 +149,9 @@ class MapsViewController: UIViewController {
     // MARK: - user Map Handler
     
     private func userMapHandler() {
-        if !LocationNetworking.mapTimer.isValid {
-            LocationNetworking.map.showsUserLocation = true
-            LocationNetworking.startUpdatingUserLocation()
+        if !MapsNetworking.mapTimer.isValid {
+            MapsNetworking.map.showsUserLocation = true
+            MapsNetworking.startUpdatingUserLocation()
         }
     }
     

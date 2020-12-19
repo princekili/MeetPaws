@@ -181,7 +181,7 @@ class UserManager {
                 let lastLogin = Int(Date().timeIntervalSince1970 * 1000)
                 let isPrivate = false
                 let isOnline = true
-                let isMapLocationEnabled = true
+                let isMapLocationEnabled = false
                 
                 let user: [String: Any] = [
                     "username": username,
