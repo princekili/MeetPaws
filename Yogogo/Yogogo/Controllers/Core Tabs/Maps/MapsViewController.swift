@@ -170,7 +170,7 @@ class MapsViewController: UIViewController {
     }
 }
 
-// MARK: User location annotation
+// MARK: - User location annotation
 
 extension MapsViewController: MGLMapViewDelegate {
     

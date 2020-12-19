@@ -15,13 +15,24 @@ class UserAnnotationView: MGLAnnotationView {
     
     let imageLayer = CALayer()
     
+    let dogIcons = [
+        "dog_icon_bm",
+        "dog_icon_bj",
+        "dog_icon_kg",
+        "dog_icon_bg",
+        "dog_icon_cc"
+    ]
+    
     init(annotation: MGLAnnotation?, reuseIdentifier: String?, user: User) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person.circle.fill")?.withTintColor(.white)
         let url = URL(string: user.profileImage)
-        imageView.kf.setImage(with: url)
+        
+        let randomInt = Int.random(in: 0 ..< dogIcons.count)
+        let placeholder = UIImage(named: dogIcons[randomInt])
+        
+        imageView.kf.setImage(with: url, placeholder: placeholder)
         
         frame = CGRect(x: 0, y: 0, width: size, height: size)
         imageLayer.frame = CGRect(x: 0, y: 0, width: size, height: size)
@@ -29,7 +40,8 @@ class UserAnnotationView: MGLAnnotationView {
         imageLayer.cornerRadius = imageLayer.frame.size.width / 2
         imageLayer.masksToBounds = true
         imageLayer.borderWidth = 2
-        imageLayer.borderColor = UIColor.white.cgColor
+//        imageLayer.borderColor = UIColor.darkGray.cgColor
+        imageLayer.borderColor = UIColor().hexStringToUIColor(hex: "ffda77").cgColor //
         layer.addSublayer(imageLayer)
     }
     
