@@ -200,6 +200,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Insdogram" id="0xY-qV-RCO">
+                        <barButtonItem key="backBarButtonItem" title=" " id="I1s-d4-U6d"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="eFG-iY-Cwk">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
@@ -578,6 +579,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="username" id="MER-db-j5K">
+                        <barButtonItem key="backBarButtonItem" title=" " id="P2V-Lj-bt6"/>
                         <barButtonItem key="leftBarButtonItem" id="mfS-xS-smg">
                             <imageReference key="image" image="plus" catalog="system" symbolScale="large" renderingMode="template"/>
                             <color key="tintColor" systemColor="labelColor"/>
@@ -724,11 +726,11 @@
             <objects>
                 <viewController storyboardIdentifier="MyPostVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hqz-xZ-NLG" userLabel="Post View Controller" customClass="MyPostViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="buR-CD-GzY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Dc-Vz-fFV">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostTableViewCell" id="Zye-xK-LHD" userLabel="PostTableViewCell" customClass="PostTableViewCell" customModule="Insdogram" customModuleProvider="target">
@@ -899,7 +901,7 @@
                             <constraint firstItem="lOr-O6-N1T" firstAttribute="bottom" secondItem="0Dc-Vz-fFV" secondAttribute="bottom" id="cxF-PG-qvi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Post" largeTitleDisplayMode="never" id="Qhs-Cs-N4P"/>
+                    <navigationItem key="navigationItem" title="Post" id="Qhs-Cs-N4P"/>
                     <connections>
                         <outlet property="tableView" destination="0Dc-Vz-fFV" id="LjG-mt-yae"/>
                     </connections>
@@ -913,11 +915,11 @@
             <objects>
                 <viewController storyboardIdentifier="UserProfileVC" id="z8X-2O-y8n" customClass="UserProfileViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w1l-Tw-DGk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SIC-aE-p8g">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="1II-nS-NRS">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1138,6 +1140,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="username" id="c6U-IL-YDm">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Qqd-3F-Wx6"/>
                         <barButtonItem key="rightBarButtonItem" title="•••" id="UvU-16-HTv">
                             <color key="tintColor" systemColor="labelColor"/>
                         </barButtonItem>
@@ -1175,9 +1178,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mE9-ph-545"/>
-        <segue reference="8OA-UW-21c"/>
-        <segue reference="LwI-kW-ddj"/>
+        <segue reference="ykH-sw-wtH"/>
+        <segue reference="oX7-Kt-x0w"/>
+        <segue reference="N3A-wu-T8P"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IU_profileImage" width="640" height="640"/>

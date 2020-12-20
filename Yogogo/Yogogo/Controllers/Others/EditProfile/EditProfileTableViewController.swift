@@ -138,7 +138,7 @@ class EditProfileTableViewController: UITableViewController {
         
         case 0:
             // UIAlertController
-            let imagePickerAlertController = UIAlertController(title: "", message: "Select a Photo", preferredStyle: .actionSheet)
+            let imagePickerAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
             // UIAlertAction
             let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in

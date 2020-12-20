@@ -59,6 +59,7 @@ class MyProfileViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
+        navigationItem.backButtonTitle = ""
         
         let title = userManager.currentUser?.username
         navigationItem.title = title
