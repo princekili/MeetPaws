@@ -59,8 +59,6 @@
 		A3C195BC257775FF00BAB46B /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */; };
 		A3C195C0257777A500BAB46B /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195BF257777A500BAB46B /* MyPostViewController.swift */; };
 		A3C195C92577783800BAB46B /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195C82577783800BAB46B /* UserListViewController.swift */; };
-		A3C195CC257778F200BAB46B /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195CB257778F200BAB46B /* PostEditorViewController.swift */; };
-		A3C195CF2577790600BAB46B /* PublishPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195CE2577790600BAB46B /* PublishPostViewController.swift */; };
 		A3C195DD25778FD600BAB46B /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195DC25778FD600BAB46B /* FirestoreManager.swift */; };
 		A3C195E02577902100BAB46B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C195DF2577902100BAB46B /* StorageManager.swift */; };
 		A3C195E32577934C00BAB46B /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3C195E22577934C00BAB46B /* Auth.storyboard */; };
@@ -138,8 +136,6 @@
 		A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		A3C195BF257777A500BAB46B /* MyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewController.swift; sourceTree = "<group>"; };
 		A3C195C82577783800BAB46B /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
-		A3C195CB257778F200BAB46B /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
-		A3C195CE2577790600BAB46B /* PublishPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishPostViewController.swift; sourceTree = "<group>"; };
 		A3C195DC25778FD600BAB46B /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		A3C195DF2577902100BAB46B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		A3C195E22577934C00BAB46B /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
@@ -189,35 +185,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		A316BE0F2574E7AB00989152 /* Feed */ = {
-			isa = PBXGroup;
-			children = (
-				A316BE3F2574F30700989152 /* FeedViewController.swift */,
-				A316BE422574F3F400989152 /* FeedTableViewCell.swift */,
-			);
-			path = Feed;
-			sourceTree = "<group>";
-		};
-		A316BE47257504E700989152 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				A316BE4C2575072100989152 /* SearchViewController.swift */,
-				A316BE492575070C00989152 /* SearchTableViewCell.swift */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-		A316BF082575805500989152 /* MyProfile */ = {
-			isa = PBXGroup;
-			children = (
-				A3C195EC2577E35F00BAB46B /* MyProfileViewController.swift */,
-				A3C195E92577D6E600BAB46B /* MyPostCollectionViewCell.swift */,
-				A3C195EF2577E7CF00BAB46B /* MyProfileHeaderCollectionReusableView.swift */,
-				A3C195F22577E80900BAB46B /* MyProfileTabsCollectionReusableView.swift */,
-			);
-			path = MyProfile;
-			sourceTree = "<group>";
-		};
 		A3551E49257255F50006099A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,22 +229,22 @@
 			isa = PBXGroup;
 			children = (
 				A3551EA12572AEE50006099A /* Calendar + Extension.swift */,
-				A3551EAD25735B000006099A /* UIImageView + Extension.swift */,
-				A316BE502575245C00989152 /* UIViewController + Extension.swift */,
-				A3C195A125765F0200BAB46B /* UILabel + Extension.swift */,
-				A3C195E625779A9C00BAB46B /* UIView + Extension.swift */,
-				A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */,
-				A3C136D3257CBC9500960B4C /* UITextView + Extension.swift */,
-				A3137011257E5C4100CEA185 /* UIImage + Extension.swift */,
-				A313701A257EBB1D00CEA185 /* UINavigationController + Extension.swift */,
 				A331583D257F931F004CC86C /* DateClass.swift */,
+				A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */,
 				A33EFB422580FF0F00E9F336 /* Storyboard + Enum.swift */,
 				A33EFB45258145AF00E9F336 /* UIColor + Extension.swift */,
+				A3137011257E5C4100CEA185 /* UIImage + Extension.swift */,
+				A3551EAD25735B000006099A /* UIImageView + Extension.swift */,
+				A3C195A125765F0200BAB46B /* UILabel + Extension.swift */,
+				A313701A257EBB1D00CEA185 /* UINavigationController + Extension.swift */,
+				A3C136D3257CBC9500960B4C /* UITextView + Extension.swift */,
+				A3C195E625779A9C00BAB46B /* UIView + Extension.swift */,
+				A316BE502575245C00989152 /* UIViewController + Extension.swift */,
 			);
 			path = "Helpers + Extension";
 			sourceTree = "<group>";
 		};
-		A3551E9D2572A5CB0006099A /* MapAnnotationViews */ = {
+		A3551E9D2572A5CB0006099A /* Maps */ = {
 			isa = PBXGroup;
 			children = (
 				A3551E9E2572A5F10006099A /* AnnotationPin.swift */,
@@ -286,43 +253,7 @@
 				A3551EBB257378FB0006099A /* CustomUserLocationAnnotationView.swift */,
 				A3551EB4257363D70006099A /* UserInfoTab.swift */,
 			);
-			path = MapAnnotationViews;
-			sourceTree = "<group>";
-		};
-		A3551EB7257371F50006099A /* MapViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MapViews;
-			sourceTree = "<group>";
-		};
-		A35BCC222570EFED0090B95E /* Maps */ = {
-			isa = PBXGroup;
-			children = (
-				A3CEA99E256F87F1001DA842 /* MapsViewController.swift */,
-				A3551EB7257371F50006099A /* MapViews */,
-				A3551E9D2572A5CB0006099A /* MapAnnotationViews */,
-			);
 			path = Maps;
-			sourceTree = "<group>";
-		};
-		A36B4BC82587B8F3005DAC50 /* OtherUserProfile */ = {
-			isa = PBXGroup;
-			children = (
-				A36B4BCA2587BBF1005DAC50 /* UserProfileViewController.swift */,
-				A36B4BCD2587BDF0005DAC50 /* UserPostCollectionViewCell.swift */,
-				A36B4BD12587C07E005DAC50 /* UserProfileHeaderCollectionReusableView.swift */,
-				A36B4BD42587D7C4005DAC50 /* UserProfileTabsCollectionReusableView.swift */,
-			);
-			path = OtherUserProfile;
-			sourceTree = "<group>";
-		};
-		A3C136AC257C778F00960B4C /* Camera */ = {
-			isa = PBXGroup;
-			children = (
-				A316BED72575323700989152 /* CameraViewController.swift */,
-			);
-			path = Camera;
 			sourceTree = "<group>";
 		};
 		A3C136D7257CC4EB00960B4C /* EditProfile */ = {
@@ -350,6 +281,8 @@
 		A3C195A52577666B00BAB46B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A3FF43C3258EFE7A0071B03D /* Core Tabs */,
+				A3FF43CB258EFF780071B03D /* Others */,
 				A3551E82257292570006099A /* Storyboards */,
 				A3CEA9A6256F87F4001DA842 /* Assets.xcassets */,
 			);
@@ -359,55 +292,45 @@
 		A3C195A62577668F00BAB46B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A3C195AD2577721F00BAB46B /* Core Tabs */,
-				A3C195AF2577724500BAB46B /* General */,
 				A3C195B02577741A00BAB46B /* Auth */,
+				A3C195AD2577721F00BAB46B /* Core Tabs */,
+				A3C195AF2577724500BAB46B /* Others */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		A3C195A72577672B00BAB46B /* Messages */ = {
-			isa = PBXGroup;
-			children = (
-				A3C195B72577751600BAB46B /* MessagesViewController.swift */,
-			);
-			path = Messages;
 			sourceTree = "<group>";
 		};
 		A3C195AD2577721F00BAB46B /* Core Tabs */ = {
 			isa = PBXGroup;
 			children = (
-				A316BE0F2574E7AB00989152 /* Feed */,
-				A316BE47257504E700989152 /* Search */,
-				A35BCC222570EFED0090B95E /* Maps */,
-				A3C195A72577672B00BAB46B /* Messages */,
-				A316BF082575805500989152 /* MyProfile */,
+				A316BE3F2574F30700989152 /* FeedViewController.swift */,
+				A316BE4C2575072100989152 /* SearchViewController.swift */,
+				A3CEA99E256F87F1001DA842 /* MapsViewController.swift */,
+				A3C195B72577751600BAB46B /* MessagesViewController.swift */,
+				A3C195EC2577E35F00BAB46B /* MyProfileViewController.swift */,
 			);
 			path = "Core Tabs";
 			sourceTree = "<group>";
 		};
-		A3C195AF2577724500BAB46B /* General */ = {
+		A3C195AF2577724500BAB46B /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				A36B4BC82587B8F3005DAC50 /* OtherUserProfile */,
-				A3EE0314257BB42E00459C54 /* Post */,
-				A3C136AC257C778F00960B4C /* Camera */,
+				A316BED72575323700989152 /* CameraViewController.swift */,
+				A3C195BF257777A500BAB46B /* MyPostViewController.swift */,
+				A36B4BCA2587BBF1005DAC50 /* UserProfileViewController.swift */,
 				A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */,
 				A3C195C82577783800BAB46B /* UserListViewController.swift */,
 				A3EE0327257BB98500459C54 /* SettingsTableViewController.swift */,
-				A3C195CB257778F200BAB46B /* PostEditorViewController.swift */,
-				A3C195CE2577790600BAB46B /* PublishPostViewController.swift */,
 				A3C136D7257CC4EB00960B4C /* EditProfile */,
 			);
-			path = General;
+			path = Others;
 			sourceTree = "<group>";
 		};
 		A3C195B02577741A00BAB46B /* Auth */ = {
 			isa = PBXGroup;
 			children = (
 				A3EE02E8257B489700459C54 /* WelcomeViewController.swift */,
-				A3C195B12577746C00BAB46B /* SignInViewController.swift */,
 				A3C195B42577747D00BAB46B /* SignUpViewController.swift */,
+				A3C195B12577746C00BAB46B /* SignInViewController.swift */,
 				A3315843257FC072004CC86C /* PickUsernameViewController.swift */,
 				A3315846257FC07F004CC86C /* PickProfilePhotoViewController.swift */,
 			);
@@ -435,11 +358,11 @@
 		A3CEA999256F87F1001DA842 /* Yogogo */ = {
 			isa = PBXGroup;
 			children = (
+				A3C195A42577661F00BAB46B /* Resources */,
 				A3551E812572921C0006099A /* Networking */,
 				A3551E49257255F50006099A /* Models */,
 				A3C195A52577666B00BAB46B /* Views */,
 				A3C195A62577668F00BAB46B /* Controllers */,
-				A3C195A42577661F00BAB46B /* Resources */,
 				A3551E83257292950006099A /* Helpers + Extension */,
 				A3CEA9AB256F87F4001DA842 /* Info.plist */,
 				A3EE0310257B8E5900459C54 /* Yogogo.entitlements */,
@@ -448,10 +371,73 @@
 			path = Yogogo;
 			sourceTree = "<group>";
 		};
-		A3EE0314257BB42E00459C54 /* Post */ = {
+		A3FF43C3258EFE7A0071B03D /* Core Tabs */ = {
 			isa = PBXGroup;
 			children = (
-				A3C195BF257777A500BAB46B /* MyPostViewController.swift */,
+				A3FF43C4258EFE860071B03D /* Feed */,
+				A3FF43C6258EFEDB0071B03D /* Search */,
+				A3551E9D2572A5CB0006099A /* Maps */,
+				A3FF43CA258EFF5F0071B03D /* Messages */,
+				A3FF43C5258EFE980071B03D /* MyProfile */,
+			);
+			path = "Core Tabs";
+			sourceTree = "<group>";
+		};
+		A3FF43C4258EFE860071B03D /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				A316BE422574F3F400989152 /* FeedTableViewCell.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		A3FF43C5258EFE980071B03D /* MyProfile */ = {
+			isa = PBXGroup;
+			children = (
+				A3C195E92577D6E600BAB46B /* MyPostCollectionViewCell.swift */,
+				A3C195EF2577E7CF00BAB46B /* MyProfileHeaderCollectionReusableView.swift */,
+				A3C195F22577E80900BAB46B /* MyProfileTabsCollectionReusableView.swift */,
+			);
+			path = MyProfile;
+			sourceTree = "<group>";
+		};
+		A3FF43C6258EFEDB0071B03D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				A316BE492575070C00989152 /* SearchTableViewCell.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		A3FF43CA258EFF5F0071B03D /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		A3FF43CB258EFF780071B03D /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				A3FF43D0258EFFC80071B03D /* Post */,
+				A3FF43CD258EFFA70071B03D /* UserProfile */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		A3FF43CD258EFFA70071B03D /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				A36B4BCD2587BDF0005DAC50 /* UserPostCollectionViewCell.swift */,
+				A36B4BD12587C07E005DAC50 /* UserProfileHeaderCollectionReusableView.swift */,
+				A36B4BD42587D7C4005DAC50 /* UserProfileTabsCollectionReusableView.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		A3FF43D0258EFFC80071B03D /* Post */ = {
+			isa = PBXGroup;
+			children = (
 				A38293912578DF770064D971 /* PostTableViewCell.swift */,
 			);
 			path = Post;
@@ -617,7 +603,6 @@
 				A3137012257E5C4100CEA185 /* UIImage + Extension.swift in Sources */,
 				A3551EAB257358A30006099A /* UserAnnotationView.swift in Sources */,
 				A3551E46257252490006099A /* MapsNetworking.swift in Sources */,
-				A3C195CF2577790600BAB46B /* PublishPostViewController.swift in Sources */,
 				A36B4BCE2587BDF0005DAC50 /* UserPostCollectionViewCell.swift in Sources */,
 				A316BE512575245D00989152 /* UIViewController + Extension.swift in Sources */,
 				A331584B257FC950004CC86C /* UserManager.swift in Sources */,
@@ -653,7 +638,6 @@
 				A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */,
 				A3136FC4257DF3C000CEA185 /* EditUsernameViewController.swift in Sources */,
 				A3EE0328257BB98500459C54 /* SettingsTableViewController.swift in Sources */,
-				A3C195CC257778F200BAB46B /* PostEditorViewController.swift in Sources */,
 				A313701B257EBB1D00CEA185 /* UINavigationController + Extension.swift in Sources */,
 				A3C195E725779A9C00BAB46B /* UIView + Extension.swift in Sources */,
 				A3C195DD25778FD600BAB46B /* FirestoreManager.swift in Sources */,
