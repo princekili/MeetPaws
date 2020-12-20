@@ -313,6 +313,7 @@ PODS:
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
   - leveldb-library (1.22)
+  - lottie-ios (3.1.9)
   - Mapbox-iOS-SDK (6.3.0):
     - MapboxMobileEvents (~> 0.10.4)
   - MapboxMobileEvents (0.10.7)
@@ -324,7 +325,7 @@ PODS:
   - PromisesObjC (1.2.11)
   - PryntTrimmerView (4.0.2)
   - SteviaLayout (4.7.3)
-  - SwiftLint (0.41.0)
+  - SwiftLint (0.42.0)
   - YPImagePicker (4.4.0):
     - PryntTrimmerView (~> 4.0.2)
     - SteviaLayout (~> 4.7.3)
@@ -337,6 +338,7 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - IQKeyboardManagerSwift
   - Kingfisher
+  - lottie-ios
   - Mapbox-iOS-SDK (~> 6.3.0)
   - SwiftLint
   - YPImagePicker
@@ -361,6 +363,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - Kingfisher
     - leveldb-library
+    - lottie-ios
     - Mapbox-iOS-SDK
     - MapboxMobileEvents
     - nanopb
@@ -389,15 +392,16 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
   Mapbox-iOS-SDK: 2563ed87ead6ec08f1c2090873977b8a7be335a8
   MapboxMobileEvents: d0a581dedd8f47411cc65ea520b965e83914316e
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
-  SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
+  SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: 5e053708f45b8fc86255b8092a614871b153542f
+PODFILE CHECKSUM: f0bf3c1263e8e98ee1f9bcb131cb39c0e0562304
 
 COCOAPODS: 1.10.0
