@@ -7,15 +7,15 @@
 
 import Foundation
 
-class CurrentUser {
-    
-    static var uid: String!
-    
-    static var name: String!
-    
-    static var accessToken: String!
-    
-    static var profileImage: String!
-    
-    static var isMapLocationEnabled: Bool?
-}
+//class CurrentUser {
+//    
+//    static var uid: String!
+//    
+//    static var name: String!
+//    
+//    static var accessToken: String!
+//    
+//    static var profileImage: String!
+//    
+//    static var isMapLocationEnabled: Bool?
+//}

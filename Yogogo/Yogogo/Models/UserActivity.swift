@@ -7,14 +7,15 @@
 
 import Foundation
 
-struct UserIsTyping {
+struct UserActivity {
     
     let isTyping: Bool?
     
     let userId: String?
     
-//    init(isTyping: Bool, userId: String) {
-//        self.isTyping = isTyping
-//        self.userId = userId
-//    }
+    init(isTyping: Bool, userId: String) {
+        
+        self.isTyping = isTyping
+        self.userId = userId
+    }
 }
