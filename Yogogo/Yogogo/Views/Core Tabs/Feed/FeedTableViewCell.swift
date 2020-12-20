@@ -91,9 +91,17 @@ class FeedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var likeCount: UIButton!
     
-    @IBOutlet weak var moreContentButton: UIButton!
+    @IBOutlet weak var moreContentButton: UIButton! {
+        didSet {
+            moreContentButton.isHidden = true
+        }
+    }
     
-    @IBOutlet weak var viewCommentButton: UIButton!
+    @IBOutlet weak var viewCommentButton: UIButton! {
+        didSet {
+            viewCommentButton.isHidden = true
+        }
+    }
     
     @IBOutlet weak var timestampLabel: UILabel!
     
