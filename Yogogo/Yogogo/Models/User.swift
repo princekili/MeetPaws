@@ -5,7 +5,16 @@
 //  Created by prince on 2020/11/28.
 //
 
-import Firebase
+import Foundation
+
+// MARK: - Other Users List
+
+class Users {
+    
+    static var list = [User]()
+}
+
+// MARK: - User Model
 
 struct User {
     
@@ -161,11 +170,4 @@ struct User {
                     isMapLocationEnabled: isMapLocationEnabled
         )
     }
-}
-
-// MARK: - Other Users List
-
-class Users {
-    
-    static var list = [User]()
 }

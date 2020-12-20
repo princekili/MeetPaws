@@ -79,6 +79,8 @@
 		A3EE02F9257B6D7300459C54 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3EE02F8257B6D7300459C54 /* Launch Screen.storyboard */; };
 		A3EE0318257BB57600459C54 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3EE0317257BB57600459C54 /* Settings.storyboard */; };
 		A3EE0328257BB98500459C54 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EE0327257BB98500459C54 /* SettingsTableViewController.swift */; };
+		A3FF43DA258F2FA70071B03D /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF43D9258F2FA70071B03D /* Messages.swift */; };
+		A3FF43DD258F38490071B03D /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF43DC258F38490071B03D /* MessageManager.swift */; };
 		EBA0C7B7CB20B17C5302B71E /* Pods_Yogogo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F10A593450A151479F13EE /* Pods_Yogogo.framework */; };
 /* End PBXBuildFile section */
 
@@ -159,6 +161,8 @@
 		A3EE0310257B8E5900459C54 /* Yogogo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yogogo.entitlements; sourceTree = "<group>"; };
 		A3EE0317257BB57600459C54 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		A3EE0327257BB98500459C54 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		A3FF43D9258F2FA70071B03D /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		A3FF43DC258F38490071B03D /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		C8F10A593450A151479F13EE /* Pods_Yogogo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yogogo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5866D8A6CE4D3ADE008249 /* Pods-Yogogo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yogogo.release.xcconfig"; path = "Target Support Files/Pods-Yogogo/Pods-Yogogo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,6 +195,7 @@
 				A3551E4A257256110006099A /* User.swift */,
 				A3551E7625728F610006099A /* Post.swift */,
 				A38293AF25793CF50064D971 /* UserLocation.swift */,
+				A3FF43D9258F2FA70071B03D /* Messages.swift */,
 				A3551E7B25728FCC0006099A /* Comment.swift */,
 				A3551E7E25728FF10006099A /* UserIsTyping.swift */,
 				A3551EA725734FC10006099A /* CurrentUser.swift */,
@@ -208,6 +213,7 @@
 				A313700E257E58C400CEA185 /* PostManager.swift */,
 				A331584A257FC950004CC86C /* UserManager.swift */,
 				A3137014257E872500CEA185 /* CacheManager.swift */,
+				A3FF43DC258F38490071B03D /* MessageManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -601,6 +607,7 @@
 				A3C195ED2577E35F00BAB46B /* MyProfileViewController.swift in Sources */,
 				A331583E257F931F004CC86C /* DateClass.swift in Sources */,
 				A3137012257E5C4100CEA185 /* UIImage + Extension.swift in Sources */,
+				A3FF43DA258F2FA70071B03D /* Messages.swift in Sources */,
 				A3551EAB257358A30006099A /* UserAnnotationView.swift in Sources */,
 				A3551E46257252490006099A /* MapsNetworking.swift in Sources */,
 				A36B4BCE2587BDF0005DAC50 /* UserPostCollectionViewCell.swift in Sources */,
@@ -637,6 +644,7 @@
 				A3CEA99D256F87F1001DA842 /* SceneDelegate.swift in Sources */,
 				A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */,
 				A3136FC4257DF3C000CEA185 /* EditUsernameViewController.swift in Sources */,
+				A3FF43DD258F38490071B03D /* MessageManager.swift in Sources */,
 				A3EE0328257BB98500459C54 /* SettingsTableViewController.swift in Sources */,
 				A313701B257EBB1D00CEA185 /* UINavigationController + Extension.swift in Sources */,
 				A3C195E725779A9C00BAB46B /* UIView + Extension.swift in Sources */,
