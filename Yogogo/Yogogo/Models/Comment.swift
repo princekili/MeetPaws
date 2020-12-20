@@ -5,7 +5,7 @@
 //  Created by prince on 2020/11/28.
 //
 
-import Foundation
+import Firebase
 
 struct Comment {
     

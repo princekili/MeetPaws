@@ -29,12 +29,14 @@ class ChatNetworking {
     
     var chatVC: ChatVC!
     
+    let userManager = UserManager.shared
+    
+    let currentUser = UserManager.shared.currentUser!
+    
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
     // MARK: GET MESSAGES METHOD
     
-    func getMessages(_ v: UIView, _ m: [Messages], completion: @escaping(_ newMessages: [Messages], _ mOrder: Bool) -> Void){
-        
-        guard let currentUser = Auth.auth().currentUser else { return }
+    func getMessages(_ v: UIView, _ m: [Messages], completion: @escaping(_ newMessages: [Messages], _ mOrder: Bool) -> Void) {
         
         var nodeRef: DatabaseQuery
         var messageOrder = true
@@ -44,11 +46,11 @@ class ChatNetworking {
         let firstMessage = m.first
         
         if firstMessage == nil{
-            nodeRef = Database.database().reference().child("messages").child(currentUser.uid).child(user.userId).queryOrderedByKey().queryLimited(toLast: messageCount)
+            nodeRef = Database.database().reference().child("messages").child(currentUser.userId).child(user.userId).queryOrderedByKey().queryLimited(toLast: messageCount)
             messageOrder = true
         }else{
             let mId = firstMessage!.id
-            nodeRef = Database.database().reference().child("messages").child(currentUser.uid).child(user.userId).queryOrderedByKey().queryEnding(atValue: mId).queryLimited(toLast: messageCount)
+            nodeRef = Database.database().reference().child("messages").child(currentUser.userId).child(user.userId).queryOrderedByKey().queryEnding(atValue: mId).queryLimited(toLast: messageCount)
             messageOrder = false
         }
         nodeRef.observeSingleEvent(of: .value) { (snap) in
@@ -65,7 +67,7 @@ class ChatNetworking {
     
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
     
-    func deleteMessageHandler(_ messages: [Messages], for snap: DataSnapshot, completion: @escaping (_ index: Int) -> Void){
+    func deleteMessageHandler(_ messages: [Messages], for snap: DataSnapshot, completion: @escaping (_ index: Int) -> Void) {
         var index = 0
         for message in messages {
             if message.id == snap.key {
@@ -79,11 +81,9 @@ class ChatNetworking {
     
     func removeMessageHandler(messageToRemove: Messages, completion: @escaping () -> Void) {
         
-        guard let currentUser = Auth.auth().currentUser else { return }
-        
-        Database.database().reference().child("messages").child(currentUser.uid).child(user.userId).child(messageToRemove.id).removeValue { (error, ref) in
-            Database.database().reference().child("messages").child(self.user.userId).child(currentUser.uid).child(messageToRemove.id).removeValue()
-            Database.database().reference().child("messages").child("unread-Messages").child(self.user.userId).child(currentUser.uid).child(messageToRemove.id).removeValue()
+        Database.database().reference().child("messages").child(currentUser.userId).child(user.userId).child(messageToRemove.id).removeValue { (error, ref) in
+            Database.database().reference().child("messages").child(self.user.userId).child(self.currentUser.userId).child(messageToRemove.id).removeValue()
+            Database.database().reference().child("messages").child("unread-Messages").child(self.user.userId).child(self.currentUser.userId).child(messageToRemove.id).removeValue()
             if messageToRemove.audioUrl != nil {
                 Storage.storage().reference().child("message-Audio").child(messageToRemove.storageID).delete { (error) in
                     guard error == nil else { return }
@@ -100,7 +100,7 @@ class ChatNetworking {
     
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
     
-    func newMessageRecievedHandler(_ messages: [Messages], for snap: DataSnapshot, completion: @escaping (_ message: Messages) -> Void){
+    func newMessageRecievedHandler(_ messages: [Messages], for snap: DataSnapshot, completion: @escaping (_ message: Messages) -> Void) {
         let status = messages.contains { (message) -> Bool in return message.id == snap.key }
         if !status {
             guard let values = snap.value as? [String: Any] else { return }
@@ -111,7 +111,7 @@ class ChatNetworking {
     
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
     
-    func uploadImage(image: UIImage, completion: @escaping (_ storageRef: StorageReference, _ image: UIImage, _ name: String) -> Void){
+    func uploadImage(image: UIImage, completion: @escaping (_ storageRef: StorageReference, _ image: UIImage, _ name: String) -> Void) {
         let mediaName = NSUUID().uuidString
         let storageRef = Storage.storage().reference().child("message-img").child(mediaName)
         if let jpegName = image.jpegData(compressionQuality: 0.1) {
@@ -140,16 +140,16 @@ class ChatNetworking {
     
     private func sendMediaMessage(url: String, _ image: UIImage, _ userId: String) {
         
-        guard let currentUser = Auth.auth().currentUser else { return }
+        
         
         messageStatus = "Sent"
-        let senderRef = Database.database().reference().child("messages").child(currentUser.uid).child(user.userId ).childByAutoId()
-        let friendRef = Database.database().reference().child("messages").child(user.userId ).child(currentUser.uid).child(senderRef.key!)
+        let senderRef = Database.database().reference().child("messages").child(currentUser.userId).child(user.userId ).childByAutoId()
+        let friendRef = Database.database().reference().child("messages").child(user.userId ).child(currentUser.userId).child(senderRef.key!)
         guard let messageId = senderRef.key else { return }
-        let values = ["sender": currentUser.uid, "time": Date().timeIntervalSince1970, "recipient": user.userId, "mediaUrl": url, "width": image.size.width, "height": image.size.height, "messageId": messageId, "storageID": userId] as [String: Any]
+        let values = ["sender": currentUser.userId, "time": Date().timeIntervalSince1970, "recipient": user.userId, "mediaUrl": url, "width": image.size.width, "height": image.size.height, "messageId": messageId, "storageID": userId] as [String: Any]
         senderRef.updateChildValues(values)
         friendRef.updateChildValues(values)
-        let unreadRef = Database.database().reference().child("messages").child("unread-Messages").child(user.userId ).child(currentUser.uid).child(senderRef.key!)
+        let unreadRef = Database.database().reference().child("messages").child("unread-Messages").child(user.userId ).child(currentUser.userId).child(senderRef.key!)
         let unreadValues = [senderRef.key: 1]
         unreadRef.updateChildValues(unreadValues)
         updateNavBar(user.fullName)
@@ -158,9 +158,7 @@ class ChatNetworking {
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
     // MARK: SEND TEXT MESSAGE METHOD
     
-    func sendMessageHandler(senderRef: DatabaseReference, friendRef: DatabaseReference, values: [String: Any], completion: @escaping (_ error: Error?) -> Void){
-        
-        guard let currentUser = Auth.auth().currentUser else { return }
+    func sendMessageHandler(senderRef: DatabaseReference, friendRef: DatabaseReference, values: [String: Any], completion: @escaping (_ error: Error?) -> Void) {
         
         messageStatus = "Sent"
         senderRef.updateChildValues(values) { (error, ref) in
@@ -168,7 +166,7 @@ class ChatNetworking {
                 completion(error)
             }
             friendRef.updateChildValues(values)
-            let unreadRef = Database.database().reference().child("messages").child("unread-Messages").child(self.user.userId).child(currentUser.uid).child(senderRef.key!)
+            let unreadRef = Database.database().reference().child("messages").child("unread-Messages").child(self.user.userId).child(self.currentUser.userId).child(senderRef.key!)
             let unreadValues = [senderRef.key: 1]
             unreadRef.updateChildValues(unreadValues)
             completion(nil)
@@ -180,10 +178,10 @@ class ChatNetworking {
     
     func observeIsUserTyping(completion: @escaping (_ friendActivity: UserActivity) -> Void) {
         
-        guard let currentUser = Auth.auth().currentUser else { return }
+        
         
         readMessagesHandler()
-        let db = Database.database().reference().child("userActions").child(user.userId).child(currentUser.uid)
+        let db = Database.database().reference().child("userActions").child(user.userId).child(currentUser.userId)
         db.observe(.value) { (snap) in
             guard let data = snap.value as? [String: Any] else { return }
             guard let status = data["isTyping"] as? Bool else { return }
@@ -198,40 +196,46 @@ class ChatNetworking {
     
     func isTypingHandler(tV: UITextView) {
         
-        guard let currentUser = Auth.auth().currentUser else { return }
+        
         
         guard let friendId = user?.userId else { return }
         
-        let userRef = Database.database().reference().child("userActions").child(currentUser.uid).child(friendId)
+        let userRef = Database.database().reference().child("userActions").child(currentUser.userId).child(friendId)
         if tV.text.count >= 1 {
-            userRef.setValue(["isTyping": true, "fromFriend": currentUser.uid])
+            userRef.setValue(["isTyping": true, "fromFriend": currentUser.userId])
         }else{
-            userRef.setValue(["isTyping": false, "fromFriend": currentUser.uid])
+            userRef.setValue(["isTyping": false, "fromFriend": currentUser.userId])
         }
     }
     
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
     
-    func disableIsTyping(){
-        guard let friendId = user.userId , let user = currentUser.uid else { return }
-        let userRef = Database.database().reference().child("userActions").child(currentUser.uid).child(friendId)
-        userRef.updateChildValues(["isTyping": false, "fromFriend": user])
+    func disableIsTyping() {
+        
+        
+        
+        guard let friendId = user?.userId else { return }
+        let userRef = Database.database().reference().child("userActions").child(currentUser.userId).child(friendId)
+        userRef.updateChildValues(["isTyping": false, "fromFriend": currentUser.userId])
     }
     
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
     
-    func getMessageSender(message: Messages, completion: @escaping (_ sender: String) -> Void){
-        Database.database().reference().child("messages").child(currentUser.uid).child(message.determineUser()).child(message.userId).observeSingleEvent(of: .value) { (snap) in
+    func getMessageSender(message: Messages, completion: @escaping (_ sender: String) -> Void) {
+        
+        
+        
+        Database.database().reference().child("messages").child(currentUser.userId).child(message.determineUser()).child(message.id).observeSingleEvent(of: .value) { (snap) in
             guard let values = snap.value as? [String: Any] else { return }
             let senderId = values["sender"] as? String
-            guard let sender = senderId == currentUser.uid ? currentUser.name : self.friend.name else { return }
+            let sender = senderId == self.currentUser.userId ? self.currentUser.fullName : self.user.fullName
             completion(sender)
         }
     }
     
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
     
-    func uploadAudio(file: Data){
+    func uploadAudio(file: Data) {
         let audioName = NSUUID().uuidString
         let storageRef = Storage.storage().reference().child("message-Audio").child(audioName)
         let uploadTask = storageRef.putData(file, metadata: nil, completion: { (metadata, error) in
@@ -265,17 +269,18 @@ class ChatNetworking {
             chatVC.navigationItem.setupTypingNavTitle(navTitle: user.fullName)
             return
         }
-        let loginDate = NSDate(timeIntervalSince1970: (friend.lastLogin ?? 0).doubleValue)
+//        let loginDate = NSDate(timeIntervalSince1970: (user.lastLogin ?? 0).doubleValue)
+        let loginDate = Date(timeIntervalSince1970: TimeInterval((user.lastLogin)))
         if user.isOnline {
             chatVC.navigationItem.setNavTitles(navTitle: tempName, navSubtitle: "Online")
         }else{
-            chatVC.navigationItem.setNavTitles(navTitle: tempName, navSubtitle: chatVC.calendar.calculateLastLogin(loginDate))
+            chatVC.navigationItem.setNavTitles(navTitle: tempName, navSubtitle: chatVC.calendar.calculateLastLogin(loginDate as NSDate))
         }
     }
     
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
     
-    private func downloadAudioUrl(_ ref: StorageReference, _ userId: String){
+    private func downloadAudioUrl(_ ref: StorageReference, _ userId: String) {
         ref.downloadURL { (url, error) in
             guard let url = url else { return }
             self.sendAudioMessage(with: url.absoluteString, and: userId)
@@ -286,22 +291,23 @@ class ChatNetworking {
     // MARK: SEND AUDIO MESSAGE METHOD
     
     private func sendAudioMessage(with url: String, and userId: String) {
+        
         messageStatus = "Sent"
-        let senderRef = Database.database().reference().child("messages").child(currentUser.uid).child(friend.userId ).childByAutoId()
-        let friendRef = Database.database().reference().child("messages").child(friend.userId ).child(currentUser.uid).child(senderRef.key!)
+        let senderRef = Database.database().reference().child("messages").child(currentUser.userId).child(user.userId ).childByAutoId()
+        let friendRef = Database.database().reference().child("messages").child(user.userId ).child(currentUser.userId).child(senderRef.key!)
         guard let messageId = senderRef.key else { return }
-        let values = ["sender": currentUser.uid!, "time": Date().timeIntervalSince1970, "recipient": friend.userId, "audioUrl": url,"messageId": messageId, "storageID": userId] as [String: Any]
+        let values = ["sender": currentUser.userId, "time": Date().timeIntervalSince1970, "recipient": user.userId, "audioUrl": url,"messageId": messageId, "storageID": userId] as [String: Any]
         senderRef.updateChildValues(values)
         friendRef.updateChildValues(values)
-        let unreadRef = Database.database().reference().child("messages").child("unread-Messages").child(self.friend.userId ).child(currentUser.uid).child(senderRef.key!)
+        let unreadRef = Database.database().reference().child("messages").child("unread-Messages").child(self.user.userId ).child(currentUser.userId).child(senderRef.key!)
         let unreadValues = [senderRef.key: 1]
         unreadRef.updateChildValues(unreadValues)
-        updateNavBar(friend.name ?? "")
+        updateNavBar(user.fullName)
     }
     
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
     
-    func downloadMessageAudio(with url: URL, completion: @escaping (_ data: Data?, _ error: Error?) -> Void){
+    func downloadMessageAudio(with url: URL, completion: @escaping (_ data: Data?, _ error: Error?) -> Void) {
         if let cachedData = audioCache.object(forKey: url.absoluteString as NSString) {
             return completion(Data(referencing: cachedData), nil)
         }
@@ -319,7 +325,7 @@ class ChatNetworking {
     
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
     
-    func uploadVideoFile(_ url: URL){
+    func uploadVideoFile(_ url: URL) {
         do{
             let data = try Data(contentsOf: url)
             let uniqueName = NSUUID().uuidString + ".mov"
@@ -364,16 +370,16 @@ class ChatNetworking {
     
     private func handleSendVideoMessage(_ userId: String, _ url: String, _ image: UIImage, _ imageUrl: String) {
         messageStatus = "Sent"
-        let senderRef = Database.database().reference().child("messages").child(currentUser.uid).child(friend.userId ).childByAutoId()
-        let friendRef = Database.database().reference().child("messages").child(friend.userId ).child(currentUser.uid).child(senderRef.key!)
+        let senderRef = Database.database().reference().child("messages").child(currentUser.userId).child(user.userId ).childByAutoId()
+        let friendRef = Database.database().reference().child("messages").child(user.userId ).child(currentUser.userId).child(senderRef.key!)
         guard let messageId = senderRef.key else { return }
-        let values = ["sender": currentUser.uid!, "time": Date().timeIntervalSince1970, "recipient": friend.userId, "mediaUrl": imageUrl, "videoUrl": url,"messageId": messageId, "storageID": userId, "width": image.size.width, "height": image.size.height] as [String: Any]
+        let values = ["sender": currentUser.userId, "time": Date().timeIntervalSince1970, "recipient": user.userId, "mediaUrl": imageUrl, "videoUrl": url,"messageId": messageId, "storageID": userId, "width": image.size.width, "height": image.size.height] as [String: Any]
         senderRef.updateChildValues(values)
         friendRef.updateChildValues(values)
-        let unreadRef = Database.database().reference().child("messages").child("unread-Messages").child(self.friend.userId ).child(currentUser.uid).child(senderRef.key!)
+        let unreadRef = Database.database().reference().child("messages").child("unread-Messages").child(self.user.userId ).child(currentUser.userId).child(senderRef.key!)
         let unreadValues = [senderRef.key: 1]
         unreadRef.updateChildValues(unreadValues)
-        updateNavBar(friend.name ?? "")
+        updateNavBar(user.fullName)
     }
     
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
@@ -392,8 +398,8 @@ class ChatNetworking {
     
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
     
-    private func readMessagesHandler(){
-        let unreadRef = Database.database().reference().child("messages").child("unread-Messages").child(currentUser.uid).child(friend.userId )
+    private func readMessagesHandler() {
+        let unreadRef = Database.database().reference().child("messages").child("unread-Messages").child(currentUser.userId).child(user.userId )
         unreadRef.observe(.childAdded) { (snap) in
             unreadRef.removeValue()
         }
@@ -401,14 +407,14 @@ class ChatNetworking {
     
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
     
-    func removeObserves(){
-        Database.database().reference().child("messages").child("unread-Messages").child(currentUser.uid).child(friend.userId ).removeAllObservers()
+    func removeObserves() {
+        Database.database().reference().child("messages").child("unread-Messages").child(currentUser.userId).child(user.userId ).removeAllObservers()
     }
     
     // ---------------------------------------------------------------------------------------------------------------------------------------------------- //
     
     func observeUserMessageSeen() {
-        Database.database().reference().child("messages").child("unread-Messages").child(friend.userId ).child(currentUser.uid).observe(.value) { (snap) in
+        Database.database().reference().child("messages").child("unread-Messages").child(user.userId ).child(currentUser.userId).observe(.value) { (snap) in
             if Int(snap.childrenCount) > 0{
                 self.messageStatus = "Sent"
             }else{

@@ -59,7 +59,7 @@ extension UITextView: UITextViewDelegate {
             let labelY = self.textContainerInset.top + 2
             let labelWidth = self.frame.width - (labelX * 2)
             let labelHeight = placeholderLabel.frame.height
-
+            
             placeholderLabel.frame = CGRect(x: labelX, y: labelY, width: labelWidth, height: labelHeight)
         }
     }
@@ -80,5 +80,27 @@ extension UITextView: UITextViewDelegate {
         self.addSubview(placeholderLabel)
         self.resizePlaceholder()
         self.delegate = self
+    }
+}
+
+// MARK: - METHOD FOR CALCULATING LINES IN A UITEXTVIEW
+
+extension UITextView {
+    
+    func calculateLines() -> Int {
+        
+        let numberOfGlyphs = layoutManager.numberOfGlyphs
+        var index = 0, numberOfLines = 0
+        var lineRange = NSRange(location: NSNotFound, length: 0)
+        
+        while index < numberOfGlyphs {
+            layoutManager.lineFragmentRect(forGlyphAt: index, effectiveRange: &lineRange)
+            index = NSMaxRange(lineRange)
+            numberOfLines += 1
+            if text.last == "\n" {
+                numberOfLines += 1
+            }
+        }
+        return numberOfLines
     }
 }

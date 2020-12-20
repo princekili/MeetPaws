@@ -11,7 +11,7 @@ class EditBioViewController: UIViewController {
     
     @IBOutlet weak var bioTextView: UITextView! {
         didSet {
-            bioTextView.placeholder = "Edit your bio..."
+//            bioTextView.placeholder = "Edit your bio..."
             bioTextView.text = text
             bioTextView.layer.borderWidth = 0.5
             bioTextView.layer.borderColor = UIColor.lightGray.cgColor
@@ -28,7 +28,8 @@ class EditBioViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        bioTextView.placeholder = "Edit your bio..."
     }
     
     @IBAction func backButtonDidTap(_ sender: UIBarButtonItem) {
