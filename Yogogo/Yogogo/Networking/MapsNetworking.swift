@@ -126,7 +126,7 @@ class MapsNetworking {
                 let userCoordinate = CLLocation(latitude: latitude, longitude: longitude)
                 let distanceInKiloMeters = myCoordinate.distance(from: userCoordinate) / 1000
                 
-                if distanceInKiloMeters <= 50 {
+                if distanceInKiloMeters <= 5 {
                     let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                     self.handleUserLocation(user, coordinate)
                 }

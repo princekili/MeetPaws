@@ -18,7 +18,7 @@ class Users {
 
 // MARK: - User Model
 
-struct User {
+struct User: Hashable {
     
     var userId: String
 

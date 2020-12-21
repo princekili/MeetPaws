@@ -4,7 +4,7 @@
 //
 //  Created by prince on 2020/12/20.
 //
-//  MARK: MessageContainer - input view that is located at the bottom of ChatVC.
+// MARK: MessageContainer - input view that is located at the bottom of ChatVC.
 
 import UIKit
 import Lottie
@@ -55,23 +55,19 @@ class MessageContainer: UIView, UITextViewDelegate {
         setupBackground()
         setupImageClipButton()
         setupSendButton()
-//        setupMicrophone()
         setupMessageTF()
+//        setupActionCircle()
+//        setupMicrophone()
 //        recordingAudioAnimation()
 //        setupRecordingLabel()
-        setupActionCircle()
     }
     
     // MARK: -
     
-//    func handleAddSubView() {
-//        chatVC.view.addSubview(self)
-//        translatesAutoresizingMaskIntoConstraints = false
-//    }
-    
     private func setupBackground() {
         chatVC.view.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
+//        backgroundColor = .white
         backgroundColor = .systemBackground
         bottomAnchr = bottomAnchor.constraint(equalTo: chatVC.view.bottomAnchor)
         heightAnchr = heightAnchor.constraint(equalToConstant: height)
@@ -92,6 +88,7 @@ class MessageContainer: UIView, UITextViewDelegate {
         addSubview(clipImageButton)
         clipImageButton.tintColor = .label
         clipImageButton.contentMode = .scaleAspectFill
+        clipImageButton.isEnabled = true
         clipImageButton.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
             clipImageButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
@@ -130,13 +127,13 @@ class MessageContainer: UIView, UITextViewDelegate {
 //        addSubview(micButton)
 //        micButton.translatesAutoresizingMaskIntoConstraints = false
 //        micButton.setImage(UIImage(systemName: "mic"), for: .normal)
-//        micButton.tintColor = .black
+//        micButton.tintColor = .label
 //        micButton.addTarget(chatVC, action: #selector(chatVC.handleAudioRecording), for: .touchUpInside)
 //        let constraints = [
 //            micButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const),
 //            micButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
 //            micButton.heightAnchor.constraint(equalToConstant: 30),
-//            micButton.widthAnchor.constraint(equalToConstant: 30),
+//            micButton.widthAnchor.constraint(equalToConstant: 30)
 //        ]
 //        NSLayoutConstraint.activate(constraints)
 //    }
@@ -145,11 +142,11 @@ class MessageContainer: UIView, UITextViewDelegate {
     
     private func setupMessageTF() {
         addSubview(messageTV)
-        messageTV.layer.cornerRadius = 12
+        messageTV.layer.cornerRadius = 8
         messageTV.font = UIFont(name: "Helvetica Neue", size: 16)
-        messageTV.textColor = .black
+        messageTV.textColor = .label
         messageTV.isScrollEnabled = false
-        messageTV.layer.borderWidth = 0.2
+        messageTV.layer.borderWidth = 0.3
         messageTV.layer.borderColor = UIColor.systemGray.cgColor
         messageTV.layer.masksToBounds = true
         let messTFPlaceholder = UILabel()
@@ -236,7 +233,7 @@ extension MessageContainer {
     // MARK: -
     
     func textViewDidChange(_ textView: UITextView) {
-        chatVC.chatNetworking.isTypingHandler(tV: textView)
+        chatVC.chatNetworking.isTypingHandler(textView: textView)
         chatVC.animateActionButton()
         messageTV.subviews[2].isHidden = !messageTV.text.isEmpty
         let size = CGSize(width: textView.frame.width, height: 150)

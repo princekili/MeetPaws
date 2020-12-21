@@ -9,7 +9,7 @@ import Foundation
 
 class MessageManager {
     
-    static func setupUserMessage(for values: [String:Any]) -> Messages {
+    static func setupUserMessage(for values: [String: Any]) -> Messages {
         
         let message = Messages()
         

@@ -88,7 +88,7 @@ class ChatNetworking {
                 Storage.storage().reference().child("message-Audio").child(messageToRemove.storageID).delete { (error) in
                     guard error == nil else { return }
                 }
-            }else if messageToRemove.mediaUrl != nil{
+            } else if messageToRemove.mediaUrl != nil {
                 Storage.storage().reference().child("message-img").child(messageToRemove.storageID).delete { (error) in
                     guard error == nil else { return }
                 }
@@ -180,8 +180,8 @@ class ChatNetworking {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
         readMessagesHandler()
-        let db = Database.database().reference().child("userActions").child(user.userId).child(userId)
-        db.observe(.value) { (snap) in
+        let ref = Database.database().reference().child("userActions").child(user.userId).child(userId)
+        ref.observe(.value) { (snap) in
             guard let data = snap.value as? [String: Any] else { return }
             guard let status = data["isTyping"] as? Bool else { return }
             guard let userId = data["fromFriend"] as? String else { return }
@@ -193,12 +193,12 @@ class ChatNetworking {
     
     // MARK: -
     
-    func isTypingHandler(tV: UITextView) {
+    func isTypingHandler(textView: UITextView) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         guard let friendId = user?.userId else { return }
         
         let userRef = Database.database().reference().child("userActions").child(userId).child(friendId)
-        if tV.text.count >= 1 {
+        if textView.text.count >= 1 {
             userRef.setValue(["isTyping": true, "fromFriend": userId])
         } else {
             userRef.setValue(["isTyping": false, "fromFriend": userId])
@@ -292,7 +292,14 @@ class ChatNetworking {
         let senderRef = Database.database().reference().child("messages").child(userId).child(user.userId ).childByAutoId()
         let friendRef = Database.database().reference().child("messages").child(user.userId ).child(userId).child(senderRef.key!)
         guard let messageId = senderRef.key else { return }
-        let values = ["sender": userId, "time": Date().timeIntervalSince1970, "recipient": user.userId, "audioUrl": url,"messageId": messageId, "storageID": userId] as [String: Any]
+        
+        let values = ["sender": userId,
+                      "time": Date().timeIntervalSince1970,
+                      "recipient": user.userId,
+                      "audioUrl": url,
+                      "messageId": messageId,
+                      "storageID": userId] as [String: Any]
+        
         senderRef.updateChildValues(values)
         friendRef.updateChildValues(values)
         let unreadRef = Database.database().reference().child("messages").child("unread-Messages").child(self.user.userId ).child(userId).child(senderRef.key!)
@@ -322,19 +329,19 @@ class ChatNetworking {
     // MARK: -
     
     func uploadVideoFile(_ url: URL) {
-        do{
+        do {
             let data = try Data(contentsOf: url)
             let uniqueName = NSUUID().uuidString + ".mov"
             let ref = Storage.storage().reference().child("message-Videos").child(uniqueName)
             let uploadTask = ref.putData(data, metadata: nil) { (metadata, error) in
-                if error != nil{
+                if error != nil {
                     self.chatVC.showAlert(title: "Error", message: error?.localizedDescription)
                     return
                 }
                 self.downloadVideoFile(url, ref, userId: uniqueName)
             }
             countTimeRemaining(uploadTask)
-        }catch{
+        } catch {
             print(error.localizedDescription)
         }
     }
@@ -369,7 +376,17 @@ class ChatNetworking {
         let senderRef = Database.database().reference().child("messages").child(userId).child(user.userId ).childByAutoId()
         let friendRef = Database.database().reference().child("messages").child(user.userId ).child(userId).child(senderRef.key!)
         guard let messageId = senderRef.key else { return }
-        let values = ["sender": userId, "time": Date().timeIntervalSince1970, "recipient": user.userId, "mediaUrl": imageUrl, "videoUrl": url,"messageId": messageId, "storageID": userId, "width": image.size.width, "height": image.size.height] as [String: Any]
+        
+        let values = ["sender": userId,
+                      "time": Date().timeIntervalSince1970,
+                      "recipient": user.userId,
+                      "mediaUrl": imageUrl,
+                      "videoUrl": url,
+                      "messageId": messageId,
+                      "storageID": userId,
+                      "width": image.size.width,
+                      "height": image.size.height] as [String: Any]
+        
         senderRef.updateChildValues(values)
         friendRef.updateChildValues(values)
         let unreadRef = Database.database().reference().child("messages").child("unread-Messages").child(self.user.userId ).child(userId).child(senderRef.key!)
@@ -383,10 +400,10 @@ class ChatNetworking {
     private func getFirstImageVideoFrame(for url: URL) -> UIImage? {
         let asset = AVAsset(url: url)
         let generator = AVAssetImageGenerator(asset: asset)
-        do{
+        do {
             let cgImage = try generator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60), actualTime: nil)
             return UIImage(cgImage: cgImage)
-        }catch{
+        } catch {
             print(error.localizedDescription)
         }
         return nil
@@ -426,7 +443,4 @@ class ChatNetworking {
             }
         }
     }
-    
-    // MARK: -
-    
 }

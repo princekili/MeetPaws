@@ -30,13 +30,9 @@ class MessageCollectionView: UICollectionView, UIGestureRecognizerDelegate {
     
     // MARK: -
     
-//    func handleAddSubView() {
-//        chatVC.view.addSubview(self)
-//        translatesAutoresizingMaskIntoConstraints = false
-//    }
-    
     private func setupCollectionView() {
-        chatVC.view.addSubview(self)
+//        chatVC.view.addSubview(self)
+        chatVC.view.insertSubview(self, belowSubview: chatVC.messageContainer)
         translatesAutoresizingMaskIntoConstraints = false
         delegate = chatVC
         dataSource = chatVC

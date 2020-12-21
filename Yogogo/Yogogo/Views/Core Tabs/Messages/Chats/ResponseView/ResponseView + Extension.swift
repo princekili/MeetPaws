@@ -22,7 +22,7 @@ extension ChatVC {
     // MARK: -
     
     func responseMessageLine(_ message: Messages, _ userName: String?) {
-        userResponse.lineView.backgroundColor = .systemBackground
+        userResponse.lineView.backgroundColor = .label
         userResponse.lineView.layer.cornerRadius = 1
         userResponse.lineView.layer.masksToBounds = true
         messageContainer.addSubview(userResponse.lineView)
@@ -50,7 +50,7 @@ extension ChatVC {
         messageContainer.addSubview(userResponse.exitButton)
         userResponse.exitButton.translatesAutoresizingMaskIntoConstraints = false
         userResponse.exitButton.setImage(UIImage(systemName: "xmark"), for: .normal)
-        userResponse.exitButton.tintColor = .black
+        userResponse.exitButton.tintColor = .label
         let constraints = [
             userResponse.exitButton.trailingAnchor.constraint(equalTo: messageContainer.messageTV.trailingAnchor, constant: -16),
             userResponse.exitButton.centerYAnchor.constraint(equalTo: userResponse.lineView.centerYAnchor),
@@ -89,7 +89,8 @@ extension ChatVC {
         messageContainer.addSubview(userResponse.nameLabel)
         userResponse.nameLabel.translatesAutoresizingMaskIntoConstraints = false
         userResponse.nameLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 16)
-        userResponse.nameLabel.textColor = .systemBackground
+//        userResponse.nameLabel.textColor = .systemBackground
+        userResponse.nameLabel.textColor = .label
         userResponse.nameLabel.text = name
         userResponse.nameLabelConstraint = userResponse.nameLabel.leadingAnchor.constraint(equalTo: userResponse.lineView.trailingAnchor, constant: 8)
         let constraints = [
@@ -119,7 +120,7 @@ extension ChatVC {
         messageContainer.addSubview(userResponse.messageLabel)
         userResponse.messageLabel.translatesAutoresizingMaskIntoConstraints = false
         userResponse.messageLabel.font = UIFont(name: "Helvetica Neue", size: 15)
-        userResponse.messageLabel.textColor = .black
+        userResponse.messageLabel.textColor = .label
         userResponse.messageLabel.text = message.message
         let constraints = [
             userResponse.messageLabel.leadingAnchor.constraint(equalTo: userResponse.lineView.trailingAnchor, constant: 8),
@@ -150,7 +151,7 @@ extension ChatVC {
             userResponse.mediaMessage.widthAnchor.constraint(equalToConstant: 30),
             userResponse.mediaMessage.leadingAnchor.constraint(equalTo: userResponse.lineView.trailingAnchor, constant: 4),
             replyMediaLabel.centerYAnchor.constraint(equalTo: userResponse.mediaMessage.centerYAnchor, constant: 8),
-            replyMediaLabel.leadingAnchor.constraint(equalTo: userResponse.mediaMessage.trailingAnchor, constant: 8),
+            replyMediaLabel.leadingAnchor.constraint(equalTo: userResponse.mediaMessage.trailingAnchor, constant: 8)
         ]
         NSLayoutConstraint.activate(constraints)
     }

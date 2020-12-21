@@ -21,13 +21,13 @@ class ConversationsNetworking {
     
     var totalUnread = Int()
     
-    // MARK: -
+    // MARK: - To Fix !!!
     
    func observeFriendsList() {
-    guard let userId = Auth.auth().currentUser?.uid else { return }
+//    guard let userId = Auth.auth().currentUser?.uid else { return }
     
-        convVC.blankLoadingView.isHidden = false
-        Database.database().reference().child("friendsList").child(userId).observeSingleEvent(of: .value) { (snap) in
+//        convVC.blankLoadingView.isHidden = false
+        Database.database().reference().child("users").observeSingleEvent(of: .value) { (snap) in
             for child in snap.children {
                 guard let snapshot = child as? DataSnapshot else { return }
                 guard let friend = snapshot.value as? [String: Any] else { return }
@@ -100,24 +100,24 @@ class ConversationsNetworking {
         }
     }
     
-    // MARK: -
+    // MARK: - To Fix !!!
     
-    private func messagesReference() {
+    func messagesReference() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
-        for key in friendKeys {
-            Database.database().reference().child("messages").child(userId).child(key).queryLimited(toLast: 1).observeSingleEvent(of: .value) { (snap) in
+        for user in Users.list {
+            Database.database().reference().child("messages").child(userId).child(user.userId).queryLimited(toLast: 1).observeSingleEvent(of: .value) { (snap) in
                 guard snap.childrenCount > 0 else {
                     self.convVC.loadMessagesHandler(nil)
                     return
                 }
                 for child in snap.children {
                     guard let snapshot = child as? DataSnapshot else { return }
-                    guard let values = snapshot.value as? [String : Any] else { return }
+                    guard let values = snapshot.value as? [String: Any] else { return }
                     let message = MessageManager.setupUserMessage(for: values)
                     self.groupedMessages[message.determineUser()] = message
                 }
-                if key == self.friendKeys[self.friendKeys.count - 1] {
+                if user.userId == Users.list[Users.list.count - 1].userId {
                     self.convVC.loadMessagesHandler(Array(self.groupedMessages.values))
                 }
             }

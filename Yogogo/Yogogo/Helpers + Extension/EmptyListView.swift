@@ -10,7 +10,7 @@ import UIKit
 //class EmptyListView: UIView {
 //
 //    var convVC: ConversationsVC!
-//    
+//
 //    var contactsVC: ContactsVC!
 //    
 //    var controller: UIViewController!

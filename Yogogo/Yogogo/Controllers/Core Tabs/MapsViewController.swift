@@ -103,7 +103,7 @@ class MapsViewController: UIViewController {
         
         let constraints = [
             goButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            goButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 280),
+            goButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
             goButton.widthAnchor.constraint(equalToConstant: size),
             goButton.heightAnchor.constraint(equalToConstant: size)
         ]
@@ -140,6 +140,11 @@ class MapsViewController: UIViewController {
                         
                         // Check user's isMapLocationEnabled & Handle user's location
                         self?.mapNetworking.observeUserLocation(user: user)
+                        
+                        // MARK: - Test for NewConversationsVC
+                        Users.list.append(user)
+                        Users.list.removeDuplicates()
+                        print("------ Users.list: \(Users.list) ------")
                     }
                 }
             }

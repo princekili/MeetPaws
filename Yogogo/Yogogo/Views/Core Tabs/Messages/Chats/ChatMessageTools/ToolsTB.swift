@@ -23,29 +23,29 @@ class ToolsTB: UITableView {
     
     // MARK: -
     
-    init(style: UITableView.Style, sV: ToolsMenu) {
-        super.init(frame: sV.toolsView.frame, style: style)
-        selectedMessage = sV.message
-        if selectedMessage.mediaUrl != nil || selectedMessage.audioUrl != nil{
+    init(style: UITableView.Style, sView: ToolsMenu) {
+        super.init(frame: sView.toolsView.frame, style: style)
+        selectedMessage = sView.message
+        if selectedMessage.mediaUrl != nil || selectedMessage.audioUrl != nil {
             tools.remove(at: 2)
             toolsImg.remove(at: 2)
         }
-        scrollView = sV
-        chatView = sV.chatVC
-        selectedCell = sV.selectedCell
+        scrollView = sView
+        chatView = sView.chatVC
+        selectedCell = sView.selectedCell
         delegate = self
         dataSource = self
         register(ToolsCell.self, forCellReuseIdentifier: "ToolsCell")
         separatorStyle = .singleLine
         translatesAutoresizingMaskIntoConstraints = false
         rowHeight = 50
-        let toolsView = sV.toolsView
+        let toolsView = sView.toolsView
         toolsView.addSubview(self)
         let tableConstraints = [
             leadingAnchor.constraint(equalTo: toolsView.leadingAnchor, constant: -16),
             bottomAnchor.constraint(equalTo: toolsView.bottomAnchor),
             trailingAnchor.constraint(equalTo: toolsView.trailingAnchor, constant: 16),
-            topAnchor.constraint(equalTo: toolsView.topAnchor),
+            topAnchor.constraint(equalTo: toolsView.topAnchor)
         ]
         NSLayoutConstraint.activate(tableConstraints)
     }
@@ -82,8 +82,8 @@ extension ToolsTB: UITableViewDelegate, UITableViewDataSource {
             cell.toolName.textColor = .red
             cell.toolImg.tintColor =  .red
         } else {
-            cell.toolImg.tintColor = .black
-            cell.toolName.textColor = .black
+            cell.toolImg.tintColor = .label
+            cell.toolName.textColor = .label
         }
         return cell
     }
@@ -97,15 +97,15 @@ extension ToolsTB: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         if "Delete" == tool {
             removeHandler()
-        }else if "Copy" == tool{
+        } else if "Copy" == tool {
             guard selectedMessage.mediaUrl == nil else { return }
             let pasteBoard = UIPasteboard.general
             pasteBoard.string = selectedMessage.message
             scrollView.handleViewDismiss()
-        }else if "Reply" == tool{
+        } else if "Reply" == tool {
             if repliedMesage != nil || messageToForward != nil{ chatView.exitResponseButtonPressed() }
             scrollView.handleViewDismiss(isReply: true)
-        }else if "Forward" == tool{
+        } else if "Forward" == tool {
             if repliedMesage != nil || messageToForward != nil{ chatView.exitResponseButtonPressed() }
             scrollView.handleViewDismiss(isForward: true)
         }

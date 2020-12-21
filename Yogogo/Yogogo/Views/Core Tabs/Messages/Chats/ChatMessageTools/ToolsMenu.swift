@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class ToolsMenu: UIScrollView {
 
     var chatVC: ChatVC!
@@ -116,17 +115,17 @@ class ToolsMenu: UIScrollView {
         toolsView.layer.cornerRadius = 16
         toolsView.layer.masksToBounds = true
         addSubview(toolsView)
-        toolsView.addSubview(ToolsTB(style: .plain, sV: self))
+        toolsView.addSubview(ToolsTB(style: .plain, sView: self))
     }
     
     // MARK: -
     
     private func toolMessageAppearance() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            if self.toolsView.frame.maxY > self.keyWindow.frame.maxY && self.noScroll{
+            if self.toolsView.frame.maxY > self.keyWindow.frame.maxY && self.noScroll {
                 self.toolsView.frame.origin.y = self.keyWindow.frame.maxY - 220
                 self.messageView.frame.origin.y = self.toolsView.frame.minY - self.messageFrame.height - 8
-            }else if self.messageView.frame.minY < 100 && self.noScroll{
+            } else if self.messageView.frame.minY < 100 && self.noScroll {
                 self.messageView.frame.origin.y = self.keyWindow.frame.minY + 40
                 self.toolsView.frame.origin.y = self.messageView.frame.maxY + 8
             }
@@ -159,7 +158,7 @@ class ToolsMenu: UIScrollView {
                 self.toolsView.frame = CGRect(x: xValue, y: yValue, width: width, height: height)
                 self.toolsView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
                 self.toolsView.layoutIfNeeded()
-                self.toolsView.layer.add(self.animateToolsView(fV: 1, tV: 0), forKey: "Changes Opacity")
+                self.toolsView.layer.add(self.animateToolsView(fValue: 1, tValue: 0), forKey: "Changes Opacity")
             }
             self.removeFromSuperview()
         }) { (true) in
@@ -169,7 +168,7 @@ class ToolsMenu: UIScrollView {
             self.messageView.removeFromSuperview()
             self.toolsView.removeFromSuperview()
             self.chatVC.collectionView.isLongPress = false
-            if isReply != nil{
+            if isReply != nil {
                 self.chatVC.responseButtonPressed(self.message)
             }
             if isForward != nil {
@@ -180,10 +179,10 @@ class ToolsMenu: UIScrollView {
 
     // MARK: -
     
-    private func animateToolsView(fV: CGFloat, tV: CGFloat) -> CABasicAnimation {
+    private func animateToolsView(fValue: CGFloat, tValue: CGFloat) -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: "opacity")
-        animation.fromValue = fV
-        animation.toValue = tV
+        animation.fromValue = fValue
+        animation.toValue = tValue
         animation.duration = 0.25
         animation.fillMode = .forwards
         animation.isRemovedOnCompletion = false

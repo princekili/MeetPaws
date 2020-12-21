@@ -29,7 +29,7 @@ class ConversationsVC: UIViewController {
     
     var tabBarBadge: UITabBarItem!
     
-    let blankLoadingView = AnimationView(animation: Animation.named("blankLoadingAnim"))
+//    let blankLoadingView = AnimationView(animation: Animation.named("blankLoadingAnim"))
     
 //    var emptyListView: EmptyListView!
     
@@ -38,12 +38,17 @@ class ConversationsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Messages"
+        navigationItem.backButtonTitle = ""
         view.backgroundColor = .systemBackground
         if let tabItems = tabBarController?.tabBar.items {
             tabBarBadge = tabItems[3]
         }
-        loadConversations()
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadConversations()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,7 +62,7 @@ class ConversationsVC: UIViewController {
         setupNewConversationButton()
         setupTableView()
 //        emptyListView = EmptyListView(nil, self, false)
-        setupBlankView(blankLoadingView)
+//        setupBlankView(blankLoadingView)
         Users.convVC = self
     }
     
@@ -97,26 +102,25 @@ class ConversationsVC: UIViewController {
         present(UINavigationController(rootViewController: controller), animated: true, completion: nil)
     }
     
-    // MARK: -
-    // MARK: LOAD CONVERSATIONS METHOD
+    // MARK: - LOAD CONVERSATIONS METHOD
     
     private func loadConversations() {
         convNetworking.convVC = self
-        convNetworking.observeFriendsList()
+//        convNetworking.observeFriendsList()
+        convNetworking.messagesReference()
     }
     
     // MARK: -
     
     func loadMessagesHandler(_ newMessages: [Messages]?) {
-        blankLoadingView.isHidden = true
+//        blankLoadingView.isHidden = true
         if let newMessages = newMessages {
             handleReload(newMessages)
         }
         observeMessageActions()
     }
     
-    // MARK: -
-    // MARK: HANDLE RELOAD
+    // MARK: - HANDLE RELOAD
     
     private func handleReload(_ newMessages: [Messages]) {
         messages = newMessages
@@ -130,8 +134,7 @@ class ConversationsVC: UIViewController {
         tableView.reloadData()
     }
     
-    // MARK: -
-    // MARK: MESSAGE ACTIONS.
+    // MARK: - MESSAGE ACTIONS.
     
     func observeMessageActions() {
         convNetworking.observeDeletedMessages()
@@ -203,6 +206,7 @@ extension ConversationsVC: UITableViewDelegate, UITableViewDataSource {
     // MARK: -
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ConversationsCell") as? ConversationsCell else { return UITableViewCell() }
         cell.selectionStyle = .none
         let recent = messages[indexPath.row]

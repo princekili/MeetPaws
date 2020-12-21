@@ -16,7 +16,7 @@ extension ChatVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         if let msg = message.message {
             height = calculateFrameInText(message: msg).height + 10
             if message.repMID != nil { height += 50 }
-        } else if let imageWidth = message.imageWidth?.floatValue, let imageHeight = message.imageHeight?.floatValue  {
+        } else if let imageWidth = message.imageWidth?.floatValue, let imageHeight = message.imageHeight?.floatValue {
             height = CGFloat(imageHeight / imageWidth * 200)
         } else if message.audioUrl != nil {
             height = 40

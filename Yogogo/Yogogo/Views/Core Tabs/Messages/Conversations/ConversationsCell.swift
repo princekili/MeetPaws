@@ -52,7 +52,8 @@ class ConversationsCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .white
+//        backgroundColor = .white
+        backgroundColor = .systemBackground
         setupImage()
         setupNameLabel()
         setupUnreadMessagesView()
@@ -181,7 +182,7 @@ class ConversationsCell: UITableViewCell {
     
     private func setupNameLabel() {
         addSubview(userFullName)
-        userFullName.textColor = .black
+        userFullName.textColor = .label
         userFullName.font = UIFont(name: "Helvetica Neue", size: 18)
         userFullName.numberOfLines = 0
         userFullName.translatesAutoresizingMaskIntoConstraints = false
@@ -238,6 +239,7 @@ class ConversationsCell: UITableViewCell {
         unreadMessageView.isHidden = true
         unreadMessageView.translatesAutoresizingMaskIntoConstraints = false
         unreadMessageView.backgroundColor = .black
+//        unreadMessageView.backgroundColor = .label
         unreadMessageView.layer.cornerRadius = 10
         unreadMessageView.layer.masksToBounds = true
         unreadMessageView.addSubview(unreadLabel)
@@ -263,7 +265,7 @@ class ConversationsCell: UITableViewCell {
         checkmark.translatesAutoresizingMaskIntoConstraints = false
         checkmark.image = UIImage(named: "checkmark_icon")
         checkmark.contentMode = .scaleAspectFit
-        checkmark.tintColor = .black
+        checkmark.tintColor = .label
         let constraints = [
             checkmark.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             checkmark.centerYAnchor.constraint(equalTo: centerYAnchor),

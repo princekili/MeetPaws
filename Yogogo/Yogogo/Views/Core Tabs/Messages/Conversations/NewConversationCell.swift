@@ -21,8 +21,8 @@ class NewConversationCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
         setupImage()
-        setupNameLabel()
-        setupEmailLabel()
+        setupFullNameLabel()
+        setupUsernameLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -48,9 +48,9 @@ class NewConversationCell: UITableViewCell {
     
     // MARK: -
     
-    private func setupNameLabel() {
+    private func setupFullNameLabel() {
         addSubview(userFullName)
-        userFullName.textColor = .black
+        userFullName.textColor = .label
         userFullName.numberOfLines = 0
         userFullName.adjustsFontSizeToFitWidth = true
         userFullName.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +63,7 @@ class NewConversationCell: UITableViewCell {
     
     // MARK: -
     
-    private func setupEmailLabel() {
+    private func setupUsernameLabel() {
         addSubview(username)
         username.numberOfLines = 0
         username.adjustsFontSizeToFitWidth = true
