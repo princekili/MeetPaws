@@ -195,6 +195,7 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
         
         guard let user = self.user else { return UICollectionReusableView() }
         headerForInfo.setup(user: user)
+        headerForInfo.delegateOpenUserMessages = self
 //        headerForInfo.delegate = self
         return headerForInfo
     }
@@ -216,5 +217,14 @@ extension UserProfileViewController: UserProfileTabsCollectionReusableViewDelega
     
     func listButtonDidTap() {
         // Reload collection view
+    }
+}
+
+extension UserProfileViewController: OpenUserMessagesHandlerDelegate {
+    
+    func openUserMessagesHandler() {
+        let chatVC = ChatVC()
+        chatVC.user = user
+        navigationController?.pushViewController(chatVC, animated: true)
     }
 }

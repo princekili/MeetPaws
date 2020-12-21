@@ -64,10 +64,11 @@ class MyProfileViewController: UIViewController {
         let title = userManager.currentUser?.username
         navigationItem.title = title
         
+        // Check isPushFromOtherVC
         if let rootVC = navigationController?.rootViewController {
-            let isPushFromFeed = (rootVC is FeedViewController) || (rootVC is MapsViewController)
+            let isPushFromOtherVC = (rootVC is FeedViewController) || (rootVC is MapsViewController)
             
-            switch isPushFromFeed {
+            switch isPushFromOtherVC {
             case true:
                 navigationItem.leftBarButtonItem = nil
                 navigationItem.backButtonTitle = ""

@@ -168,6 +168,12 @@ class MapsViewController: UIViewController {
         
         performSegue(withIdentifier: "SegueMapsToUserProfile", sender: nil)
     }
+
+    @objc func openUserMessagesHandler() {
+        let chatVC = ChatVC()
+        chatVC.user = selectedUser
+        navigationController?.pushViewController(chatVC, animated: true)
+    }
 }
 
 // MARK: - User location annotation
@@ -245,7 +251,7 @@ extension MapsViewController: MGLMapViewDelegate {
                 self.selectedUser = annotation.user
                 self.userInfoTab?.addGestureRecognizer(tapGesture)
                 self.userInfoTab?.actionButton.addTarget(self,
-                                                         action: #selector(self.showUserProfileVC),
+                                                         action: #selector(self.openUserMessagesHandler),
                                                          for: .touchUpInside)
                 self.view.addSubview(self.userInfoTab!)
             })
@@ -267,7 +273,7 @@ extension MapsViewController: MGLMapViewDelegate {
 extension MapsViewController {
     
     private func deniedAlert() {
-        let message = "To see the map you need to change your location settings. Please go to Settings/Yogogo/Location/ and allow location access.(While Using the App)"
+        let message = "To see the map you need to change your location settings. Please go to Settings/Insdogram/Location/ and allow location access.(While Using the App)"
         
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default) { (alertAction) in

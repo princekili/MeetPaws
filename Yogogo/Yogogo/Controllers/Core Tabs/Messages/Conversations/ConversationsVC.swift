@@ -38,10 +38,10 @@ class ConversationsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Chats"
-        view.backgroundColor = .white
+        navigationItem.title = "Messages"
+        view.backgroundColor = .systemBackground
         if let tabItems = tabBarController?.tabBar.items {
-            tabBarBadge = tabItems[1]
+            tabBarBadge = tabItems[3]
         }
         loadConversations()
         setupUI()
@@ -86,7 +86,7 @@ class ConversationsVC: UIViewController {
     
     private func setupNewConversationButton() {
         newConversationButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(newConversationTapped))
-        newConversationButton.tintColor = .black
+        newConversationButton.tintColor = .label
         navigationItem.rightBarButtonItem = newConversationButton
     }
     

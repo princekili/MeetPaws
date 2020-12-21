@@ -8,15 +8,24 @@
 import UIKit
 import Kingfisher
 
+protocol OpenUserMessagesHandlerDelegate: AnyObject {
+    
+    func openUserMessagesHandler()
+}
+
 class UserProfileHeaderCollectionReusableView: UICollectionReusableView {
+    
+    static let identifier = "UserProfileHeaderCollectionReusableView"
         
     let userManager = UserManager.shared
     
     var user: User?
     
     var isFollowing = false
-        
-    static let identifier = "UserProfileHeaderCollectionReusableView"
+    
+    weak var delegateOpenUserMessages: OpenUserMessagesHandlerDelegate?
+    
+    // MARK: - @IBOutlet
     
     @IBOutlet weak var profileImageView: UIImageView! {
         didSet {
@@ -54,6 +63,8 @@ class UserProfileHeaderCollectionReusableView: UICollectionReusableView {
     
     @IBOutlet weak var followingCountButton: UIButton!
     
+    // MARK: - @IBAction
+    
     @IBAction func postsButtonDidTap(_ sender: UIButton) {
     }
     
@@ -64,13 +75,15 @@ class UserProfileHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     @IBAction func followButtonDidTap(_ sender: UIButton) {
-        
         isFollowing ? unfollow() : follow()
         isFollowing.toggle()
     }
     
     @IBAction func messageButtonDidTap(_ sender: UIButton) {
+        delegateOpenUserMessages?.openUserMessagesHandler()
     }
+    
+    // MARK: -
     
     func setup(user: User) {
         
@@ -110,4 +123,6 @@ extension UserProfileHeaderCollectionReusableView {
         followButton.backgroundColor = .systemBlue
         followButton.layer.borderWidth = 0
     }
+    
+    // MARK: -
 }
