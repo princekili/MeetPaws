@@ -12,6 +12,8 @@ import Foundation
 class Users {
     
     static var list = [User]()
+    
+    static var convVC: ConversationsVC?
 }
 
 // MARK: - User Model

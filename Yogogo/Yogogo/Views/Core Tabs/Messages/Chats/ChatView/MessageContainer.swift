@@ -57,7 +57,7 @@ class MessageContainer: UIView, UITextViewDelegate{
         setupBackground()
         setupImageClipButton()
         setupSendButton()
-        setupMicrophone()
+//        setupMicrophone()
         setupMessageTF()
         recordingAudioAnimation()
         setupRecordingLabel()
@@ -122,20 +122,20 @@ class MessageContainer: UIView, UITextViewDelegate{
     
     // MARK: -
     
-    private func setupMicrophone(){
-        addSubview(micButton)
-        micButton.translatesAutoresizingMaskIntoConstraints = false
-        micButton.setImage(UIImage(systemName: "mic"), for: .normal)
-        micButton.tintColor = .black
-        micButton.addTarget(chatVC, action: #selector(chatVC.handleAudioRecording), for: .touchUpInside)
-        let constraints = [
-            micButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const),
-            micButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            micButton.heightAnchor.constraint(equalToConstant: 30),
-            micButton.widthAnchor.constraint(equalToConstant: 30),
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
+//    private func setupMicrophone(){
+//        addSubview(micButton)
+//        micButton.translatesAutoresizingMaskIntoConstraints = false
+//        micButton.setImage(UIImage(systemName: "mic"), for: .normal)
+//        micButton.tintColor = .black
+//        micButton.addTarget(chatVC, action: #selector(chatVC.handleAudioRecording), for: .touchUpInside)
+//        let constraints = [
+//            micButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const),
+//            micButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+//            micButton.heightAnchor.constraint(equalToConstant: 30),
+//            micButton.widthAnchor.constraint(equalToConstant: 30),
+//        ]
+//        NSLayoutConstraint.activate(constraints)
+//    }
     
     // MARK: -
     

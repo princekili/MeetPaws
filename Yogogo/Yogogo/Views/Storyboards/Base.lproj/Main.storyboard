@@ -344,7 +344,7 @@
         <!--Messages View Controller-->
         <scene sceneID="9n0-YQ-iR2">
             <objects>
-                <viewController id="WFW-8s-3Pe" userLabel="Messages View Controller" customClass="MessagesViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WFW-8s-3Pe" userLabel="Messages View Controller" customClass="ConversationsVC" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gTE-jG-ga0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

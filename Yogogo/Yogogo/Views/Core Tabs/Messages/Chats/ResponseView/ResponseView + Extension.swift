@@ -10,18 +10,18 @@ import Kingfisher
 
 extension ChatVC {
 
-    func responseViewChangeAlpha(a: CGFloat) {
-        userResponse.lineView.alpha = a
-        userResponse.nameLabel.alpha = a
-        userResponse.messageLabel.alpha = a
-        userResponse.mediaMessage.alpha = a
-        userResponse.exitButton.alpha = a
-        userResponse.audioMessage.alpha = a
+    func responseViewChangeAlpha(alpha: CGFloat) {
+        userResponse.lineView.alpha = alpha
+        userResponse.nameLabel.alpha = alpha
+        userResponse.messageLabel.alpha = alpha
+        userResponse.mediaMessage.alpha = alpha
+        userResponse.exitButton.alpha = alpha
+        userResponse.audioMessage.alpha = alpha
     }
     
     // MARK: -
     
-    func responseMessageLine(_ message: Messages, _ fN: String?) {
+    func responseMessageLine(_ message: Messages, _ userName: String?) {
         userResponse.lineView.backgroundColor = .systemBackground
         userResponse.lineView.layer.cornerRadius = 1
         userResponse.lineView.layer.masksToBounds = true
@@ -31,13 +31,13 @@ extension ChatVC {
             userResponse.lineView.topAnchor.constraint(equalTo: messageContainer.topAnchor, constant: 8),
             userResponse.lineView.bottomAnchor.constraint(equalTo: messageContainer.messageTV.topAnchor, constant: -8),
             userResponse.lineView.leadingAnchor.constraint(equalTo: messageContainer.messageTV.leadingAnchor, constant: 8),
-            userResponse.lineView.widthAnchor.constraint(equalToConstant: 2),
+            userResponse.lineView.widthAnchor.constraint(equalToConstant: 2)
         ]
         NSLayoutConstraint.activate(constraints)
         setupExitResponseButton()
-        if let fN = fN {
-            responseMessageName(for: message, fN)
-        }else{
+        if let userName = userName {
+            responseMessageName(for: message, userName)
+        } else {
             chatNetworking.getMessageSender(message: message) { (sender) in
                 self.responseMessageName(for: message, sender)
             }
@@ -106,9 +106,9 @@ extension ChatVC {
     func setupResponseMessage(_ message: Messages) {
         if message.mediaUrl != nil {
             setupResponseMediaM(message)
-        }else if message.audioUrl != nil {
-            setupAudioMessage()
-        }else{
+//        } else if message.audioUrl != nil {
+//            setupAudioMessage()
+        } else {
             setupResponseTextM(message)
         }
     }
@@ -157,18 +157,18 @@ extension ChatVC {
     
     // MARK: -
     
-    func setupAudioMessage() {
-        messageContainer.addSubview(userResponse.audioMessage)
-        userResponse.audioMessage.translatesAutoresizingMaskIntoConstraints = false
-        userResponse.audioMessage.text = "Audio Message"
-        userResponse.audioMessage.textColor = .lightGray
-        userResponse.audioMessage.font = UIFont(name: "Helvetica Neue", size: 15)
-        let constraints = [
-            userResponse.audioMessage.leadingAnchor.constraint(equalTo: userResponse.lineView.trailingAnchor, constant: 8),
-            userResponse.audioMessage.trailingAnchor.constraint(equalTo: userResponse.exitButton.trailingAnchor, constant: -16),
-            userResponse.audioMessage.topAnchor.constraint(equalTo: userResponse.nameLabel.bottomAnchor, constant: -2),
-            userResponse.audioMessage.bottomAnchor.constraint(equalTo: messageContainer.messageTV.topAnchor, constant: -16)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
+//    func setupAudioMessage() {
+//        messageContainer.addSubview(userResponse.audioMessage)
+//        userResponse.audioMessage.translatesAutoresizingMaskIntoConstraints = false
+//        userResponse.audioMessage.text = "Audio Message"
+//        userResponse.audioMessage.textColor = .lightGray
+//        userResponse.audioMessage.font = UIFont(name: "Helvetica Neue", size: 15)
+//        let constraints = [
+//            userResponse.audioMessage.leadingAnchor.constraint(equalTo: userResponse.lineView.trailingAnchor, constant: 8),
+//            userResponse.audioMessage.trailingAnchor.constraint(equalTo: userResponse.exitButton.trailingAnchor, constant: -16),
+//            userResponse.audioMessage.topAnchor.constraint(equalTo: userResponse.nameLabel.bottomAnchor, constant: -2),
+//            userResponse.audioMessage.bottomAnchor.constraint(equalTo: messageContainer.messageTV.topAnchor, constant: -16)
+//        ]
+//        NSLayoutConstraint.activate(constraints)
+//    }
 }

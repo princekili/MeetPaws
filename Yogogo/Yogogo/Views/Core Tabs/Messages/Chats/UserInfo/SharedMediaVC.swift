@@ -19,8 +19,6 @@ class SharedMediaVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     let emptyLabel = UILabel()
     
-    let currentUser = UserManager.shared.currentUser!
-    
     // MARK: -
     
     override func viewDidLoad() {
@@ -34,6 +32,8 @@ class SharedMediaVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     // MARK: -
     
     private func getSharedMedia(){
+        guard let currentUser = UserManager.shared.currentUser else { return }
+        
         let id = user.userId
         Database.database().reference().child("messages").child(currentUser.userId).child(id).observe(.childAdded) { (snap) in
             guard let values = snap.value as? [String: Any] else { return }
@@ -99,7 +99,7 @@ class SharedMediaVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     // MARK: -
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "sharedMediaCell", for: indexPath) as! SharedMediaCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "sharedMediaCell", for: indexPath) as? SharedMediaCell else { return UICollectionViewCell() }
         let message = sharedMedia[indexPath.row]
         cell.message = message
         

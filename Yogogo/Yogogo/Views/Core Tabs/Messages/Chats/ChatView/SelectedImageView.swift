@@ -27,8 +27,6 @@ class SelectedImageView: UIView, UINavigationControllerDelegate {
     
     let saveButton = UIButton(type: .system)
     
-    let currentUser = UserManager.shared.currentUser!
-    
     // MARK: -
     
     init(_ cellImage: UIImageView, _ message: Messages?, _ chatVC: ChatVC? = nil, _ sharedMediaVC: SharedMediaVC? = nil) {
@@ -149,6 +147,8 @@ class SelectedImageView: UIView, UINavigationControllerDelegate {
     // MARK: -
     
     private func setupUserInfo() {
+        guard let currentUser = UserManager.shared.currentUser else { return }
+        
         guard let message = message else { return }
         guard let user = chatVC != nil ? chatVC?.user : sharedMediaVC!.user else { return }
         let userName = UILabel()

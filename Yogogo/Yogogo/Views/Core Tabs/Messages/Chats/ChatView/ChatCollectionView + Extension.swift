@@ -16,9 +16,9 @@ extension ChatVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         if let msg = message.message {
             height = calculateFrameInText(message: msg).height + 10
             if message.repMID != nil { height += 50 }
-        }else if let imageWidth = message.imageWidth?.floatValue, let imageHeight = message.imageHeight?.floatValue  {
+        } else if let imageWidth = message.imageWidth?.floatValue, let imageHeight = message.imageHeight?.floatValue  {
             height = CGFloat(imageHeight / imageWidth * 200)
-        }else if message.audioUrl != nil {
+        } else if message.audioUrl != nil {
             height = 40
         }
         return CGSize(width: collectionView.frame.width, height: height)
@@ -32,14 +32,14 @@ extension ChatVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     // MARK: -
     
-    func calculateFrameInText(message: String) -> CGRect{
-        return NSString(string: message).boundingRect(with: CGSize(width: 200, height: 9999999), options: NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin), attributes: [NSAttributedString.Key.font:UIFont(name: "Helvetica Neue", size: 16)!], context: nil)
+    func calculateFrameInText(message: String) -> CGRect {
+        return NSString(string: message).boundingRect(with: CGSize(width: 200, height: 9999999), options: NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin), attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica Neue", size: 16)!], context: nil)
     }
     
     // MARK: -
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatCell", for: indexPath) as! ChatCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatCell", for: indexPath) as? ChatCell else { return UICollectionViewCell() }
         let message = messages[indexPath.row]
         cell.chatVC = self
         cell.message.text = message.message
