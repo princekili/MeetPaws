@@ -35,8 +35,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     let calendar = Calendar(identifier: .gregorian)
     
-    let currentUser = UserManager.shared.currentUser!
-    
     // MARK: -
     
     override func viewDidLoad() {
@@ -186,6 +184,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     // MARK: SEND TEXT MESSAGE METHOD
     
     private func setupTextMessage() {
+        guard let currentUser = UserManager.shared.currentUser else { return }
         
         let trimmedMessage = messageContainer.messageTV.text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard trimmedMessage.count > 0 else { return }
@@ -272,6 +271,8 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     // MARK: -
     
     private func observeMessageActions() {
+        guard let currentUser = UserManager.shared.currentUser else { return }
+        
         self.blankLoadingView.isHidden = true
         chatNetworking.observeUserMessageSeen()
         let ref = Database.database().reference().child("messages").child(currentUser.userId).child(user.userId)
@@ -285,7 +286,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             self.chatNetworking.newMessageRecievedHandler(self.messages, for: snap) { (newMessage) in
                 self.messages.append(newMessage)
                 self.collectionView.reloadData()
-                if newMessage.determineUser() != self.currentUser.userId {
+                if newMessage.determineUser() != currentUser.userId {
                     self.scrollToTheBottom(animated: true)
                 }
             }
@@ -510,7 +511,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     // MARK: -
     
     func responseButtonPressed(_ message: Messages, forwardedName: String? = nil) {
-        responseViewChangeAlpha(a: 0)
+        responseViewChangeAlpha(alpha: 0)
         messageContainer.micButton.alpha = 0
         messageContainer.sendButton.alpha = 1
         messageContainer.messageTV.becomeFirstResponder()
@@ -521,7 +522,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             self.view.layoutIfNeeded()
             self.responseMessageLine(message, forwardedName)
         }) { (true) in
-            self.responseViewChangeAlpha(a: 1)
+            self.responseViewChangeAlpha(alpha: 1)
         }
     }
     
