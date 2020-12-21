@@ -61,7 +61,7 @@ class ChatCell: UICollectionViewCell {
             
             if msg?.repMID != nil {
                 setupRepMessageView(msg!.repSender)
-            }else{
+            } else {
                 removeReplyOutlets()
             }
             
@@ -70,7 +70,7 @@ class ChatCell: UICollectionViewCell {
             if msg?.sender == currentUser.userId && msg?.id == chatVC.messages.last?.id {
                 activityLabel.isHidden = false
                 activityLabel.text = chatVC.chatNetworking.messageStatus
-            }else{
+            } else {
                 activityLabel.isHidden = true
             }
             
@@ -147,7 +147,7 @@ class ChatCell: UICollectionViewCell {
             isIncoming = true
             outcomingMessage.isActive = false
             incomingMessage.isActive = true
-        }else{
+        } else {
             isIncoming = false
             incomingMessage.isActive = false
             outcomingMessage.isActive = true
@@ -165,7 +165,7 @@ class ChatCell: UICollectionViewCell {
             mediaMessage.isHidden = false
             backgroundWidthAnchor.constant = 200
             messageBackground.backgroundColor = .clear
-        }else{
+        } else {
             mediaMessage.isHidden = true
         }
     }
@@ -191,7 +191,7 @@ class ChatCell: UICollectionViewCell {
 //                    print(error.localizedDescription)
 //                }
 //            }
-//        }else{
+//        } else {
 //            durationLabel.removeFromSuperview()
 //            audioPlayButton.removeFromSuperview()
 //        }
@@ -217,7 +217,7 @@ class ChatCell: UICollectionViewCell {
     
     // MARK: -
     
-    private func setupMessage(){
+    private func setupMessage() {
         messageBackground.addSubview(message)
         message.numberOfLines = 0
         message.backgroundColor = .clear
@@ -236,7 +236,7 @@ class ChatCell: UICollectionViewCell {
     
     // MARK: -
     
-    private func setupMediaMessage(){
+    private func setupMediaMessage() {
         messageBackground.addSubview(mediaMessage)
         mediaMessage.translatesAutoresizingMaskIntoConstraints = false
         mediaMessage.layer.cornerRadius = 16
@@ -319,7 +319,7 @@ class ChatCell: UICollectionViewCell {
     
     // MARK: -
     
-    @objc private func playButtonPressed(){
+    @objc private func playButtonPressed() {
         if let url = URL(string: msg!.videoUrl) {
             videoPlayer = AVPlayer(url: url)
             playerLayer = AVPlayerLayer(player: videoPlayer)
@@ -341,7 +341,7 @@ class ChatCell: UICollectionViewCell {
         guard msg?.videoUrl != nil else { return }
         if videoPlayer?.rate != 0 {
             videoPlayer?.pause()
-        }else{
+        } else {
             videoPlayer?.play()
         }
     }
@@ -356,7 +356,7 @@ class ChatCell: UICollectionViewCell {
     
     // MARK: -
     
-    @objc private func imageTappedHandler(tap: UITapGestureRecognizer){
+    @objc private func imageTappedHandler(tap: UITapGestureRecognizer) {
         guard msg?.videoUrl == nil, msg != nil else { return }
         let imageView = tap.view as? UIImageView
         chatVC.zoomImageHandler(image: imageView!, message: msg!)
@@ -364,13 +364,13 @@ class ChatCell: UICollectionViewCell {
     
     // MARK: -
     
-    private func setupRepMessageView(_ friendName: String){
+    private func setupRepMessageView(_ friendName: String) {
         self.handleRepMessageSetup(friendName)
     }
     
     // MARK: -
     
-    private func handleRepMessageSetup(_ name: String){
+    private func handleRepMessageSetup(_ name: String) {
         self.msgTopAnchor.isActive = false
         self.replyMsgTopAnchor.isActive = true
         if self.backgroundWidthAnchor.constant < 140 { self.backgroundWidthAnchor.constant = 140 }
@@ -384,7 +384,7 @@ class ChatCell: UICollectionViewCell {
             self.responseTextMessage.removeFromSuperview()
             self.responseAudioMessage.removeFromSuperview()
             self.setupReplyMediaMessage(msg!.repMediaMessage)
-        }else{
+        } else {
             self.responseMediaMessage.removeFromSuperview()
             self.responseTextMessage.removeFromSuperview()
             setupResponseAudioMessage()
@@ -393,7 +393,7 @@ class ChatCell: UICollectionViewCell {
     
     // MARK: -
     
-    private func setupReplyLine(){
+    private func setupReplyLine() {
         messageBackground.addSubview(responseLine)
         responseLine.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
@@ -407,7 +407,7 @@ class ChatCell: UICollectionViewCell {
     
     // MARK: -
     
-    private func setupReplyName(name: String){
+    private func setupReplyName(name: String) {
         responseNameLabel.text = name
         responseNameLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 16)
         responseNameLabel.adjustsFontSizeToFitWidth = true
@@ -415,7 +415,7 @@ class ChatCell: UICollectionViewCell {
     
     // MARK: -
     
-    private func setupReplyTextMessage(text: String){
+    private func setupReplyTextMessage(text: String) {
         responseTextMessage.text = text
         responseTextMessage.font = UIFont(name: "Helvetica Neue", size: 15)
         messageBackground.addSubview(responseTextMessage)
@@ -435,7 +435,7 @@ class ChatCell: UICollectionViewCell {
     
     // MARK: -
     
-    private func setupReplyMediaMessage(_ url: String){
+    private func setupReplyMediaMessage(_ url: String) {
         let replyMediaLabel = UILabel()
         replyMediaLabel.text = "Media"
         replyMediaLabel.font = UIFont(name: "Helvetica Neue", size: 15)
@@ -466,7 +466,7 @@ class ChatCell: UICollectionViewCell {
     
     // MARK: -
     
-    private func setupResponseAudioMessage(){
+    private func setupResponseAudioMessage() {
         messageBackground.addSubview(responseAudioMessage)
         responseAudioMessage.translatesAutoresizingMaskIntoConstraints = false
         responseAudioMessage.addSubview(responseNameLabel)
@@ -486,7 +486,7 @@ class ChatCell: UICollectionViewCell {
     
     // MARK: -
     
-    private func removeReplyOutlets(){
+    private func removeReplyOutlets() {
         replyMsgTopAnchor.isActive = false
         responseLine.removeFromSuperview()
         responseNameLabel.removeFromSuperview()
@@ -499,7 +499,7 @@ class ChatCell: UICollectionViewCell {
     
     // MARK: - setup Audio Play Button
     
-//    private func setupAudioPlayButton(){
+//    private func setupAudioPlayButton() {
 //        audioPlayButton.isEnabled = false
 //        messageBackground.addSubview(audioPlayButton)
 //        audioPlayButton.addTarget(self, action: #selector(playAudioButtonPressed), for: .touchUpInside)
@@ -516,7 +516,7 @@ class ChatCell: UICollectionViewCell {
     
     // MARK: -
     
-    private func setupAudioDurationLabel(){
+    private func setupAudioDurationLabel() {
         messageBackground.addSubview(durationLabel)
         durationLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 14)
         durationLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -529,13 +529,13 @@ class ChatCell: UICollectionViewCell {
     
     // MARK: -
     
-//    @objc private func playAudioButtonPressed(){
+//    @objc private func playAudioButtonPressed() {
 //        chatVC.handleUserPressedAudioButton(for: self)
 //    }
     
     // MARK: -
     
-//    @objc func timerHandler(){
+//    @objc func timerHandler() {
 //        if !audioPlayer.isPlaying {
 //            audioPlayButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
 //            timer.invalidate()

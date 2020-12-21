@@ -200,7 +200,7 @@ class ChatNetworking {
         let userRef = Database.database().reference().child("userActions").child(userId).child(friendId)
         if tV.text.count >= 1 {
             userRef.setValue(["isTyping": true, "fromFriend": userId])
-        }else{
+        } else {
             userRef.setValue(["isTyping": false, "fromFriend": userId])
         }
     }
@@ -269,7 +269,7 @@ class ChatNetworking {
         let loginDate = Date(timeIntervalSince1970: TimeInterval((user.lastLogin)))
         if user.isOnline {
             chatVC.navigationItem.setNavTitles(navTitle: tempName, navSubtitle: "Online")
-        }else{
+        } else {
             chatVC.navigationItem.setNavTitles(navTitle: tempName, navSubtitle: chatVC.calendar.calculateLastLogin(loginDate as NSDate))
         }
     }

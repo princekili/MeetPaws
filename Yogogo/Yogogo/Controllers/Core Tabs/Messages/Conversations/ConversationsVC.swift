@@ -4,6 +4,7 @@
 //
 //  Created by prince on 2020/12/21.
 //
+//  ConversationVC is responsible for showing recent messages from user's friends and their actions. (If user and his/her friend haven't had a conversation, then friend's cell in tableView won't be visible. )
 
 import UIKit
 import Lottie
@@ -15,8 +16,6 @@ protocol NewConversationSelected {
 }
 
 class ConversationsVC: UIViewController {
-
-    // ConversationVC is responsible for showing recent messages from user's friends and their actions. (If user and his/her friend haven't had a conversation, then friend's cell in tableView won't be visible. )
     
     let convNetworking = ConversationsNetworking()
     

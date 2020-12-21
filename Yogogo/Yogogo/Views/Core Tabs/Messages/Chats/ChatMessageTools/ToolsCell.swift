@@ -27,7 +27,7 @@ class ToolsCell: UITableViewCell {
     
     // MARK: -
     
-    private func setupToolName(){
+    private func setupToolName() {
         addSubview(toolName)
         toolName.font = UIFont(name: "HelveticaNeue-Bold", size: 14)
         toolName.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +40,7 @@ class ToolsCell: UITableViewCell {
     
     // MARK: -
     
-    private func setuptoolImg(){
+    private func setuptoolImg() {
         addSubview(toolImg)
         toolImg.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [

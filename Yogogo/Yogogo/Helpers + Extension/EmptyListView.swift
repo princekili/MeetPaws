@@ -28,7 +28,7 @@ import UIKit
 //        if contactsVC != nil {
 //            self.contactsVC = contactsVC
 //            self.controller = contactsVC
-//        }else{
+//        } else {
 //            self.convVC = convVC
 //            self.controller = convVC
 //        }
@@ -40,7 +40,7 @@ import UIKit
 //            emptyLabel.text = "It looks like you have not added any friends yet".uppercased()
 //            emptyButton.setTitle("Add Friends", for: .normal)
 //            emptyButton.addTarget(self, action: #selector(contactsButtonPressed), for: .touchUpInside)
-//        }else{
+//        } else {
 //            emptyLabel.text = "It looks like you have not messaged any of your friends yet".uppercased()
 //            emptyButton.setTitle("Message", for: .normal)
 //            emptyButton.addTarget(self, action: #selector(convButtonPressed), for: .touchUpInside)
@@ -122,7 +122,7 @@ import UIKit
 //    
 //    // MARK: -
 //    
-//    @objc private func convButtonPressed(){
+//    @objc private func convButtonPressed() {
 //        convVC.newConversationTapped()
 //    }
 //}

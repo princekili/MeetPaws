@@ -50,7 +50,7 @@ class MessageView: UIView {
     
     // MARK: -
     
-    private func showMessageMenu(){
+    private func showMessageMenu() {
         layer.cornerRadius = 12
         layer.masksToBounds = true
         backgroundColor = cell.messageBackground.backgroundColor
@@ -68,14 +68,14 @@ class MessageView: UIView {
     
     // MARK: -
     
-    private func setupResponseView(){
+    private func setupResponseView() {
         setupRepLine()
         setupRepName(name: message.repSender)
         if message.repMessage != nil {
             setupRepTextMessage(text: message.repMessage)
         }else if message.repMediaMessage != nil {
             setupRepMediaMessage(message.repMediaMessage)
-        }else{
+        } else {
             setupResponseAudioMessage()
         }
     }
@@ -92,7 +92,7 @@ class MessageView: UIView {
         messageView.font = UIFont(name: "Helvetica Neue", size: 16)
         if message.repMID != nil {
             messageView.topAnchor.constraint(equalTo: topAnchor, constant: 50).isActive = true
-        }else{
+        } else {
             messageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         }
         let constraints = [
@@ -127,7 +127,7 @@ class MessageView: UIView {
     
     // MARK: -
     
-    private func setupRepLine(){
+    private func setupRepLine() {
 //        responseLine.backgroundColor = ThemeColors.selectedOutcomingColor
         responseLine.backgroundColor = .systemBackground
         addSubview(responseLine)
@@ -144,7 +144,7 @@ class MessageView: UIView {
     
     // MARK: -
     
-    private func setupRepName(name: String){
+    private func setupRepName(name: String) {
         responseNameLabel.text = name
         responseNameLabel.textColor = cell.responseNameLabel.textColor
         responseNameLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 16)
@@ -153,7 +153,7 @@ class MessageView: UIView {
     
     // MARK: -
     
-    private func setupRepTextMessage(text: String){
+    private func setupRepTextMessage(text: String) {
         responseTextMessage.text = text
         responseTextMessage.textColor = cell.responseTextMessage.textColor
         responseTextMessage.font = UIFont(name: "Helvetica Neue", size: 15)
@@ -174,7 +174,7 @@ class MessageView: UIView {
     
     // MARK: -
     
-    private func setupRepMediaMessage(_ url: String){
+    private func setupRepMediaMessage(_ url: String) {
         let replyMediaLabel = UILabel()
         replyMediaLabel.text = "Media"
         replyMediaLabel.textColor = cell.isIncoming ? .lightGray : .lightText
@@ -225,7 +225,7 @@ class MessageView: UIView {
     
     // MARK: -
     
-    private func setupAudioPlayButton(){
+    private func setupAudioPlayButton() {
         addSubview(audioPlayButton)
         audioPlayButton.isUserInteractionEnabled = false
         audioPlayButton.translatesAutoresizingMaskIntoConstraints = false
@@ -243,7 +243,7 @@ class MessageView: UIView {
     
     // MARK: -
     
-    private func setupAudioDurationLabel(){
+    private func setupAudioDurationLabel() {
         addSubview(durationLabel)
         durationLabel.text = cell.durationLabel.text
         durationLabel.textColor = cell.durationLabel.textColor

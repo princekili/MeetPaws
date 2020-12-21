@@ -50,8 +50,9 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        super.viewWillDisappear(true)
         chatNetworking.removeObserves()
+        tabBarController?.tabBar.isHidden = false
     }
     
     deinit {
@@ -65,12 +66,16 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         if view.safeAreaInsets.bottom > 0 {
             containerHeight = 70
             topConst = 28
-        }else{
+        } else {
             containerHeight = 45
             topConst = 8
         }
         messageContainer = MessageContainer(height: containerHeight, const: topConst, chatVC: self)
+        
         collectionView = MessageCollectionView(collectionViewLayout: UICollectionViewFlowLayout.init(), chatVC: self)
+        
+        
+        
         refreshIndicator = MessageLoadingIndicator(frame: view.frame, const: topConst, chatVC: self)
         hideKeyboardOnTap()
         setupChatBlankView()
@@ -110,16 +115,15 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     private func setupChatNavBar() {
 //        let loginDate = NSDate(timeIntervalSince1970: (user.lastLogin).doubleValue)
         let loginDate = Date(timeIntervalSince1970: TimeInterval((user.lastLogin)))
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = .label
         if user.isOnline {
             navigationItem.setNavTitles(navTitle: user.fullName, navSubtitle: "Online")
-        }else{
+        } else {
             navigationItem.setNavTitles(navTitle: user.fullName, navSubtitle: calendar.calculateLastLogin(loginDate as NSDate))
         }
     }
 
-    // MARK: -
-    // MARK: CLIP IMAGE BUTTON PRESSED METHOD
+    // MARK: - CLIP IMAGE BUTTON PRESSED METHOD
     
     @objc func clipImageButtonPressed() {
         let imagePicker = UIImagePickerController()
@@ -144,7 +148,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     // MARK: -
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             chatNetworking.uploadImage(image: originalImage) { (storageRef, image, mediaName) in
                 self.chatNetworking.downloadImage(storageRef, image, mediaName)
@@ -157,8 +161,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     
-    // MARK: -
-    // MARK: SEND BUTTON PRESSED METHOD
+    // MARK: - SEND BUTTON PRESSED METHOD
     
     @objc func sendButtonPressed() {
         setupTextMessage()
@@ -199,7 +202,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                       "sender": currentUser.userId,
                       "recipient": user.userId,
                       "time": Date().timeIntervalSince1970,
-                      "messageId": messageId] as [String : Any]
+                      "messageId": messageId] as [String: Any]
         
         if userResponse.repliedMessage != nil || userResponse.messageToForward != nil {
             
@@ -208,7 +211,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             if repValues?.message != nil {
                 values["repMessage"] = repValues?.message
             
-            } else if repValues?.mediaUrl != nil{
+            } else if repValues?.mediaUrl != nil {
                 values["repMediaMessage"] = repValues?.mediaUrl
             }
             
@@ -260,7 +263,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             if order {
                 self.refreshIndicator.order = order
                 self.messages.append(contentsOf: newMessages)
-            }else{
+            } else {
                 self.refreshIndicator.order = order
                 self.messages.insert(contentsOf: newMessages, at: 0)
             }
@@ -298,9 +301,9 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     private func handleReload() {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
-            if self.refreshIndicator.order{
+            if self.refreshIndicator.order {
                 self.scrollToTheBottom(animated: false)
-            }else{
+            } else {
                 let index = self.chatNetworking.scrollToIndex.count - 1
                 self.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .top, animated: false)
             }
@@ -335,7 +338,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     func zoomImageHandler(image: UIImageView, message: Messages) {
         if !collectionView.isLongPress {
             view.endEditing(true)
-            let _ = SelectedImageView(image, message, self)
+            _ = SelectedImageView(image, message, self)
         }
     }
     
@@ -349,7 +352,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         if messageContainer.messageTV.calculateLines() >= 2 {
             if containerHeight > 45 {
                 const.constant = height + 35
-            }else{ const.constant = height + 15 }
+            } else { const.constant = height + 15 }
         }
     }
     
@@ -357,10 +360,10 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     func messageHeightHandler(_ constraint: NSLayoutConstraint, _ estSize: CGSize) {
         let height: CGFloat = userResponse.responseStatus == true ? 100 : 150
-        if estSize.height > height{
+        if estSize.height > height {
             messageContainer.messageTV.isScrollEnabled = true
             return
-        }else if messageContainer.messageTV.calculateLines() < 2 {
+        } else if messageContainer.messageTV.calculateLines() < 2 {
             constraint.constant = 32
             self.view.layoutIfNeeded()
             return
@@ -371,13 +374,13 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     // MARK: -
     
-    private func sendingIsFinished(const: NSLayoutConstraint) -> Bool{
+    private func sendingIsFinished(const: NSLayoutConstraint) -> Bool {
         let height: CGFloat = userResponse.responseStatus == true ? containerHeight + 50 : containerHeight
         if messageContainer.messageTV.text.count == 0 {
             messageContainer.messageTV.isScrollEnabled = false
             const.constant = height
             return true
-        }else{
+        } else {
             return false
         }
     }
@@ -440,7 +443,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             if messageContainer.sendButton.alpha == 1 { return }
             messageContainer.sendButton.alpha = 1
             buttonToAnimate = messageContainer.sendButton
-        }else if messageContainer.messageTV.text.count == 0{
+        } else if messageContainer.messageTV.text.count == 0 {
             messageContainer.micButton.alpha = 1
             messageContainer.sendButton.alpha = 0
             buttonToAnimate = messageContainer.micButton
@@ -455,10 +458,10 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     // MARK: OBSERVE TYPING METHOD
     
     private func observeFriendTyping() {
-        chatNetworking.observeIsUserTyping() { (userActivity) in
+        chatNetworking.observeIsUserTyping { (userActivity) in
             if userActivity.userId == self.user.userId && userActivity.isTyping ?? false {
                 self.navigationItem.setupTypingNavTitle(navTitle: self.user.fullName)
-            }else{
+            } else {
                 self.setupChatNavBar()
             }
         }
@@ -492,7 +495,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         hideKeyboard()
         collectionView.isUserInteractionEnabled = false
         selectedCell.isHidden = true
-        let _ = ToolsMenu(message, selectedCell, self)
+        _ = ToolsMenu(message, selectedCell, self)
     }
     
     // MARK: -
@@ -533,7 +536,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
 //        if !chatAudio.requestPermisson() { return }
 //        if chatAudio.audioRecorder == nil {
 //            startAudioRecording()
-//        }else{
+//        } else {
 //            stopAudioRecording()
 //        }
 //    }
@@ -616,7 +619,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
 //        }
 //    }
     
-//     MARK: -
+    // MARK: -
     
 //    func handleUserPressedAudioButton(for cell: ChatCell) {
 //        if chatAudio.audioPlayer == nil {
@@ -625,7 +628,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
 //            cell.audioPlayButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
 //            cell.timer = Timer(timeInterval: 0.3, target: cell, selector: #selector(cell.timerHandler), userInfo: nil, repeats: true)
 //            RunLoop.current.add(cell.timer, forMode: RunLoop.Mode.common)
-//        }else{
+//        } else {
 //            chatAudio.audioPlayer?.pause()
 //        }
 //    }

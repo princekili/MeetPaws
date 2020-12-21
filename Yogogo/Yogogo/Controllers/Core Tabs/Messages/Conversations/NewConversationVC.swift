@@ -12,9 +12,9 @@ class NewConversationVC: UIViewController {
 
     let tableView = UITableView()
     
-    var forwardDelegate: ChatVC!
+    weak var forwardDelegate: ChatVC!
     
-    var conversationDelegate: ConversationsVC!
+    weak var conversationDelegate: ConversationsVC!
     
     var forwardName: String?
     
@@ -23,7 +23,7 @@ class NewConversationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupForwardView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         navigationController?.navigationBar.tintColor = .black
         setupTableView()
     }
@@ -40,7 +40,7 @@ class NewConversationVC: UIViewController {
     
     // MARK: -
     
-    private func setupForwardView(){
+    private func setupForwardView() {
         navigationItem.title = forwardName != nil ? "Forward" : "New Conversation"
         let leftButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
         navigationItem.leftBarButtonItem = leftButton
@@ -48,7 +48,7 @@ class NewConversationVC: UIViewController {
     
     // MARK: -
     
-    @objc private func cancelButtonPressed(){
+    @objc private func cancelButtonPressed() {
         forwardDelegate?.userResponse.messageToForward = nil
         forwardDelegate?.userResponse.messageSender = nil
         dismiss(animated: true, completion: nil)

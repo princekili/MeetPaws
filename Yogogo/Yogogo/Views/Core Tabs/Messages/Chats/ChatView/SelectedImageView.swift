@@ -59,7 +59,7 @@ class SelectedImageView: UIView, UINavigationControllerDelegate {
     private func setupView() {
         if let chatVC = chatVC {
             frame = chatVC.view.frame
-        }else{
+        } else {
             frame = sharedMediaVC!.view.frame
         }
         keyWindow.addSubview(self)
@@ -101,7 +101,7 @@ class SelectedImageView: UIView, UINavigationControllerDelegate {
     
     // MARK: -
     
-    private func setupGestures(){
+    private func setupGestures() {
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
         swipeUp.direction = .up
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
@@ -131,7 +131,7 @@ class SelectedImageView: UIView, UINavigationControllerDelegate {
         removeFromSuperview()
         if let chatVC = chatVC {
             chatVC.view.addSubview(imageView)
-        }else{
+        } else {
             sharedMediaVC!.view.addSubview(imageView)
         }
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -189,10 +189,10 @@ class SelectedImageView: UIView, UINavigationControllerDelegate {
     @objc func imageHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
             print(error.localizedDescription)
-        }else{
+        } else {
             if chatVC != nil {
                 chatVC?.showAlert(title: "Success", message: "This image was successfully saved to your photo library")
-            }else{
+            } else {
                 sharedMediaVC?.showAlert(title: "Success", message: "This image was successfully saved to your photo library")
             }
         }

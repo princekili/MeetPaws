@@ -31,7 +31,7 @@ class NewConversationCell: UITableViewCell {
     
     // MARK: -
     
-    private func setupImage(){
+    private func setupImage() {
         addSubview(profileImage)
         profileImage.contentMode = .scaleAspectFill
         profileImage.layer.cornerRadius = 30
@@ -48,7 +48,7 @@ class NewConversationCell: UITableViewCell {
     
     // MARK: -
     
-    private func setupNameLabel(){
+    private func setupNameLabel() {
         addSubview(userFullName)
         userFullName.textColor = .black
         userFullName.numberOfLines = 0
@@ -63,7 +63,7 @@ class NewConversationCell: UITableViewCell {
     
     // MARK: -
     
-    private func setupEmailLabel(){
+    private func setupEmailLabel() {
         addSubview(username)
         username.numberOfLines = 0
         username.adjustsFontSizeToFitWidth = true

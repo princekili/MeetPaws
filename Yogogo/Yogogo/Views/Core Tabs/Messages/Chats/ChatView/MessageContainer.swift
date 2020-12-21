@@ -4,14 +4,12 @@
 //
 //  Created by prince on 2020/12/20.
 //
+//  MARK: MessageContainer - input view that is located at the bottom of ChatVC.
 
 import UIKit
 import Lottie
 
-class MessageContainer: UIView, UITextViewDelegate{
-    
-    // MARK: -
-    // MessageContainer - input view that is located at the bottom of ChatVC.
+class MessageContainer: UIView, UITextViewDelegate {
     
     var bottomAnchr = NSLayoutConstraint()
     
@@ -53,40 +51,46 @@ class MessageContainer: UIView, UITextViewDelegate{
     
     // MARK: -
     
-    private func setupMessageContainer(){
+    private func setupMessageContainer() {
         setupBackground()
         setupImageClipButton()
         setupSendButton()
 //        setupMicrophone()
         setupMessageTF()
-        recordingAudioAnimation()
-        setupRecordingLabel()
+//        recordingAudioAnimation()
+//        setupRecordingLabel()
         setupActionCircle()
     }
     
     // MARK: -
     
-    private func setupBackground(){
+//    func handleAddSubView() {
+//        chatVC.view.addSubview(self)
+//        translatesAutoresizingMaskIntoConstraints = false
+//    }
+    
+    private func setupBackground() {
         chatVC.view.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .white
+        backgroundColor = .systemBackground
         bottomAnchr = bottomAnchor.constraint(equalTo: chatVC.view.bottomAnchor)
         heightAnchr = heightAnchor.constraint(equalToConstant: height)
         let constraints = [
             leadingAnchor.constraint(equalTo: chatVC.view.leadingAnchor),
             bottomAnchr,
             heightAnchr,
-            trailingAnchor.constraint(equalTo: chatVC.view.trailingAnchor),
+            trailingAnchor.constraint(equalTo: chatVC.view.trailingAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }
     
     // MARK: -
     
-    private func setupImageClipButton(){
-        clipImageButton.setImage(UIImage(systemName: "paperclip"), for: .normal)
+    private func setupImageClipButton() {
+//        clipImageButton.setImage(UIImage(systemName: "paperclip"), for: .normal)
+        clipImageButton.setImage(UIImage(systemName: "plus"), for: .normal)
         addSubview(clipImageButton)
-        clipImageButton.tintColor = .black
+        clipImageButton.tintColor = .label
         clipImageButton.contentMode = .scaleAspectFill
         clipImageButton.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
@@ -101,12 +105,12 @@ class MessageContainer: UIView, UITextViewDelegate{
     
     // MARK: -
     
-    private func setupSendButton(){
+    private func setupSendButton() {
         addSubview(sendButton)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         sendButton.alpha = 0
         sendButton.setImage(UIImage(systemName: "arrow.up"), for: .normal)
-        sendButton.backgroundColor = .black
+        sendButton.backgroundColor = .systemBlue
         sendButton.layer.cornerRadius = 15
         sendButton.layer.masksToBounds = true
         sendButton.tintColor = .white
@@ -114,7 +118,7 @@ class MessageContainer: UIView, UITextViewDelegate{
             sendButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const),
             sendButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             sendButton.heightAnchor.constraint(equalToConstant: 30),
-            sendButton.widthAnchor.constraint(equalToConstant: 30),
+            sendButton.widthAnchor.constraint(equalToConstant: 30)
         ]
         NSLayoutConstraint.activate(constraints)
         sendButton.addTarget(chatVC, action: #selector(chatVC.sendButtonPressed), for: .touchUpInside)
@@ -122,7 +126,7 @@ class MessageContainer: UIView, UITextViewDelegate{
     
     // MARK: -
     
-//    private func setupMicrophone(){
+//    private func setupMicrophone() {
 //        addSubview(micButton)
 //        micButton.translatesAutoresizingMaskIntoConstraints = false
 //        micButton.setImage(UIImage(systemName: "mic"), for: .normal)
@@ -139,7 +143,7 @@ class MessageContainer: UIView, UITextViewDelegate{
     
     // MARK: -
     
-    private func setupMessageTF(){
+    private func setupMessageTF() {
         addSubview(messageTV)
         messageTV.layer.cornerRadius = 12
         messageTV.font = UIFont(name: "Helvetica Neue", size: 16)
@@ -157,13 +161,14 @@ class MessageContainer: UIView, UITextViewDelegate{
         messTFPlaceholder.textColor = .lightGray
         messageTV.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 10)
         messageTV.translatesAutoresizingMaskIntoConstraints = false
-        messageTV.backgroundColor = UIColor(white: 0.95, alpha: 1)
+//        messageTV.backgroundColor = UIColor(white: 0.95, alpha: 1)
+        messageTV.backgroundColor = .systemBackground
         messageTV.adjustsFontForContentSizeCategory = true
         messageTV.delegate = self
         let constraints = [
             messageTV.leadingAnchor.constraint(equalTo: clipImageButton.trailingAnchor, constant: 8),
             messageTV.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -8),
-            messageTV.bottomAnchor.constraint(equalTo: bottomAnchor, constant:  -const),
+            messageTV.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const),
             messageTV.heightAnchor.constraint(equalToConstant: 32)
         ]
         NSLayoutConstraint.activate(constraints)
@@ -171,41 +176,41 @@ class MessageContainer: UIView, UITextViewDelegate{
     
     // MARK: -
     
-    private func recordingAudioAnimation(){
-        recordingAudioView.isHidden = true
-        addSubview(recordingAudioView)
-        recordingAudioView.animation = Animation.named("audioWave")
-        recordingAudioView.play()
-        recordingAudioView.loopMode = .loop
-        recordingAudioView.backgroundBehavior = .pauseAndRestore
-        recordingAudioView.translatesAutoresizingMaskIntoConstraints = false
-        let constraints = [
-            recordingAudioView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            recordingAudioView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            recordingAudioView.heightAnchor.constraint(equalToConstant: 180),
-            recordingAudioView.widthAnchor.constraint(equalToConstant: 180)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
+//    private func recordingAudioAnimation() {
+//        recordingAudioView.isHidden = true
+//        addSubview(recordingAudioView)
+//        recordingAudioView.animation = Animation.named("audioWave")
+//        recordingAudioView.play()
+//        recordingAudioView.loopMode = .loop
+//        recordingAudioView.backgroundBehavior = .pauseAndRestore
+//        recordingAudioView.translatesAutoresizingMaskIntoConstraints = false
+//        let constraints = [
+//            recordingAudioView.centerYAnchor.constraint(equalTo: centerYAnchor),
+//            recordingAudioView.centerXAnchor.constraint(equalTo: centerXAnchor),
+//            recordingAudioView.heightAnchor.constraint(equalToConstant: 180),
+//            recordingAudioView.widthAnchor.constraint(equalToConstant: 180)
+//        ]
+//        NSLayoutConstraint.activate(constraints)
+//    }
     
     // MARK: -
     
-    private func setupRecordingLabel(){
-        addSubview(recordingLabel)
-        recordingLabel.isHidden = true
-        recordingLabel.text = "00:00"
-        recordingLabel.translatesAutoresizingMaskIntoConstraints = false
-        recordingLabel.font = UIFont(name: "Helvetica Neue", size: 16)
-        let constraints = [
-            recordingLabel.trailingAnchor.constraint(equalTo: leadingAnchor),
-            recordingLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const - 5)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
+//    private func setupRecordingLabel() {
+//        addSubview(recordingLabel)
+//        recordingLabel.isHidden = true
+//        recordingLabel.text = "00:00"
+//        recordingLabel.translatesAutoresizingMaskIntoConstraints = false
+//        recordingLabel.font = UIFont(name: "Helvetica Neue", size: 16)
+//        let constraints = [
+//            recordingLabel.trailingAnchor.constraint(equalTo: leadingAnchor),
+//            recordingLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const - 5)
+//        ]
+//        NSLayoutConstraint.activate(constraints)
+//    }
     
     // MARK: -
     
-    private func setupActionCircle(){
+    private func setupActionCircle() {
         addSubview(actionCircle)
         actionCircle.isHidden = true
         actionCircle.translatesAutoresizingMaskIntoConstraints = false
@@ -220,15 +225,10 @@ class MessageContainer: UIView, UITextViewDelegate{
         ]
         NSLayoutConstraint.activate(constraints)
     }
-    
-    // MARK: -
-    
 }
 
 extension MessageContainer {
-    
-    // MARK: -
-    
+
     func textViewDidEndEditing(_ textView: UITextView) {
         chatVC.chatNetworking.disableIsTyping()
     }

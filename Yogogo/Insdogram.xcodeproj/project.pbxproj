@@ -375,13 +375,13 @@
 		A3A551B5258F77FE00EAB5C5 /* ChatView */ = {
 			isa = PBXGroup;
 			children = (
+				A3A551CD258F8C6A00EAB5C5 /* ChatCell.swift */,
+				A3A551D1258F8D4D00EAB5C5 /* ChatCollectionView + Extension.swift */,
 				A3A551B6258F783400EAB5C5 /* MessageCollectionView.swift */,
 				A3A551BA258F79F800EAB5C5 /* MessageContainer.swift */,
 				A3A551BD258F7CF200EAB5C5 /* MessageLoadingIndicator.swift */,
 				A3A551C0258F85FF00EAB5C5 /* ProfileImageButton.swift */,
 				A3A551C3258F882A00EAB5C5 /* SelectedImageView.swift */,
-				A3A551CD258F8C6A00EAB5C5 /* ChatCell.swift */,
-				A3A551D1258F8D4D00EAB5C5 /* ChatCollectionView + Extension.swift */,
 			);
 			path = ChatView;
 			sourceTree = "<group>";

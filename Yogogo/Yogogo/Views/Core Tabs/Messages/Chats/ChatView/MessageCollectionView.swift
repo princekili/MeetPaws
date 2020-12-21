@@ -30,6 +30,11 @@ class MessageCollectionView: UICollectionView, UIGestureRecognizerDelegate {
     
     // MARK: -
     
+//    func handleAddSubView() {
+//        chatVC.view.addSubview(self)
+//        translatesAutoresizingMaskIntoConstraints = false
+//    }
+    
     private func setupCollectionView() {
         chatVC.view.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
@@ -57,8 +62,8 @@ class MessageCollectionView: UICollectionView, UIGestureRecognizerDelegate {
         let gestureView = gesture.view!
         let translation = gesture.translation(in: chatVC.view)
         switch gesture.state {
-        case .began , .changed:
-            if translation.x < 400 && gestureView.center.x - translation.x > gestureView.center.x{
+        case .began, .changed:
+            if translation.x < 400 && gestureView.center.x - translation.x > gestureView.center.x {
                 gestureView.center = CGPoint(x: gestureView.center.x + translation.x, y: gestureView.center.y)
                 gesture.setTranslation(CGPoint.zero, in: chatVC.view)
             }
@@ -82,7 +87,6 @@ class MessageCollectionView: UICollectionView, UIGestureRecognizerDelegate {
     }
     
     // MARK: -
-    
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true

@@ -58,7 +58,7 @@ class ToolsTB: UITableView {
     
     // MARK: -
     
-    private func removeHandler(){
+    private func removeHandler() {
         chatView.chatNetworking.removeMessageHandler(messageToRemove: selectedMessage) {
             self.scrollView.handleViewDismiss(isDeleted: true)
         }
@@ -81,7 +81,7 @@ extension ToolsTB: UITableViewDelegate, UITableViewDataSource {
         if tool == "Delete" {
             cell.toolName.textColor = .red
             cell.toolImg.tintColor =  .red
-        }else{
+        } else {
             cell.toolImg.tintColor = .black
             cell.toolName.textColor = .black
         }

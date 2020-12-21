@@ -81,7 +81,7 @@ class ConversationsNetworking {
             }
             if status {
                 return
-            }else{
+            } else {
                 self.friendKeys.append(friendToAdd)
                 self.convVC.observeMessageActions()
             }
@@ -138,7 +138,7 @@ class ConversationsNetworking {
                 }
                 if status {
                     return
-                }else{
+                } else {
                     self.groupedMessages[message.determineUser()] = message
                     return completion(Array(self.groupedMessages.values))
                 }

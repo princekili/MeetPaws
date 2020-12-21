@@ -35,7 +35,7 @@ class ConversationsCell: UITableViewCell {
     var convVC: ConversationsVC!
     
     var message: Messages? {
-        didSet{
+        didSet {
             guard let message = message else { return }
             convVC.setupNoTypingCell(self)
             handleFriendInfo(message)
@@ -92,7 +92,7 @@ class ConversationsCell: UITableViewCell {
             Database.database().reference().child("messages").child("unread-Messages").child(message.determineUser()).child(userId).removeAllObservers()
             convVC.observeIsUserSeenMessage(message, self)
             checkmark.isHidden = false
-        }else{
+        } else {
             checkmark.isHidden = true
         }
     }
@@ -102,16 +102,16 @@ class ConversationsCell: UITableViewCell {
     private func handleMessageType(_ message: Messages) {
         if message.mediaUrl != nil || message.videoUrl != nil {
             recentMessage.text = "[Media Message]"
-        }else if message.audioUrl != nil {
+        } else if message.audioUrl != nil {
             recentMessage.text = "[Audio Message]"
-        }else{
+        } else {
             recentMessage.text = message.message
         }
     }
     
     // MARK: -
     
-    private func setupIsOnlineImage(){
+    private func setupIsOnlineImage() {
         addSubview(isOnlineView)
         isOnlineView.isHidden = true
         isOnlineView.layer.cornerRadius = 8
@@ -131,7 +131,7 @@ class ConversationsCell: UITableViewCell {
     
     // MARK: -
     
-    private func setupImage(){
+    private func setupImage() {
         addSubview(profileImage)
         profileImage.contentMode = .scaleAspectFill
         profileImage.layer.cornerRadius = 30
@@ -148,7 +148,7 @@ class ConversationsCell: UITableViewCell {
     
     // MARK: -
     
-    private func setupRecentMessage(){
+    private func setupRecentMessage() {
         addSubview(recentMessage)
         recentMessage.textColor = .lightGray
         recentMessage.font = UIFont(name: "Helvetica Neue", size: 16)
@@ -163,7 +163,7 @@ class ConversationsCell: UITableViewCell {
     
     // MARK: -
     
-    private func setupTimeLabel(){
+    private func setupTimeLabel() {
         addSubview(timeLabel)
         timeLabel.font = UIFont.boldSystemFont(ofSize: 11)
         timeLabel.textAlignment = .left
@@ -179,7 +179,7 @@ class ConversationsCell: UITableViewCell {
     
     // MARK: -
     
-    private func setupNameLabel(){
+    private func setupNameLabel() {
         addSubview(userFullName)
         userFullName.textColor = .black
         userFullName.font = UIFont(name: "Helvetica Neue", size: 18)
@@ -194,7 +194,7 @@ class ConversationsCell: UITableViewCell {
     
     // MARK: -
     
-    private func setupUserTypingView(){
+    private func setupUserTypingView() {
         isTypingView.isHidden = true
         let typingText = UILabel()
         typingText.font = UIFont.boldSystemFont(ofSize: 12)
@@ -221,7 +221,7 @@ class ConversationsCell: UITableViewCell {
             typingAnimation.leadingAnchor.constraint(equalTo: isTypingView.leadingAnchor, constant: 0),
             typingAnimation.bottomAnchor.constraint(equalTo: isTypingView.bottomAnchor),
             typingAnimation.topAnchor.constraint(equalTo: isTypingView.topAnchor),
-            typingAnimation.trailingAnchor.constraint(equalTo: typingText.leadingAnchor, constant: -2),
+            typingAnimation.trailingAnchor.constraint(equalTo: typingText.leadingAnchor, constant: -2)
         ]
         NSLayoutConstraint.activate(constraints)
         typingAnimation.animationSpeed = 1.5
@@ -233,7 +233,7 @@ class ConversationsCell: UITableViewCell {
     
     // MARK: -
     
-    private func setupUnreadMessagesView(){
+    private func setupUnreadMessagesView() {
         addSubview(unreadMessageView)
         unreadMessageView.isHidden = true
         unreadMessageView.translatesAutoresizingMaskIntoConstraints = false
@@ -250,7 +250,7 @@ class ConversationsCell: UITableViewCell {
             unreadMessageView.widthAnchor.constraint(equalToConstant: 20),
             unreadMessageView.heightAnchor.constraint(equalToConstant: 20),
             unreadLabel.centerXAnchor.constraint(equalTo: unreadMessageView.centerXAnchor),
-            unreadLabel.centerYAnchor.constraint(equalTo: unreadMessageView.centerYAnchor),
+            unreadLabel.centerYAnchor.constraint(equalTo: unreadMessageView.centerYAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }

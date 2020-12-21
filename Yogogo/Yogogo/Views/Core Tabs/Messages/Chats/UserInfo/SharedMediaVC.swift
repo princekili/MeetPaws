@@ -31,7 +31,7 @@ class SharedMediaVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     // MARK: -
     
-    private func getSharedMedia(){
+    private func getSharedMedia() {
         guard let currentUser = UserManager.shared.currentUser else { return }
         
         let id = user.userId
@@ -60,14 +60,14 @@ class SharedMediaVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         emptyLabel.isHidden = true
         let constraints = [
             emptyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            emptyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }
     
     // MARK: -
     
-    private func setupCollectionView(){
+    private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 4
@@ -79,7 +79,7 @@ class SharedMediaVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground
         collectionView.register(SharedMediaCell.self, forCellWithReuseIdentifier: "sharedMediaCell")
         let constraints = [
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -113,7 +113,7 @@ class SharedMediaVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     // MARK: -
     
-    func zoomImageHandler(_ image: UIImageView, _ message: Messages){
-        let _ = SelectedImageView(image, message, nil, self)
+    func zoomImageHandler(_ image: UIImageView, _ message: Messages) {
+        _ = SelectedImageView(image, message, nil, self)
     }
 }

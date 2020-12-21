@@ -31,7 +31,7 @@ class SharedMediaCell: UICollectionViewCell {
     
     // MARK: -
     
-    private func setupImageView(){
+    private func setupImageView() {
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.isUserInteractionEnabled = true
@@ -48,7 +48,7 @@ class SharedMediaCell: UICollectionViewCell {
     
     // MARK: -
     
-    @objc private func imageTappedHandler(tap: UITapGestureRecognizer){
+    @objc private func imageTappedHandler(tap: UITapGestureRecognizer) {
         guard message.videoUrl == nil else { return }
         guard let imageView = tap.view as? UIImageView else { return }
         sharedMediaVC.zoomImageHandler(imageView, message)
