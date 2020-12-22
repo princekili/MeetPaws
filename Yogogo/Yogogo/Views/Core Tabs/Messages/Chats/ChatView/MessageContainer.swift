@@ -53,7 +53,7 @@ class MessageContainer: UIView, UITextViewDelegate {
     
     private func setupMessageContainer() {
         setupBackground()
-        setupImageClipButton()
+        setupAddImageButton()
         setupSendButton()
         setupMessageTF()
 //        setupActionCircle()
@@ -82,8 +82,7 @@ class MessageContainer: UIView, UITextViewDelegate {
     
     // MARK: -
     
-    private func setupImageClipButton() {
-//        clipImageButton.setImage(UIImage(systemName: "paperclip"), for: .normal)
+    private func setupAddImageButton() {
         clipImageButton.setImage(UIImage(systemName: "plus"), for: .normal)
         addSubview(clipImageButton)
         clipImageButton.tintColor = .label
@@ -96,7 +95,7 @@ class MessageContainer: UIView, UITextViewDelegate {
             clipImageButton.widthAnchor.constraint(equalToConstant: 30),
             clipImageButton.heightAnchor.constraint(equalToConstant: 30)
         ]
-        clipImageButton.addTarget(chatVC, action: #selector(chatVC.clipImageButtonPressed), for: .touchUpInside)
+        clipImageButton.addTarget(chatVC, action: #selector(chatVC.addImageButtonPressed), for: .touchUpInside)
         NSLayoutConstraint.activate(constraints)
     }
     

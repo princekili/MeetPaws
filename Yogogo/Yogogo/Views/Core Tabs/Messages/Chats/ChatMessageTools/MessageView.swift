@@ -56,12 +56,12 @@ class MessageView: UIView {
         backgroundColor = cell.messageBackground.backgroundColor
         if message.message != nil {
             addSubview(setupMsgText())
-            if message.repMID != nil{
+            if message.repMID != nil {
                 setupResponseView()
             }
-        }else if message.mediaUrl != nil {
+        } else if message.mediaUrl != nil {
             addSubview(setupMsgMedia())
-        }else if message.audioUrl != nil {
+        } else if message.audioUrl != nil {
             setupAudioPlayButton()
         }
     }
@@ -73,7 +73,7 @@ class MessageView: UIView {
         setupRepName(name: message.repSender)
         if message.repMessage != nil {
             setupRepTextMessage(text: message.repMessage)
-        }else if message.repMediaMessage != nil {
+        } else if message.repMediaMessage != nil {
             setupRepMediaMessage(message.repMediaMessage)
         } else {
             setupResponseAudioMessage()
@@ -98,7 +98,7 @@ class MessageView: UIView {
         let constraints = [
             messageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             messageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            messageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            messageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
         ]
         NSLayoutConstraint.activate(constraints)
         return messageView
@@ -106,7 +106,7 @@ class MessageView: UIView {
     
     // MARK: -
     
-    private func setupMsgMedia() -> UIImageView{
+    private func setupMsgMedia() -> UIImageView {
         let url = URL(string: message.mediaUrl)
         mediaMessage.kf.setImage(with: url)
         
@@ -167,7 +167,7 @@ class MessageView: UIView {
             responseTextMessage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             responseNameLabel.leadingAnchor.constraint(equalTo: responseLine.leadingAnchor, constant: 8),
             responseNameLabel.topAnchor.constraint(equalTo: responseLine.topAnchor, constant: 2),
-            responseNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 8),
+            responseNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 8)
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -198,7 +198,7 @@ class MessageView: UIView {
             replyMediaLabel.leadingAnchor.constraint(equalTo: responseMediaMessage.trailingAnchor, constant: 4),
             responseNameLabel.leadingAnchor.constraint(equalTo: responseMediaMessage.trailingAnchor, constant: 4),
             responseNameLabel.centerYAnchor.constraint(equalTo: responseMediaMessage.centerYAnchor, constant: -8),
-            responseNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            responseNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -235,7 +235,7 @@ class MessageView: UIView {
             audioPlayButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             audioPlayButton.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             audioPlayButton.heightAnchor.constraint(equalToConstant: 25),
-            audioPlayButton.widthAnchor.constraint(equalToConstant: 25),
+            audioPlayButton.widthAnchor.constraint(equalToConstant: 25)
         ]
         NSLayoutConstraint.activate(constraints)
         setupAudioDurationLabel()

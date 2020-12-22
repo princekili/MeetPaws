@@ -48,6 +48,7 @@
 		A36B4BD52587D7C4005DAC50 /* UserProfileTabsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B4BD42587D7C4005DAC50 /* UserProfileTabsCollectionReusableView.swift */; };
 		A38293922578DF770064D971 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38293912578DF770064D971 /* PostTableViewCell.swift */; };
 		A38293B025793CF50064D971 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38293AF25793CF50064D971 /* UserLocation.swift */; };
+		A38360BE259207B2008A121D /* audioWave.json in Resources */ = {isa = PBXBuildFile; fileRef = A38360BD259207B2008A121D /* audioWave.json */; };
 		A3A55195258F643D00EAB5C5 /* ChatNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A55194258F643D00EAB5C5 /* ChatNetworking.swift */; };
 		A3A55198258F644900EAB5C5 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A55197258F644900EAB5C5 /* ChatVC.swift */; };
 		A3A551A1258F68D300EAB5C5 /* chatLoadingAnim.json in Resources */ = {isa = PBXBuildFile; fileRef = A3A5519C258F68D100EAB5C5 /* chatLoadingAnim.json */; };
@@ -161,6 +162,7 @@
 		A36B4BD42587D7C4005DAC50 /* UserProfileTabsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTabsCollectionReusableView.swift; sourceTree = "<group>"; };
 		A38293912578DF770064D971 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		A38293AF25793CF50064D971 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
+		A38360BD259207B2008A121D /* audioWave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = audioWave.json; sourceTree = "<group>"; };
 		A3A55194258F643D00EAB5C5 /* ChatNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatNetworking.swift; sourceTree = "<group>"; };
 		A3A55197258F644900EAB5C5 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		A3A5519C258F68D100EAB5C5 /* chatLoadingAnim.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chatLoadingAnim.json; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				A3A5519E258F68D200EAB5C5 /* chatTyping.json */,
 				A3A5519F258F68D200EAB5C5 /* loadingAnimation.json */,
 				A3A551A0258F68D200EAB5C5 /* recentTyping.json */,
+				A38360BD259207B2008A121D /* audioWave.json */,
 			);
 			path = LottieAnimations;
 			sourceTree = "<group>";
@@ -724,6 +727,7 @@
 				A3A551A5258F68D300EAB5C5 /* recentTyping.json in Resources */,
 				A3C136A5257BE0C200960B4C /* EditProfile.storyboard in Resources */,
 				A3A551A1258F68D300EAB5C5 /* chatLoadingAnim.json in Resources */,
+				A38360BE259207B2008A121D /* audioWave.json in Resources */,
 				A3CEA9A2256F87F1001DA842 /* Main.storyboard in Resources */,
 				A3A551A3258F68D300EAB5C5 /* chatTyping.json in Resources */,
 				A3EE02F9257B6D7300459C54 /* Launch Screen.storyboard in Resources */,

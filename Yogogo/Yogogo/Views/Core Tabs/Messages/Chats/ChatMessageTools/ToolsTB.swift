@@ -103,10 +103,10 @@ extension ToolsTB: UITableViewDelegate, UITableViewDataSource {
             pasteBoard.string = selectedMessage.message
             scrollView.handleViewDismiss()
         } else if "Reply" == tool {
-            if repliedMesage != nil || messageToForward != nil{ chatView.exitResponseButtonPressed() }
+            if repliedMesage != nil || messageToForward != nil { chatView.exitResponseButtonPressed() }
             scrollView.handleViewDismiss(isReply: true)
         } else if "Forward" == tool {
-            if repliedMesage != nil || messageToForward != nil{ chatView.exitResponseButtonPressed() }
+            if repliedMesage != nil || messageToForward != nil { chatView.exitResponseButtonPressed() }
             scrollView.handleViewDismiss(isForward: true)
         }
     }

@@ -68,7 +68,9 @@ extension ChatVC {
         userResponse.repliedMessage = nil
         userResponse.messageToForward = nil
         userResponse.messageSender = nil
+        
         messageContainer.heightAnchr.constant -= 50
+        
         messageContainer.micButton.alpha = 1
         messageContainer.sendButton.alpha = 0
         UIView.animate(withDuration: 0.3) {

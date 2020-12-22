@@ -31,7 +31,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     var refreshIndicator: MessageLoadingIndicator!
     
-//    let blankLoadingView = AnimationView(animation: Animation.named("chatLoadingAnim"))
+    let blankLoadingView = AnimationView(animation: Animation.named("chatLoadingAnim"))
     
     let calendar = Calendar(identifier: .gregorian)
     
@@ -39,8 +39,8 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-//        view.backgroundColor = ThemeColors.selectedBackgroundColor
+//        view.backgroundColor = .systemBackground
+        view.backgroundColor = ThemeColors.selectedBackgroundColor
         setupChat()
         notificationCenterHandler()
     }
@@ -54,50 +54,60 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         super.viewWillDisappear(true)
         chatNetworking.removeObserves()
         tabBarController?.tabBar.isHidden = false
+        print("------ messageContainer.frame: \(String(describing: messageContainer.frame)) ------")
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    // If Iphone X or >, it will move inputTF up
+    // If iPhone ≥ X, it will move inputTF up
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
         var topConst: CGFloat!
+        
+        // For iPhone ≥ X
         if view.safeAreaInsets.bottom > 0 {
             containerHeight = 70
             topConst = 28
+            
+        // For iPhone ≤ 8
         } else {
             containerHeight = 45
             topConst = 8
         }
         
+        print("------ containerHeight: \(String(describing: containerHeight)) ------")
+        
         // MARK: - Layers order
         messageContainer = MessageContainer(height: containerHeight, const: topConst, chatVC: self)
+        
+//        print("------ messageContainer.frame: \(String(describing: messageContainer.frame)) ------")
+//        messageContainer.heightAnchr.constant -= 50
         collectionView = MessageCollectionView(collectionViewLayout: UICollectionViewFlowLayout.init(), chatVC: self)
 
         refreshIndicator = MessageLoadingIndicator(frame: view.frame, const: topConst, chatVC: self)
         hideKeyboardOnTap()
-//        setupChatBlankView()
+        setupChatBlankView()
     }
     
     // MARK: -
     
-//    private func setupChatBlankView() {
-//        view.addSubview(blankLoadingView)
-//        blankLoadingView.translatesAutoresizingMaskIntoConstraints = false
-//        blankLoadingView.backgroundColor = .systemBackground
-//        blankLoadingView.play()
-//        blankLoadingView.loopMode = .loop
-//        blankLoadingView.backgroundBehavior = .pauseAndRestore
-//        let constraints = [
-//            blankLoadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            blankLoadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            blankLoadingView.bottomAnchor.constraint(equalTo: messageContainer.topAnchor),
-//            blankLoadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
-//        ]
-//        NSLayoutConstraint.activate(constraints)
-//    }
+    private func setupChatBlankView() {
+        view.addSubview(blankLoadingView)
+        blankLoadingView.translatesAutoresizingMaskIntoConstraints = false
+        blankLoadingView.backgroundColor = .systemBackground
+        blankLoadingView.play()
+        blankLoadingView.loopMode = .loop
+        blankLoadingView.backgroundBehavior = .pauseAndRestore
+        let constraints = [
+            blankLoadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            blankLoadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            blankLoadingView.bottomAnchor.constraint(equalTo: messageContainer.topAnchor),
+            blankLoadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
     
     // MARK: -
     
@@ -107,7 +117,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         setupChatNavBar()
         fetchMessages()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: ProfileImageButton(chatVC: self, url: user.profileImage))
-        observeFriendTyping()
+        observeUserTyping()
     }
     
     // MARK: -
@@ -125,8 +135,8 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
 
     // MARK: - CLIP IMAGE BUTTON PRESSED METHOD
     
-    @objc func clipImageButtonPressed() {
-        print("------ clipImageButtonPressed ------")
+    @objc func addImageButtonPressed() {
+        print("------ addImageButtonPressed ------")
         
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -184,8 +194,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         view.endEditing(true)
     }
     
-    // MARK: -
-    // MARK: SEND TEXT MESSAGE METHOD
+    // MARK: - SEND TEXT MESSAGE METHOD
     
     private func setupTextMessage() {
         guard let currentUser = UserManager.shared.currentUser else { return }
@@ -276,7 +285,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     private func observeMessageActions() {
         guard let currentUser = UserManager.shared.currentUser else { return }
         
-//        self.blankLoadingView.isHidden = true
+        self.blankLoadingView.isHidden = true
         chatNetworking.observeUserMessageSeen()
         let ref = Database.database().reference().child("messages").child(currentUser.userId).child(user.userId)
         ref.observe(.childRemoved) { (snap) in
@@ -454,7 +463,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     // MARK: - OBSERVE TYPING METHOD
     
-    private func observeFriendTyping() {
+    private func observeUserTyping() {
         chatNetworking.observeIsUserTyping { (userActivity) in
             if userActivity.userId == self.user.userId && userActivity.isTyping ?? false {
                 self.navigationItem.setupTypingNavTitle(navTitle: self.user.fullName)
@@ -517,7 +526,9 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         messageContainer.messageTV.becomeFirstResponder()
         userResponse.responseStatus = true
         userResponse.repliedMessage = message
+        
         messageContainer.heightAnchr.constant += 50
+        
         UIView.animate(withDuration: 0.1, animations: {
             self.view.layoutIfNeeded()
             self.responseMessageLine(message, forwardedName)
@@ -526,7 +537,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     
-    // MARK: -
     // MARK: - handleAudioRecording
     
     @objc func handleAudioRecording() {

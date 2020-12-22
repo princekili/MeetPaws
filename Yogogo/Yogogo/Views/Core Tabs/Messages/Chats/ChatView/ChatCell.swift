@@ -529,7 +529,6 @@ class ChatCell: UICollectionViewCell {
     }
     
     // MARK: -
-    // MARK: -
     
     @objc private func playAudioButtonPressed() {
         chatVC.handleUserPressedAudioButton(for: self)
