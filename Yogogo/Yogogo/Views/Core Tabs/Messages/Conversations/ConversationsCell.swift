@@ -238,8 +238,7 @@ class ConversationsCell: UITableViewCell {
         addSubview(unreadMessageView)
         unreadMessageView.isHidden = true
         unreadMessageView.translatesAutoresizingMaskIntoConstraints = false
-        unreadMessageView.backgroundColor = .black
-//        unreadMessageView.backgroundColor = .label
+        unreadMessageView.backgroundColor = .systemRed
         unreadMessageView.layer.cornerRadius = 10
         unreadMessageView.layer.masksToBounds = true
         unreadMessageView.addSubview(unreadLabel)
