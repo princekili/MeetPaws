@@ -70,7 +70,7 @@ class MessageContainer: UIView, UITextViewDelegate {
 //        backgroundColor = .white
         backgroundColor = .systemBackground
         bottomAnchr = bottomAnchor.constraint(equalTo: chatVC.view.bottomAnchor)
-        heightAnchr = heightAnchor.constraint(equalToConstant: height)
+        heightAnchr = heightAnchor.constraint(equalToConstant: containerHeight)
         let constraints = [
             leadingAnchor.constraint(equalTo: chatVC.view.leadingAnchor),
             bottomAnchr,

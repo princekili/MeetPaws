@@ -43,7 +43,7 @@ extension UINavigationItem {
             animation.trailingAnchor.constraint(equalTo: animationView.centerXAnchor, constant: 4),
             animation.centerYAnchor.constraint(equalTo: animationView.centerYAnchor),
             typingLabel.centerYAnchor.constraint(equalTo: animation.centerYAnchor),
-            typingLabel.leadingAnchor.constraint(equalTo: animationView.centerXAnchor, constant: -4),
+            typingLabel.leadingAnchor.constraint(equalTo: animationView.centerXAnchor, constant: -4)
         ]
         NSLayoutConstraint.activate(constraints)
         let stackView = setupStackView(view1: title, view2: animationView)
@@ -52,7 +52,7 @@ extension UINavigationItem {
     
     // MARK: -
     
-    private func setupTitleLabel(_ text: String) -> UILabel{
+    private func setupTitleLabel(_ text: String) -> UILabel {
         let title = UILabel()
         title.text = text
         title.font = UIFont(name: "HelveticaNeue-Medium", size: 18)
@@ -61,7 +61,7 @@ extension UINavigationItem {
     
     // MARK: -
     
-    private func setupAnimationView() -> AnimationView{
+    private func setupAnimationView() -> AnimationView {
         let typingAnimation = AnimationView()
         typingAnimation.animationSpeed = 1.2
         typingAnimation.animation = Animation.named("chatTyping")
@@ -73,7 +73,7 @@ extension UINavigationItem {
     
     // MARK: -
     
-    private func setupTypingLabel() -> UILabel{
+    private func setupTypingLabel() -> UILabel {
         let typingLabel = UILabel()
         typingLabel.text = "typing".uppercased()
         typingLabel.font = UIFont.boldSystemFont(ofSize: 13)
@@ -83,7 +83,7 @@ extension UINavigationItem {
     
     // MARK: -
     
-    private func setupStackView(view1: UIView, view2: UIView) -> UIStackView{
+    private func setupStackView(view1: UIView, view2: UIView) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: [view1, view2])
         stackView.distribution = .fillEqually
         stackView.axis = .vertical

@@ -55,7 +55,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         super.viewWillDisappear(true)
         chatNetworking.removeObserves()
         tabBarController?.tabBar.isHidden = false
-        print("------ messageContainer.frame: \(String(describing: messageContainer.frame)) ------")
     }
     
     deinit {
@@ -78,13 +77,10 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             topConst = 8
         }
         
-        print("------ containerHeight: \(String(describing: containerHeight)) ------")
-        
         // MARK: - Layers order
         messageContainer = MessageContainer(height: containerHeight, const: topConst, chatVC: self)
-
         collectionView = MessageCollectionView(collectionViewLayout: UICollectionViewFlowLayout.init(), chatVC: self)
-
+        
         refreshIndicator = MessageLoadingIndicator(frame: view.frame, const: topConst, chatVC: self)
         hideKeyboardOnTap()
         setupChatBlankView()
