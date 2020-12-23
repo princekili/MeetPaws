@@ -18,6 +18,8 @@ class UserManager {
     
     var username = "No Username" // for addUser()
     
+    var fullName = "Edit your name..." // for addUser()
+    
     var profileImage = ""
     
     var currentUser: User?
@@ -165,10 +167,8 @@ class UserManager {
                 guard let url = url else { return }
                 let profileImage = url.absoluteString
                 self.profileImage = profileImage
-                
-//                let fullName = "Edit your name..."
-//                let bio = "Edit your bio..."
-                let fullName = ""
+
+                let fullName = self.fullName
                 let bio = ""
                 let posts: [String] = [""]
                 let followRequests: [String] = [""]

@@ -145,13 +145,20 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
                 
                 // MARK: - User is signed in to Firebase with Apple successfully.
                 
-                if let user = authResult?.user {
-                    let username = UserManager.shared.currentUser?.username
-                    print("Your're signed in as: \(username ?? "You know who I am"), id: \(user.uid), email: \(user.email ?? "unknown email").")
+                if let user = authResult?.user,
+                   let fullName = appleIDCredential.fullName {
                     
-                    // Show next view
-                    self.showNextVC()
+                    let givenName = fullName.givenName
+                    let familyName = fullName.familyName
+                    let displayName = "\(givenName ?? "") \(familyName ?? "")"
+                    
+                    self.userManager.fullName = displayName
+                    
+                    print("Your're signed in as: \(displayName), id: \(user.uid), email: \(user.email ?? "unknown email").")
+                    
                 }
+                // Show next view
+                self.showNextVC()
             }
         }
     }

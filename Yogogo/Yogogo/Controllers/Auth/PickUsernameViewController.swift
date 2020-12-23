@@ -57,7 +57,7 @@ class PickUsernameViewController: UIViewController {
         
         // Save Username
         guard let username = usernameTextField.text else { return }
-        userManager.username = username
+        userManager.username = username.lowercased()
         
         // Show next page
         showNextVC()
