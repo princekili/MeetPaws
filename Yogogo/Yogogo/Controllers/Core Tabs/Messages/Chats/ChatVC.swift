@@ -40,8 +40,8 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .systemBackground
-        view.backgroundColor = ThemeColors.selectedBackgroundColor
+        view.backgroundColor = .systemBackground
+//        view.backgroundColor = ThemeColors.selectedBackgroundColor
         setupChat()
         notificationCenterHandler()
     }
