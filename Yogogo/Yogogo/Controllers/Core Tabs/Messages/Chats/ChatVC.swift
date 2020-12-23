@@ -27,7 +27,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     var collectionView: MessageCollectionView!
     
-//    @IBOutlet weak var messageContainer: MessageContainer!
     var messageContainer: MessageContainer!
     
     var refreshIndicator: MessageLoadingIndicator!

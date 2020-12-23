@@ -16,8 +16,6 @@ enum StoryboardName: String {
     case camera = "Camera"
     
     case editProfile = "EditProfile"
-    
-    case chat = "Chat"
 }
 
 enum StoryboardId: String {
@@ -39,6 +37,4 @@ enum StoryboardId: String {
     case userProfileVC = "UserProfileVC"
     
     case myPostVC = "MyPostVC"
-    
-    case chatVC = "ChatVC"
 }

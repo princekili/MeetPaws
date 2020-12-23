@@ -105,7 +105,6 @@
 		A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3CEA9A3256F87F1001DA842 /* Yogogo.xcdatamodeld */; };
 		A3CEA9A7256F87F4001DA842 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3CEA9A6256F87F4001DA842 /* Assets.xcassets */; };
 		A3D9935A258E5FCE001E8EFD /* launchscreen_logo_0.png in Resources */ = {isa = PBXBuildFile; fileRef = A3D99359258E5FCE001E8EFD /* launchscreen_logo_0.png */; };
-		A3DBAF472590DAB700B0A0C4 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3DBAF462590DAB700B0A0C4 /* Chat.storyboard */; };
 		A3DBAF682590E81200B0A0C4 /* ChatAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DBAF672590E81200B0A0C4 /* ChatAudio.swift */; };
 		A3DBAF772590FA0A00B0A0C4 /* Array + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DBAF762590FA0A00B0A0C4 /* Array + Extension.swift */; };
 		A3DBAF7B2591198700B0A0C4 /* ThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DBAF7A2591198600B0A0C4 /* ThemeColors.swift */; };
@@ -222,7 +221,6 @@
 		A3CEA9A6256F87F4001DA842 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3CEA9AB256F87F4001DA842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3D99359258E5FCE001E8EFD /* launchscreen_logo_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen_logo_0.png; sourceTree = "<group>"; };
-		A3DBAF462590DAB700B0A0C4 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		A3DBAF672590E81200B0A0C4 /* ChatAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAudio.swift; sourceTree = "<group>"; };
 		A3DBAF762590FA0A00B0A0C4 /* Array + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + Extension.swift"; sourceTree = "<group>"; };
 		A3DBAF7A2591198600B0A0C4 /* ThemeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColors.swift; sourceTree = "<group>"; };
@@ -292,7 +290,6 @@
 			isa = PBXGroup;
 			children = (
 				A3CEA9A0256F87F1001DA842 /* Main.storyboard */,
-				A3DBAF462590DAB700B0A0C4 /* Chat.storyboard */,
 				A3EE02EC257B5FEB00459C54 /* Camera.storyboard */,
 				A3EE02F8257B6D7300459C54 /* Launch Screen.storyboard */,
 				A3C195E22577934C00BAB46B /* Auth.storyboard */,
@@ -722,7 +719,6 @@
 				A3EE02ED257B5FEB00459C54 /* Camera.storyboard in Resources */,
 				A3A551A2258F68D300EAB5C5 /* blankLoadingAnim.json in Resources */,
 				A35BCC1D2570C6290090B95E /* GoogleService-Info.plist in Resources */,
-				A3DBAF472590DAB700B0A0C4 /* Chat.storyboard in Resources */,
 				A3CEA9A7256F87F4001DA842 /* Assets.xcassets in Resources */,
 				A3EE0318257BB57600459C54 /* Settings.storyboard in Resources */,
 				A3D9935A258E5FCE001E8EFD /* launchscreen_logo_0.png in Resources */,
