@@ -49,6 +49,7 @@
 		A38293922578DF770064D971 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38293912578DF770064D971 /* PostTableViewCell.swift */; };
 		A38293B025793CF50064D971 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38293AF25793CF50064D971 /* UserLocation.swift */; };
 		A38360BE259207B2008A121D /* audioWave.json in Resources */ = {isa = PBXBuildFile; fileRef = A38360BD259207B2008A121D /* audioWave.json */; };
+		A3A448352592F577005F443A /* UIStoryboard + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A448342592F577005F443A /* UIStoryboard + Extension.swift */; };
 		A3A55195258F643D00EAB5C5 /* ChatNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A55194258F643D00EAB5C5 /* ChatNetworking.swift */; };
 		A3A55198258F644900EAB5C5 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A55197258F644900EAB5C5 /* ChatVC.swift */; };
 		A3A551A1258F68D300EAB5C5 /* chatLoadingAnim.json in Resources */ = {isa = PBXBuildFile; fileRef = A3A5519C258F68D100EAB5C5 /* chatLoadingAnim.json */; };
@@ -163,6 +164,7 @@
 		A38293912578DF770064D971 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		A38293AF25793CF50064D971 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		A38360BD259207B2008A121D /* audioWave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = audioWave.json; sourceTree = "<group>"; };
+		A3A448342592F577005F443A /* UIStoryboard + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard + Extension.swift"; sourceTree = "<group>"; };
 		A3A55194258F643D00EAB5C5 /* ChatNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatNetworking.swift; sourceTree = "<group>"; };
 		A3A55197258F644900EAB5C5 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		A3A5519C258F68D100EAB5C5 /* chatLoadingAnim.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chatLoadingAnim.json; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				A3C195E625779A9C00BAB46B /* UIView + Extension.swift */,
 				A316BE502575245C00989152 /* UIViewController + Extension.swift */,
 				A3DBAF7A2591198600B0A0C4 /* ThemeColors.swift */,
+				A3A448342592F577005F443A /* UIStoryboard + Extension.swift */,
 			);
 			path = "Helpers + Extension";
 			sourceTree = "<group>";
@@ -870,6 +873,7 @@
 				A3CEA9A5256F87F1001DA842 /* Yogogo.xcdatamodeld in Sources */,
 				A3136FC4257DF3C000CEA185 /* EditUsernameViewController.swift in Sources */,
 				A3FF43DD258F38490071B03D /* MessageManager.swift in Sources */,
+				A3A448352592F577005F443A /* UIStoryboard + Extension.swift in Sources */,
 				A3EE0328257BB98500459C54 /* SettingsTableViewController.swift in Sources */,
 				A313701B257EBB1D00CEA185 /* UINavigationController + Extension.swift in Sources */,
 				A3C195E725779A9C00BAB46B /* UIView + Extension.swift in Sources */,
@@ -961,7 +965,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1016,7 +1020,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1036,7 +1040,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YQ4Y66HUTL;
 				INFOPLIST_FILE = Yogogo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1058,7 +1062,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YQ4Y66HUTL;
 				INFOPLIST_FILE = Yogogo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

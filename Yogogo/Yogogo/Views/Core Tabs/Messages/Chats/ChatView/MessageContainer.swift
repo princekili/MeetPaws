@@ -15,7 +15,7 @@ class MessageContainer: UIView, UITextViewDelegate {
     
     var heightAnchr = NSLayoutConstraint()
     
-    let clipImageButton = UIButton(type: .system)
+    let addImageButton = UIButton(type: .system)
     
     let sendButton = UIButton(type: .system)
     
@@ -83,19 +83,19 @@ class MessageContainer: UIView, UITextViewDelegate {
     // MARK: -
     
     private func setupAddImageButton() {
-        clipImageButton.setImage(UIImage(systemName: "plus"), for: .normal)
-        addSubview(clipImageButton)
-        clipImageButton.tintColor = .label
-        clipImageButton.contentMode = .scaleAspectFill
-        clipImageButton.isEnabled = true
-        clipImageButton.translatesAutoresizingMaskIntoConstraints = false
+        addImageButton.setImage(UIImage(systemName: "plus"), for: .normal)
+        addSubview(addImageButton)
+        addImageButton.tintColor = .label
+        addImageButton.contentMode = .scaleAspectFill
+        addImageButton.isEnabled = true
+        addImageButton.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
-            clipImageButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            clipImageButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const),
-            clipImageButton.widthAnchor.constraint(equalToConstant: 30),
-            clipImageButton.heightAnchor.constraint(equalToConstant: 30)
+            addImageButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            addImageButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const),
+            addImageButton.widthAnchor.constraint(equalToConstant: 30),
+            addImageButton.heightAnchor.constraint(equalToConstant: 30)
         ]
-        clipImageButton.addTarget(chatVC, action: #selector(chatVC.addImageButtonPressed), for: .touchUpInside)
+        addImageButton.addTarget(chatVC, action: #selector(chatVC.addImageButtonPressed), for: .touchUpInside)
         NSLayoutConstraint.activate(constraints)
     }
     
@@ -162,7 +162,7 @@ class MessageContainer: UIView, UITextViewDelegate {
         messageTV.adjustsFontForContentSizeCategory = true
         messageTV.delegate = self
         let constraints = [
-            messageTV.leadingAnchor.constraint(equalTo: clipImageButton.trailingAnchor, constant: 8),
+            messageTV.leadingAnchor.constraint(equalTo: addImageButton.trailingAnchor, constant: 8),
             messageTV.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -8),
             messageTV.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const),
             messageTV.heightAnchor.constraint(equalToConstant: 32)

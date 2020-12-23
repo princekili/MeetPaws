@@ -223,8 +223,14 @@ extension UserProfileViewController: UserProfileTabsCollectionReusableViewDelega
 extension UserProfileViewController: OpenUserMessagesHandlerDelegate {
     
     func openUserMessagesHandler() {
+        
+//        let chatVC = UIStoryboard(name: StoryboardName.chat.rawValue, bundle: nil).instantiateViewController(identifier: StoryboardId.chatVC.rawValue)
+        
+//        let chatVC: ChatVC = UIStoryboard.initiateVC(name: .chat, id: .chatVC)
+        
         let chatVC = ChatVC()
         chatVC.user = user
+        
         navigationController?.pushViewController(chatVC, animated: true)
     }
 }

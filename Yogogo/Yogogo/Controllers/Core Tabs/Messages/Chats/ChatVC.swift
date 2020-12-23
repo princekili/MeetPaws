@@ -27,6 +27,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     var collectionView: MessageCollectionView!
     
+//    @IBOutlet weak var messageContainer: MessageContainer!
     var messageContainer: MessageContainer!
     
     var refreshIndicator: MessageLoadingIndicator!
@@ -81,9 +82,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         
         // MARK: - Layers order
         messageContainer = MessageContainer(height: containerHeight, const: topConst, chatVC: self)
-        
-//        print("------ messageContainer.frame: \(String(describing: messageContainer.frame)) ------")
-//        messageContainer.heightAnchr.constant -= 50
+
         collectionView = MessageCollectionView(collectionViewLayout: UICollectionViewFlowLayout.init(), chatVC: self)
 
         refreshIndicator = MessageLoadingIndicator(frame: view.frame, const: topConst, chatVC: self)
@@ -574,7 +573,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
             self.messageContainer.recordingLabel.frame.origin.x += self.messageContainer.frame.width/6
             self.messageContainer.messageTV.frame.origin.y += self.containerHeight
-            self.messageContainer.clipImageButton.frame.origin.y += self.containerHeight
+            self.messageContainer.addImageButton.frame.origin.y += self.containerHeight
             self.view.layoutIfNeeded()
             self.messageContainer.recordingAudioView.isHidden = false
         }) { (true) in
@@ -617,7 +616,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             self.messageContainer.actionCircle.isHidden = true
             self.messageContainer.recordingLabel.frame.origin.x -= self.messageContainer.frame.width/6
             self.messageContainer.messageTV.frame.origin.y -= self.containerHeight
-            self.messageContainer.clipImageButton.frame.origin.y -= self.containerHeight
+            self.messageContainer.addImageButton.frame.origin.y -= self.containerHeight
             self.view.layoutIfNeeded()
         }) { (true) in
             self.messageContainer.recordingAudioView.isHidden = true
