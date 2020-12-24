@@ -6,31 +6,52 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var profileImageButton: UIButton! {
-        didSet {
-            profileImageButton.layer.cornerRadius = 36 / 2
-            profileImageButton.layer.masksToBounds = true
-        }
-    }
-    
-    @IBOutlet weak var usernameButton: UIButton!
-    
-    @IBOutlet weak var nameButton: UIButton!
     
     static let identifier = "SearchTableViewCell"
     
+    @IBOutlet weak var profileImageView: UIImageView! {
+        didSet {
+            profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+            profileImageView.contentMode = .scaleAspectFill
+        }
+    }
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var followingLabel: UILabel!
+    
+    // MARK: -
+    
+    func setup(with searchResults: User) {
+        
+        let url = URL(string: searchResults.profileImage)
+        profileImageView.kf.setImage(with: url)
+        
+        usernameLabel.text = searchResults.username
+        
+        if searchResults.fullName.isEmpty {
+            nameLabel.isHidden = true
+        } else {        
+            nameLabel.text = searchResults.fullName
+        }
+        
+        guard let following = UserManager.shared.currentUser?.following else { return }
+        followingLabel.isHidden = !following.contains(searchResults.userId)
+    }
+    
+    // MARK: -
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
