@@ -67,13 +67,13 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         
         // For iPhone ≥ X
         if view.safeAreaInsets.bottom > 0 {
-            containerHeight = 70
-            topConst = 28
+            containerHeight = 100
+            topConst = 48
             
         // For iPhone ≤ 8
         } else {
             containerHeight = 45
-            topConst = 8
+            topConst = 28
         }
         
         // MARK: - Layers order
@@ -120,10 +120,16 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
 //        let loginDate = NSDate(timeIntervalSince1970: (user.lastLogin).doubleValue)
         let loginDate = Date(timeIntervalSince1970: TimeInterval((user.lastLogin)))
         navigationController?.navigationBar.tintColor = .label
+        
+        var displayName = user.fullName
+        if user.fullName.isEmpty {
+            displayName = user.username
+        }
+        
         if user.isOnline {
-            navigationItem.setNavTitles(navTitle: user.fullName, navSubtitle: "Online")
+            navigationItem.setNavTitles(navTitle: displayName, navSubtitle: "Online")
         } else {
-            navigationItem.setNavTitles(navTitle: user.fullName, navSubtitle: calendar.calculateLastLogin(loginDate as NSDate))
+            navigationItem.setNavTitles(navTitle: displayName, navSubtitle: calendar.calculateLastLogin(loginDate as NSDate))
         }
     }
 

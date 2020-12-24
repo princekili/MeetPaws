@@ -33,6 +33,8 @@ class MessageContainer: UIView, UITextViewDelegate {
     
     var const: CGFloat!
     
+    let size: CGFloat = 30
+    
     var chatVC: ChatVC!
     
     // MARK: -
@@ -92,8 +94,8 @@ class MessageContainer: UIView, UITextViewDelegate {
         let constraints = [
             addImageButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             addImageButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const),
-            addImageButton.widthAnchor.constraint(equalToConstant: 30),
-            addImageButton.heightAnchor.constraint(equalToConstant: 30)
+            addImageButton.widthAnchor.constraint(equalToConstant: size),
+            addImageButton.heightAnchor.constraint(equalToConstant: size)
         ]
         addImageButton.addTarget(chatVC, action: #selector(chatVC.addImageButtonPressed), for: .touchUpInside)
         NSLayoutConstraint.activate(constraints)
@@ -107,14 +109,14 @@ class MessageContainer: UIView, UITextViewDelegate {
         sendButton.alpha = 0
         sendButton.setImage(UIImage(systemName: "arrow.up"), for: .normal)
         sendButton.backgroundColor = .systemBlue
-        sendButton.layer.cornerRadius = 15
+        sendButton.layer.cornerRadius = size / 2
         sendButton.layer.masksToBounds = true
         sendButton.tintColor = .white
         let constraints = [
             sendButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const),
             sendButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            sendButton.heightAnchor.constraint(equalToConstant: 30),
-            sendButton.widthAnchor.constraint(equalToConstant: 30)
+            sendButton.heightAnchor.constraint(equalToConstant: size),
+            sendButton.widthAnchor.constraint(equalToConstant: size)
         ]
         NSLayoutConstraint.activate(constraints)
         sendButton.addTarget(chatVC, action: #selector(chatVC.sendButtonPressed), for: .touchUpInside)
@@ -141,11 +143,11 @@ class MessageContainer: UIView, UITextViewDelegate {
     
     private func setupMessageTF() {
         addSubview(messageTV)
-        messageTV.layer.cornerRadius = 8
+        messageTV.layer.cornerRadius = 14
         messageTV.font = UIFont(name: "Helvetica Neue", size: 16)
         messageTV.textColor = .label
         messageTV.isScrollEnabled = false
-        messageTV.layer.borderWidth = 0.3
+        messageTV.layer.borderWidth = 0.5
         messageTV.layer.borderColor = UIColor.systemGray.cgColor
         messageTV.layer.masksToBounds = true
         let messTFPlaceholder = UILabel()
@@ -165,7 +167,7 @@ class MessageContainer: UIView, UITextViewDelegate {
             messageTV.leadingAnchor.constraint(equalTo: addImageButton.trailingAnchor, constant: 8),
             messageTV.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -8),
             messageTV.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const),
-            messageTV.heightAnchor.constraint(equalToConstant: 32)
+            messageTV.heightAnchor.constraint(equalToConstant: size)
         ]
         NSLayoutConstraint.activate(constraints)
     }
