@@ -14,7 +14,7 @@ class ConversationsCell: UITableViewCell {
 
     let profileImage = UIImageView()
     
-    let userFullName = UILabel()
+    let displayName = UILabel()
     
     let recentMessage = UILabel()
     
@@ -72,9 +72,15 @@ class ConversationsCell: UITableViewCell {
     // MARK: -
     
     private func handleFriendInfo(_ message: Messages) {
-        for user in Users.list {
+        let users = SearchManager.shared.users
+        
+        for user in users {
             if message.determineUser() == user.userId {
-                userFullName.text = user.fullName
+                if user.fullName.isEmpty {
+                    displayName.text = user.username
+                } else {
+                    displayName.text = user.fullName
+                }
                 
                 let url = URL(string: user.profileImage)
                 profileImage.kf.setImage(with: url)
@@ -181,14 +187,15 @@ class ConversationsCell: UITableViewCell {
     // MARK: -
     
     private func setupNameLabel() {
-        addSubview(userFullName)
-        userFullName.textColor = .label
-        userFullName.font = UIFont(name: "Helvetica Neue", size: 18)
-        userFullName.numberOfLines = 0
-        userFullName.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(displayName)
+        displayName.textColor = .label
+//        displayName.font = UIFont(name: "Helvetica Neue", size: 18)
+        displayName.font = UIFont(name: "Helvetica Neue Bold", size: 18)
+        displayName.numberOfLines = 0
+        displayName.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
-            userFullName.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            userFullName.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 15)
+            displayName.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            displayName.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 15)
         ]
         NSLayoutConstraint.activate(constraints)
     }

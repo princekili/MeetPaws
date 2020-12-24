@@ -115,7 +115,10 @@ class ConversationsNetworking {
         
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
-        for user in Users.list {
+        let users = SearchManager.shared.users
+        
+        for user in users {
+//        for user in Users.list {
             ref.child("messages").child(userId).child(user.userId)
                 .queryLimited(toLast: 1)
                 .observeSingleEvent(of: .value) { (snap) in
@@ -132,9 +135,10 @@ class ConversationsNetworking {
                     self.groupedMessages[message.determineUser()] = message
                 }
                     
-                if user.userId == Users.list[Users.list.count - 1].userId {
-                    self.convVC.loadMessagesHandler(Array(self.groupedMessages.values))
-                }
+//                if user.userId == Users.list[Users.list.count - 1].userId {
+                    if user.userId == users[users.count - 1].userId {
+                        self.convVC.loadMessagesHandler(Array(self.groupedMessages.values))
+                    }
             }
         }
     }

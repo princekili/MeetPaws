@@ -16,6 +16,8 @@ class NewConversationVC: UIViewController {
     
     weak var conversationDelegate: ConversationsVC!
     
+    let users = SearchManager.shared.users
+    
     var forwardName: String?
     
     // MARK: -
@@ -83,7 +85,7 @@ extension NewConversationVC: UITableViewDelegate, UITableViewDataSource {
     // MARK: -
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Users.list.count
+        return users.count
     }
     
     // MARK: -
@@ -91,7 +93,7 @@ extension NewConversationVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewConversationCell") as? NewConversationCell else { return UITableViewCell() }
         cell.selectionStyle = .none
-        let user = Users.list[indexPath.row]
+        let user = users[indexPath.row]
         
         let url = URL(string: user.profileImage)
         cell.profileImage.kf.setImage(with: url)
@@ -103,7 +105,7 @@ extension NewConversationVC: UITableViewDelegate, UITableViewDataSource {
     // MARK: -
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let user = Users.list[indexPath.row]
+        let user = users[indexPath.row]
         if let name = forwardName {
             forwardDelegate?.forwardToSelectedFriend(user: user, for: name)
             dismiss(animated: true, completion: nil)
