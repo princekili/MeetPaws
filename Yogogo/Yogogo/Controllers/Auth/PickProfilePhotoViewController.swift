@@ -14,6 +14,7 @@ class PickProfilePhotoViewController: UIViewController {
         didSet {
             profilePhotoImageView.layer.cornerRadius = profilePhotoImageView.frame.size.width / 2
             profilePhotoImageView.contentMode = .scaleAspectFill
+            profilePhotoImageView.enableTapAction(sender: self, selector: #selector(selectPhoto))
         }
     }
     
@@ -28,10 +29,14 @@ class PickProfilePhotoViewController: UIViewController {
     
     let userManager = UserManager.shared
     
+    // MARK: -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    
+    // MARK: -
     
     @IBAction func selectPhotoButtonDidTap(_ sender: UIButton) {
         selectPhoto()
@@ -75,7 +80,7 @@ class PickProfilePhotoViewController: UIViewController {
     
     // MARK: - Select a Photo
     
-    private func selectPhoto() {
+    @objc private func selectPhoto() {
         imagePickerController = UIImagePickerController()
         imagePickerController?.delegate = self
         imagePickerController?.allowsEditing = true

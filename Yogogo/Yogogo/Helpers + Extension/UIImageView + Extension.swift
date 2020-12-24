@@ -31,40 +31,9 @@ extension UIImageView {
     
     // MARK: -
     
-//    func loadImage(url: String) {
-//        self.image = nil
-//
-//        if let image = imageCache.object(forKey: url as NSString) {
-//            self.image = image
-//            return
-//        }
-//        isUserInteractionEnabled = false
-//        backgroundColor = .lightGray
-//
-//        let indicator = activityIndicator
-//        DispatchQueue.main.async {
-//            indicator.startAnimating()
-//        }
-//
-//        let imageUrl = URL(string: url)
-//        if imageUrl == nil { return }
-//
-//        let task = URLSession.shared.dataTask(with: imageUrl!) { (data, response, error) in
-//            guard let data = data else { return }
-//
-//            DispatchQueue.main.async {
-//                guard let image = UIImage(data: data) else {
-//                    print(error!.localizedDescription)
-//                    return
-//                }
-//                self.backgroundColor = .clear
-//                self.isUserInteractionEnabled = true
-//                indicator.stopAnimating()
-//                self.alpha = 1
-//                imageCache.setObject(image, forKey: url as NSString)
-//                self.image = image
-//            }
-//        }
-//        task.resume()
-//    }
+    func enableTapAction(sender: Any, selector: Selector) {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: sender, action: selector)
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(tapGestureRecognizer)
+    }
 }
