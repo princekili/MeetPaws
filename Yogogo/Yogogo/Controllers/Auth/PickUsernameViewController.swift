@@ -45,8 +45,11 @@ class PickUsernameViewController: UIViewController {
         setupButton()
         usernameTextField.delegate = self
     }
+    
+    // MARK: -
 
     @IBAction func nextButtonDidTap(_ sender: CustomButton) {
+        
         // MARK: - For test
         isAvailable = true
         // MARK: -
@@ -62,6 +65,8 @@ class PickUsernameViewController: UIViewController {
         // Show next page
         showNextVC()
     }
+    
+    // MARK: -
  
     private func checkUsername() {
         
@@ -136,5 +141,10 @@ extension PickUsernameViewController: UITextFieldDelegate {
 
         // make sure the result is under __ characters
         return updatedText.count <= 14
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
 }
