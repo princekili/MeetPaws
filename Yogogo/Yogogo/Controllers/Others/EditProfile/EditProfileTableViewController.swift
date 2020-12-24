@@ -14,6 +14,7 @@ class EditProfileTableViewController: UITableViewController {
     @IBOutlet weak var profileImage: UIImageView! {
         didSet {
             profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+            profileImage.contentMode = .scaleAspectFill
             
             guard let image = userManager.currentUser?.profileImage else { return }
             let url = URL(string: image)

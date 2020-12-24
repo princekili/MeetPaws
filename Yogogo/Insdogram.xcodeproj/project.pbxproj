@@ -23,6 +23,7 @@
 		A3315844257FC072004CC86C /* PickUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3315843257FC072004CC86C /* PickUsernameViewController.swift */; };
 		A3315847257FC07F004CC86C /* PickProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3315846257FC07F004CC86C /* PickProfilePhotoViewController.swift */; };
 		A331584B257FC950004CC86C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A331584A257FC950004CC86C /* UserManager.swift */; };
+		A3394A21259465BC00705E30 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3394A20259465BC00705E30 /* SearchManager.swift */; };
 		A33EFB432580FF0F00E9F336 /* Storyboard + Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33EFB422580FF0F00E9F336 /* Storyboard + Enum.swift */; };
 		A33EFB46258145AF00E9F336 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33EFB45258145AF00E9F336 /* UIColor + Extension.swift */; };
 		A344F41C257A61CA0048B754 /* RoundedCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */; };
@@ -137,6 +138,7 @@
 		A3315843257FC072004CC86C /* PickUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUsernameViewController.swift; sourceTree = "<group>"; };
 		A3315846257FC07F004CC86C /* PickProfilePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickProfilePhotoViewController.swift; sourceTree = "<group>"; };
 		A331584A257FC950004CC86C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		A3394A20259465BC00705E30 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		A33EFB422580FF0F00E9F336 /* Storyboard + Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard + Enum.swift"; sourceTree = "<group>"; };
 		A33EFB45258145AF00E9F336 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerButton.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				A3FF43DC258F38490071B03D /* MessageManager.swift */,
 				A3A55194258F643D00EAB5C5 /* ChatNetworking.swift */,
 				A3A551F725904B2000EAB5C5 /* ConversationsNetworking.swift */,
+				A3394A20259465BC00705E30 /* SearchManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -891,6 +894,7 @@
 				A3551EA825734FC10006099A /* CurrentUser.swift in Sources */,
 				A316BE432574F3F400989152 /* FeedTableViewCell.swift in Sources */,
 				A3C195EA2577D6E600BAB46B /* MyPostCollectionViewCell.swift in Sources */,
+				A3394A21259465BC00705E30 /* SearchManager.swift in Sources */,
 				A3C195BC257775FF00BAB46B /* NotificationsViewController.swift in Sources */,
 				A3C195F32577E80900BAB46B /* MyProfileTabsCollectionReusableView.swift in Sources */,
 			);

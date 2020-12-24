@@ -13,6 +13,7 @@ class PickProfilePhotoViewController: UIViewController {
     @IBOutlet weak var profilePhotoImageView: UIImageView! {
         didSet {
             profilePhotoImageView.layer.cornerRadius = profilePhotoImageView.frame.size.width / 2
+            profilePhotoImageView.contentMode = .scaleAspectFill
         }
     }
     

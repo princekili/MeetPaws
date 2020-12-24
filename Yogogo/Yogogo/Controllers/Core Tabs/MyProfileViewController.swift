@@ -66,7 +66,7 @@ class MyProfileViewController: UIViewController {
         
         // Check isPushFromOtherVC
         if let rootVC = navigationController?.rootViewController {
-            let isPushFromOtherVC = (rootVC is FeedViewController) || (rootVC is MapsViewController)
+            let isPushFromOtherVC = (rootVC is FeedViewController) || (rootVC is MapsViewController) || (rootVC is SearchViewController)
             
             switch isPushFromOtherVC {
             case true:
@@ -101,7 +101,7 @@ extension MyProfileViewController {
     @objc private func loadMyPosts() {
         
         guard let userId = UserManager.shared.currentUser?.userId else { return }
-        userManager.getUserInfo(userId: userId) { (user) in
+        userManager.getCurrentUserInfo(userId: userId) { (user) in
             
             var postIds = user.posts
             postIds = postIds.filter { $0 != "" }

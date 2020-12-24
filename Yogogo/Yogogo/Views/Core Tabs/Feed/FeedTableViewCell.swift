@@ -46,6 +46,7 @@ class FeedTableViewCell: UITableViewCell {
             profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
             profileImage.layer.masksToBounds = true
             profileImage.translatesAutoresizingMaskIntoConstraints = false
+            profileImage.contentMode = .scaleAspectFill
         }
     }
     

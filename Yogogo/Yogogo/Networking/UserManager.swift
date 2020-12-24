@@ -112,7 +112,7 @@ class UserManager {
     
     // MARK: - Get the user info
     
-    func getUserInfo(userId: String, completion: @escaping (User) -> Void) {
+    func getCurrentUserInfo(userId: String, completion: @escaping (User) -> Void) {
         
         // Call Firebase API to retrieve the user info
         ref.child("users").child(userId).observeSingleEvent(of: .value) { (snapshot) in
@@ -120,7 +120,7 @@ class UserManager {
             let userInfo = snapshot.value as? [String: Any] ?? [:]
             
             guard let user = User(userId: userId, userInfo: userInfo) else {
-                print("------ User not found ------")
+                print("------ User not found: \(userId) ------")
                 return
             }
             

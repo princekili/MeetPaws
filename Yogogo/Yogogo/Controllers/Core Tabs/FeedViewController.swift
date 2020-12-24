@@ -30,6 +30,7 @@ class FeedViewController: UIViewController {
         setupTableView()
         setupNavigationBar()
         setupRefresher()
+        getUsers()
     }
  
     override func viewDidAppear(_ animated: Bool) {
@@ -55,17 +56,6 @@ class FeedViewController: UIViewController {
     
     // MARK: -
     
-    private func getCurrentUserInfo() {
-        guard let userId = Auth.auth().currentUser?.uid else { return }
-        
-        UserManager.shared.getUserInfo(userId: userId) { (user) in
-            
-            let myUser = user
-            print("------  Get the currentUser info successfully in FeedVC ------")
-            print(myUser)
-        }
-    }
-    
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -84,6 +74,30 @@ class FeedViewController: UIViewController {
                                  for: UIControl.Event.valueChanged
         )
     }
+    
+    // MARK: -
+    
+    private func getCurrentUserInfo() {
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        
+        UserManager.shared.getCurrentUserInfo(userId: userId) { (user) in
+            
+            let myUser = user
+            print("------  Get the currentUser info successfully in FeedVC ------")
+            print(myUser)
+        }
+    }
+    
+    private func getUsers() {
+        // Get all userIds
+        SearchManager.shared.getUserIds { (userIds) in
+
+            for userId in userIds {
+                SearchManager.shared.getUserInfo(of: userId)
+            }
+        }
+    }
+    
 }
 
 // MARK: - Managing Post Download and Display

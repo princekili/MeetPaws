@@ -37,6 +37,7 @@ class NewConversationCell: UITableViewCell {
         profileImage.layer.cornerRadius = 30
         profileImage.layer.masksToBounds = true
         profileImage.translatesAutoresizingMaskIntoConstraints = false
+        
         let constraints = [
             profileImage.centerYAnchor.constraint(equalTo: centerYAnchor),
             profileImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),

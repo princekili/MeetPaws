@@ -128,7 +128,7 @@ class MapsViewController: UIViewController {
         }
         
         // Get all userIds
-        mapNetworking.observeUsers { [weak self] userIds in
+        mapNetworking.getUserIds { [weak self] userIds in
             
             for userId in userIds {
                 

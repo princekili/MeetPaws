@@ -99,6 +99,7 @@ class UserInfoTab: UIView {
         profileImage.translatesAutoresizingMaskIntoConstraints = false
         profileImage.layer.cornerRadius = 20
         profileImage.layer.masksToBounds = true
+        profileImage.contentMode = .scaleAspectFill
         
         let constraints = [
             profileImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),

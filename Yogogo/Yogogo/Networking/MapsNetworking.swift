@@ -26,7 +26,7 @@ class MapsNetworking {
     
     // MARK: - observe Users to get userIds
     
-    func observeUsers(completion: @escaping ([String]) -> Void) {
+    func getUserIds(completion: @escaping ([String]) -> Void) {
         
         print("------ observe Users to get userIds... ------")
         
@@ -99,8 +99,8 @@ class MapsNetworking {
                         isMapLocationEnabled: isMapLocationEnabled
         )
         usersDict[userId] = user
-        print("------ Users.list.append(user) ------")
-        print(user)
+//        print("------ Users.list.append(user) ------")
+//        print(user)
         
         completion(user)
     }

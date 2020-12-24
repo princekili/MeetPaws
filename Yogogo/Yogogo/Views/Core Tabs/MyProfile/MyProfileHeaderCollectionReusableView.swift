@@ -23,6 +23,7 @@ final class MyProfileHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var profileImageView: UIImageView! {
         didSet {
             profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+            profileImageView.contentMode = .scaleAspectFill
         }
     }
     
