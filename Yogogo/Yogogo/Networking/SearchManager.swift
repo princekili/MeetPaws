@@ -19,7 +19,7 @@ class SearchManager {
     
     // MARK: - observe Users to get userIds
     
-    func getUserIds(completion: @escaping ([String]) -> Void) {
+    private func getUserIds(completion: @escaping ([String]) -> Void) {
         
         print("------ observe Users to get userIds... ------")
         
@@ -40,7 +40,7 @@ class SearchManager {
     
     // MARK: -
     
-    func getUserInfo(of userId: String) {
+    private func getUserInfo(of userId: String) {
         
         // Call Firebase API to retrieve the user info
         ref.child("users").child(userId).observeSingleEvent(of: .value) { (snapshot) in
@@ -55,5 +55,18 @@ class SearchManager {
             self.users.append(user)
             self.users.removeDuplicates()
         }
+    }
+    
+    // MARK: -
+    
+    func getUsers(completion: @escaping () -> Void) {
+        // Get all userIds
+        getUserIds { [weak self] (userIds) in
+            
+            for userId in userIds {
+                self?.getUserInfo(of: userId)
+            }
+        }
+        completion()
     }
 }

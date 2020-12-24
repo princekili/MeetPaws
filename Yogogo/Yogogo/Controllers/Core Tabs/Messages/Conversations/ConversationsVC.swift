@@ -229,7 +229,9 @@ extension ConversationsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let chat = messages[indexPath.row]
-        for user in Users.list {
+        let users = SearchManager.shared.users
+        
+        for user in users {
             if user.userId == chat.determineUser() {
                 nextControllerHandler(user: user)
                 break

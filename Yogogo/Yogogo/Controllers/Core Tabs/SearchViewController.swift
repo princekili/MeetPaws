@@ -70,16 +70,13 @@ class SearchViewController: UIViewController {
     }
     
     private func getUsers() {
-        // Get all userIds
-        SearchManager.shared.getUserIds { (userIds) in
-            for userId in userIds {
-                SearchManager.shared.getUserInfo(of: userId)
+        SearchManager.shared.getUsers { [weak self] in
+            
+            self?.sortedUsers = SearchManager.shared.users.sorted { $0.username < $1.username }
+            
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
             }
-        }
-        sortedUsers = SearchManager.shared.users.sorted { $0.username < $1.username }
-        
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
         }
     }
     

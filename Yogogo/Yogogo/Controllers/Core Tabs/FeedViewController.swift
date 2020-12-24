@@ -30,7 +30,7 @@ class FeedViewController: UIViewController {
         setupTableView()
         setupNavigationBar()
         setupRefresher()
-        getUsers()
+        SearchManager.shared.getUsers {}
     }
  
     override func viewDidAppear(_ animated: Bool) {
@@ -87,17 +87,6 @@ class FeedViewController: UIViewController {
             print(myUser)
         }
     }
-    
-    private func getUsers() {
-        // Get all userIds
-        SearchManager.shared.getUserIds { (userIds) in
-
-            for userId in userIds {
-                SearchManager.shared.getUserInfo(of: userId)
-            }
-        }
-    }
-    
 }
 
 // MARK: - Managing Post Download and Display
