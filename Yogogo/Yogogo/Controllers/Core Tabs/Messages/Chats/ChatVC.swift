@@ -31,7 +31,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     var refreshIndicator: MessageLoadingIndicator!
     
-//    let blankLoadingView = AnimationView(animation: Animation.named("chatLoadingAnim"))
+    let blankLoadingView = AnimationView(animation: Animation.named("chatLoadingAnim"))
     
     let calendar = Calendar(identifier: .gregorian)
     
@@ -87,21 +87,21 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     // MARK: -
     
-//    private func setupChatBlankView() {
-//        view.addSubview(blankLoadingView)
-//        blankLoadingView.translatesAutoresizingMaskIntoConstraints = false
-//        blankLoadingView.backgroundColor = .systemBackground
-//        blankLoadingView.play()
-//        blankLoadingView.loopMode = .loop
-//        blankLoadingView.backgroundBehavior = .pauseAndRestore
-//        let constraints = [
-//            blankLoadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            blankLoadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            blankLoadingView.bottomAnchor.constraint(equalTo: messageContainer.topAnchor),
-//            blankLoadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
-//        ]
-//        NSLayoutConstraint.activate(constraints)
-//    }
+    private func setupChatBlankView() {
+        view.addSubview(blankLoadingView)
+        blankLoadingView.translatesAutoresizingMaskIntoConstraints = false
+        blankLoadingView.backgroundColor = .systemBackground
+        blankLoadingView.play()
+        blankLoadingView.loopMode = .loop
+        blankLoadingView.backgroundBehavior = .pauseAndRestore
+        let constraints = [
+            blankLoadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            blankLoadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            blankLoadingView.bottomAnchor.constraint(equalTo: messageContainer.topAnchor),
+            blankLoadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
     
     // MARK: -
     
@@ -279,7 +279,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     private func observeMessageActions() {
         guard let currentUser = UserManager.shared.currentUser else { return }
         
-//        self.blankLoadingView.isHidden = true
+        self.blankLoadingView.isHidden = true
         chatNetworking.observeUserMessageSeen()
         let ref = Database.database().reference().child("messages").child(currentUser.userId).child(user.userId)
         ref.observe(.childRemoved) { (snap) in
