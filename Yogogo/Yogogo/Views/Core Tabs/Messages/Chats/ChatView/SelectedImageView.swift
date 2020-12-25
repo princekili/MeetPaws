@@ -77,7 +77,7 @@ class SelectedImageView: UIView, UINavigationControllerDelegate {
         exitButton.addTarget(self, action: #selector(handleSwipe), for: .touchUpInside)
         NSLayoutConstraint.activate([
             exitButton.leadingAnchor.constraint(equalTo: keyWindow.leadingAnchor, constant: 8),
-            exitButton.topAnchor.constraint(equalTo: keyWindow.safeAreaLayoutGuide.topAnchor, constant: 8),
+            exitButton.topAnchor.constraint(equalTo: keyWindow.safeAreaLayoutGuide.topAnchor, constant: 48),
             exitButton.widthAnchor.constraint(equalToConstant: 40),
             exitButton.heightAnchor.constraint(equalToConstant: 40)
         ])
@@ -159,7 +159,7 @@ class SelectedImageView: UIView, UINavigationControllerDelegate {
         userName.font = UIFont.boldSystemFont(ofSize: 16)
         NSLayoutConstraint.activate([
             userName.leadingAnchor.constraint(equalTo: keyWindow.leadingAnchor, constant: 16),
-            userName.bottomAnchor.constraint(equalTo: keyWindow.safeAreaLayoutGuide.bottomAnchor, constant: -24),
+            userName.bottomAnchor.constraint(equalTo: keyWindow.safeAreaLayoutGuide.bottomAnchor, constant: -24)
         ])
         setupDate()
     }
@@ -175,7 +175,7 @@ class SelectedImageView: UIView, UINavigationControllerDelegate {
         dateLabel.font = UIFont.boldSystemFont(ofSize: 12)
         NSLayoutConstraint.activate([
             dateLabel.leadingAnchor.constraint(equalTo: keyWindow.leadingAnchor, constant: 16),
-            dateLabel.bottomAnchor.constraint(equalTo: keyWindow.safeAreaLayoutGuide.bottomAnchor, constant: -8),
+            dateLabel.bottomAnchor.constraint(equalTo: keyWindow.safeAreaLayoutGuide.bottomAnchor, constant: -8)
         ])
     }
     

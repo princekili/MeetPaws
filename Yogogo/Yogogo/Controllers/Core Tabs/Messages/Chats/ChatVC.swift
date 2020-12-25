@@ -70,6 +70,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             containerHeight = 100
             topConst = 48
             
+        // MARK: - To Fix
         // For iPhone ≤ 8
         } else {
             containerHeight = 45
@@ -142,13 +143,13 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         imagePicker.delegate = self
         imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { (alertAction) in
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alertAction) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 imagePicker.sourceType = .camera
                 self.present(imagePicker, animated: true, completion: nil)
             }
         }))
-        alert.addAction(UIAlertAction(title: "Open Photo Library", style: .default, handler: { (alertAction) in
+        alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (alertAction) in
             imagePicker.sourceType = .photoLibrary
             self.present(imagePicker, animated: true, completion: nil)
         }))

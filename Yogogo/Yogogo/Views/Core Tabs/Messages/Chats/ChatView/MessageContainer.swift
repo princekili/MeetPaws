@@ -107,8 +107,10 @@ class MessageContainer: UIView, UITextViewDelegate {
         addSubview(sendButton)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         sendButton.alpha = 0
-        sendButton.setImage(UIImage(systemName: "arrow.up"), for: .normal)
-        sendButton.backgroundColor = .systemBlue
+        let config = UIImage.SymbolConfiguration(pointSize: 14, weight: .semibold)
+        let image = UIImage(systemName: "arrow.up", withConfiguration: config)
+        sendButton.setImage(image, for: .normal)
+        sendButton.backgroundColor = ThemeColors.selectedOutcomingColor
         sendButton.layer.cornerRadius = size / 2
         sendButton.layer.masksToBounds = true
         sendButton.tintColor = .white
@@ -159,7 +161,6 @@ class MessageContainer: UIView, UITextViewDelegate {
         messTFPlaceholder.textColor = .lightGray
         messageTV.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 10)
         messageTV.translatesAutoresizingMaskIntoConstraints = false
-//        messageTV.backgroundColor = UIColor(white: 0.95, alpha: 1)
         messageTV.backgroundColor = .systemBackground
         messageTV.adjustsFontForContentSizeCategory = true
         messageTV.delegate = self
