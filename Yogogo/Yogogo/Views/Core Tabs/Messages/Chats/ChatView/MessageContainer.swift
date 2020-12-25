@@ -69,8 +69,7 @@ class MessageContainer: UIView, UITextViewDelegate {
     private func setupBackground() {
         chatVC.view.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
-//        backgroundColor = .white
-        backgroundColor = .systemBackground
+        backgroundColor = .systemGray6
         bottomAnchr = bottomAnchor.constraint(equalTo: chatVC.view.bottomAnchor)
         heightAnchr = heightAnchor.constraint(equalToConstant: containerHeight)
         let constraints = [

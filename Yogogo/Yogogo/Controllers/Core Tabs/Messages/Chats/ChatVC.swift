@@ -67,8 +67,8 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         
         // For iPhone ≥ X
         if view.safeAreaInsets.bottom > 0 {
-            containerHeight = 100
-            topConst = 48
+            containerHeight = 84
+            topConst = 44
             
         // MARK: - To Fix
         // For iPhone ≤ 8
