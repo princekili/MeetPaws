@@ -17,9 +17,11 @@ struct Post {
     
     var imageFileURL: String
     
+    var caption: String
+    
     var userDidLike: [String] // [User.id]
     
-    var caption: String
+    var comments: [String] // [Comment.commentId]
     
     var timestamp: Int
     
@@ -31,9 +33,11 @@ struct Post {
         
         static let imageFileURL = "imageFileURL"
         
+        static let caption = "caption"
+        
         static let userDidLike = "userDidLike"
         
-        static let caption = "caption"
+        static let comments = "comments"
         
         static let timestamp = "timestamp"
     }
@@ -43,15 +47,17 @@ struct Post {
     init(postId: String,
          userId: String,
          imageFileURL: String,
-         userDidLike: [String],
          caption: String,
+         userDidLike: [String],
+         comments: [String],
          timestamp: Int
     ) {
         self.postId = postId
         self.userId = userId
         self.imageFileURL = imageFileURL
-        self.userDidLike = userDidLike
         self.caption = caption
+        self.userDidLike = userDidLike
+        self.comments = comments
         self.timestamp = timestamp
     }
     
@@ -61,16 +67,18 @@ struct Post {
     ) {
         guard let userId = postInfo[PostInfoKey.userId] as? String,
               let imageFileURL = postInfo[PostInfoKey.imageFileURL] as? String,
-              let userDidLike = postInfo[PostInfoKey.userDidLike] as? [String],
               let caption = postInfo[PostInfoKey.caption] as? String,
+              let userDidLike = postInfo[PostInfoKey.userDidLike] as? [String],
+              let comments = postInfo[PostInfoKey.comments] as? [String],
               let timestamp = postInfo[PostInfoKey.timestamp] as? Int
         else { return nil }
         
         self = Post(postId: postId,
                     userId: userId,
                     imageFileURL: imageFileURL,
-                    userDidLike: userDidLike,
                     caption: caption,
+                    userDidLike: userDidLike,
+                    comments: comments,
                     timestamp: timestamp
         )
     }
