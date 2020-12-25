@@ -72,15 +72,17 @@ final class PostManager {
                 
                 // Add a reference in the database
                 let imageFileURL = url.absoluteString
-                let userDidLike: [String] = [""]
                 let caption = caption
+                let userDidLike: [String] = [""]
+                let comments: [String] = [""]
                 let timestamp = Int(Date().timeIntervalSince1970 * 1000)
                 
                 let post: [String: Any] = [
                     "userId": userId,
                     "imageFileURL": imageFileURL,
-                    "userDidLike": userDidLike,
                     "caption": caption,
+                    "userDidLike": userDidLike,
+                    "comments": comments,
                     "timestamp": timestamp
                 ]
                 
