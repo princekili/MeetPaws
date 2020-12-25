@@ -24,6 +24,9 @@
 		A3315847257FC07F004CC86C /* PickProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3315846257FC07F004CC86C /* PickProfilePhotoViewController.swift */; };
 		A331584B257FC950004CC86C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A331584A257FC950004CC86C /* UserManager.swift */; };
 		A3394A21259465BC00705E30 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3394A20259465BC00705E30 /* SearchManager.swift */; };
+		A33EA09E259597670092B97C /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33EA09D259597670092B97C /* CommentsTableViewCell.swift */; };
+		A33EA0A4259598370092B97C /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33EA0A3259598370092B97C /* CommentsViewController.swift */; };
+		A33EA0A72595CCFF0092B97C /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33EA0A62595CCFF0092B97C /* CommentManager.swift */; };
 		A33EFB432580FF0F00E9F336 /* Storyboard + Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33EFB422580FF0F00E9F336 /* Storyboard + Enum.swift */; };
 		A33EFB46258145AF00E9F336 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33EFB45258145AF00E9F336 /* UIColor + Extension.swift */; };
 		A344F41C257A61CA0048B754 /* RoundedCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */; };
@@ -139,6 +142,9 @@
 		A3315846257FC07F004CC86C /* PickProfilePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickProfilePhotoViewController.swift; sourceTree = "<group>"; };
 		A331584A257FC950004CC86C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		A3394A20259465BC00705E30 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		A33EA09D259597670092B97C /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
+		A33EA0A3259598370092B97C /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		A33EA0A62595CCFF0092B97C /* CommentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
 		A33EFB422580FF0F00E9F336 /* Storyboard + Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard + Enum.swift"; sourceTree = "<group>"; };
 		A33EFB45258145AF00E9F336 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerButton.swift; sourceTree = "<group>"; };
@@ -259,6 +265,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A33EA098259588C50092B97C /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				A33EA09D259597670092B97C /* CommentsTableViewCell.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
 		A3551E49257255F50006099A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +299,7 @@
 				A3A55194258F643D00EAB5C5 /* ChatNetworking.swift */,
 				A3A551F725904B2000EAB5C5 /* ConversationsNetworking.swift */,
 				A3394A20259465BC00705E30 /* SearchManager.swift */,
+				A33EA0A62595CCFF0092B97C /* CommentManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -520,6 +535,7 @@
 			children = (
 				A316BED72575323700989152 /* CameraViewController.swift */,
 				A3C195BF257777A500BAB46B /* MyPostViewController.swift */,
+				A33EA0A3259598370092B97C /* CommentsViewController.swift */,
 				A36B4BCA2587BBF1005DAC50 /* UserProfileViewController.swift */,
 				A3C195BB257775FF00BAB46B /* NotificationsViewController.swift */,
 				A3C195C82577783800BAB46B /* UserListViewController.swift */,
@@ -626,6 +642,7 @@
 		A3FF43CB258EFF780071B03D /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				A33EA098259588C50092B97C /* Comment */,
 				A3FF43D0258EFFC80071B03D /* Post */,
 				A3FF43CD258EFFA70071B03D /* UserProfile */,
 			);
@@ -851,6 +868,7 @@
 				A3A551B3258F762B00EAB5C5 /* ResponseView + Extension.swift in Sources */,
 				A3CEA99B256F87F1001DA842 /* AppDelegate.swift in Sources */,
 				A3551E7725728F610006099A /* Post.swift in Sources */,
+				A33EA09E259597670092B97C /* CommentsTableViewCell.swift in Sources */,
 				A38293B025793CF50064D971 /* UserLocation.swift in Sources */,
 				A3A551BB258F79F800EAB5C5 /* MessageContainer.swift in Sources */,
 				A3A551FF2590535B00EAB5C5 /* ConversationsCell.swift in Sources */,
@@ -886,6 +904,7 @@
 				A3A551BE258F7CF200EAB5C5 /* MessageLoadingIndicator.swift in Sources */,
 				A3A551A9258F69A200EAB5C5 /* UINavigationItem + Extension.swift in Sources */,
 				A3A551DC25903D8E00EAB5C5 /* MessageView.swift in Sources */,
+				A33EA0A4259598370092B97C /* CommentsViewController.swift in Sources */,
 				A3551E4B257256110006099A /* User.swift in Sources */,
 				A3A551ED2590445600EAB5C5 /* NewConversationCell.swift in Sources */,
 				A3551EA22572AEE50006099A /* Calendar + Extension.swift in Sources */,
@@ -895,6 +914,7 @@
 				A316BE432574F3F400989152 /* FeedTableViewCell.swift in Sources */,
 				A3C195EA2577D6E600BAB46B /* MyPostCollectionViewCell.swift in Sources */,
 				A3394A21259465BC00705E30 /* SearchManager.swift in Sources */,
+				A33EA0A72595CCFF0092B97C /* CommentManager.swift in Sources */,
 				A3C195BC257775FF00BAB46B /* NotificationsViewController.swift in Sources */,
 				A3C195F32577E80900BAB46B /* MyProfileTabsCollectionReusableView.swift in Sources */,
 			);
