@@ -9,17 +9,14 @@ import UIKit
 import Kingfisher
 
 protocol FeedTableViewCellPresentAlertDelegate: AnyObject {
-    
     func presentAlert(postId: String, at index: Int)
 }
 
 protocol FeedTableViewCellPresentUserDelegate: AnyObject {
-    
     func presentUser(user: User, at index: Int)
 }
 
-protocol LikeButtonDidTapDelegate: AnyObject {
-    
+protocol ButtonDidTapReloadDelegate: AnyObject {
     func reloadView(cell: UITableViewCell)
 }
 
@@ -37,7 +34,7 @@ class FeedTableViewCell: UITableViewCell {
     
     weak var delegatePresentUser: FeedTableViewCellPresentUserDelegate?
     
-    weak var delegateReloadView: LikeButtonDidTapDelegate?
+    weak var delegateReloadView: ButtonDidTapReloadDelegate?
     
     // MARK: - @IBOutlet
     
@@ -56,10 +53,7 @@ class FeedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var likeButton: UIButton! {
         didSet {
-            let config = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium)
-            let image = UIImage(systemName: "heart", withConfiguration: config)
-            likeButton.setImage(image, for: .normal)
-            likeButton.tintColor = .label
+            setupLikeButton()
         }
     }
     
@@ -90,13 +84,9 @@ class FeedTableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var likeCount: UIButton!
+    @IBOutlet weak var likeCountButton: UIButton!
     
-    @IBOutlet weak var moreContentButton: UIButton! {
-        didSet {
-            moreContentButton.isHidden = true
-        }
-    }
+    @IBOutlet weak var moreContentButton: UIButton!
     
     @IBOutlet weak var viewCommentButton: UIButton! {
         didSet {
@@ -122,43 +112,42 @@ class FeedTableViewCell: UITableViewCell {
         self.delegatePresentUser?.presentUser(user: user, at: sender.tag)
     }
     
-//    var isLiked: Bool = false {
-//        didSet {
-//            if isLiked {
-//                self.likeButton.backgroundColor = .red
-//            } else {
-//                self.likeButton.backgroundColor = .blue
-//            }
-//        }
-//    }
+    @IBAction func moreCaptionButtonDidTap(_ sender: UIButton) {
+        captionLabel.numberOfLines = 0
+        moreContentButton.isHidden = true
+        delegateReloadView?.reloadView(cell: self)
+    }
     
     @IBAction func likeButtonDidTap(_ sender: UIButton) {
         
+        // Change local view
+        sender.isSelected.toggle()
+        setupLikeButton()
+        
         // Data
-        guard let post = currentPost,
-              let delegate = delegateReloadView
-        else {
-            print("------ post or delegate is nil in FeedTableViewCell")
-            return
-        }
+        guard let currentPost = currentPost else { return }
         
-//        isLiked = !isLiked
-        
-        PostManager.shared.updateUserDidLike(post: post) {
-            // View
-            sender.isSelected = !sender.isSelected
-            delegate.reloadView(cell: self)
+        PostManager.shared.updateUserDidLike(post: currentPost) {
         }
     }
     
     // MARK: -
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    private func setupLikeButton() {
+        let size: CGFloat = 19
+        
+        if likeButton.isSelected {
+            let config = UIImage.SymbolConfiguration(pointSize: size, weight: .medium)
+            let image = UIImage(systemName: "heart.fill", withConfiguration: config)
+            likeButton.setImage(image, for: .selected)
+            likeButton.tintColor = .systemRed
+            
+        } else {
+            let config = UIImage.SymbolConfiguration(pointSize: size, weight: .medium)
+            let image = UIImage(systemName: "heart", withConfiguration: config)
+            likeButton.setImage(image, for: .normal)
+            likeButton.tintColor = .label
+        }
     }
 }
 
@@ -171,46 +160,58 @@ extension FeedTableViewCell {
         // Set index
         moreActionsButton.tag = index
         
-        // Set current post
-        currentPost = post
-        
         // Set the cell style
         selectionStyle = .none
 
-        // Get post's author info from DB
-        userManager.getAuthorInfo(userId: post.userId) { [weak self] (user) in
-            self?.usernameButton.setTitle(user.username, for: .normal)
-
-            self?.profileImage.image = nil
-            let url = URL(string: user.profileImage)
-            self?.profileImage.kf.setImage(with: url)
+        // MARK: - Observe the post
+        
+        PostManager.shared.getUserPost(postId: post.postId) { [weak self] (currentPost) in
             
-            self?.currentUser = user
-        }
+            self?.currentPost = currentPost
+            
+            // likeButton
+            guard let userId = self?.userManager.currentUser?.userId else { return }
+            self?.likeButton.isSelected = currentPost.userDidLike.contains(userId)
+            self?.setupLikeButton()
+            
+            // likeCountButton
+            let count = currentPost.userDidLike.count - 1
+            switch count {
+            case 0:
+                self?.likeCountButton.isHidden = true
+            case 1:
+                self?.likeCountButton.isHidden = false
+                self?.likeCountButton.setTitle("\(count) like", for: .normal)
+            default:
+                self?.likeCountButton.isHidden = false
+                self?.likeCountButton.setTitle("\(count) likes", for: .normal)
+            }
+            
+            // captionLabel
+            self?.captionLabel.text = currentPost.caption
+            
+            // moreContentButton
+            let isHidden = self?.captionLabel.numberOfLines == 0 ? true : self?.captionLabel.textCount ?? 0 <= 1
+            self?.moreContentButton.isHidden = isHidden
+            
+            // Get post's author info from DB
+            self?.userManager.getAuthorInfo(userId: currentPost.userId) { [weak self] (user) in
+                self?.usernameButton.setTitle(user.username, for: .normal)
 
-        // Set up
-        captionLabel.text = post.caption
-        
-        let stringTimestamp = String(post.timestamp / 1000)
-        let date = DateClass.compareCurrentTime(str: stringTimestamp)
-        timestampLabel.text = "\(date)"
-        
-        let count = post.userDidLike.count - 1
-        if count > 1 {
-            likeCount.setTitle("\(count) likes", for: .normal)
-        } else {
-            likeCount.setTitle("\(count) like", for: .normal)
+                let url = URL(string: user.profileImage)
+                self?.profileImage.kf.setImage(with: url)
+                
+                self?.currentUser = user
+            }
+            
+            // Get post's image
+            let url = URL(string: currentPost.imageFileURL)
+            self?.postImageView.kf.setImage(with: url)
+            
+            // timestampLabel
+            let stringTimestamp = String(currentPost.timestamp / 1000)
+            let date = DateClass.compareCurrentTime(str: stringTimestamp)
+            self?.timestampLabel.text = "\(date)"
         }
-        
-        // Reset image view's image
-        postImageView.image = nil
-        
-        // likeButton
-        guard let userId = userManager.currentUser?.userId else { return }
-        likeButton.isSelected = post.userDidLike.contains(userId)
-        
-        // MARK: - Download post image - KingFisher
-        let url = URL(string: post.imageFileURL)
-        postImageView.kf.setImage(with: url)
     }
 }
