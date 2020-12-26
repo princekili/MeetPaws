@@ -45,6 +45,7 @@ class CameraViewController: UIViewController {
         super.viewDidLoad()
         showPicker()
         hideButtons()
+        hideKeyboardWhenDidTapAround()
 //        observePosts()
     }
     

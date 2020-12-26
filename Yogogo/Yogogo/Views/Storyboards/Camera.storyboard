@@ -11,7 +11,7 @@
         <!--Camera View Controller-->
         <scene sceneID="Cw9-uO-dlm">
             <objects>
-                <viewController storyboardIdentifier="CameraVC" modalTransitionStyle="flipHorizontal" id="hkO-f3-na9" customClass="CameraViewController" customModule="Yogogo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CameraVC" modalTransitionStyle="flipHorizontal" id="hkO-f3-na9" customClass="CameraViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CyV-sK-NBF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,7 +35,7 @@
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8DE-pP-CJi"/>
