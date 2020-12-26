@@ -32,11 +32,12 @@ class UserProfileViewController: UIViewController {
         setupNavigationBar()
         setupCollectionView()
         setupRefresher()
-        loadAndReloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        loadAndReloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

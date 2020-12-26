@@ -93,6 +93,7 @@ class FeedViewController: UIViewController {
 
 extension FeedViewController: LoadRecentPostsDelegate {
     
+    // For CameraVC
     func loadRecentPost() {
         loadRecentPosts()
     }

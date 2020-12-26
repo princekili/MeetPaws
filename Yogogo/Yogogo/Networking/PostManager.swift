@@ -145,7 +145,6 @@ final class PostManager {
             }
             
             if newPosts.count > 0 {
-                
                 // Order in descending order (i.e. the latest post becomes the first post)
                 newPosts.sort(by: { $0.timestamp > $1.timestamp })
             }
@@ -243,25 +242,18 @@ final class PostManager {
     func updateUserDidLike(post: Post, completion: @escaping () -> Void) {
 
         guard let userId = Auth.auth().currentUser?.uid else { return }
-
-        var userDidLikeUpdate: [String: Any]
-        
         var userDidLike = post.userDidLike
         
         if userDidLike.contains(userId) {
-            
             let filtered = userDidLike.filter { $0 != userId }
-            userDidLikeUpdate = ["userDidLike": filtered]
+            postsRef.child(post.postId).child("userDidLike").setValue(filtered)
             print("------ Dislike💔 ------")
             
         } else {
-            
             userDidLike.append(userId)
-            userDidLikeUpdate = ["userDidLike": userDidLike]
+            postsRef.child(post.postId).child("userDidLike").setValue(userDidLike)
             print("------ Like❤️ ------")
         }
-        
-        postsRef.child(post.postId).updateChildValues(userDidLikeUpdate)
         
         completion()
     }
