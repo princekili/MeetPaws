@@ -115,7 +115,7 @@ class UserManager {
     func getCurrentUserInfo(userId: String, completion: @escaping (User) -> Void) {
         
         // Call Firebase API to retrieve the user info
-        ref.child("users").child(userId).observeSingleEvent(of: .value) { (snapshot) in
+        ref.child("users").child(userId).observe(.value) { (snapshot) in
             
             let userInfo = snapshot.value as? [String: Any] ?? [:]
             
@@ -293,7 +293,7 @@ class UserManager {
         let imageStorageRef = profilePhotoStorageRef.child("\(imageKey).jpg")
         
         let scaledImage = image.scale(newWidth: 200)
-        guard let imageData = scaledImage.jpegData(compressionQuality: 0.7) else { return }
+        guard let imageData = scaledImage.jpegData(compressionQuality: 1.0) else { return }
         
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpg"
@@ -326,7 +326,7 @@ class UserManager {
         completion() // do something after updating
     }
     
-    // MARK: - Update User Posts
+    // MARK: - Update /users/userId/posts for deleting & editing
     
     func updateUserPosts(completion: @escaping () -> Void) {
         

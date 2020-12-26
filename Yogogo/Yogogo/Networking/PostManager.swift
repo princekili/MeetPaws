@@ -21,11 +21,7 @@ final class PostManager {
     
     var postsOfCurrentUser: [Post]?
     
-    // MARK: Firebase Reference
-    
     let postsRef: DatabaseReference = Database.database().reference().child("posts")
-    
-    // MARK: Firebase Storage Reference
 
     let photoStorageRef: StorageReference = Storage.storage().reference().child("photos")
     
@@ -194,7 +190,8 @@ final class PostManager {
         
     }
     
-    // MARK: - Download My Posts
+    // MARK: - Download my posts for MyProfile
+    // MARK: Observe posts' info for FeedVC
     
     func getUserPost(postId: String, completion: @escaping (Post) -> Void) {
         
@@ -202,7 +199,7 @@ final class PostManager {
         let postQuery = postsRef.child(postId)
         
         // Call Firebase API to retrieve the latest records
-        postQuery.observeSingleEvent(of: .value, with: { (snapshot) in
+        postQuery.observe(.value, with: { (snapshot) in
             
             let postInfo = snapshot.value as? [String: Any] ?? [:]
             

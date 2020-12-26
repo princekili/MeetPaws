@@ -61,9 +61,6 @@ class MyProfileViewController: UIViewController {
     private func setupNavigationBar() {
         navigationItem.backButtonTitle = ""
         
-        let title = userManager.currentUser?.username
-        navigationItem.title = title
-        
         // Check isPushFromOtherVC
         if let rootVC = navigationController?.rootViewController {
             let isPushFromOtherVC = (rootVC is FeedViewController) || (rootVC is MapsViewController) || (rootVC is SearchViewController)
@@ -101,7 +98,9 @@ extension MyProfileViewController {
     @objc private func loadMyPosts() {
         
         guard let userId = UserManager.shared.currentUser?.userId else { return }
-        userManager.getCurrentUserInfo(userId: userId) { (user) in
+        userManager.getCurrentUserInfo(userId: userId) { [weak self] (user) in
+            
+            self?.navigationItem.title = user.username
             
             var postIds = user.posts
             postIds = postIds.filter { $0 != "" }
@@ -112,7 +111,7 @@ extension MyProfileViewController {
                 
                 print("------ Loading My Post: \(postId) ------")
                 
-                self.isLoadingPost = true
+                self?.isLoadingPost = true
                 
                 PostManager.shared.getUserPost(postId: postId) { [weak self] (newPost) in
                     
@@ -198,18 +197,13 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
         
         if indexPath.section == 1 {
             // tabs header
-            guard let headerForTabs = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                         withReuseIdentifier: MyProfileTabsCollectionReusableView.identifier,
-                                                                         for: indexPath) as? MyProfileTabsCollectionReusableView
-            else { return UICollectionReusableView() }
+            guard let headerForTabs = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyProfileTabsCollectionReusableView.identifier, for: indexPath) as? MyProfileTabsCollectionReusableView else { return UICollectionReusableView() }
+            
             headerForTabs.delegate = self
             return headerForTabs
         }
         
-        guard let headerForInfo = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                     withReuseIdentifier: MyProfileHeaderCollectionReusableView.identifier,
-                                                                     for: indexPath) as? MyProfileHeaderCollectionReusableView
-        else { return UICollectionReusableView() }
+        guard let headerForInfo = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyProfileHeaderCollectionReusableView.identifier, for: indexPath) as? MyProfileHeaderCollectionReusableView else { return UICollectionReusableView() }
         
         headerForInfo.setup()
         headerForInfo.delegate = self

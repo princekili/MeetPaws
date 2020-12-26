@@ -30,6 +30,7 @@ class FeedViewController: UIViewController {
         setupTableView()
         setupNavigationBar()
         setupRefresher()
+        getCurrentUserInfo()
         SearchManager.shared.getUsers {}
     }
  
@@ -38,7 +39,6 @@ class FeedViewController: UIViewController {
         
         tableView.reloadData()
         loadRecentPosts()
-        getCurrentUserInfo()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -308,7 +308,7 @@ extension FeedViewController: FeedTableViewCellPresentUserDelegate {
     }
 }
 
-extension FeedViewController: LikeButtonDidTapDelegate {
+extension FeedViewController: ButtonDidTapReloadDelegate {
     
     func reloadView(cell: UITableViewCell) {
         tableView.reloadData()
