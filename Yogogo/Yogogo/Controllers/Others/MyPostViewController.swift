@@ -20,8 +20,8 @@ class MyPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupNavigationBar()
         setupTableView()
+        setupNavigationBar()
     }
     
     // MARK: -
@@ -47,13 +47,14 @@ extension MyPostViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier,
-                                                 for: indexPath) as? PostTableViewCell
-        else { return UITableViewCell() }
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         
         guard let currentPost = post else { return UITableViewCell() }
         cell.setup(post: currentPost)
-        cell.delegate = self
+        cell.delegatePresentAlert = self
+        cell.delegatePresentUser = self
+        cell.delegateReloadView = self
         
         // Delete the post
         self.deleteHandler = { [weak self] in
@@ -130,5 +131,19 @@ extension MyPostViewController: PostTableViewCellPresentAlertDelegate {
         confirmAlertController.addAction(cancelAction)
         
         self.present(confirmAlertController, animated: true, completion: nil)
+    }
+}
+
+extension MyPostViewController: PostTableViewCellPresentUserDelegate {
+    
+    func presentUser() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension MyPostViewController: ButtonDidTapReloadDelegate {
+    
+    func reloadView(cell: UITableViewCell) {
+        tableView.reloadData()
     }
 }

@@ -20,6 +20,8 @@ protocol ButtonDidTapReloadDelegate: AnyObject {
     func reloadView(cell: UITableViewCell)
 }
 
+// MARK: -
+
 class FeedTableViewCell: UITableViewCell {
     
     static let identifier = "FeedTableViewCell"
@@ -57,12 +59,12 @@ class FeedTableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var messageButton: UIButton! {
+    @IBOutlet weak var commentButton: UIButton! {
         didSet {
             let config = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)
             let image = UIImage(systemName: "message", withConfiguration: config)
-            messageButton.setImage(image, for: .normal)
-            messageButton.tintColor = .label
+            commentButton.setImage(image, for: .normal)
+            commentButton.tintColor = .label
         }
     }
     
@@ -127,8 +129,7 @@ class FeedTableViewCell: UITableViewCell {
         // Data
         guard let currentPost = currentPost else { return }
         
-        PostManager.shared.updateUserDidLike(post: currentPost) {
-        }
+        PostManager.shared.updateUserDidLike(post: currentPost)
     }
     
     // MARK: -

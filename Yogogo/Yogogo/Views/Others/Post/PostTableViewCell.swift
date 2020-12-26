@@ -9,9 +9,14 @@ import UIKit
 import Kingfisher
 
 protocol PostTableViewCellPresentAlertDelegate: AnyObject {
-    
     func presentAlert(postId: String)
 }
+
+protocol PostTableViewCellPresentUserDelegate: AnyObject {
+    func presentUser()
+}
+
+// MARK: -
 
 class PostTableViewCell: UITableViewCell {
     
@@ -19,9 +24,17 @@ class PostTableViewCell: UITableViewCell {
     
     private var currentPost: Post?
     
-    weak var delegate: PostTableViewCellPresentAlertDelegate?
+    private var currentUser: User?
     
-    // MARK: -
+    let userManager = UserManager.shared
+    
+    weak var delegatePresentAlert: PostTableViewCellPresentAlertDelegate?
+    
+    weak var delegatePresentUser: PostTableViewCellPresentUserDelegate?
+    
+    weak var delegateReloadView: ButtonDidTapReloadDelegate?
+    
+    // MARK: - @IBOutlet
     
     @IBOutlet weak var profileImage: UIImageView! {
         didSet {
@@ -38,19 +51,16 @@ class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var likeButton: UIButton! {
         didSet {
-            let config = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium)
-            let image = UIImage(systemName: "heart", withConfiguration: config)
-            likeButton.setImage(image, for: .normal)
-            likeButton.tintColor = .label
+            setupLikeButton()
         }
     }
     
-    @IBOutlet weak var messageButton: UIButton! {
+    @IBOutlet weak var commentButton: UIButton! {
         didSet {
             let config = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)
             let image = UIImage(systemName: "message", withConfiguration: config)
-            messageButton.setImage(image, for: .normal)
-            messageButton.tintColor = .label
+            commentButton.setImage(image, for: .normal)
+            commentButton.tintColor = .label
         }
     }
     
@@ -72,13 +82,9 @@ class PostTableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var likeCount: UIButton!
+    @IBOutlet weak var likeCountButton: UIButton!
     
-    @IBOutlet weak var moreContentButton: UIButton! {
-        didSet {
-            moreContentButton.isHidden = true
-        }
-    }
+    @IBOutlet weak var moreContentButton: UIButton!
     
     @IBOutlet weak var viewCommentButton: UIButton! {
         didSet {
@@ -96,17 +102,48 @@ class PostTableViewCell: UITableViewCell {
     
     @IBAction func moreActionsButtonDidTap(_ sender: UIButton) {
         guard let postId = currentPost?.postId else { return }
-        self.delegate?.presentAlert(postId: postId)
+        self.delegatePresentAlert?.presentAlert(postId: postId)
+    }
+    
+    @IBAction func usernameButtonDidTap(_ sender: UIButton) {
+        self.delegatePresentUser?.presentUser()
+    }
+    
+    @IBAction func moreCaptionButtonDidTap(_ sender: UIButton) {
+        captionLabel.numberOfLines = 0
+        moreContentButton.isHidden = true
+        delegateReloadView?.reloadView(cell: self)
+    }
+    
+    @IBAction func likeButtonDidTap(_ sender: UIButton) {
+        
+        // Change local view
+        sender.isSelected.toggle()
+        setupLikeButton()
+        
+        // Data
+        guard let currentPost = currentPost else { return }
+        
+        PostManager.shared.updateUserDidLike(post: currentPost)
     }
     
     // MARK: -
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    private func setupLikeButton() {
+        let size: CGFloat = 19
+        
+        if likeButton.isSelected {
+            let config = UIImage.SymbolConfiguration(pointSize: size, weight: .medium)
+            let image = UIImage(systemName: "heart.fill", withConfiguration: config)
+            likeButton.setImage(image, for: .selected)
+            likeButton.tintColor = .systemRed
+            
+        } else {
+            let config = UIImage.SymbolConfiguration(pointSize: size, weight: .medium)
+            let image = UIImage(systemName: "heart", withConfiguration: config)
+            likeButton.setImage(image, for: .normal)
+            likeButton.tintColor = .label
+        }
     }
 
     // MARK: -
@@ -115,32 +152,55 @@ class PostTableViewCell: UITableViewCell {
 
         selectionStyle = .none
         
-        currentPost = post
+        // MARK: - Observe the post
         
-        // Get post's author info from DB
-        UserManager.shared.getAuthorInfo(userId: post.userId) { [weak self] (user) in
+        PostManager.shared.getUserPost(postId: post.postId) { [weak self] (currentPost) in
             
-            let url = URL(string: user.profileImage)
-            self?.profileImage.kf.setImage(with: url)
+            self?.currentPost = currentPost
             
-            self?.usernameButton.setTitle(user.username, for: .normal)
-        }
-        
-        postImageView.image = nil
-        let url = URL(string: post.imageFileURL)
-        postImageView.kf.setImage(with: url)
-        
-        captionLabel.text = post.caption
-        
-        let stringTimestamp = String(post.timestamp / 1000)
-        let date = DateClass.compareCurrentTime(str: stringTimestamp)
-        timestampLabel.text = "\(date)"
-        
-        let count = post.userDidLike.count - 1
-        if count > 1 {
-            likeCount.setTitle("\(count) likes", for: .normal)
-        } else {
-            likeCount.setTitle("\(count) like", for: .normal)
+            // likeButton
+            guard let userId = self?.userManager.currentUser?.userId else { return }
+            self?.likeButton.isSelected = currentPost.userDidLike.contains(userId)
+            self?.setupLikeButton()
+            
+            // likeCountButton
+            let count = currentPost.userDidLike.count - 1
+            switch count {
+            case 0:
+                self?.likeCountButton.isHidden = true
+            case 1:
+                self?.likeCountButton.isHidden = false
+                self?.likeCountButton.setTitle("\(count) like", for: .normal)
+            default:
+                self?.likeCountButton.isHidden = false
+                self?.likeCountButton.setTitle("\(count) likes", for: .normal)
+            }
+            
+            // captionLabel
+            self?.captionLabel.text = currentPost.caption
+            
+            // moreContentButton
+            let isHidden = self?.captionLabel.numberOfLines == 0 ? true : self?.captionLabel.textCount ?? 0 <= 1
+            self?.moreContentButton.isHidden = isHidden
+            
+            // Get post's author info from DB
+            self?.userManager.getAuthorInfo(userId: currentPost.userId) { [weak self] (user) in
+                self?.usernameButton.setTitle(user.username, for: .normal)
+
+                let url = URL(string: user.profileImage)
+                self?.profileImage.kf.setImage(with: url)
+                
+                self?.currentUser = user
+            }
+            
+            // Get post's image
+            let url = URL(string: currentPost.imageFileURL)
+            self?.postImageView.kf.setImage(with: url)
+            
+            // timestampLabel
+            let stringTimestamp = String(currentPost.timestamp / 1000)
+            let date = DateClass.compareCurrentTime(str: stringTimestamp)
+            self?.timestampLabel.text = "\(date)"
         }
     }
 }
