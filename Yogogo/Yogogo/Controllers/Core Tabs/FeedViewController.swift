@@ -99,7 +99,7 @@ extension FeedViewController: LoadRecentPostsDelegate {
     }
     
     @objc func loadRecentPosts() {
-        
+
         print("------ Loading Recent Posts... ------")
         
         isLoadingPost = true
@@ -109,6 +109,7 @@ extension FeedViewController: LoadRecentPostsDelegate {
             if newPosts.count > 0 {
                 // Add the array to the beginning of the posts arrays
                 self?.postFeed.insert(contentsOf: newPosts, at: 0)
+                self?.postFeed.removeDuplicates()
             }
             
             self?.isLoadingPost = false

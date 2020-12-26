@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Post {
+struct Post: Hashable {
     
     // MARK: - Properties
     
