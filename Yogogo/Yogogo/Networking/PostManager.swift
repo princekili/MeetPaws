@@ -125,7 +125,7 @@ final class PostManager {
         
         // Call Firebase API to retrieve the latest records
         postQuery.observeSingleEvent(of: .value, with: { (snapshot) in
-//        postQuery.observe(.value, with: { (snapshot) in
+
             
             var newPosts: [Post] = []
             
@@ -213,6 +213,25 @@ final class PostManager {
         })
     }
     
+    // MARK: - Handle post's ❤️ (userDidLike)
+    
+    func updateUserDidLike(post: Post) {
+
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        var userDidLike = post.userDidLike
+        
+        if userDidLike.contains(userId) {
+            let filtered = userDidLike.filter { $0 != userId }
+            postsRef.child(post.postId).child("userDidLike").setValue(filtered)
+            print("------ Dislike💔 ------")
+            
+        } else {
+            userDidLike.append(userId)
+            postsRef.child(post.postId).child("userDidLike").setValue(userDidLike)
+            print("------ Like❤️ ------")
+        }
+    }
+    
     // MARK: - Delete the Post
     
     func deletePost(postId: String, completion: @escaping () -> Void) {
@@ -237,24 +256,5 @@ final class PostManager {
         completion()
     }
     
-    // MARK: - Handle post's ❤️ (userDidLike)
     
-    func updateUserDidLike(post: Post, completion: @escaping () -> Void) {
-
-        guard let userId = Auth.auth().currentUser?.uid else { return }
-        var userDidLike = post.userDidLike
-        
-        if userDidLike.contains(userId) {
-            let filtered = userDidLike.filter { $0 != userId }
-            postsRef.child(post.postId).child("userDidLike").setValue(filtered)
-            print("------ Dislike💔 ------")
-            
-        } else {
-            userDidLike.append(userId)
-            postsRef.child(post.postId).child("userDidLike").setValue(userDidLike)
-            print("------ Like❤️ ------")
-        }
-        
-        completion()
-    }
 }
