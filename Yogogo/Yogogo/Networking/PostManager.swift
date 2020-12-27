@@ -192,7 +192,7 @@ final class PostManager {
     // MARK: - Download my posts for MyProfile
     // MARK: Observe posts' info for FeedVC
     
-    func getUserPost(postId: String, completion: @escaping (Post) -> Void) {
+    func observeUserPost(postId: String, completion: @escaping (Post) -> Void) {
         
         // Filter via postId
         let postQuery = postsRef.child(postId)
@@ -255,6 +255,4 @@ final class PostManager {
         // Download posts & Reload data
         completion()
     }
-    
-    
 }

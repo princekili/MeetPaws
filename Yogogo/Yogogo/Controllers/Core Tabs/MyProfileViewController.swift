@@ -113,7 +113,7 @@ extension MyProfileViewController {
                 
                 self?.isLoadingPost = true
                 
-                PostManager.shared.getUserPost(postId: postId) { [weak self] (newPost) in
+                PostManager.shared.observeUserPost(postId: postId) { [weak self] (newPost) in
                     
                     // Add the array to the beginning of the posts arrays
                     myPosts.append(newPost)

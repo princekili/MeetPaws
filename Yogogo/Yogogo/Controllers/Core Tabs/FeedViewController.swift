@@ -32,16 +32,14 @@ class FeedViewController: UIViewController {
         setupRefresher()
         getCurrentUserInfo()
         SearchManager.shared.getUsers {}
-        
-        loadRecentPosts()
         tabBarController?.delegate = self
     }
  
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        loadRecentPosts()
         tableView.reloadData()
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -320,7 +318,7 @@ extension FeedViewController: ButtonDidTapReloadDelegate {
     }
 }
 
-// MARK: -
+// MARK: - Tap tab bar item to scroll to the top of FeedVC.
 
 extension FeedViewController: UITabBarControllerDelegate {
     

@@ -154,7 +154,7 @@ class PostTableViewCell: UITableViewCell {
         
         // MARK: - Observe the post
         
-        PostManager.shared.getUserPost(postId: post.postId) { [weak self] (currentPost) in
+        PostManager.shared.observeUserPost(postId: post.postId) { [weak self] (currentPost) in
             
             self?.currentPost = currentPost
             
