@@ -32,13 +32,16 @@ class FeedViewController: UIViewController {
         setupRefresher()
         getCurrentUserInfo()
         SearchManager.shared.getUsers {}
+        
+        loadRecentPosts()
+        tabBarController?.delegate = self
     }
  
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         tableView.reloadData()
-        loadRecentPosts()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -54,7 +57,7 @@ class FeedViewController: UIViewController {
         }
     }
     
-    // MARK: -
+    // MARK: - Set up
     
     private func setupTableView() {
         tableView.delegate = self
@@ -314,5 +317,18 @@ extension FeedViewController: ButtonDidTapReloadDelegate {
     
     func reloadView(cell: UITableViewCell) {
         tableView.reloadData()
+    }
+}
+
+// MARK: -
+
+extension FeedViewController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 0 {
+            let indexPath = IndexPath(row: 0, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        }
     }
 }
