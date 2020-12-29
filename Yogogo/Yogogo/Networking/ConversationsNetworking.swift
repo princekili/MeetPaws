@@ -121,7 +121,8 @@ class ConversationsNetworking {
 //        for user in Users.list {
             ref.child("messages").child(userId).child(user.userId)
                 .queryLimited(toLast: 1)
-                .observeSingleEvent(of: .value) { (snap) in
+//                .observeSingleEvent(of: .value) { (snap) in
+                .observe(.value) { (snap) in
                     
                 guard snap.childrenCount > 0 else {
                     self.convVC.loadMessagesHandler(nil)

@@ -35,6 +35,8 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     let calendar = Calendar(identifier: .gregorian)
     
+    let ref = Database.database().reference()
+    
     // MARK: -
     
     override func viewDidLoad() {
@@ -203,9 +205,9 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         let trimmedMessage = messageContainer.messageTV.text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard trimmedMessage.count > 0 else { return }
         
-        let senderRef = Database.database().reference().child("messages").child(currentUser.userId).child(user.userId).childByAutoId()
+        let senderRef = ref.child("messages").child(currentUser.userId).child(user.userId).childByAutoId()
         
-        let friendRef = Database.database().reference().child("messages").child(user.userId).child(currentUser.userId).child(senderRef.key!)
+        let friendRef = ref.child("messages").child(user.userId).child(currentUser.userId).child(senderRef.key!)
         
         guard let messageId = senderRef.key else { return }
         
@@ -288,14 +290,14 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         
         self.blankLoadingView.isHidden = true
         chatNetworking.observeUserMessageSeen()
-        let ref = Database.database().reference().child("messages").child(currentUser.userId).child(user.userId)
-        ref.observe(.childRemoved) { (snap) in
+        let msgRef = ref.child("messages").child(currentUser.userId).child(user.userId)
+        msgRef.observe(.childRemoved) { (snap) in
             self.chatNetworking.deleteMessageHandler(self.messages, for: snap) { (index) in
                 self.messages.remove(at: index)
                 self.collectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
             }
         }
-        ref.queryLimited(toLast: 1).observe(.childAdded) { (snap) in
+        msgRef.queryLimited(toLast: 1).observe(.childAdded) { (snap) in
             self.chatNetworking.newMessageRecievedHandler(self.messages, for: snap) { (newMessage) in
                 self.messages.append(newMessage)
                 self.collectionView.reloadData()
