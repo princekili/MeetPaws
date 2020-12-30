@@ -24,6 +24,10 @@ class UserProfileViewController: UIViewController {
     
     let userManager = UserManager.shared
     
+    let segueId = "SegueUserProfileToFollowers"
+    
+    var followType: FollowType = .followers
+    
     // MARK: -
     
     override func viewDidLoad() {
@@ -45,6 +49,12 @@ class UserProfileViewController: UIViewController {
         if segue.identifier == "SegueUserPostVC" {
             guard let myPostVC = segue.destination as? MyPostViewController else { return }
             myPostVC.post = post
+            
+        } else if segue.identifier == segueId {
+            guard let followersVC = segue.destination as? FollowersViewController else { return }
+            guard let user = user else { return }
+            followersVC.listOwner = user
+            followersVC.followType = followType
         }
     }
     
@@ -197,7 +207,7 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
         guard let user = self.user else { return UICollectionReusableView() }
         headerForInfo.setup(user: user)
         headerForInfo.delegateOpenUserMessages = self
-//        headerForInfo.delegate = self
+        headerForInfo.delegateForButtons = self
         return headerForInfo
     }
     
@@ -224,14 +234,29 @@ extension UserProfileViewController: UserProfileTabsCollectionReusableViewDelega
 extension UserProfileViewController: OpenUserMessagesHandlerDelegate {
     
     func openUserMessagesHandler() {
-        
-//        let chatVC = UIStoryboard(name: StoryboardName.chat.rawValue, bundle: nil).instantiateViewController(identifier: StoryboardId.chatVC.rawValue)
-        
-//        let chatVC: ChatVC = UIStoryboard.initiateVC(name: .chat, id: .chatVC)
-        
         let chatVC = ChatVC()
         chatVC.user = user
-        
         navigationController?.pushViewController(chatVC, animated: true)
+    }
+}
+
+// MARK: - MyProfileHeaderCollectionReusableViewDelegate
+
+extension UserProfileViewController: MyProfileHeaderCollectionReusableViewDelegate {
+    
+    func postsButtonDidTap(_ header: UICollectionReusableView) {
+        // scroll to the posts
+        let indexPath = IndexPath(row: 0, section: 1)
+        collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+    }
+    
+    func followersButtonDidTap() {
+        followType = .followers
+        performSegue(withIdentifier: segueId, sender: nil)
+    }
+    
+    func followingButtonDidTap() {
+        followType = .following
+        performSegue(withIdentifier: segueId, sender: nil)
     }
 }

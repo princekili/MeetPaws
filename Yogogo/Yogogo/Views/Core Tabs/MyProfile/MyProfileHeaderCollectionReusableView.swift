@@ -9,7 +9,12 @@ import UIKit
 
 protocol MyProfileHeaderCollectionReusableViewDelegate: AnyObject {
     
-    func myProfileHeaderDidTapPostsButton(_ header: MyProfileHeaderCollectionReusableView)
+//    func postsButtonDidTap(_ header: MyProfileHeaderCollectionReusableView)
+    func postsButtonDidTap(_ header: UICollectionReusableView)
+    
+    func followersButtonDidTap()
+    
+    func followingButtonDidTap()
 }
 
 final class MyProfileHeaderCollectionReusableView: UICollectionReusableView {
@@ -18,7 +23,7 @@ final class MyProfileHeaderCollectionReusableView: UICollectionReusableView {
     
     let userManager = UserManager.shared
     
-    weak var delegate: MyProfileHeaderCollectionReusableViewDelegate?
+    weak var delegateForButtons: MyProfileHeaderCollectionReusableViewDelegate?
     
     @IBOutlet weak var profileImageView: UIImageView! {
         didSet {
@@ -47,13 +52,15 @@ final class MyProfileHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var followingCountButton: UIButton!
     
     @IBAction func postsButtonDidTap(_ sender: UIButton) {
-        delegate?.myProfileHeaderDidTapPostsButton(self)
+        delegateForButtons?.postsButtonDidTap(self)
     }
     
     @IBAction func followersButtonDidTap(_ sender: UIButton) {
+        delegateForButtons?.followersButtonDidTap()
     }
     
     @IBAction func followingButtonDidTap(_ sender: UIButton) {
+        delegateForButtons?.followingButtonDidTap()
     }
     
     func setup() {

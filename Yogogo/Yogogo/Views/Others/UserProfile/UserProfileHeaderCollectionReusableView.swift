@@ -25,6 +25,8 @@ class UserProfileHeaderCollectionReusableView: UICollectionReusableView {
     
     weak var delegateOpenUserMessages: OpenUserMessagesHandlerDelegate?
     
+    weak var delegateForButtons: MyProfileHeaderCollectionReusableViewDelegate?
+    
     // MARK: - @IBOutlet
     
     @IBOutlet weak var profileImageView: UIImageView! {
@@ -67,12 +69,15 @@ class UserProfileHeaderCollectionReusableView: UICollectionReusableView {
     // MARK: - @IBAction
     
     @IBAction func postsButtonDidTap(_ sender: UIButton) {
+        delegateForButtons?.postsButtonDidTap(self)
     }
     
     @IBAction func followersButtonDidTap(_ sender: UIButton) {
+        delegateForButtons?.followersButtonDidTap()
     }
     
     @IBAction func followingButtonDidTap(_ sender: UIButton) {
+        delegateForButtons?.followingButtonDidTap()
     }
     
     @IBAction func followButtonDidTap(_ sender: UIButton) {
@@ -124,6 +129,4 @@ extension UserProfileHeaderCollectionReusableView {
         followButton.backgroundColor = .systemBlue
         followButton.layer.borderWidth = 0
     }
-    
-    // MARK: -
 }

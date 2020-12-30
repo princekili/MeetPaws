@@ -22,6 +22,10 @@ class MyProfileViewController: UIViewController {
     
     let refreshControl = UIRefreshControl()
     
+    let segueId = "SegueMyProfileToFollowers"
+    
+    var followType: FollowType = .followers
+
     // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +46,12 @@ class MyProfileViewController: UIViewController {
         if segue.identifier == "SegueMyPostVC" {
             guard let myPostVC = segue.destination as? MyPostViewController else { return }
             myPostVC.post = post
+            
+        } else if segue.identifier == segueId {
+            guard let followersVC = segue.destination as? FollowersViewController else { return }
+            guard let myself = userManager.currentUser else { return }
+            followersVC.listOwner = myself
+            followersVC.followType = followType
         }
     }
     
@@ -206,7 +216,7 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
         guard let headerForInfo = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyProfileHeaderCollectionReusableView.identifier, for: indexPath) as? MyProfileHeaderCollectionReusableView else { return UICollectionReusableView() }
         
         headerForInfo.setup()
-        headerForInfo.delegate = self
+        headerForInfo.delegateForButtons = self
         return headerForInfo
     }
     
@@ -238,9 +248,19 @@ extension MyProfileViewController: MyProfileTabsCollectionReusableViewDelegate {
 
 extension MyProfileViewController: MyProfileHeaderCollectionReusableViewDelegate {
     
-    func myProfileHeaderDidTapPostsButton(_ header: MyProfileHeaderCollectionReusableView) {
+    func postsButtonDidTap(_ header: UICollectionReusableView) {
         // scroll to the posts
         let indexPath = IndexPath(row: 0, section: 1)
         collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+    }
+    
+    func followersButtonDidTap() {
+        followType = .followers
+        performSegue(withIdentifier: segueId, sender: nil)
+    }
+    
+    func followingButtonDidTap() {
+        followType = .following
+        performSegue(withIdentifier: segueId, sender: nil)
     }
 }
