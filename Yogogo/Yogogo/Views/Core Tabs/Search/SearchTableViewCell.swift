@@ -34,7 +34,7 @@ class SearchTableViewCell: UITableViewCell {
         
         usernameLabel.text = searchResults.username
         
-        if searchResults.fullName.isEmpty {
+        if searchResults.fullName.isEmpty || searchResults.fullName == " " {
             nameLabel.isHidden = true
         } else {        
             nameLabel.text = searchResults.fullName
@@ -43,15 +43,4 @@ class SearchTableViewCell: UITableViewCell {
         guard let following = UserManager.shared.currentUser?.following else { return }
         followingLabel.isHidden = !following.contains(searchResults.userId)
     }
-    
-    // MARK: -
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-
 }

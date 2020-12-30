@@ -206,8 +206,10 @@ extension FeedTableViewCell {
             }
             
             // Get post's image
-            let url = URL(string: currentPost.imageFileURL)
-            self?.postImageView.kf.setImage(with: url)
+            if self?.currentPost?.imageFileURL == post.imageFileURL {
+                let url = URL(string: post.imageFileURL)
+                self?.postImageView.kf.setImage(with: url, placeholder: UIImage(named: "dog_postImage"))
+            }
             
             // timestampLabel
             let stringTimestamp = String(currentPost.timestamp / 1000)

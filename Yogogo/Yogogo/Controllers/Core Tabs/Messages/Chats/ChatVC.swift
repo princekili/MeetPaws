@@ -125,7 +125,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         navigationController?.navigationBar.tintColor = .label
         
         var displayName = user.fullName
-        if user.fullName.isEmpty {
+        if user.fullName.isEmpty || user.fullName == " " {
             displayName = user.username
         }
         

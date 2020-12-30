@@ -10,6 +10,7 @@ import UIKit
 protocol MyProfileTabsCollectionReusableViewDelegate: AnyObject {
     
     func gridButtonDidTap()
+    
     func listButtonDidTap()
 }
 
@@ -57,12 +58,12 @@ class MyProfileTabsCollectionReusableView: UICollectionReusableView {
     
     @objc private func gridButtonDidTap() {
         gridButton.tintColor = .label
-        listButton.tintColor = .lightGray
+        listButton.tintColor = .gray
         delegate?.gridButtonDidTap()
     }
     
     @objc private func listButtonDidTap() {
-        gridButton.tintColor = .lightGray
+        gridButton.tintColor = .gray
         listButton.tintColor = .label
         delegate?.listButtonDidTap()
     }

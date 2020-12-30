@@ -25,7 +25,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupTableView()
         setupSearchBar()
         navigationItem.backButtonTitle = ""
@@ -59,7 +59,7 @@ class SearchViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.searchBarStyle = .minimal
-        searchController.searchBar.placeholder = "Search usernames..."
+        searchController.searchBar.placeholder = "Search the username..."
     }
     
     private func filterContent(for searchText: String) {

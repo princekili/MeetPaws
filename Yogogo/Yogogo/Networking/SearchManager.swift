@@ -17,7 +17,7 @@ class SearchManager {
     
     let ref = Database.database().reference()
     
-    // MARK: - observe Users to get userIds
+    // MARK: - 1. Get all userIds
     
     private func getUserIds(completion: @escaping ([String]) -> Void) {
         
@@ -38,7 +38,7 @@ class SearchManager {
         }
     }
     
-    // MARK: -
+    // MARK: - 2. Get userInfo
     
     private func getUserInfo(of userId: String) {
         
@@ -60,9 +60,9 @@ class SearchManager {
     // MARK: -
     
     func getUsers(completion: @escaping () -> Void) {
-        // Get all userIds
+        
         getUserIds { [weak self] (userIds) in
-            
+            // Get all users' userInfo
             for userId in userIds {
                 self?.getUserInfo(of: userId)
             }

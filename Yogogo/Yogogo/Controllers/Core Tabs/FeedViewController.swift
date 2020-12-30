@@ -294,7 +294,6 @@ extension FeedViewController: FeedTableViewCellPresentUserDelegate {
         self.user = user
         
         guard let myself = Auth.auth().currentUser?.uid else { return }
-        
         if user.userId == myself {
             showMyProfileVC()
         

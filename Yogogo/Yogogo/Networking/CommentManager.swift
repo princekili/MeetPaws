@@ -25,8 +25,6 @@ final class CommentManager {
     
     func uploadComment(content: String, completion: @escaping () -> Void) {
         
-        let commentDatabaseRef = commentRef.childByAutoId()
-        
-        
+//        let commentDatabaseRef = commentRef.childByAutoId()
     }
 }
