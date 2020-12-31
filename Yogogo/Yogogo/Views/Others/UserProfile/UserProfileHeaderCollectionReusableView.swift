@@ -21,8 +21,6 @@ class UserProfileHeaderCollectionReusableView: UICollectionReusableView {
     
     var user: User?
     
-    var isFollowing = false
-    
     weak var delegateOpenUserMessages: OpenUserMessagesHandlerDelegate?
     
     weak var delegateForButtons: MyProfileHeaderCollectionReusableViewDelegate?
@@ -36,12 +34,12 @@ class UserProfileHeaderCollectionReusableView: UICollectionReusableView {
         }
     }
     
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var bioLabel: UILabel!
+    
     @IBOutlet weak var followButton: UIButton! {
         didSet {
-            followButton.setTitle("Follow", for: .normal)
-            followButton.setTitleColor(.white, for: .normal)
-            followButton.backgroundColor = .systemBlue
-            followButton.layer.borderWidth = 0
             followButton.layer.cornerRadius = 4
             followButton.layer.masksToBounds = true
         }
@@ -56,11 +54,9 @@ class UserProfileHeaderCollectionReusableView: UICollectionReusableView {
         }
     }
     
-    @IBOutlet weak var nameLabel: UILabel!
-    
-    @IBOutlet weak var bioLabel: UILabel!
-    
     @IBOutlet weak var postsCountButton: UIButton!
+    
+    @IBOutlet weak var followersButton: UIButton!
     
     @IBOutlet weak var followersCountButton: UIButton!
     
@@ -68,12 +64,24 @@ class UserProfileHeaderCollectionReusableView: UICollectionReusableView {
     
     // MARK: - @IBAction
     
+    @IBAction func postsCountButtonDidTap(_ sender: UIButton) {
+        delegateForButtons?.postsButtonDidTap(self)
+    }
+    
     @IBAction func postsButtonDidTap(_ sender: UIButton) {
         delegateForButtons?.postsButtonDidTap(self)
     }
     
+    @IBAction func followersCountButtonDidTap(_ sender: UIButton) {
+        delegateForButtons?.followersButtonDidTap()
+    }
+    
     @IBAction func followersButtonDidTap(_ sender: UIButton) {
         delegateForButtons?.followersButtonDidTap()
+    }
+    
+    @IBAction func followingCountButtonDidTap(_ sender: UIButton) {
+        delegateForButtons?.followingButtonDidTap()
     }
     
     @IBAction func followingButtonDidTap(_ sender: UIButton) {
@@ -81,8 +89,16 @@ class UserProfileHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     @IBAction func followButtonDidTap(_ sender: UIButton) {
-        isFollowing ? unfollow() : follow()
-        isFollowing.toggle()
+        guard let currentUser = UserManager.shared.currentUser else { return }
+        guard let user = self.user else { return }
+        
+        if currentUser.following.contains(user.userId) {
+            FollowManager.shared.unfollow(the: user)
+            follow()
+        } else {
+            FollowManager.shared.follow(the: user)
+            following()
+        }
     }
     
     @IBAction func messageButtonDidTap(_ sender: UIButton) {
@@ -92,30 +108,57 @@ class UserProfileHeaderCollectionReusableView: UICollectionReusableView {
     // MARK: -
     
     func setup(user: User) {
-        
         self.user = user
-        
-        let profileImage = user.profileImage
-        let url = URL(string: profileImage)
-        profileImageView.kf.setImage(with: url)
-
-        nameLabel.text = user.fullName
-        bioLabel.text = user.bio
-
-        let postsCount = String((user.posts.count) - 1)
-            postsCountButton.setTitle(postsCount, for: .normal)
-
-        let followersCount = String((user.followers.count) - 1)
-        followersCountButton.setTitle(followersCount, for: .normal)
-
-        let followingCount = String((user.following.count) - 1)
-        followingCountButton.setTitle(followingCount, for: .normal)
+        setupFollowButton(with: user)
+        setupProfileImage(with: user)
+        setupNameLabel(with: user)
+        setupBioLabel(with: user)
+        setupCounts(with: user)
+        observeUser()
     }
-}
-
-extension UserProfileHeaderCollectionReusableView {
     
-    func follow() {
+    // MARK: -
+    
+    private func setupProfileImage(with user: User) {
+        let url = URL(string: user.profileImage)
+        profileImageView.kf.setImage(with: url)
+    }
+    
+    private func setupNameLabel(with user: User) {
+        if user.fullName.isEmpty || user.fullName == " " {
+            nameLabel.isHidden = true
+        } else {
+            nameLabel.text = user.fullName
+        }
+    }
+    
+    private func setupBioLabel(with user: User) {
+        if user.bio.isEmpty || user.bio == " " {
+            bioLabel.isHidden = true
+        } else {
+            bioLabel.text = user.bio
+        }
+    }
+    
+    private func setupCounts(with user: User) {
+        let postsCount = user.posts.filter { $0 != "" }.count
+        postsCountButton.setTitle("\(postsCount)", for: .normal)
+
+        let followersCount = user.followers.filter { $0 != "" }.count
+        followersCountButton.setTitle("\(followersCount)", for: .normal)
+        if followersCount > 1 {
+            followersButton.setTitle("Followers", for: .normal)
+        } else {
+            followersButton.setTitle("Follower", for: .normal)
+        }
+
+        let followingCount = user.following.filter { $0 != "" }.count
+        followingCountButton.setTitle("\(followingCount)", for: .normal)
+    }
+    
+    // MARK: - follow/following button
+    
+    private func following() {
         followButton.setTitle("Following", for: .normal)
         followButton.setTitleColor(.label, for: .normal)
         followButton.backgroundColor = .clear
@@ -123,10 +166,29 @@ extension UserProfileHeaderCollectionReusableView {
         followButton.layer.borderColor = UIColor.lightGray.cgColor
     }
     
-    func unfollow() {
+    private func follow() {
         followButton.setTitle("Follow", for: .normal)
         followButton.setTitleColor(.white, for: .normal)
         followButton.backgroundColor = .systemBlue
         followButton.layer.borderWidth = 0
+    }
+    
+    private func setupFollowButton(with user: User) {
+        guard let currentUser = UserManager.shared.currentUser else { return }
+        if currentUser.following.contains(user.userId) {
+            following()
+        } else {
+            follow()
+        }
+    }
+    
+    // MARK: - Observe the user
+    
+    private func observeUser() {
+        guard let user = self.user else { return }
+        FollowManager.shared.observeUser(of: user.userId) { [weak self] (user) in
+            self?.user = user
+            self?.setupFollowButton(with: user)
+        }
     }
 }

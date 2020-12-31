@@ -92,6 +92,13 @@ class UserProfileViewController: UIViewController {
         loadUserPosts()
         collectionView.reloadData()
     }
+    
+    private func observeUser() {
+        guard let user = self.user else { return }
+        FollowManager.shared.observeUser(of: user.userId) { [weak self] (user) in
+            self?.user = user
+        }
+    }
 }
 
 // MARK: - load User Posts

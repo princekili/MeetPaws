@@ -176,7 +176,7 @@ extension FeedTableViewCell {
             self?.setupLikeButton()
             
             // likeCountButton
-            let count = currentPost.userDidLike.count - 1
+            let count = currentPost.userDidLike.filter { $0 != "" }.count
             switch count {
             case 0:
                 self?.likeCountButton.isHidden = true

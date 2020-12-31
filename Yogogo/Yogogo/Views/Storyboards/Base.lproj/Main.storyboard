@@ -250,7 +250,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SzR-Y9-mLV">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SzR-Y9-mLV">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" systemColor="systemGray5Color"/>
@@ -619,10 +619,10 @@
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="postsButtonDidTap:" destination="rs9-Db-LkJ" eventType="touchUpInside" id="vuO-at-KcK"/>
+                                                                <action selector="postsCountButtonDidTap:" destination="rs9-Db-LkJ" eventType="touchUpInside" id="vuO-at-KcK"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hph-z0-gqJ">
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hph-z0-gqJ">
                                                             <rect key="frame" x="15.5" y="26" width="45" height="28"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="28" id="oEg-9X-qr0"/>
@@ -631,6 +631,9 @@
                                                             <state key="normal" title="Posts">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="postsButtonDidTap:" destination="rs9-Db-LkJ" eventType="touchUpInside" id="WBh-51-720"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -647,10 +650,10 @@
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="followersButtonDidTap:" destination="rs9-Db-LkJ" eventType="touchUpInside" id="PCI-QQ-lVA"/>
+                                                                <action selector="followersCountButtonDidTap:" destination="rs9-Db-LkJ" eventType="touchUpInside" id="PCI-QQ-lVA"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3D-hx-FUB">
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3D-hx-FUB">
                                                             <rect key="frame" x="0.0" y="26" width="76" height="28"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="28" id="04U-MU-wDP"/>
@@ -659,6 +662,9 @@
                                                             <state key="normal" title="Followers">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="followersButtonDidTap:" destination="rs9-Db-LkJ" eventType="touchUpInside" id="Gat-rY-obZ"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -675,10 +681,10 @@
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="followingButtonDidTap:" destination="rs9-Db-LkJ" eventType="touchUpInside" id="fsp-em-6hM"/>
+                                                                <action selector="followingCountButtonDidTap:" destination="rs9-Db-LkJ" eventType="touchUpInside" id="fsp-em-6hM"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5V-S6-6Xq">
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5V-S6-6Xq">
                                                             <rect key="frame" x="0.0" y="26" width="76" height="28"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="28" id="sPQ-aR-JNT"/>
@@ -687,6 +693,9 @@
                                                             <state key="normal" title="Following">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="followingButtonDidTap:" destination="rs9-Db-LkJ" eventType="touchUpInside" id="FIy-AD-4QK"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -751,6 +760,7 @@
                                     <connections>
                                         <outlet property="bioLabel" destination="smm-og-ALP" id="pVt-lt-eIE"/>
                                         <outlet property="editProfileButton" destination="t7W-0y-5lZ" id="Xjq-Fd-3kC"/>
+                                        <outlet property="followersButton" destination="a3D-hx-FUB" id="hhw-DS-JcQ"/>
                                         <outlet property="followersCountButton" destination="Ke8-MM-NZB" id="Zx5-rO-zpd"/>
                                         <outlet property="followingCountButton" destination="7sM-yl-Ned" id="d7Q-R7-nZj"/>
                                         <outlet property="nameLabel" destination="aqj-YB-DLw" id="YX2-pr-ByQ"/>
@@ -801,11 +811,11 @@
             <objects>
                 <viewController id="T9e-QR-uu9" customClass="FollowersViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ChT-Eq-RBo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="64G-dm-HLv">
-                                <rect key="frame" x="0.0" y="50" width="414" height="758"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="64G-dm-HLv">
+                                <rect key="frame" x="0.0" y="50" width="414" height="675"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowersTableViewCell" rowHeight="80" id="MIe-RF-esn" customClass="FollowersTableViewCell" customModule="Insdogram" customModuleProvider="target">
@@ -816,7 +826,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="r4F-ni-qSq">
-                                                    <rect key="frame" x="12" y="10" width="208" height="60"/>
+                                                    <rect key="frame" x="12" y="10" width="133.5" height="60"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IU_profileImage" translatesAutoresizingMaskIntoConstraints="NO" id="9sy-q5-3x3">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -826,16 +836,16 @@
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2XY-lq-MkT">
-                                                            <rect key="frame" x="72" y="0.0" width="136" height="60"/>
+                                                            <rect key="frame" x="72" y="0.0" width="61.5" height="60"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="waynechen323" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qni-2F-aOK">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="136" height="30"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wayne" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qni-2F-aOK">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="57.5" height="30"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aka 小安老師" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cV-7Z-Ak3">
-                                                                    <rect key="frame" x="0.0" y="30" width="89" height="30"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小安老師" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cV-7Z-Ak3">
+                                                                    <rect key="frame" x="0.0" y="30" width="61.5" height="30"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -845,7 +855,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="h5X-bm-Hm2">
-                                                    <rect key="frame" x="237" y="26" width="165" height="28"/>
+                                                    <rect key="frame" x="152" y="26" width="250" height="28"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kde-6B-qDE">
                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="28"/>
@@ -872,8 +882,22 @@
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="FollowingButtonDidTap:" destination="MIe-RF-esn" eventType="touchUpInside" id="TCL-aM-2J5"/>
-                                                                <action selector="followingButtonDidTap:" destination="MIe-RF-esn" eventType="touchUpInside" id="rTl-ZW-5ET"/>
+                                                                <action selector="followingButtonDidTap:" destination="MIe-RF-esn" eventType="touchUpInside" id="j1p-OG-EUT"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lZ-zU-rfm">
+                                                            <rect key="frame" x="170" y="0.0" width="80" height="28"/>
+                                                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="4Ra-Cj-1bF"/>
+                                                                <constraint firstAttribute="height" constant="28" id="vcu-lO-x9B"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                            <state key="normal" title="Follow">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="followButtonDidTap:" destination="MIe-RF-esn" eventType="touchUpInside" id="op4-1D-jfN"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -887,6 +911,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="followButton" destination="1lZ-zU-rfm" id="vbI-HC-Qeg"/>
                                             <outlet property="followingButton" destination="K0Q-p8-l1q" id="3Q3-aB-THn"/>
                                             <outlet property="nameLabel" destination="9cV-7Z-Ak3" id="d6E-HU-aZ6"/>
                                             <outlet property="profileImageView" destination="9sy-q5-3x3" id="eyI-mP-HOl"/>
@@ -1118,11 +1143,11 @@
             <objects>
                 <viewController storyboardIdentifier="UserProfileVC" id="z8X-2O-y8n" customClass="UserProfileViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w1l-Tw-DGk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SIC-aE-p8g">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="1II-nS-NRS">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1174,10 +1199,10 @@
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="postsButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="w3p-Mk-3bM"/>
+                                                                <action selector="postsCountButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="w3p-Mk-3bM"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KB-jQ-jJg">
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KB-jQ-jJg">
                                                             <rect key="frame" x="15.5" y="26" width="45" height="28"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="28" id="qo7-id-gze"/>
@@ -1186,6 +1211,9 @@
                                                             <state key="normal" title="Posts">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="postsButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="Xwp-NG-sxt"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -1202,10 +1230,10 @@
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="followersButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="KcA-5G-dwi"/>
+                                                                <action selector="followersCountButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="KcA-5G-dwi"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vR-5n-9fu">
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vR-5n-9fu">
                                                             <rect key="frame" x="0.0" y="26" width="76" height="28"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="28" id="7et-cX-m9x"/>
@@ -1214,6 +1242,9 @@
                                                             <state key="normal" title="Followers">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="followersButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="6dl-aV-xv6"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -1230,10 +1261,10 @@
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="followingButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="lBI-0h-Alr"/>
+                                                                <action selector="followingCountButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="lBI-0h-Alr"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6UD-b2-no1">
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6UD-b2-no1">
                                                             <rect key="frame" x="0.0" y="26" width="76" height="28"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="28" id="7MR-wd-xhM"/>
@@ -1242,6 +1273,9 @@
                                                             <state key="normal" title="Following">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="followingButtonDidTap:" destination="rCy-JV-HVP" eventType="touchUpInside" id="UM2-Sv-f6f"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -1323,6 +1357,7 @@
                                     <connections>
                                         <outlet property="bioLabel" destination="rGA-dz-Xzn" id="Ozr-Us-MaB"/>
                                         <outlet property="followButton" destination="xcT-FZ-xQ5" id="m0Y-fo-UeH"/>
+                                        <outlet property="followersButton" destination="5vR-5n-9fu" id="aeP-i6-bwA"/>
                                         <outlet property="followersCountButton" destination="9Pq-0N-3NY" id="mo2-so-SEb"/>
                                         <outlet property="followingCountButton" destination="c39-YH-3mX" id="Mur-Hd-L0c"/>
                                         <outlet property="messageButton" destination="bPd-4H-Ela" id="8p6-Wc-Iza"/>
@@ -1410,11 +1445,11 @@
             <objects>
                 <viewController storyboardIdentifier="MyPostVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3h5-gX-FZm" userLabel="Feed View Controller" customClass="MyPostViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gE2-gt-gop">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ygO-sM-Iwo">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostTableViewCell" id="aBM-pf-HXd" customClass="PostTableViewCell" customModule="Insdogram" customModuleProvider="target">
@@ -1629,7 +1664,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="AP2-Za-6h7"/>
-        <segue reference="TZE-FA-8Gn"/>
+        <segue reference="0Vg-ii-N9L"/>
         <segue reference="XA7-zu-RY3"/>
         <segue reference="N3A-wu-T8P"/>
     </inferredMetricsTieBreakers>

@@ -29,7 +29,6 @@ class MyProfileViewController: UIViewController {
     // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupNavigationBar()
         setupCollectionView()
         setupRefresher()
@@ -37,7 +36,6 @@ class MyProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         loadAndReloadData()
     }
     

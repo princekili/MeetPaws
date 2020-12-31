@@ -11,21 +11,7 @@ class FollowersViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet var buttons: [UIButton]! {
-        didSet {
-            // Set up buttons' title
-            guard let listOwner = listOwner else { return }
-            let followersCount = listOwner.followers.count - 1
-            buttons[0].setTitle("\(followersCount) Followers", for: .normal)
-            let followingCount = listOwner.following.count - 1
-            buttons[1].setTitle("\(followingCount) Following", for: .normal)
-            
-            // Add tags
-            for (index, button) in buttons.enumerated() {
-                button.tag = index
-            }
-        }
-    }
+    @IBOutlet var buttons: [UIButton]!
     
     @IBOutlet weak var shortLineView: UIView!
     
@@ -50,6 +36,8 @@ class FollowersViewController: UIViewController {
         setupTableView()
         setupSearchBar()
         setupNavigationBar()
+        setupButtons()
+        observeListOwner()
     }
     
     override func viewWillLayoutSubviews() {
@@ -62,6 +50,11 @@ class FollowersViewController: UIViewController {
         cameFromFollowersOrFollowing()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // To Detach listeners
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        
         if segue.identifier == segueId {
@@ -71,7 +64,7 @@ class FollowersViewController: UIViewController {
         }
     }
     
-    // MARK: - Set up line view
+    // MARK: - Set up
     
     private func setupLineView() {
         var selectedButton: UIButton
@@ -104,13 +97,31 @@ class FollowersViewController: UIViewController {
     private func setupSearchBar() {
         searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
-//        tableView.tableHeaderView = searchController.searchBar
         navigationItem.hidesSearchBarWhenScrolling = false
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.searchBarStyle = .default
         searchController.searchBar.placeholder = "Search the username..."
+    }
+    
+    private func setupButtons() {
+        guard let listOwner = listOwner else { return }
+        
+        let followersCount = listOwner.followers.filter { $0 != "" }.count
+        if followersCount > 1 {
+            buttons[0].setTitle("\(followersCount) Followers", for: .normal)
+        } else {
+            buttons[0].setTitle("\(followersCount) Follower", for: .normal)
+        }
+        
+        let followingCount = listOwner.following.filter { $0 != "" }.count
+        buttons[1].setTitle("\(followingCount) Following", for: .normal)
+        
+        // Add tags
+        for (index, button) in buttons.enumerated() {
+            button.tag = index
+        }
     }
     
     // MARK: -
@@ -209,6 +220,16 @@ class FollowersViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Observe the listOwner
+    
+    private func observeListOwner() {
+        guard let listOwner = self.listOwner else { return }
+        FollowManager.shared.observeUser(of: listOwner.userId) { [weak self] (user) in
+            self?.listOwner = user
+            self?.setupButtons()
+        }
+    }
 }
 
 // MARK: -
@@ -244,12 +265,13 @@ extension FollowersViewController: UITableViewDelegate, UITableViewDataSource {
         let result = searchController.isActive ? searchResults[indexPath.row] : sortedUsers[indexPath.row]
         
         guard let currentUser = UserManager.shared.currentUser else { return UITableViewCell() }
-        
         if listOwner?.userId == currentUser.userId {
-            cell.setupForCurrentUser(with: result, type: followType)
+            cell.setupForCurrentUser(with: result, type: followType, at: indexPath.row)
         } else {
             cell.setupForOtherUsers(with: result)
         }
+        
+        cell.delegateRemoveButton = self
         
         return cell
     }
@@ -265,5 +287,35 @@ extension FollowersViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             performSegue(withIdentifier: segueId, sender: nil)
         }
+    }
+}
+
+extension FollowersViewController: RemoveButtonDidTapDelegate {
+    
+    func presentAlert(for user: User, cell: UITableViewCell) {
+        
+        // UIAlertController
+        let title = "Remove Follower?"
+        let message = "Insdogram won't tell \(user.username) they were removed from your followers."
+        let removeAlertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        // UIAlertAction
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let removeAction = UIAlertAction(title: "Remove", style: .destructive) { _ in
+            FollowManager.shared.remove(the: user) { [weak self] in
+                self?.sortedUsers.remove(at: indexPath.row)
+                self?.tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .automatic)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            removeAlertController.dismiss(animated: true, completion: nil)
+        }
+        
+        // addAction
+        removeAlertController.addAction(removeAction)
+        removeAlertController.addAction(cancelAction)
+        
+        // present
+        self.present(removeAlertController, animated: true, completion: nil)
     }
 }
