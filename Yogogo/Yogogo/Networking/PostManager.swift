@@ -145,6 +145,11 @@ final class PostManager {
                 
                 let postInfo = item.value as? [String: Any] ?? [:]
                 if let post = Post(postId: postId, postInfo: postInfo) {
+                    // The userId should not be in the ignoreList
+                    if let ignoreList = self.userManager.currentUser?.ignoreList {
+                        guard !ignoreList.contains(post.userId) else { continue }
+                    }
+                    
                     newPosts.append(post)
                 }
             }
@@ -187,6 +192,11 @@ final class PostManager {
                 
                 let postInfo = item.value as? [String: Any] ?? [:]
                 if let post = Post(postId: postId, postInfo: postInfo) {
+                    // The userId should not be in the ignoreList
+                    if let ignoreList = self.userManager.currentUser?.ignoreList {
+                        guard !ignoreList.contains(post.userId) else { continue }
+                    }
+                    
                     oldPosts.append(post)
                 }
             }
@@ -268,18 +278,18 @@ final class PostManager {
     
     // MARK: - Hide the Post
     
-    func hidePost(with postId: String, completion: @escaping () -> Void) {
+    func hide(with id: String, completion: @escaping () -> Void) {
         
         // Add the postId to currentUser's ignoreList
-        userManager.currentUser?.ignoreList.append(postId)
+        userManager.currentUser?.ignoreList.append(id)
         
         // Update /users/userId/ignoreList on firebase
-        guard let userId = Auth.auth().currentUser?.uid else { return }
-        userManager.updateUserIgnoreList {
-            print("------ Add /users/\(userId)/ignoreList/\(postId) ------")
+        guard let currentUser = userManager.currentUser else { return }
+        userManager.updateCurrentUserIgnoreList(with: currentUser) {
+            print("------ Add /users/\(currentUser.userId)/ignoreList/\(id) ------")
         }
         
-        // Hide the post & Reload data
+        // Hide the post/comment/user & Reload data
         completion()
     }
 }

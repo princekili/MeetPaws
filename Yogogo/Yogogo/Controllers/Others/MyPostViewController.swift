@@ -142,7 +142,7 @@ extension MyPostViewController: PostTableViewCellPresentAlertDelegate {
         // UIAlertAction
         let hideAction = UIAlertAction(title: "Hide", style: .destructive) { _ in
             
-            PostManager.shared.hidePost(with: postId) {
+            PostManager.shared.hide(with: postId) {
                 // Delete(Hide) the post on tableView
                 self.deleteHandler?()
             }

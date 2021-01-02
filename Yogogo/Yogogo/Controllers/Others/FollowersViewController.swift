@@ -9,11 +9,15 @@ import UIKit
 
 class FollowersViewController: UIViewController {
 
+    // MARK: - @IBOutlet
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet var buttons: [UIButton]!
     
     @IBOutlet weak var shortLineView: UIView!
+    
+    // MARK: -
     
     var searchController: UISearchController!
     
@@ -194,8 +198,8 @@ class FollowersViewController: UIViewController {
     private func getFollowers() {
         guard var followers = listOwner?.followers else { return }
         followers = followers.filter { $0 != "" }
-        FollowManager.shared.users = []
         
+        FollowManager.shared.users = []
         FollowManager.shared.getUsers(userIds: followers) { [weak self] in
             
             self?.sortedUsers = FollowManager.shared.users.sorted { $0.username < $1.username }
@@ -209,8 +213,8 @@ class FollowersViewController: UIViewController {
     private func getFollowing() {
         guard var following = listOwner?.following else { return }
         following = following.filter { $0 != "" }
-        FollowManager.shared.users = []
         
+        FollowManager.shared.users = []
         FollowManager.shared.getUsers(userIds: following) { [weak self] in
             
             self?.sortedUsers = FollowManager.shared.users.sorted { $0.username < $1.username }
@@ -227,7 +231,31 @@ class FollowersViewController: UIViewController {
         guard let listOwner = self.listOwner else { return }
         FollowManager.shared.observeUser(of: listOwner.userId) { [weak self] (user) in
             self?.listOwner = user
+            self?.filterBlockedFollowers()
+            self?.filterBlockedFollowing()
             self?.setupButtons()
+        }
+    }
+    
+    // MARK: - Filter blocked followers & following
+    
+    private func filterBlockedFollowers() {
+        // The userId should not be in the ignoreList
+        guard let user = self.listOwner else { return }
+        if let ignoreList = UserManager.shared.currentUser?.ignoreList {
+            for userId in ignoreList {
+                self.listOwner?.followers = user.followers.filter { $0 != userId }
+            }
+        }
+    }
+    
+    private func filterBlockedFollowing() {
+        // The userId should not be in the ignoreList
+        guard let user = self.listOwner else { return }
+        if let ignoreList = UserManager.shared.currentUser?.ignoreList {
+            for userId in ignoreList {
+                self.listOwner?.following = user.following.filter { $0 != userId }
+            }
         }
     }
 }

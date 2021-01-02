@@ -10,8 +10,6 @@ import Firebase
 
 class UserProfileViewController: UIViewController {
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    
     var userPosts: [Post] = []
     
     var post: Post?
@@ -28,11 +26,25 @@ class UserProfileViewController: UIViewController {
     
     var followType: FollowType = .followers
     
+    var blockHandler: (() -> Void)?
+    
+    // MARK: - @IBOutlet
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    // MARK: - @IBAction
+    
+    @IBAction func moreActionsButtonDidTap(_ sender: UIBarButtonItem) {
+        guard let user = self.user else { return }
+        presentAlert(with: user.userId)
+    }
+    
     // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        filterBlockedFollowers()
+        filterBlockedFollowing()
         setupNavigationBar()
         setupCollectionView()
         setupRefresher()
@@ -97,6 +109,79 @@ class UserProfileViewController: UIViewController {
         guard let user = self.user else { return }
         FollowManager.shared.observeUser(of: user.userId) { [weak self] (user) in
             self?.user = user
+        }
+    }
+    
+    // MARK: - Block alert
+    
+    private func presentAlert(with userId: String) {
+        
+        // UIAlertController
+        let moreActionsAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // UIAlertAction
+        let blockAction = UIAlertAction(title: "Block", style: .destructive) { [weak self] _ in
+            
+            self?.confirmBlockUserAlert(with: userId)
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            moreActionsAlertController.dismiss(animated: true, completion: nil)
+        }
+        
+        // addAction
+        moreActionsAlertController.addAction(blockAction)
+        moreActionsAlertController.addAction(cancelAction)
+        
+        self.present(moreActionsAlertController, animated: true, completion: nil)
+    }
+    
+    private func confirmBlockUserAlert(with userId: String) {
+        
+        // UIAlertController
+        let title = "Block User?"
+        let message = "You won't see each other again after relaunching Insdogram."
+        let confirmAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // UIAlertAction
+        let blockAction = UIAlertAction(title: "Block", style: .destructive) { _ in
+            
+            guard let user = self.user else { return }
+            UserManager.shared.block(with: user) {
+                self.blockHandler?()
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            confirmAlertController.dismiss(animated: true, completion: nil)
+        }
+        
+        // addAction
+        confirmAlertController.addAction(blockAction)
+        confirmAlertController.addAction(cancelAction)
+        
+        self.present(confirmAlertController, animated: true, completion: nil)
+    }
+    
+    // MARK: - Filter blocked followers & following
+    
+    private func filterBlockedFollowers() {
+        // The userId should not be in the ignoreList
+        guard let user = self.user else { return }
+        if let ignoreList = UserManager.shared.currentUser?.ignoreList {
+            for userId in ignoreList {
+                self.user?.followers = user.followers.filter { $0 != userId }
+            }
+        }
+    }
+    
+    private func filterBlockedFollowing() {
+        // The userId should not be in the ignoreList
+        guard let user = self.user else { return }
+        if let ignoreList = UserManager.shared.currentUser?.ignoreList {
+            for userId in ignoreList {
+                self.user?.following = user.following.filter { $0 != userId }
+            }
         }
     }
 }
@@ -171,6 +256,11 @@ extension UserProfileViewController: UICollectionViewDataSource, UICollectionVie
         
         let post = userPosts[indexPath.item]
         cell.setup(post: post)
+        
+        // Block the user
+        self.blockHandler = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
         
         return cell
     }

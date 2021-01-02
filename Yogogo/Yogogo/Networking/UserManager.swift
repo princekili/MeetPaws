@@ -336,16 +336,6 @@ class UserManager {
         completion() // do something after updating
     }
     
-    // MARK: - Update /users/userId/ignoreList for hiding the post
-    
-    func updateUserIgnoreList(completion: @escaping () -> Void) {
-        guard let userId = Auth.auth().currentUser?.uid else { return }
-        guard let ignoreList = self.currentUser?.ignoreList else { return }
-        usersRef.child(userId).child("ignoreList").setValue(ignoreList)
-        print("------ usersRef.child(\(userId)).child(ignoreList).setValue(\(ignoreList)) ------")
-        completion() // do something after updating
-    }
-    
     // MARK: - Update Post Like Count
     
     func updateLikeCount(completion: @escaping () -> Void) {
@@ -370,5 +360,56 @@ class UserManager {
         usersRef.child(userId).child("isMapLocationEnabled").setValue(isMapLocationEnabled)
 
         print("------ users/\(userId)/isMapLocationEnabled: \(isMapLocationEnabled) ------")
+    }
+    
+    // MARK: - Update /users/uid/ignoreList for hiding the post/comment/user
+    
+    // For current user
+    func updateCurrentUserIgnoreList(with user: User, completion: @escaping () -> Void) {
+        // Add the userId to currentUser's ignoreList
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard var ignoreList = self.currentUser?.ignoreList else { return }
+        ignoreList.append(user.userId)
+        ignoreList.removeDuplicates()
+        
+        usersRef.child(uid).child("ignoreList").setValue(ignoreList)
+        print("------ usersRef.child(\(uid)).child(ignoreList).setValue(\(ignoreList)) ------")
+        completion()
+    }
+    
+    // For the blocked user
+    func updateBlockedUserIgnoreList(with user: User, completion: @escaping () -> Void) {
+        // Add currentUser's userId to the blocked user's ignoreList
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        var ignoreList = user.ignoreList
+        ignoreList.append(uid)
+        ignoreList.removeDuplicates()
+        
+        usersRef.child(user.userId).child("ignoreList").setValue(ignoreList)
+        print("------ usersRef.child(\(user.userId)).child(ignoreList).setValue(\(ignoreList)) ------")
+        completion()
+    }
+    
+    // MARK: - Block the User
+    
+    func block(with user: User, completion: @escaping () -> Void) {
+        
+        // For current user
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        self.updateCurrentUserIgnoreList(with: user) {
+            print("------ Add /users/\(uid)/ignoreList/\(user.userId) ------")
+        }
+        
+        // For the blocked user
+        self.updateBlockedUserIgnoreList(with: user) {
+            print("------ Add /users/\(user.userId)/ignoreList/\(uid) ------")
+        }
+        
+        // Unfollow each other
+        FollowManager.shared.unfollow(the: user)
+        FollowManager.shared.remove(the: user) {}
+        
+        // Block the user & Reload data
+        completion()
     }
 }

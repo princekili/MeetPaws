@@ -105,7 +105,7 @@ extension FeedViewController: LoadRecentPostsDelegate {
         
         isLoadingPost = true
         
-        PostManager.shared.getRecentPosts(start: postFeed.first?.timestamp, limit: 5) { [weak self] (newPosts) in
+        PostManager.shared.getRecentPosts(start: postFeed.first?.timestamp, limit: 10) { [weak self] (newPosts) in
             
             if newPosts.count > 0 {
                 // Add the array to the beginning of the posts arrays
@@ -198,7 +198,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         
         print("------ Loading Old Posts... ------")
         
-        PostManager.shared.getOldPosts(start: lastPostTimestamp, limit: 5) { [weak self] (oldPosts) in
+        PostManager.shared.getOldPosts(start: lastPostTimestamp, limit: 10) { [weak self] (oldPosts) in
             
             // Add old posts to existing arrays and table view
             var indexPaths: [IndexPath] = []
@@ -293,7 +293,7 @@ extension FeedViewController: FeedTableViewCellPresentAlertDelegate {
         // UIAlertAction
         let deleteAction = UIAlertAction(title: "Hide", style: .destructive) { _ in
             
-            PostManager.shared.hidePost(with: postId) {
+            PostManager.shared.hide(with: postId) {
                 // Delete(Hide) the post on tableView
                 self.deleteHandler?(index)
                 self.tableView.reloadData()

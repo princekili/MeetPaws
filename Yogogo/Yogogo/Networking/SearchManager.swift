@@ -30,6 +30,11 @@ class SearchManager {
             var userIds: [String] = []
             
             for userId in users.keys {
+                // The userId should not be in the ignoreList
+                if let ignoreList = UserManager.shared.currentUser?.ignoreList {
+                    guard !ignoreList.contains(userId) else { continue }
+                }
+                
                 userIds.append(userId)
                 print("------ userId: \(userId) ------")
             }

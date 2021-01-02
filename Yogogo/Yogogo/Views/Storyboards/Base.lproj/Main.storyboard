@@ -1381,6 +1381,9 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Qqd-3F-Wx6"/>
                         <barButtonItem key="rightBarButtonItem" title="•••" id="UvU-16-HTv">
                             <color key="tintColor" systemColor="labelColor"/>
+                            <connections>
+                                <action selector="moreActionsButtonDidTap:" destination="z8X-2O-y8n" id="Ara-8T-dXf"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1440,10 +1443,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="-638.16964285714278"/>
         </scene>
-        <!--Feed View Controller-->
+        <!--Post View Controller-->
         <scene sceneID="f7T-5F-pKa">
             <objects>
-                <viewController storyboardIdentifier="MyPostVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3h5-gX-FZm" userLabel="Feed View Controller" customClass="MyPostViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyPostVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3h5-gX-FZm" userLabel="Post View Controller" customClass="MyPostViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gE2-gt-gop">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -41,6 +41,11 @@ class FollowManager {
     func getUsers(userIds: [String], completion: @escaping () -> Void) {
         
         for userId in userIds {
+            // The userId should not be in the ignoreList
+            if let ignoreList = UserManager.shared.currentUser?.ignoreList {
+                guard !ignoreList.contains(userId) else { continue }
+            }
+            
             group.enter()
             getUserInfo(of: userId)
         }

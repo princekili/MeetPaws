@@ -38,6 +38,12 @@ class MapsNetworking {
             
             for userId in users.keys {
                 guard userId != Auth.auth().currentUser?.uid else { continue }
+                
+                // The userId should not be in the ignoreList
+                if let ignoreList = UserManager.shared.currentUser?.ignoreList {
+                    guard !ignoreList.contains(userId) else { continue }
+                }
+                
                 userIds.append(userId)
                 print("------ userId: \(userId) ------")
             }
