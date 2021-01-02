@@ -85,16 +85,17 @@ extension MyPostViewController: PostTableViewCellPresentAlertDelegate {
         if posts.contains(postId) {
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
                 
-                self?.confirmAlert(postId: postId)
+                self?.confirmDeletePostAlert(postId: postId)
             }
             action = deleteAction
             
         } else {
-            let reportAction = UIAlertAction(title: "Report", style: .destructive) { _ in
+            let hideAction = UIAlertAction(title: "Hide", style: .destructive) { [weak self] _ in
                 
-                // To report
+                self?.confirmHidePostAlert(postId: postId)
+                
             }
-            action = reportAction
+            action = hideAction
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
@@ -108,7 +109,7 @@ extension MyPostViewController: PostTableViewCellPresentAlertDelegate {
         self.present(moreActionsAlertController, animated: true, completion: nil)
     }
     
-    func confirmAlert(postId: String) {
+    func confirmDeletePostAlert(postId: String) {
         
         // UIAlertController
         let confirmAlertController = UIAlertController(title: nil, message: "Delete Post?", preferredStyle: .alert)
@@ -128,6 +129,31 @@ extension MyPostViewController: PostTableViewCellPresentAlertDelegate {
         
         // addAction
         confirmAlertController.addAction(deleteAction)
+        confirmAlertController.addAction(cancelAction)
+        
+        self.present(confirmAlertController, animated: true, completion: nil)
+    }
+    
+    func confirmHidePostAlert(postId: String) {
+        
+        // UIAlertController
+        let confirmAlertController = UIAlertController(title: nil, message: "Hide Post?", preferredStyle: .alert)
+        
+        // UIAlertAction
+        let hideAction = UIAlertAction(title: "Hide", style: .destructive) { _ in
+            
+            PostManager.shared.hidePost(with: postId) {
+                // Delete(Hide) the post on tableView
+                self.deleteHandler?()
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            confirmAlertController.dismiss(animated: true, completion: nil)
+        }
+        
+        // addAction
+        confirmAlertController.addAction(hideAction)
         confirmAlertController.addAction(cancelAction)
         
         self.present(confirmAlertController, animated: true, completion: nil)

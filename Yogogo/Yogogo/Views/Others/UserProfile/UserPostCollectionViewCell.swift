@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class UserPostCollectionViewCell: UICollectionViewCell {
     
@@ -16,12 +17,11 @@ class UserPostCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var postImageView: UIImageView!
     
     func setup(post: Post) {
-        
-        // Get post's author info from DB
-        UserManager.shared.getAuthorInfo(userId: post.userId) { [weak self] (user) in
-            
-            let url = URL(string: post.imageFileURL)
-            self?.postImageView.kf.setImage(with: url)
+        if let ignoreList = UserManager.shared.currentUser?.ignoreList {
+            guard !ignoreList.contains(post.postId) else { return }
         }
+        
+        let url = URL(string: post.imageFileURL)
+        postImageView.kf.setImage(with: url)
     }
 }

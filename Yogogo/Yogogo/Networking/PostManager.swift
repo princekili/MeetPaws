@@ -126,7 +126,6 @@ final class PostManager {
         // Call Firebase API to retrieve the latest records
         postQuery.observeSingleEvent(of: .value, with: { (snapshot) in
 
-            
             var newPosts: [Post] = []
             
             print("------ Total number of new posts: \(snapshot.childrenCount) ------")
@@ -137,9 +136,15 @@ final class PostManager {
             }
             
             for item in allObjects {
-                let postInfo = item.value as? [String: Any] ?? [:]
+                let postId = item.key
                 
-                if let post = Post(postId: item.key, postInfo: postInfo) {
+                // The postId should not be in the ignoreList
+                if let ignoreList = self.userManager.currentUser?.ignoreList {
+                    guard !ignoreList.contains(postId) else { continue }
+                }
+                
+                let postInfo = item.value as? [String: Any] ?? [:]
+                if let post = Post(postId: postId, postInfo: postInfo) {
                     newPosts.append(post)
                 }
             }
@@ -173,10 +178,15 @@ final class PostManager {
             }
             
             for item in allObjects {
-                print("Post key: \(item.key)")
-                let postInfo = item.value as? [String: Any] ?? [:]
+                let postId = item.key
                 
-                if let post = Post(postId: item.key, postInfo: postInfo) {
+                // The postId should not be in the ignoreList
+                if let ignoreList = self.userManager.currentUser?.ignoreList {
+                    guard !ignoreList.contains(postId) else { continue }
+                }
+                
+                let postInfo = item.value as? [String: Any] ?? [:]
+                if let post = Post(postId: postId, postInfo: postInfo) {
                     oldPosts.append(post)
                 }
             }
@@ -253,6 +263,23 @@ final class PostManager {
         print("------ Delete /posts/\(postId) ------")
         
         // Download posts & Reload data
+        completion()
+    }
+    
+    // MARK: - Hide the Post
+    
+    func hidePost(with postId: String, completion: @escaping () -> Void) {
+        
+        // Add the postId to currentUser's ignoreList
+        userManager.currentUser?.ignoreList.append(postId)
+        
+        // Update /users/userId/ignoreList on firebase
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        userManager.updateUserIgnoreList {
+            print("------ Add /users/\(userId)/ignoreList/\(postId) ------")
+        }
+        
+        // Hide the post & Reload data
         completion()
     }
 }

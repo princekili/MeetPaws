@@ -329,14 +329,20 @@ class UserManager {
     // MARK: - Update /users/userId/posts for deleting & editing
     
     func updateUserPosts(completion: @escaping () -> Void) {
-        
         guard let userId = Auth.auth().currentUser?.uid else { return }
         guard let posts = self.currentUser?.posts else { return }
-        
         usersRef.child(userId).child("posts").setValue(posts)
-        
         print("------ usersRef.child(\(userId)).child(posts).setValue(\(posts)) ------")
-        
+        completion() // do something after updating
+    }
+    
+    // MARK: - Update /users/userId/ignoreList for hiding the post
+    
+    func updateUserIgnoreList(completion: @escaping () -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        guard let ignoreList = self.currentUser?.ignoreList else { return }
+        usersRef.child(userId).child("ignoreList").setValue(ignoreList)
+        print("------ usersRef.child(\(userId)).child(ignoreList).setValue(\(ignoreList)) ------")
         completion() // do something after updating
     }
     

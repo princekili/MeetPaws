@@ -17,7 +17,7 @@ class FollowManager {
     
     let ref = Database.database().reference()
     
-    let group = DispatchGroup()
+    let group = DispatchGroup() // GCD
     
     // MARK: - Get follower info
     
