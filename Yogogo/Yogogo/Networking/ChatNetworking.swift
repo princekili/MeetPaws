@@ -48,8 +48,8 @@ class ChatNetworking {
             nodeRef = Database.database().reference().child("messages").child(userId).child(user.userId).queryOrderedByKey().queryLimited(toLast: messageCount)
             messageOrder = true
         } else {
-            let mId = firstMessage!.id
-            nodeRef = Database.database().reference().child("messages").child(userId).child(user.userId).queryOrderedByKey().queryEnding(atValue: mId).queryLimited(toLast: messageCount)
+            let msgId = firstMessage!.id
+            nodeRef = Database.database().reference().child("messages").child(userId).child(user.userId).queryOrderedByKey().queryEnding(atValue: msgId).queryLimited(toLast: messageCount)
             messageOrder = false
         }
         nodeRef.observeSingleEvent(of: .value) { (snap) in
@@ -135,8 +135,7 @@ class ChatNetworking {
         }
     }
     
-    // MARK: -
-    // MARK: SEND MEDIA MESSAGE METHOD
+    // MARK: - SEND MEDIA MESSAGE METHOD
     
     private func sendMediaMessage(url: String, _ image: UIImage, _ userId: String) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
@@ -154,8 +153,7 @@ class ChatNetworking {
         updateNavBar(user.fullName)
     }
     
-    // MARK: -
-    // MARK: SEND TEXT MESSAGE METHOD
+    // MARK: - SEND TEXT MESSAGE METHOD
     
     func sendMessageHandler(senderRef: DatabaseReference, friendRef: DatabaseReference, values: [String: Any], completion: @escaping (_ error: Error?) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
@@ -173,8 +171,7 @@ class ChatNetworking {
         }
     }
     
-    // MARK: -
-    // MARK: OBSERVE USER TYPING METHOD
+    // MARK: - OBSERVE USER TYPING METHOD
     
     func observeIsUserTyping(completion: @escaping (_ friendActivity: UserActivity) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
@@ -283,8 +280,7 @@ class ChatNetworking {
         }
     }
     
-    // MARK: -
-    // MARK: SEND AUDIO MESSAGE METHOD
+    // MARK: - SEND AUDIO MESSAGE METHOD
     
     private func sendAudioMessage(with url: String, and userId: String) {
         
@@ -368,8 +364,7 @@ class ChatNetworking {
         }
     }
     
-    // MARK: -
-    // MARK: SEND VIDEO MESSAGE METHOD
+    // MARK: - SEND VIDEO MESSAGE METHOD
     
     private func handleSendVideoMessage(_ userId: String, _ url: String, _ image: UIImage, _ imageUrl: String) {
         messageStatus = "Sent"

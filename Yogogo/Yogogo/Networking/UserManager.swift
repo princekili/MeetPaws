@@ -104,7 +104,7 @@ class UserManager {
                 return
             }
 
-            print("------ Get the post author info 'ID: \(user.username)' successfully ------")
+            print("------ Get the author info 'ID: \(user.username)' successfully ------")
             
             completion(user)
         }

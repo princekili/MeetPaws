@@ -26,16 +26,11 @@ class MapsViewController: UIViewController {
     let goButton = UIButton()
     
     var isMapLocationEnabled = UserManager.shared.currentUser?.isMapLocationEnabled ?? false
-        
-//    var settingsButton: MapSettingsButton!
-    
-//    let point = MGLPointAnnotation()
 
     // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupMapView()
         userMapHandler()
         setupGoButton()
@@ -43,7 +38,6 @@ class MapsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.setNavigationBarHidden(true, animated: true)
         mapNetworking.mapsVC = self
     }

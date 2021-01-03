@@ -192,8 +192,7 @@ extension UserProfileViewController {
     
     @objc private func loadUserPosts() {
         
-        guard let user = user else { return }
-        
+        guard let user = self.user else { return }
         var postIds = user.posts
         postIds = postIds.filter { $0 != "" }
         
@@ -209,9 +208,7 @@ extension UserProfileViewController {
                 
                 // Add the array to the beginning of the posts arrays
                 userPosts.append(newPost)
-                
                 userPosts.sort(by: { $0.timestamp > $1.timestamp })
-                
                 self?.userPosts = userPosts
                 
                 self?.isLoadingPost = false
