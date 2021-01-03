@@ -15,6 +15,8 @@ class MyPostViewController: UIViewController {
     
     var deleteHandler: (() -> Void)?
     
+    let segueId = "SeguePostToComment"
+    
     // MARK: -
     
     override func viewDidLoad() {
@@ -22,6 +24,13 @@ class MyPostViewController: UIViewController {
 
         setupTableView()
         setupNavigationBar()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueId {
+            guard let commentsVC = segue.destination as? CommentsViewController else { return }
+            commentsVC.post = post
+        }
     }
     
     // MARK: -
@@ -33,6 +42,12 @@ class MyPostViewController: UIViewController {
     
     private func setupNavigationBar() {
         navigationItem.backButtonTitle = ""
+    }
+    
+    // MARK: - @IBAction
+    
+    @IBAction func viewCommentsButtonDidTap(_ sender: UIButton) {
+        performSegue(withIdentifier: segueId, sender: sender)
     }
 }
 

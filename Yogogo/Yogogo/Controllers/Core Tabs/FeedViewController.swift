@@ -22,11 +22,14 @@ class FeedViewController: UIViewController {
     
     var deleteHandler: ((Int) -> Void)?
     
+    let segueId = "SegueFeedToComment"
+    
+    var postIndex: Int?
+    
     // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTableView()
         setupNavigationBar()
         setupRefresher()
@@ -37,7 +40,6 @@ class FeedViewController: UIViewController {
  
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         loadRecentPosts()
         tableView.reloadData()
     }
@@ -52,6 +54,11 @@ class FeedViewController: UIViewController {
             guard let userProfileVC = segue.destination as? UserProfileViewController else { return }
             // Pass user data to userProfileVC
             userProfileVC.user = self.user
+            
+        } else if segue.identifier == segueId {
+            guard let commentsVC = segue.destination as? CommentsViewController else { return }
+            guard let index = postIndex else { return }
+            commentsVC.post = postFeed[index]
         }
     }
     
@@ -76,7 +83,7 @@ class FeedViewController: UIViewController {
         )
     }
     
-    // MARK: -
+    // MARK: - getCurrentUserInfo
     
     private func getCurrentUserInfo() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
@@ -87,6 +94,16 @@ class FeedViewController: UIViewController {
             print("------  Get the currentUser info successfully in FeedVC ------")
             print(myUser)
         }
+    }
+}
+
+// MARK: -
+
+extension FeedViewController: PassPostIndexDelegate {
+    
+    func passPostIndex(with index: Int) {
+        postIndex = index
+        performSegue(withIdentifier: segueId, sender: nil)
     }
 }
 
@@ -171,6 +188,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         cell.delegatePresentAlert = self
         cell.delegatePresentUser = self
         cell.delegateReloadView = self
+        cell.delegatePassPostIndex = self
         
         // Delete the post on tableView
         self.deleteHandler = { [weak self] index in

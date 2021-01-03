@@ -34,11 +34,12 @@
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dlg-tl-Q1l">
                                                             <rect key="frame" x="0.0" y="0.5" width="36" height="35"/>
+                                                            <color key="tintColor" systemColor="labelColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="36" id="QYH-V3-hU7"/>
                                                                 <constraint firstAttribute="height" constant="36" id="pPl-hh-RPp"/>
                                                             </constraints>
-                                                            <imageReference key="image" image="person.circle" catalog="system" renderingMode="original"/>
+                                                            <imageReference key="image" image="person.circle" catalog="system" renderingMode="template"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wM1-oA-mzh">
                                                             <rect key="frame" x="44" y="0.0" width="150" height="34"/>
@@ -79,15 +80,20 @@
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uw6-KL-KYe">
                                                             <rect key="frame" x="39.5" y="0.0" width="22" height="22"/>
+                                                            <color key="tintColor" systemColor="labelColor"/>
                                                             <state key="normal">
-                                                                <imageReference key="image" image="message" catalog="system" symbolScale="medium" renderingMode="original"/>
+                                                                <imageReference key="image" image="message" catalog="system" symbolScale="medium" renderingMode="template"/>
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="viewCommentsButtonDidTap:" destination="Gj1-kw-ZQO" eventType="touchUpInside" id="WbD-8S-oKi"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yh3-XO-R7t">
                                                             <rect key="frame" x="75.5" y="0.0" width="21" height="22"/>
+                                                            <color key="tintColor" systemColor="labelColor"/>
                                                             <state key="normal">
-                                                                <imageReference key="image" image="paperplane" catalog="system" symbolScale="medium" renderingMode="original"/>
+                                                                <imageReference key="image" image="paperplane" catalog="system" symbolScale="medium" renderingMode="template"/>
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                             </state>
                                                         </button>
@@ -147,6 +153,9 @@
                                                             <state key="normal" title="View all 2 comments">
                                                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="viewCommentsButtonDidTap:" destination="Gj1-kw-ZQO" eventType="touchUpInside" id="JeY-T0-CfV"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July 27, 2014" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j40-rr-Tm0">
                                                             <rect key="frame" x="0.0" y="120" width="95" height="30"/>
@@ -205,7 +214,7 @@
                                             <outlet property="shareButton" destination="Yh3-XO-R7t" id="YZ3-6s-gvD"/>
                                             <outlet property="timestampLabel" destination="j40-rr-Tm0" id="vde-rR-ogT"/>
                                             <outlet property="usernameButton" destination="wM1-oA-mzh" id="RUy-yo-kO9"/>
-                                            <outlet property="viewCommentButton" destination="H74-Fm-Ia7" id="Ldg-UP-Ugf"/>
+                                            <outlet property="viewCommentsButton" destination="H74-Fm-Ia7" id="Ldg-UP-Ugf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -236,6 +245,7 @@
                     <connections>
                         <outlet property="tableView" destination="Pjr-xg-Nsj" id="oRM-ip-r0M"/>
                         <segue destination="z8X-2O-y8n" kind="show" identifier="SegueUserProfile" id="ykH-sw-wtH"/>
+                        <segue destination="5P4-bq-0GH" kind="show" identifier="SegueFeedToComment" id="kB8-KP-Qa9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pid-eU-f7S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -377,28 +387,30 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MYV-D3-ohG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3768.840579710145" y="59.598214285714285"/>
+            <point key="canvasLocation" x="3433" y="60"/>
         </scene>
-        <!--Comments View Controller-->
+        <!--Comments-->
         <scene sceneID="JD5-zx-beu">
             <objects>
                 <viewController id="5P4-bq-0GH" customClass="CommentsViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hqh-gl-2cf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0w-Hs-uF8">
-                                <rect key="frame" x="0.0" y="808" width="414" height="88"/>
+                                <rect key="frame" x="0.0" y="720" width="414" height="88"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="OBv-M1-tzR">
                                         <rect key="frame" x="16" y="16" width="382" height="30"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IU_profileImage" translatesAutoresizingMaskIntoConstraints="NO" id="NvS-FC-hqY">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NvS-FC-hqY">
+                                                <rect key="frame" x="0.0" y="0.5" width="30" height="29"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="26F-15-K12"/>
                                                     <constraint firstAttribute="height" constant="30" id="ikr-sk-hm5"/>
                                                 </constraints>
+                                                <imageReference key="image" image="person.circle" catalog="system" renderingMode="template"/>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Message" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gwD-ci-Njv">
                                                 <rect key="frame" x="42" y="0.0" width="298" height="30"/>
@@ -433,10 +445,10 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="OBv-M1-tzR" secondAttribute="trailing" constant="8" id="waK-TQ-ama"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aWW-6c-Nyy">
-                                <rect key="frame" x="0.0" y="44" width="414" height="764"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aWW-6c-Nyy">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="separatorColor" systemColor="systemGray5Color"/>
+                                <color key="separatorColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentsTableViewCell" rowHeight="110" id="PTH-2a-F1J" customClass="CommentsTableViewCell" customModule="Insdogram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="110"/>
@@ -450,11 +462,12 @@
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QQF-ZL-yN3">
                                                             <rect key="frame" x="0.0" y="0.5" width="36" height="35"/>
+                                                            <color key="tintColor" systemColor="labelColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="36" id="XGo-im-t6g"/>
                                                                 <constraint firstAttribute="width" constant="36" id="oUB-R4-Q52"/>
                                                             </constraints>
-                                                            <imageReference key="image" image="person.circle" catalog="system" renderingMode="original"/>
+                                                            <imageReference key="image" image="person.circle" catalog="system" renderingMode="template"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLp-nH-XU0">
                                                             <rect key="frame" x="44" y="0.0" width="346" height="34"/>
@@ -501,7 +514,7 @@
                                                         </stackView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjH-r9-UzE">
                                                             <rect key="frame" x="320.5" y="0.0" width="17.5" height="22"/>
-                                                            <color key="tintColor" systemColor="labelColor"/>
+                                                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <state key="normal">
                                                                 <imageReference key="image" image="heart" catalog="system" symbolScale="small"/>
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
@@ -512,9 +525,19 @@
                                                         </button>
                                                     </subviews>
                                                 </stackView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9q-r4-M6g" userLabel="Line View">
+                                                    <rect key="frame" x="0.0" y="109.5" width="414" height="0.5"/>
+                                                    <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="0.29999999999999999" id="tTT-tK-Zmx"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="G9q-r4-M6g" secondAttribute="trailing" id="Awj-Pj-RIq"/>
                                                 <constraint firstItem="1ca-eP-aWm" firstAttribute="leading" secondItem="hpf-ZI-GQ7" secondAttribute="leading" constant="56" id="MJf-vU-d01"/>
+                                                <constraint firstItem="G9q-r4-M6g" firstAttribute="leading" secondItem="hpf-ZI-GQ7" secondAttribute="leading" id="NJK-8P-up4"/>
+                                                <constraint firstAttribute="bottom" secondItem="G9q-r4-M6g" secondAttribute="bottom" id="PLB-v1-Lpo"/>
                                                 <constraint firstItem="j5U-2N-LYP" firstAttribute="top" secondItem="hpf-ZI-GQ7" secondAttribute="top" constant="8" id="ean-dg-elb"/>
                                                 <constraint firstItem="j5U-2N-LYP" firstAttribute="leading" secondItem="hpf-ZI-GQ7" secondAttribute="leading" constant="12" id="i0P-Xb-PRM"/>
                                                 <constraint firstAttribute="trailing" secondItem="j5U-2N-LYP" secondAttribute="trailing" constant="12" id="pK4-V0-djb"/>
@@ -527,6 +550,7 @@
                                             <outlet property="contentLabel" destination="qwc-gu-Qr3" id="uc3-pu-xBG"/>
                                             <outlet property="likeButton" destination="cjH-r9-UzE" id="7gu-pw-wbO"/>
                                             <outlet property="likeCountLabel" destination="bmV-Dd-5lx" id="m0p-VH-zAP"/>
+                                            <outlet property="lineView" destination="G9q-r4-M6g" id="4hb-15-BKv"/>
                                             <outlet property="profileImage" destination="QQF-ZL-yN3" id="CNI-b1-2eR"/>
                                             <outlet property="timestampLabel" destination="52j-GD-oQz" id="LNx-zr-fEp"/>
                                             <outlet property="usernameButton" destination="NLp-nH-XU0" id="Sxf-tX-osD"/>
@@ -547,8 +571,10 @@
                             <constraint firstItem="RXW-0N-IoJ" firstAttribute="trailing" secondItem="f0w-Hs-uF8" secondAttribute="trailing" id="tGw-cW-NCB"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Comments" id="Uqt-yO-1DG"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="myProfileImage" destination="OBv-M1-tzR" id="dEd-f8-8ey"/>
+                        <outlet property="myProfileImage" destination="NvS-FC-hqY" id="dMO-Ri-Ple"/>
                         <outlet property="sendButton" destination="kYG-35-Ewy" id="MTY-qz-VJK"/>
                         <outlet property="tableView" destination="aWW-6c-Nyy" id="UhB-2o-tBi"/>
                         <outlet property="textView" destination="gwD-ci-Njv" id="nWA-JS-akf"/>
@@ -556,7 +582,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Im-90-W1f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3741" y="-638"/>
+            <point key="canvasLocation" x="4614" y="-1339"/>
         </scene>
         <!--username-->
         <scene sceneID="hET-qn-wW8">
@@ -1128,7 +1154,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="SettingsTVC" storyboardName="Settings" id="hSX-d2-tY5" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIl-pa-giZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2617" y="917"/>
+            <point key="canvasLocation" x="3433" y="947"/>
         </scene>
         <!--EditProfile-->
         <scene sceneID="FE2-lC-wKi">
@@ -1136,7 +1162,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="EditProfileTVC" storyboardName="EditProfile" id="k03-TF-3DC" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wTN-Qw-RpR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2676" y="1010"/>
+            <point key="canvasLocation" x="3442" y="1039"/>
         </scene>
         <!--username-->
         <scene sceneID="0oj-0N-RLM">
@@ -1467,11 +1493,12 @@
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dx4-UH-1qS">
                                                             <rect key="frame" x="0.0" y="0.5" width="36" height="35"/>
+                                                            <color key="tintColor" systemColor="labelColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="36" id="ezy-Hm-qzp"/>
                                                                 <constraint firstAttribute="height" constant="36" id="qdn-G3-BCV"/>
                                                             </constraints>
-                                                            <imageReference key="image" image="person.circle" catalog="system" renderingMode="original"/>
+                                                            <imageReference key="image" image="person.circle" catalog="system" renderingMode="template"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWO-aL-xzj">
                                                             <rect key="frame" x="44" y="0.0" width="150" height="34"/>
@@ -1512,15 +1539,20 @@
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o47-pR-koV">
                                                             <rect key="frame" x="39.5" y="0.0" width="22" height="22"/>
+                                                            <color key="tintColor" systemColor="labelColor"/>
                                                             <state key="normal">
-                                                                <imageReference key="image" image="message" catalog="system" symbolScale="medium" renderingMode="original"/>
+                                                                <imageReference key="image" image="message" catalog="system" symbolScale="medium" renderingMode="template"/>
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="viewCommentsButtonDidTap:" destination="3h5-gX-FZm" eventType="touchUpInside" id="Caf-41-bKd"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Jq-g2-L1h">
                                                             <rect key="frame" x="75.5" y="0.0" width="21" height="22"/>
+                                                            <color key="tintColor" systemColor="labelColor"/>
                                                             <state key="normal">
-                                                                <imageReference key="image" image="paperplane" catalog="system" symbolScale="medium" renderingMode="original"/>
+                                                                <imageReference key="image" image="paperplane" catalog="system" symbolScale="medium" renderingMode="template"/>
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                             </state>
                                                         </button>
@@ -1580,6 +1612,9 @@
                                                             <state key="normal" title="View all 2 comments">
                                                                 <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="viewCommentsButtonDidTap:" destination="3h5-gX-FZm" eventType="touchUpInside" id="ixJ-RH-zdw"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July 27, 2014" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecv-Hz-D5F">
                                                             <rect key="frame" x="0.0" y="120" width="95" height="30"/>
@@ -1638,7 +1673,7 @@
                                             <outlet property="shareButton" destination="4Jq-g2-L1h" id="bMS-G4-mzq"/>
                                             <outlet property="timestampLabel" destination="ecv-Hz-D5F" id="22a-yK-jpc"/>
                                             <outlet property="usernameButton" destination="EWO-aL-xzj" id="NSv-4y-iIL"/>
-                                            <outlet property="viewCommentButton" destination="pvC-05-2mp" id="Ilq-gh-ZOv"/>
+                                            <outlet property="viewCommentsButton" destination="pvC-05-2mp" id="Ilq-gh-ZOv"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1658,6 +1693,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ygO-sM-Iwo" id="fnE-Lh-t5e"/>
+                        <segue destination="5P4-bq-0GH" kind="show" identifier="SeguePostToComment" id="bFb-v6-sCf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSs-o2-yVg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1667,9 +1703,10 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="AP2-Za-6h7"/>
-        <segue reference="0Vg-ii-N9L"/>
+        <segue reference="ykH-sw-wtH"/>
         <segue reference="XA7-zu-RY3"/>
-        <segue reference="N3A-wu-T8P"/>
+        <segue reference="kB8-KP-Qa9"/>
+        <segue reference="LwI-kW-ddj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IU_profileImage" width="640" height="640"/>

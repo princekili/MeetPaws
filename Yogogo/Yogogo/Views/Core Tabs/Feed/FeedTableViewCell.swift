@@ -20,23 +20,33 @@ protocol ButtonDidTapReloadDelegate: AnyObject {
     func reloadView(cell: UITableViewCell)
 }
 
+protocol PassPostIndexDelegate: AnyObject {
+    func passPostIndex(with index: Int)
+}
+
 // MARK: -
 
 class FeedTableViewCell: UITableViewCell {
     
     static let identifier = "FeedTableViewCell"
     
+    let userManager = UserManager.shared
+    
     private var currentPost: Post?
     
     private var currentUser: User?
     
-    let userManager = UserManager.shared
+    var postIndex: Int?
+    
+    // MARK: - delegate
     
     weak var delegatePresentAlert: FeedTableViewCellPresentAlertDelegate?
     
     weak var delegatePresentUser: FeedTableViewCellPresentUserDelegate?
     
     weak var delegateReloadView: ButtonDidTapReloadDelegate?
+    
+    weak var delegatePassPostIndex: PassPostIndexDelegate?
     
     // MARK: - @IBOutlet
     
@@ -55,7 +65,7 @@ class FeedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var likeButton: UIButton! {
         didSet {
-            setupLikeButton()
+            configureLikeButton()
         }
     }
     
@@ -90,11 +100,7 @@ class FeedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var moreContentButton: UIButton!
     
-    @IBOutlet weak var viewCommentButton: UIButton! {
-        didSet {
-            viewCommentButton.isHidden = true
-        }
-    }
+    @IBOutlet weak var viewCommentsButton: UIButton!
     
     @IBOutlet weak var timestampLabel: UILabel!
     
@@ -124,7 +130,7 @@ class FeedTableViewCell: UITableViewCell {
         
         // Change local view
         sender.isSelected.toggle()
-        setupLikeButton()
+        configureLikeButton()
         
         // Data
         guard let currentPost = currentPost else { return }
@@ -132,9 +138,14 @@ class FeedTableViewCell: UITableViewCell {
         PostManager.shared.updateUserDidLike(post: currentPost)
     }
     
+    @IBAction func viewCommentsButtonDidTap(_ sender: UIButton) {
+        guard let postIndex = self.postIndex else { return }
+        delegatePassPostIndex?.passPostIndex(with: postIndex)
+    }
+    
     // MARK: -
     
-    private func setupLikeButton() {
+    private func configureLikeButton() {
         let size: CGFloat = 19
         
         if likeButton.isSelected {
@@ -150,6 +161,69 @@ class FeedTableViewCell: UITableViewCell {
             likeButton.tintColor = .label
         }
     }
+    
+    private func setupLikeButton(with currentPost: Post) {
+        guard let userId = self.userManager.currentUser?.userId else { return }
+        self.likeButton.isSelected = currentPost.userDidLike.contains(userId)
+        self.configureLikeButton()
+    }
+    
+    private func setupLikeCountButton(with currentPost: Post) {
+        let count = currentPost.userDidLike.filter { $0 != "" }.count
+        switch count {
+        case 0:
+            self.likeCountButton.isHidden = true
+        case 1:
+            self.likeCountButton.isHidden = false
+            self.likeCountButton.setTitle("\(count) like", for: .normal)
+        default:
+            self.likeCountButton.isHidden = false
+            self.likeCountButton.setTitle("\(count) likes", for: .normal)
+        }
+    }
+    
+    private func setupViewCommentsButton(with currentPost: Post) {
+        let count = currentPost.comments.filter { $0 != "" }.count
+        switch count {
+        case 0:
+            viewCommentsButton.isHidden = true
+        case 1:
+            viewCommentsButton.isHidden = false
+            viewCommentsButton.setTitle("View \(count) comment", for: .normal)
+        default:
+            viewCommentsButton.isHidden = false
+            viewCommentsButton.setTitle("View all \(count) comments", for: .normal)
+        }
+    }
+    
+    private func setupCaptionLabel(with currentPost: Post) {
+        self.captionLabel.text = currentPost.caption
+    }
+    
+    private func setupMoreContentButton() {
+        let isHidden = self.captionLabel.numberOfLines == 0 ? true : self.captionLabel.textCount <= 1
+        self.moreContentButton.isHidden = isHidden
+    }
+    
+    private func setupAuthorInfo(with currentPost: Post) {
+        userManager.getAuthorInfo(userId: currentPost.userId) { [weak self] (user) in
+            self?.currentUser = user
+            self?.usernameButton.setTitle(user.username, for: .normal)
+            let url = URL(string: user.profileImage)
+            self?.profileImage.kf.setImage(with: url)
+        }
+    }
+    
+    private func setupPostImage(with currentPost: Post) {
+        let url = URL(string: currentPost.imageFileURL)
+        postImageView.kf.setImage(with: url)
+    }
+    
+    private func setupTimestampLabel(with currentPost: Post) {
+        let stringTimestamp = String(currentPost.timestamp / 1000)
+        let date = DateClass.compareCurrentTime(str: stringTimestamp)
+        timestampLabel.text = "\(date)"
+    }
 }
 
 // MARK: - Set up posts
@@ -160,61 +234,21 @@ extension FeedTableViewCell {
 
         // Set index
         moreActionsButton.tag = index
+        postIndex = index
         
-        // Set the cell style
         selectionStyle = .none
-
-        // MARK: - Observe the post
         
         PostManager.shared.observeUserPost(postId: post.postId) { [weak self] (currentPost) in
             
             self?.currentPost = currentPost
-            
-            // likeButton
-            guard let userId = self?.userManager.currentUser?.userId else { return }
-            self?.likeButton.isSelected = currentPost.userDidLike.contains(userId)
-            self?.setupLikeButton()
-            
-            // likeCountButton
-            let count = currentPost.userDidLike.filter { $0 != "" }.count
-            switch count {
-            case 0:
-                self?.likeCountButton.isHidden = true
-            case 1:
-                self?.likeCountButton.isHidden = false
-                self?.likeCountButton.setTitle("\(count) like", for: .normal)
-            default:
-                self?.likeCountButton.isHidden = false
-                self?.likeCountButton.setTitle("\(count) likes", for: .normal)
-            }
-            
-            // captionLabel
-            self?.captionLabel.text = currentPost.caption
-            
-            // moreContentButton
-            let isHidden = self?.captionLabel.numberOfLines == 0 ? true : self?.captionLabel.textCount ?? 0 <= 1
-            self?.moreContentButton.isHidden = isHidden
-            
-            // Get post's author info from DB
-            self?.userManager.getAuthorInfo(userId: currentPost.userId) { [weak self] (user) in
-                self?.usernameButton.setTitle(user.username, for: .normal)
-
-                let url = URL(string: user.profileImage)
-                self?.profileImage.kf.setImage(with: url)
-                
-                self?.currentUser = user
-            }
-            
-            // Get post's image
-            if self?.currentPost?.imageFileURL == post.imageFileURL {
-                let url = URL(string: post.imageFileURL)
-                self?.postImageView.kf.setImage(with: url, placeholder: UIImage(named: "dog_postImage"))
-            }
-            
-            // timestampLabel
-            let stringTimestamp = String(currentPost.timestamp / 1000)
-            let date = DateClass.compareCurrentTime(str: stringTimestamp)
-            self?.timestampLabel.text = "\(date)"
+            self?.setupLikeButton(with: currentPost)
+            self?.setupLikeCountButton(with: currentPost)
+            self?.setupViewCommentsButton(with: currentPost)
+            self?.setupCaptionLabel(with: currentPost)
+            self?.setupMoreContentButton()
+            self?.setupAuthorInfo(with: currentPost)
+            self?.setupPostImage(with: currentPost)
+            self?.setupTimestampLabel(with: currentPost)
         }
     }
 }

@@ -35,19 +35,16 @@ final class PostManager {
         // Save postId to UserManager
         guard let postId = postDatabaseRef.key else { return }
         userManager.currentUser?.posts.insert(postId, at: 0)
-        
         userManager.updateUserPosts {
             print("------ New added postId: \(postId) ------")
         }
         
         // Use the unique key as the image name and prepare the storage reference
         guard let imageKey = postDatabaseRef.key else { return }
-
         let imageStorageRef = photoStorageRef.child("\(imageKey).jpg")
         
         // Resize the image
         let scaledImage = image.scale(newWidth: 1024)
-        
         guard let imageData = scaledImage.jpegData(compressionQuality: 0.7) else { return }
         
         // Create the file metadata
@@ -218,22 +215,19 @@ final class PostManager {
         let postQuery = postsRef.child(postId)
         
         // Call Firebase API to retrieve the latest records
-        postQuery.observe(.value, with: { (snapshot) in
+        postQuery.observe(.value) { (snapshot) in
             
             let postInfo = snapshot.value as? [String: Any] ?? [:]
-            
             guard let newPost = Post(postId: snapshot.key, postInfo: postInfo) else {
                 print("------ Post not found: \(snapshot.key) ------")
                 return
             }
-            
-            print("------ newPost: \(newPost) ------")
-            
+            print("------ newPost: \(newPost.postId) ------")
             completion(newPost)
-        })
+        }
     }
     
-    // MARK: - Handle post's ❤️ (userDidLike)
+    // MARK: - Handle post's userDidLike
     
     func updateUserDidLike(post: Post) {
 
@@ -250,6 +244,14 @@ final class PostManager {
             postsRef.child(post.postId).child("userDidLike").setValue(userDidLike)
             print("------ Like❤️ ------")
         }
+    }
+    
+    // MARK: - Update post's comments
+    
+    func updatePostComments(post: Post, commentId: String) {
+        var comments = post.comments
+        let newComments: () = comments.append(commentId)
+        postsRef.child(post.postId).child("comments").setValue(newComments)
     }
     
     // MARK: - Delete the Post

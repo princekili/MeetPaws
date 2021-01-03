@@ -22,11 +22,13 @@ class PostTableViewCell: UITableViewCell {
     
     static let identifier = "PostTableViewCell"
     
+    let userManager = UserManager.shared
+    
     private var currentPost: Post?
     
     private var currentUser: User?
     
-    let userManager = UserManager.shared
+    // MARK: - delegate
     
     weak var delegatePresentAlert: PostTableViewCellPresentAlertDelegate?
     
@@ -51,7 +53,7 @@ class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var likeButton: UIButton! {
         didSet {
-            setupLikeButton()
+            configureLikeButton()
         }
     }
     
@@ -86,11 +88,7 @@ class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var moreContentButton: UIButton!
     
-    @IBOutlet weak var viewCommentButton: UIButton! {
-        didSet {
-            viewCommentButton.isHidden = true
-        }
-    }
+    @IBOutlet weak var viewCommentsButton: UIButton!
     
     @IBOutlet weak var captionLabel: UILabel!
     
@@ -116,20 +114,18 @@ class PostTableViewCell: UITableViewCell {
     }
     
     @IBAction func likeButtonDidTap(_ sender: UIButton) {
-        
         // Change local view
         sender.isSelected.toggle()
-        setupLikeButton()
+        configureLikeButton()
         
         // Data
         guard let currentPost = currentPost else { return }
-        
         PostManager.shared.updateUserDidLike(post: currentPost)
     }
     
     // MARK: -
     
-    private func setupLikeButton() {
+    private func configureLikeButton() {
         let size: CGFloat = 19
         
         if likeButton.isSelected {
@@ -145,62 +141,86 @@ class PostTableViewCell: UITableViewCell {
             likeButton.tintColor = .label
         }
     }
+    
+    private func setupLikeButton(with currentPost: Post) {
+        guard let userId = self.userManager.currentUser?.userId else { return }
+        self.likeButton.isSelected = currentPost.userDidLike.contains(userId)
+        self.configureLikeButton()
+    }
+    
+    private func setupLikeCountButton(with currentPost: Post) {
+        let count = currentPost.userDidLike.filter { $0 != "" }.count
+        switch count {
+        case 0:
+            likeCountButton.isHidden = true
+        case 1:
+            likeCountButton.isHidden = false
+            likeCountButton.setTitle("\(count) like", for: .normal)
+        default:
+            likeCountButton.isHidden = false
+            likeCountButton.setTitle("\(count) likes", for: .normal)
+        }
+    }
+    
+    private func setupViewCommentsButton(with currentPost: Post) {
+        let count = currentPost.comments.filter { $0 != "" }.count
+        switch count {
+        case 0:
+            viewCommentsButton.isHidden = true
+        case 1:
+            viewCommentsButton.isHidden = false
+            viewCommentsButton.setTitle("View \(count) comment", for: .normal)
+        default:
+            viewCommentsButton.isHidden = false
+            viewCommentsButton.setTitle("View all \(count) comments", for: .normal)
+        }
+    }
+    
+    private func setupCaptionLabel(with currentPost: Post) {
+        captionLabel.text = currentPost.caption
+    }
+    
+    private func setupMoreContentButton() {
+        let isHidden = self.captionLabel.numberOfLines == 0 ? true : self.captionLabel.textCount <= 1
+        self.moreContentButton.isHidden = isHidden
+    }
+    
+    private func setupAuthorInfo(with currentPost: Post) {
+        userManager.getAuthorInfo(userId: currentPost.userId) { [weak self] (user) in
+            self?.currentUser = user
+            self?.usernameButton.setTitle(user.username, for: .normal)
+            let url = URL(string: user.profileImage)
+            self?.profileImage.kf.setImage(with: url)
+        }
+    }
+    
+    private func setupPostImage(with currentPost: Post) {
+        let url = URL(string: currentPost.imageFileURL)
+        postImageView.kf.setImage(with: url)
+    }
+    
+    private func setupTimestampLabel(with currentPost: Post) {
+        let stringTimestamp = String(currentPost.timestamp / 1000)
+        let date = DateClass.compareCurrentTime(str: stringTimestamp)
+        timestampLabel.text = "\(date)"
+    }
 
     // MARK: -
     
     func setup(post: Post) {
-
         selectionStyle = .none
-        
-        // MARK: - Observe the post
         
         PostManager.shared.observeUserPost(postId: post.postId) { [weak self] (currentPost) in
             
             self?.currentPost = currentPost
-            
-            // likeButton
-            guard let userId = self?.userManager.currentUser?.userId else { return }
-            self?.likeButton.isSelected = currentPost.userDidLike.contains(userId)
-            self?.setupLikeButton()
-            
-            // likeCountButton
-            let count = currentPost.userDidLike.count - 1
-            switch count {
-            case 0:
-                self?.likeCountButton.isHidden = true
-            case 1:
-                self?.likeCountButton.isHidden = false
-                self?.likeCountButton.setTitle("\(count) like", for: .normal)
-            default:
-                self?.likeCountButton.isHidden = false
-                self?.likeCountButton.setTitle("\(count) likes", for: .normal)
-            }
-            
-            // captionLabel
-            self?.captionLabel.text = currentPost.caption
-            
-            // moreContentButton
-            let isHidden = self?.captionLabel.numberOfLines == 0 ? true : self?.captionLabel.textCount ?? 0 <= 1
-            self?.moreContentButton.isHidden = isHidden
-            
-            // Get post's author info from DB
-            self?.userManager.getAuthorInfo(userId: currentPost.userId) { [weak self] (user) in
-                self?.usernameButton.setTitle(user.username, for: .normal)
-
-                let url = URL(string: user.profileImage)
-                self?.profileImage.kf.setImage(with: url)
-                
-                self?.currentUser = user
-            }
-            
-            // Get post's image
-            let url = URL(string: currentPost.imageFileURL)
-            self?.postImageView.kf.setImage(with: url)
-            
-            // timestampLabel
-            let stringTimestamp = String(currentPost.timestamp / 1000)
-            let date = DateClass.compareCurrentTime(str: stringTimestamp)
-            self?.timestampLabel.text = "\(date)"
+            self?.setupLikeButton(with: currentPost)
+            self?.setupLikeCountButton(with: currentPost)
+            self?.setupViewCommentsButton(with: currentPost)
+            self?.setupCaptionLabel(with: currentPost)
+            self?.setupMoreContentButton()
+            self?.setupAuthorInfo(with: currentPost)
+            self?.setupPostImage(with: currentPost)
+            self?.setupTimestampLabel(with: currentPost)
         }
     }
 }
