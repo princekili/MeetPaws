@@ -19,12 +19,48 @@ final class CommentManager {
     
     let postManager = PostManager.shared
     
-    let commentRef = Database.database().reference().child("comments")
+    let ref = Database.database().reference()
     
     // MARK: - Upload comment
     
-    func uploadComment(content: String, completion: @escaping () -> Void) {
+    func uploadComment(post: Post, content: String, completion: @escaping () -> Void) {
+
+        // Save to post.comments
+        let commentRef = ref.child("comments").childByAutoId()
+        guard let commentId = commentRef.key else { return }
+        postManager.updatePostComments(post: post, commentId: commentId)
         
-//        let commentDatabaseRef = commentRef.childByAutoId()
+        // Encode the comment info
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        let postId = post.postId
+        let userDidLike: [String] = [""]
+        let timestamp = Int(Date().timeIntervalSince1970 * 1000)
+        
+        let comment: [String: Any] = [
+            "postId": postId,
+            "userId": userId,
+            "content": content,
+            "userDidLike": userDidLike,
+            "timestamp": timestamp
+        ]
+        
+        // Save to /comments/commentId
+        commentRef.setValue(comment)
+    }
+    
+    // MARK: - Observe post comments for content & userDidLike
+    
+    func observeComments(commentId: String, completion: @escaping (Comment) -> Void) {
+        
+        ref.child("comments").child(commentId).observe(.value) { (snapshot) in
+            
+            let commentInfo = snapshot.value as? [String: Any] ?? [:]
+            guard let newComment = Comment(commentId: snapshot.key, commentInfo: commentInfo) else {
+                print("------ Comment not found: \(snapshot.key) ------")
+                return
+            }
+            print("------ newComment: \(newComment.commentId) ------")
+            completion(newComment)
+        }
     }
 }
