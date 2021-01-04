@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 import Firebase
-//import IQKeyboardManagerSwift
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Your're signed in as \(name ?? "Unknown name"), id: \(user.uid), email: \(user.email ?? "unknown email").")
         }
         
-        // MARK: -
-//        IQKeyboardManager.shared.enable = true
+        // MARK: - IQKeyboardManager
+        IQKeyboardManager.shared.enable = true
 
         return true
     }
