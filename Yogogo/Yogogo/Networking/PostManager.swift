@@ -250,8 +250,8 @@ final class PostManager {
     
     func updatePostComments(post: Post, commentId: String) {
         var comments = post.comments
-        let newComments: () = comments.append(commentId)
-        postsRef.child(post.postId).child("comments").setValue(newComments)
+        comments.append(commentId)
+        postsRef.child(post.postId).child("comments").setValue(comments)
     }
     
     // MARK: - Delete the Post
@@ -274,7 +274,7 @@ final class PostManager {
         postsRef.child(postId).removeValue()
         print("------ Delete /posts/\(postId) ------")
         
-        // Download posts & Reload data
+        // Delete the local one
         completion()
     }
     
@@ -282,12 +282,12 @@ final class PostManager {
     
     func hide(with id: String, completion: @escaping () -> Void) {
         
-        // Add the postId to currentUser's ignoreList
+        // Add the id to currentUser's ignoreList
         userManager.currentUser?.ignoreList.append(id)
         
         // Update /users/userId/ignoreList on firebase
         guard let currentUser = userManager.currentUser else { return }
-        userManager.updateCurrentUserIgnoreList(with: currentUser) {
+        userManager.updateCurrentUserIgnoreList(with: id) {
             print("------ Add /users/\(currentUser.userId)/ignoreList/\(id) ------")
         }
         

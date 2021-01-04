@@ -365,11 +365,11 @@ class UserManager {
     // MARK: - Update /users/uid/ignoreList for hiding the post/comment/user
     
     // For current user
-    func updateCurrentUserIgnoreList(with user: User, completion: @escaping () -> Void) {
+    func updateCurrentUserIgnoreList(with id: String, completion: @escaping () -> Void) {
         // Add the userId to currentUser's ignoreList
         guard let uid = Auth.auth().currentUser?.uid else { return }
         guard var ignoreList = self.currentUser?.ignoreList else { return }
-        ignoreList.append(user.userId)
+        ignoreList.append(id)
         ignoreList.removeDuplicates()
         
         usersRef.child(uid).child("ignoreList").setValue(ignoreList)
@@ -396,7 +396,7 @@ class UserManager {
         
         // For current user
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        self.updateCurrentUserIgnoreList(with: user) {
+        self.updateCurrentUserIgnoreList(with: user.userId) {
             print("------ Add /users/\(uid)/ignoreList/\(user.userId) ------")
         }
         

@@ -8,15 +8,24 @@
 import UIKit
 import Kingfisher
 
+protocol CommentsTableViewCellDelegate: AnyObject {
+    
+    func presentAlert(with comment: Comment, at index: Int)
+}
+
 class CommentsTableViewCell: UITableViewCell {
     
     static let identifier = "CommentsTableViewCell"
     
-//    private var currentComment: Comment?
+    //    private var currentUser: User?
     
-//    private var currentUser: User?
+    var currentComment: Comment?
+    
+    var index: Int?
     
     let userManager = UserManager.shared
+    
+    weak var delegatePresentAlert: CommentsTableViewCellDelegate?
     
     // MARK: - @IBOutlet for cell
 
@@ -73,15 +82,17 @@ class CommentsTableViewCell: UITableViewCell {
     
     // MARK: - For setupComment
     
-    func setupComment(with comment: Comment) {
+    func setupComment(with comment: Comment, at index: Int) {
         selectionStyle = .none
-//        currentComment = comment
+        currentComment = comment
+        self.index = index
         lineView.isHidden = true
         setupCommentAuthorInfo(with: comment)
         setupContentLabel(with: comment)
         setupTimestampLabel(with: comment)
         setupLikeCountLabel(with: comment)
         setupLikeButton(with: comment)
+        enableLongPress(sender: self, select: #selector(presentAlert))
     }
     
     private func setupCommentAuthorInfo(with comment: Comment) {
@@ -138,5 +149,11 @@ class CommentsTableViewCell: UITableViewCell {
             likeButton.setImage(image, for: .normal)
             likeButton.tintColor = .lightGray
         }
+    }
+    
+    @objc func presentAlert() {
+        guard let currentComment = self.currentComment else { return }
+        guard let index = self.index else { return }
+        self.delegatePresentAlert?.presentAlert(with: currentComment, at: index)
     }
 }

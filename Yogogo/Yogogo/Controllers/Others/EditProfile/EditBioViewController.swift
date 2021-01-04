@@ -11,13 +11,11 @@ class EditBioViewController: UIViewController {
     
     @IBOutlet weak var bioTextView: UITextView! {
         didSet {
-//            bioTextView.placeholder = "Edit your bio..."
             bioTextView.text = text
             bioTextView.layer.borderWidth = 0.5
             bioTextView.layer.borderColor = UIColor.lightGray.cgColor
             bioTextView.layer.cornerRadius = 4
             bioTextView.layer.masksToBounds = true
-            
             bioTextView.delegate = self
         }
     }
@@ -28,7 +26,6 @@ class EditBioViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         bioTextView.placeholder = "Edit your bio..."
     }
     

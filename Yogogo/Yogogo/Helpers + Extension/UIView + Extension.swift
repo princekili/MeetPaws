@@ -32,4 +32,13 @@ extension UIView {
     var right: CGFloat {
         return frame.origin.x + frame.size.width
     }
+    
+    // MARK: -
+    
+    func enableLongPress(sender: Any, select: Selector) {
+
+        let longPress = UILongPressGestureRecognizer(target: sender, action: select)
+        
+        self.addGestureRecognizer(longPress)
+    }
 }

@@ -46,21 +46,35 @@ final class CommentManager {
         
         // Save to /comments/commentId
         commentRef.setValue(comment)
+        completion()
     }
     
     // MARK: - Observe post comments for content & userDidLike
     
-    func observeComments(commentId: String, completion: @escaping (Comment) -> Void) {
+    func getComments(commentId: String, completion: @escaping (Comment) -> Void) {
         
-        ref.child("comments").child(commentId).observe(.value) { (snapshot) in
+        ref.child("comments").child(commentId).observeSingleEvent(of: .value) { (snapshot) in
             
             let commentInfo = snapshot.value as? [String: Any] ?? [:]
             guard let newComment = Comment(commentId: snapshot.key, commentInfo: commentInfo) else {
                 print("------ Comment not found: \(snapshot.key) ------")
                 return
             }
+
             print("------ newComment: \(newComment.commentId) ------")
             completion(newComment)
         }
+    }
+    
+    // MARK: - Delete the comment
+    
+    func deleteComment(of post: Post, commentId: String) {
+        
+        // Update /posts/postId/comments on firebase
+        let commentsToUpdate = post.comments.filter { $0 != commentId }
+        ref.child("posts").child(post.postId).child("comments").setValue(commentsToUpdate)
+        
+        // Delete /comments/commentId on firebase
+        ref.child("comments").child(commentId).removeValue()
     }
 }

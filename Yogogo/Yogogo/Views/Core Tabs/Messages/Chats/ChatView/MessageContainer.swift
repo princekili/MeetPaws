@@ -21,7 +21,7 @@ class MessageContainer: UIView, UITextViewDelegate {
     
     let micButton = UIButton(type: .system)
     
-    let messageTV = UITextView()
+    let messageTextView = UITextView()
     
     let recordingAudioView = AnimationView()
     
@@ -57,7 +57,7 @@ class MessageContainer: UIView, UITextViewDelegate {
         setupBackground()
         setupAddImageButton()
         setupSendButton()
-        setupMessageTF()
+        setupMessageTV()
 //        setupActionCircle()
 //        setupMicrophone()
 //        recordingAudioAnimation()
@@ -126,6 +126,38 @@ class MessageContainer: UIView, UITextViewDelegate {
     
     // MARK: -
     
+    private func setupMessageTV() {
+        addSubview(messageTextView)
+        messageTextView.layer.cornerRadius = 14
+        messageTextView.font = UIFont(name: "Helvetica Neue", size: 16)
+        messageTextView.textColor = .label
+        messageTextView.isScrollEnabled = false
+        messageTextView.layer.borderWidth = 0.5
+        messageTextView.layer.borderColor = UIColor.systemGray.cgColor
+        messageTextView.layer.masksToBounds = true
+        let msgTVPlaceholder = UILabel()
+        msgTVPlaceholder.text = "Message"
+        msgTVPlaceholder.font = UIFont(name: "Helvetica Neue", size: 16)
+        msgTVPlaceholder.sizeToFit()
+        messageTextView.addSubview(msgTVPlaceholder)
+        msgTVPlaceholder.frame.origin = CGPoint(x: 10, y: 6)
+        msgTVPlaceholder.textColor = .lightGray
+        messageTextView.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 10)
+        messageTextView.translatesAutoresizingMaskIntoConstraints = false
+        messageTextView.backgroundColor = .systemBackground
+        messageTextView.adjustsFontForContentSizeCategory = true
+        messageTextView.delegate = self
+        let constraints = [
+            messageTextView.leadingAnchor.constraint(equalTo: addImageButton.trailingAnchor, constant: 8),
+            messageTextView.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -8),
+            messageTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const),
+            messageTextView.heightAnchor.constraint(equalToConstant: size)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    // MARK: -
+    
 //    private func setupMicrophone() {
 //        addSubview(micButton)
 //        micButton.translatesAutoresizingMaskIntoConstraints = false
@@ -140,38 +172,6 @@ class MessageContainer: UIView, UITextViewDelegate {
 //        ]
 //        NSLayoutConstraint.activate(constraints)
 //    }
-    
-    // MARK: -
-    
-    private func setupMessageTF() {
-        addSubview(messageTV)
-        messageTV.layer.cornerRadius = 14
-        messageTV.font = UIFont(name: "Helvetica Neue", size: 16)
-        messageTV.textColor = .label
-        messageTV.isScrollEnabled = false
-        messageTV.layer.borderWidth = 0.5
-        messageTV.layer.borderColor = UIColor.systemGray.cgColor
-        messageTV.layer.masksToBounds = true
-        let messTFPlaceholder = UILabel()
-        messTFPlaceholder.text = "Message"
-        messTFPlaceholder.font = UIFont(name: "Helvetica Neue", size: 16)
-        messTFPlaceholder.sizeToFit()
-        messageTV.addSubview(messTFPlaceholder)
-        messTFPlaceholder.frame.origin = CGPoint(x: 10, y: 6)
-        messTFPlaceholder.textColor = .lightGray
-        messageTV.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 10)
-        messageTV.translatesAutoresizingMaskIntoConstraints = false
-        messageTV.backgroundColor = .systemBackground
-        messageTV.adjustsFontForContentSizeCategory = true
-        messageTV.delegate = self
-        let constraints = [
-            messageTV.leadingAnchor.constraint(equalTo: addImageButton.trailingAnchor, constant: 8),
-            messageTV.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -8),
-            messageTV.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const),
-            messageTV.heightAnchor.constraint(equalToConstant: size)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
     
     // MARK: -
     
@@ -237,10 +237,10 @@ extension MessageContainer {
     func textViewDidChange(_ textView: UITextView) {
         chatVC.chatNetworking.isTypingHandler(textView: textView)
         chatVC.animateActionButton()
-        messageTV.subviews[2].isHidden = !messageTV.text.isEmpty
+        messageTextView.subviews[2].isHidden = !messageTextView.text.isEmpty
         let size = CGSize(width: textView.frame.width, height: 150)
         let estSize = textView.sizeThatFits(size)
-        messageTV.constraints.forEach { (constraint) in
+        messageTextView.constraints.forEach { (constraint) in
             if constraint.firstAttribute != .height { return }
             chatVC.messageHeightHandler(constraint, estSize)
             chatVC.messageContainerHeightHandler(heightAnchr, estSize)

@@ -29,8 +29,8 @@ extension ChatVC {
         userResponse.lineView.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
             userResponse.lineView.topAnchor.constraint(equalTo: messageContainer.topAnchor, constant: 8),
-            userResponse.lineView.bottomAnchor.constraint(equalTo: messageContainer.messageTV.topAnchor, constant: -8),
-            userResponse.lineView.leadingAnchor.constraint(equalTo: messageContainer.messageTV.leadingAnchor, constant: 8),
+            userResponse.lineView.bottomAnchor.constraint(equalTo: messageContainer.messageTextView.topAnchor, constant: -8),
+            userResponse.lineView.leadingAnchor.constraint(equalTo: messageContainer.messageTextView.leadingAnchor, constant: 8),
             userResponse.lineView.widthAnchor.constraint(equalToConstant: 2)
         ]
         NSLayoutConstraint.activate(constraints)
@@ -52,7 +52,7 @@ extension ChatVC {
         userResponse.exitButton.setImage(UIImage(systemName: "xmark"), for: .normal)
         userResponse.exitButton.tintColor = .label
         let constraints = [
-            userResponse.exitButton.trailingAnchor.constraint(equalTo: messageContainer.messageTV.trailingAnchor, constant: -16),
+            userResponse.exitButton.trailingAnchor.constraint(equalTo: messageContainer.messageTextView.trailingAnchor, constant: -16),
             userResponse.exitButton.centerYAnchor.constraint(equalTo: userResponse.lineView.centerYAnchor),
             userResponse.exitButton.widthAnchor.constraint(equalToConstant: 14),
             userResponse.exitButton.heightAnchor.constraint(equalToConstant: 14)
@@ -63,7 +63,7 @@ extension ChatVC {
     
     // MARK: -
     
-    @objc func exitResponseButtonPressed() {
+    @objc func  exitResponseButtonPressed() {
         userResponse.responseStatus = false
         userResponse.repliedMessage = nil
         userResponse.messageToForward = nil
@@ -128,7 +128,7 @@ extension ChatVC {
             userResponse.messageLabel.leadingAnchor.constraint(equalTo: userResponse.lineView.trailingAnchor, constant: 8),
             userResponse.messageLabel.trailingAnchor.constraint(equalTo: userResponse.exitButton.trailingAnchor, constant: -16),
             userResponse.messageLabel.topAnchor.constraint(equalTo: userResponse.nameLabel.bottomAnchor),
-            userResponse.messageLabel.bottomAnchor.constraint(equalTo: messageContainer.messageTV.topAnchor, constant: -16)
+            userResponse.messageLabel.bottomAnchor.constraint(equalTo: messageContainer.messageTextView.topAnchor, constant: -16)
         ]
         NSLayoutConstraint.activate(constraints)
     }

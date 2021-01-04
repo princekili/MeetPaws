@@ -202,7 +202,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     private func setupTextMessage() {
         guard let currentUser = UserManager.shared.currentUser else { return }
         
-        let trimmedMessage = messageContainer.messageTV.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmedMessage = messageContainer.messageTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard trimmedMessage.count > 0 else { return }
         
         let senderRef = ref.child("messages").child(currentUser.userId).child(user.userId).childByAutoId()
@@ -245,12 +245,12 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             showAlert(title: "Error", message: error?.localizedDescription)
             return
         }
-        messageContainer.messageTV.text = ""
-        messageContainer.messageTV.subviews[2].isHidden = false
+        messageContainer.messageTextView.text = ""
+        messageContainer.messageTextView.subviews[2].isHidden = false
         self.scrollToTheBottom(animated: false)
         hideKeyboard()
         chatNetworking.disableIsTyping()
-        messageContainer.messageTV.constraints.forEach { (constraint) in
+        messageContainer.messageTextView.constraints.forEach { (constraint) in
             if constraint.firstAttribute == .height {
                 constraint.constant = 32
                 if sendingIsFinished(const: messageContainer.heightAnchr) { return }
@@ -259,6 +259,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     
+    // MARK: To fix
     // MARK: - FETCH MESSAGES METHOD
     
     func fetchMessages() {
@@ -325,12 +326,10 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         observeMessageActions()
     }
     
-    // MARK: -
+    // MARK: - Show UserProfileVC
+    // MARK: To fix
     
     @objc func profileImageTapped() {
-        
-        // MARK: Show UserProfileVC ?
-        
 //        let friendController = FriendInformationVC()
 //        friendController.user = user
 //        friendController.modalPresentationStyle = .fullScreen
@@ -360,7 +359,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         var height = estSize.height
         if userResponse.responseStatus { height = estSize.height + 50 }
         if height > 150 { return }
-        if messageContainer.messageTV.calculateLines() >= 2 {
+        if messageContainer.messageTextView.calculateLines() >= 2 {
             if containerHeight > 45 {
                 const.constant = height + 35
             } else { const.constant = height + 15 }
@@ -372,9 +371,9 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     func messageHeightHandler(_ constraint: NSLayoutConstraint, _ estSize: CGSize) {
         let height: CGFloat = userResponse.responseStatus == true ? 100 : 150
         if estSize.height > height {
-            messageContainer.messageTV.isScrollEnabled = true
+            messageContainer.messageTextView.isScrollEnabled = true
             return
-        } else if messageContainer.messageTV.calculateLines() < 2 {
+        } else if messageContainer.messageTextView.calculateLines() < 2 {
             constraint.constant = 32
             self.view.layoutIfNeeded()
             return
@@ -387,8 +386,8 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     private func sendingIsFinished(const: NSLayoutConstraint) -> Bool {
         let height: CGFloat = userResponse.responseStatus == true ? containerHeight + 50 : containerHeight
-        if messageContainer.messageTV.text.count == 0 {
-            messageContainer.messageTV.isScrollEnabled = false
+        if messageContainer.messageTextView.text.count == 0 {
+            messageContainer.messageTextView.isScrollEnabled = false
             const.constant = height
             return true
         } else {
@@ -410,7 +409,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         chatNetworking.disableIsTyping()
     }
     
-    // MARK: -
+    // MARK: - Move the messageContainer View When the Keyboard Appears/Hides
     
     @objc private func handleKeyboardWillShow(notification: NSNotification) {
         let kFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
@@ -426,8 +425,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             self.view.layoutIfNeeded()
         }
     }
-    
-    // MARK: -
     
     @objc private func handleKeyboardWillHide(notification: NSNotification) {
         let kFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
@@ -448,12 +445,12 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     func animateActionButton() {
         var buttonToAnimate = UIButton()
-        if messageContainer.messageTV.text.count >= 1 {
+        if messageContainer.messageTextView.text.count >= 1 {
             messageContainer.micButton.alpha = 0
             if messageContainer.sendButton.alpha == 1 { return }
             messageContainer.sendButton.alpha = 1
             buttonToAnimate = messageContainer.sendButton
-        } else if messageContainer.messageTV.text.count == 0 {
+        } else if messageContainer.messageTextView.text.count == 0 {
             messageContainer.micButton.alpha = 1
             messageContainer.sendButton.alpha = 0
             buttonToAnimate = messageContainer.micButton
@@ -485,7 +482,8 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     
-    // MARK: -
+    // MARK: To fix
+    // MARK: - handle Long PressGesture
     
     @objc func handleLongPressGesture(longPress: UILongPressGestureRecognizer) {
         if longPress.state != UIGestureRecognizer.State.began { return }
@@ -497,8 +495,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         openToolsMenu(message, cell)
     }
     
-    // MARK: -
-    
     private func openToolsMenu(_ message: Messages, _ selectedCell: ChatCell) {
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         hideKeyboard()
@@ -506,8 +502,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         selectedCell.isHidden = true
         _ = ToolsMenu(message, selectedCell, self)
     }
-    
-    // MARK: -
     
     func forwardButtonPressed(_ message: Messages) {
         chatNetworking.getMessageSender(message: message) { (name) in
@@ -520,13 +514,11 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     
-    // MARK: -
-    
     func responseButtonPressed(_ message: Messages, forwardedName: String? = nil) {
         responseViewChangeAlpha(alpha: 0)
         messageContainer.micButton.alpha = 0
         messageContainer.sendButton.alpha = 1
-        messageContainer.messageTV.becomeFirstResponder()
+        messageContainer.messageTextView.becomeFirstResponder()
         userResponse.responseStatus = true
         userResponse.repliedMessage = message
         
@@ -540,7 +532,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     
-    // MARK: - handleAudioRecording
+    // MARK: - handle Audio Recording
     
     @objc func handleAudioRecording() {
         chatAudio.recordingSession = AVAudioSession.sharedInstance()
@@ -551,8 +543,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             stopAudioRecording()
         }
     }
-    
-    // MARK: - START RECORDING METHOD
     
     private func startAudioRecording() {
         let fileName = chatAudio.getDirectory().appendingPathComponent("sentAudio.m4a")
@@ -567,8 +557,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     
-    // MARK: -
-    
     private func prepareContainerForRecording() {
         chatAudio.timer = Timer(timeInterval: 1.0, target: self, selector: #selector(audioTimerHandler), userInfo: nil, repeats: true)
         RunLoop.current.add(chatAudio.timer, forMode: RunLoop.Mode.common)
@@ -576,7 +564,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         messageContainer.recordingLabel.isHidden = false
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
             self.messageContainer.recordingLabel.frame.origin.x += self.messageContainer.frame.width/6
-            self.messageContainer.messageTV.frame.origin.y += self.containerHeight
+            self.messageContainer.messageTextView.frame.origin.y += self.containerHeight
             self.messageContainer.addImageButton.frame.origin.y += self.containerHeight
             self.view.layoutIfNeeded()
             self.messageContainer.recordingAudioView.isHidden = false
@@ -585,8 +573,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     
-    // MARK: -
-    
     @objc private func audioTimerHandler() {
         chatAudio.timePassed += 1
         let (minute, second) = chatAudio.timePassedFrom(seconds: chatAudio.timePassed)
@@ -594,8 +580,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         let seconds = second < 10 ? "0\(second)" : "\(second)"
         messageContainer.recordingLabel.text = "\(minutes):\(seconds)"
     }
-    
-    // MARK: - STOP RECORDING METHOD
     
     private func stopAudioRecording() {
         chatAudio.audioRecorder.stop()
@@ -610,8 +594,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     
-    // MARK: -
-    
     private func removeRecordingUI() {
         messageContainer.recordingAudioView.isHidden = true
         if chatAudio.timer != nil { chatAudio.timer.invalidate() }
@@ -619,7 +601,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
             self.messageContainer.actionCircle.isHidden = true
             self.messageContainer.recordingLabel.frame.origin.x -= self.messageContainer.frame.width/6
-            self.messageContainer.messageTV.frame.origin.y -= self.containerHeight
+            self.messageContainer.messageTextView.frame.origin.y -= self.containerHeight
             self.messageContainer.addImageButton.frame.origin.y -= self.containerHeight
             self.view.layoutIfNeeded()
         }) { (true) in
@@ -627,8 +609,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             self.messageContainer.recordingLabel.text = "00:00"
         }
     }
-    
-    // MARK: -
     
     func handleUserPressedAudioButton(for cell: ChatCell) {
         if chatAudio.audioPlayer == nil {

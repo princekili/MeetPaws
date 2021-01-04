@@ -7,7 +7,7 @@
 
 import Firebase
 
-struct Comment {
+struct Comment: Hashable {
     
     var commentId: String
     

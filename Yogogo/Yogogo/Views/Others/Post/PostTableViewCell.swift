@@ -163,7 +163,13 @@ class PostTableViewCell: UITableViewCell {
     }
     
     private func setupViewCommentsButton(with currentPost: Post) {
-        let count = currentPost.comments.filter { $0 != "" }.count
+        var comments: [String] = []
+        if let ignoreList = UserManager.shared.currentUser?.ignoreList {
+            for userId in ignoreList {
+                comments = currentPost.comments.filter { $0 != userId }.filter { $0 != "" }
+            }
+        }
+        let count = comments.count
         switch count {
         case 0:
             viewCommentsButton.isHidden = true
