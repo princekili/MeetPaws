@@ -65,7 +65,7 @@ class UserInfoTab: UIView {
             guard let url = userManager.currentUser?.profileImage else { return }
             profileImage.kf.setImage(with: URL(string: url))
             actionButton.setImage(UIImage(systemName: "gear"), for: .normal)
-//            actionButton.setImage(UIImage(systemName: "person.circle"), for: .normal)
+            actionButton.isHidden = true
             nameLabel.text = "Me"
 
             guard let isMapLocationEnabled = userManager.currentUser?.isMapLocationEnabled else { return }

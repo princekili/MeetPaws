@@ -101,8 +101,9 @@
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eM-6K-pOe">
                                                     <rect key="frame" x="381.5" y="478.5" width="20.5" height="25"/>
+                                                    <color key="tintColor" systemColor="labelColor"/>
                                                     <state key="normal">
-                                                        <imageReference key="image" image="bookmark" catalog="system" symbolScale="large" renderingMode="original"/>
+                                                        <imageReference key="image" image="bookmark" catalog="system" symbolScale="large" renderingMode="template"/>
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                     </state>
                                                 </button>
@@ -1566,8 +1567,9 @@
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ym-eT-4rD">
                                                     <rect key="frame" x="381.5" y="478.5" width="20.5" height="25"/>
+                                                    <color key="tintColor" systemColor="labelColor"/>
                                                     <state key="normal">
-                                                        <imageReference key="image" image="bookmark" catalog="system" symbolScale="large" renderingMode="original"/>
+                                                        <imageReference key="image" image="bookmark" catalog="system" symbolScale="large" renderingMode="template"/>
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                     </state>
                                                 </button>

@@ -94,6 +94,7 @@ class FeedTableViewCell: UITableViewCell {
             let image = UIImage(systemName: "bookmark", withConfiguration: config)
             bookmarkButton.setImage(image, for: .normal)
             bookmarkButton.tintColor = .label
+            bookmarkButton.isHidden = true
         }
     }
     

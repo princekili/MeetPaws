@@ -76,7 +76,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         // For iPhone ≤ 8
         } else {
             containerHeight = 45
-            topConst = 28
+            topConst = 8
         }
         
         // MARK: - Layers order
