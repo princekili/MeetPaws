@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import Firebase
 
 class CommentsViewController: UIViewController {
 
@@ -14,7 +15,11 @@ class CommentsViewController: UIViewController {
     
     var post: Post?
     
+    var user: User? // for segue to UserProfile
+    
     var deleteHandler: ((Int) -> Void)?
+    
+    let segueIdCommentsToUserProfile = "SegueCommentsToUserProfile"
     
     // MARK: - @IBOutlet
     
@@ -81,6 +86,15 @@ class CommentsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+        if segue.identifier == segueIdCommentsToUserProfile {
+            guard let userProfileVC = segue.destination as? UserProfileViewController else { return }
+            // Pass user data to userProfileVC
+            userProfileVC.user = self.user
+        }
     }
     
     // MARK: - @IBAction
@@ -199,7 +213,7 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let currentComment = postComments[indexPath.row]
             cell.setupComment(with: currentComment, at: indexPath.row)
-            cell.delegatePresentAlert = self
+            cell.delegatePresent = self
             // Delete the comment
             self.deleteHandler = { [weak self] index in
                 self?.postComments.remove(at: index)
@@ -248,6 +262,26 @@ extension CommentsViewController: UITextViewDelegate {
 }
 
 extension CommentsViewController: CommentsTableViewCellDelegate {
+    
+    func presentUser(user: User, at index: Int) {
+        // Get user data from cell
+        self.user = user
+        
+        guard let myself = Auth.auth().currentUser?.uid else { return }
+        if user.userId == myself {
+            showMyProfileVC()
+        
+        } else {
+            performSegue(withIdentifier: segueIdCommentsToUserProfile, sender: nil)
+        }
+    }
+    
+    func showMyProfileVC() {
+        let storyboard = UIStoryboard(name: StoryboardName.main.rawValue, bundle: nil)
+        let myProfileVC = storyboard.instantiateViewController(identifier: StoryboardId.myProfileVC.rawValue)
+        
+        self.navigationController?.pushViewController(myProfileVC, animated: true)
+    }
     
     func presentAlert(with comment: Comment, at index: Int) {
         

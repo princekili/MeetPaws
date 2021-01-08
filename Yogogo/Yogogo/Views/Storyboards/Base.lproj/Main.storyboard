@@ -244,7 +244,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Pjr-xg-Nsj" id="oRM-ip-r0M"/>
-                        <segue destination="z8X-2O-y8n" kind="show" identifier="SegueUserProfile" id="ykH-sw-wtH"/>
+                        <segue destination="z8X-2O-y8n" kind="show" identifier="SegueFeedToUserProfile" id="ykH-sw-wtH"/>
                         <segue destination="5P4-bq-0GH" kind="show" identifier="SegueFeedToComment" id="kB8-KP-Qa9"/>
                     </connections>
                 </viewController>
@@ -478,6 +478,9 @@
                                                             <state key="normal" title="                  ">
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="usernameButtonDidTap:" destination="PTH-2a-F1J" eventType="touchUpInside" id="hbA-sh-W2f"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
@@ -584,6 +587,7 @@
                         <outlet property="myProfileImage" destination="NvS-FC-hqY" id="dMO-Ri-Ple"/>
                         <outlet property="sendButton" destination="kYG-35-Ewy" id="MTY-qz-VJK"/>
                         <outlet property="tableView" destination="aWW-6c-Nyy" id="UhB-2o-tBi"/>
+                        <segue destination="z8X-2O-y8n" kind="show" identifier="SegueCommentsToUserProfile" id="bTy-SW-93y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Im-90-W1f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

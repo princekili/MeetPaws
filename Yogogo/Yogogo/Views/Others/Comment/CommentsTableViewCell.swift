@@ -9,15 +9,15 @@ import UIKit
 import Kingfisher
 
 protocol CommentsTableViewCellDelegate: AnyObject {
-    
     func presentAlert(with comment: Comment, at index: Int)
+    func presentUser(user: User, at index: Int)
 }
 
 class CommentsTableViewCell: UITableViewCell {
     
     static let identifier = "CommentsTableViewCell"
     
-    //    private var currentUser: User?
+        private var currentUser: User?
     
     var currentComment: Comment?
     
@@ -25,7 +25,9 @@ class CommentsTableViewCell: UITableViewCell {
     
     let userManager = UserManager.shared
     
-    weak var delegatePresentAlert: CommentsTableViewCellDelegate?
+    // MARK: - delegate
+    
+    weak var delegatePresent: CommentsTableViewCellDelegate?
     
     // MARK: - @IBOutlet for cell
 
@@ -60,6 +62,11 @@ class CommentsTableViewCell: UITableViewCell {
         // Data
         guard let currentComment = currentComment else { return }
         CommentManager.shared.updateUserDidLike(comment: currentComment)
+    }
+    
+    @IBAction func usernameButtonDidTap(_ sender: UIButton) {
+        guard let user = currentUser else { return }
+        self.delegatePresent?.presentUser(user: user, at: sender.tag)
     }
     
     // MARK: - For setupPost
@@ -109,7 +116,7 @@ class CommentsTableViewCell: UITableViewCell {
     
     private func setupCommentAuthorInfo(with comment: Comment) {
         userManager.getAuthorInfo(userId: comment.userId) { [weak self] (user) in
-//            self?.currentUser = user
+            self?.currentUser = user
             self?.usernameButton.setTitle(user.username, for: .normal)
             let url = URL(string: user.profileImage)
             self?.profileImage.kf.setImage(with: url)
@@ -166,6 +173,6 @@ class CommentsTableViewCell: UITableViewCell {
     @objc func presentAlert() {
         guard let currentComment = self.currentComment else { return }
         guard let index = self.index else { return }
-        self.delegatePresentAlert?.presentAlert(with: currentComment, at: index)
+        self.delegatePresent?.presentAlert(with: currentComment, at: index)
     }
 }

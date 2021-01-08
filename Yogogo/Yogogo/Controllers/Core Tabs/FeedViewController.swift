@@ -14,7 +14,7 @@ class FeedViewController: UIViewController {
     
     var postFeed: [Post] = []
     
-    var user: User?
+    var user: User? // for segue to UserProfile
     
     var isLoadingPost = false
     
@@ -22,7 +22,9 @@ class FeedViewController: UIViewController {
     
     var deleteHandler: ((Int) -> Void)?
     
-    let segueId = "SegueFeedToComment"
+    let segueIdFeedToUserProfile = "SegueFeedToUserProfile"
+    
+    let segueIdFeedToComment = "SegueFeedToComment"
     
     var postIndex: Int?
     
@@ -50,12 +52,12 @@ class FeedViewController: UIViewController {
             guard let cameraVC = segue.destination as? CameraViewController else { return }
             cameraVC.delegate = self
             
-        } else if segue.identifier == "SegueUserProfile" {
+        } else if segue.identifier == segueIdFeedToUserProfile {
             guard let userProfileVC = segue.destination as? UserProfileViewController else { return }
             // Pass user data to userProfileVC
             userProfileVC.user = self.user
             
-        } else if segue.identifier == segueId {
+        } else if segue.identifier == segueIdFeedToComment {
             guard let commentsVC = segue.destination as? CommentsViewController else { return }
             guard let index = postIndex else { return }
             commentsVC.post = postFeed[index]
@@ -103,7 +105,7 @@ extension FeedViewController: PassPostIndexDelegate {
     
     func passPostIndex(with index: Int) {
         postIndex = index
-        performSegue(withIdentifier: segueId, sender: nil)
+        performSegue(withIdentifier: segueIdFeedToComment, sender: nil)
     }
 }
 
@@ -333,7 +335,6 @@ extension FeedViewController: FeedTableViewCellPresentAlertDelegate {
 extension FeedViewController: FeedTableViewCellPresentUserDelegate {
     
     func presentUser(user: User, at index: Int) {
-        
         // Get user data from cell
         self.user = user
         
@@ -342,7 +343,7 @@ extension FeedViewController: FeedTableViewCellPresentUserDelegate {
             showMyProfileVC()
         
         } else {
-            performSegue(withIdentifier: "SegueUserProfile", sender: nil)
+            performSegue(withIdentifier: segueIdFeedToUserProfile, sender: nil)
         }
     }
     
