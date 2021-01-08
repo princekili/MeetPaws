@@ -19,7 +19,6 @@ class WrapperProgressHUD {
     
     static func showSuccess() {
         ProgressHUD.colorAnimation = .lightGray
-//        ProgressHUD.showSucceed("Success", interaction: false)
         ProgressHUD.showSucceed()
     }
     
@@ -27,16 +26,14 @@ class WrapperProgressHUD {
     
     static func showHeart() {
         ProgressHUD.colorStatus = .systemGray
-        ProgressHUD.colorAnimation = UIColor(red: 168/255, green: 63/255, blue: 57/255, alpha: 1)
+        ProgressHUD.colorAnimation = UIColor.systemRed
         ProgressHUD.show(icon: .heart, interaction: false)
-//        ProgressHUD.show("加入收藏", icon: .heart, interaction: false)
     }
     
     static func removeHeart() {
         ProgressHUD.colorStatus = .systemGray
         ProgressHUD.colorAnimation = .lightGray
         ProgressHUD.show(icon: .heart, interaction: false)
-//        ProgressHUD.show("移除收藏", icon: .heart, interaction: false)
     }
     
     static func showFailed(with text: String) {

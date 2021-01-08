@@ -59,6 +59,11 @@ class CommentsTableViewCell: UITableViewCell {
         sender.isSelected.toggle()
         configureLikeButton()
         
+        // HUD
+        if likeButton.isSelected {
+            WrapperProgressHUD.showHeart()
+        }
+        
         // Data
         guard let currentComment = currentComment else { return }
         CommentManager.shared.updateUserDidLike(comment: currentComment)

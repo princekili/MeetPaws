@@ -129,14 +129,17 @@ class FeedTableViewCell: UITableViewCell {
     }
     
     @IBAction func likeButtonDidTap(_ sender: UIButton) {
-        
         // Change local view
         sender.isSelected.toggle()
         configureLikeButton()
         
+        // HUD
+        if likeButton.isSelected {
+            WrapperProgressHUD.showHeart()
+        }
+        
         // Data
         guard let currentPost = currentPost else { return }
-        
         PostManager.shared.updateUserDidLike(post: currentPost)
     }
     
