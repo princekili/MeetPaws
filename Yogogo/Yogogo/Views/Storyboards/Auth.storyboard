@@ -78,7 +78,7 @@ you have to sign in.</string>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="ZMX-sF-YvP">
-                                <rect key="frame" x="69" y="665" width="276" height="47"/>
+                                <rect key="frame" x="69" y="670" width="276" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By tapping Sign in with Apple," textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIP-HL-vAz">
                                         <rect key="frame" x="43.5" y="0.0" width="189.5" height="20"/>
@@ -106,7 +106,7 @@ you have to sign in.</string>
                             <constraint firstItem="ZOq-o5-WXQ" firstAttribute="centerX" secondItem="FF3-gX-0yy" secondAttribute="centerX" id="Mhp-pO-B0V"/>
                             <constraint firstItem="u0n-BG-KGi" firstAttribute="bottom" secondItem="L9v-97-d4c" secondAttribute="bottom" constant="60" id="ZcG-hV-cFM"/>
                             <constraint firstItem="ZMX-sF-YvP" firstAttribute="centerX" secondItem="FF3-gX-0yy" secondAttribute="centerX" id="Zy7-qt-3c4"/>
-                            <constraint firstItem="L9v-97-d4c" firstAttribute="top" secondItem="ZMX-sF-YvP" secondAttribute="bottom" constant="30" id="l3Z-8y-1U9"/>
+                            <constraint firstItem="L9v-97-d4c" firstAttribute="top" secondItem="ZMX-sF-YvP" secondAttribute="bottom" constant="25" id="l3Z-8y-1U9"/>
                             <constraint firstItem="u0n-BG-KGi" firstAttribute="trailing" secondItem="L9v-97-d4c" secondAttribute="trailing" constant="20" id="nXs-8j-ttO"/>
                             <constraint firstItem="z65-Nh-hkB" firstAttribute="centerY" secondItem="FF3-gX-0yy" secondAttribute="centerY" constant="-28" id="p6b-4r-0ca"/>
                             <constraint firstItem="z65-Nh-hkB" firstAttribute="centerX" secondItem="FF3-gX-0yy" secondAttribute="centerX" id="wPV-Eo-lSm"/>
@@ -135,7 +135,8 @@ you have to sign in.</string>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IAj-xk-4Ei">
                                 <rect key="frame" x="20" y="59" width="374" height="803"/>
                                 <color key="backgroundColor" red="0.73796564340000004" green="0.91487348079999997" blue="0.91289204359999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <mutableString key="text">End-User License Agreement ("Agreement")
+                                <mutableString key="text">End-User License Agreement ("Agreement") for Insdogram
+
 Last updated: January 08, 2021
 
 Please read this End-User License Agreement carefully before clicking the "I Agree" button, downloading or using Insdogram.
@@ -240,9 +241,10 @@ If you have any questions about this Agreement, You can contact Us:
 
 By email: princewang.developer@gmail.com
 
------------------------------------
+---------------------------------------
 
-Privacy Policy
+Privacy Policy for Insdogram
+
 Last updated: January 08, 2021
 
 This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.
