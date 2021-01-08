@@ -84,6 +84,7 @@ class FeedTableViewCell: UITableViewCell {
             let image = UIImage(systemName: "paperplane", withConfiguration: config)
             shareButton.setImage(image, for: .normal)
             shareButton.tintColor = .label
+            shareButton.isHidden = true
         }
     }
     

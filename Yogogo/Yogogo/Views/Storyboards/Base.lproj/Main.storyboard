@@ -237,10 +237,6 @@
                                 <segue destination="gMV-PJ-K5I" kind="presentation" identifier="CameraVC" animates="NO" modalPresentationStyle="fullScreen" id="LwI-kW-ddj"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" id="CNE-5P-XGS">
-                            <imageReference key="image" image="bell" catalog="system" symbolScale="medium" renderingMode="template"/>
-                            <color key="tintColor" systemColor="labelColor"/>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Pjr-xg-Nsj" id="oRM-ip-r0M"/>
@@ -1721,7 +1717,6 @@
     <resources>
         <image name="IU_profileImage" width="640" height="640"/>
         <image name="arrow.up" catalog="system" width="120" height="128"/>
-        <image name="bell" catalog="system" width="128" height="124"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="dog_postImage" width="426" height="421"/>
