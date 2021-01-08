@@ -48,6 +48,7 @@
 		A3551EC12573901A0006099A /* UserListNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3551EC02573901A0006099A /* UserListNetworking.swift */; };
 		A35BCC1D2570C6290090B95E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */; };
 		A35BCC202570EF830090B95E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35BCC1F2570EF830090B95E /* MapKit.framework */; };
+		A35F540825A8724100C6A6B5 /* ProgressHUD + Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F540725A8724100C6A6B5 /* ProgressHUD + Wrapper.swift */; };
 		A36B4BCB2587BBF1005DAC50 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B4BCA2587BBF1005DAC50 /* UserProfileViewController.swift */; };
 		A36B4BCE2587BDF0005DAC50 /* UserPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B4BCD2587BDF0005DAC50 /* UserPostCollectionViewCell.swift */; };
 		A36B4BD22587C07E005DAC50 /* UserProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B4BD12587C07E005DAC50 /* UserProfileHeaderCollectionReusableView.swift */; };
@@ -169,6 +170,7 @@
 		A3551EC02573901A0006099A /* UserListNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListNetworking.swift; sourceTree = "<group>"; };
 		A35BCC1C2570C6290090B95E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A35BCC1F2570EF830090B95E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A35F540725A8724100C6A6B5 /* ProgressHUD + Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressHUD + Wrapper.swift"; sourceTree = "<group>"; };
 		A36B4BCA2587BBF1005DAC50 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		A36B4BCD2587BDF0005DAC50 /* UserPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		A36B4BD12587C07E005DAC50 /* UserProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -339,19 +341,20 @@
 				A3551EA12572AEE50006099A /* Calendar + Extension.swift */,
 				A331583D257F931F004CC86C /* DateClass.swift */,
 				A3A551FB2590517300EAB5C5 /* EmptyListView.swift */,
+				A35F540725A8724100C6A6B5 /* ProgressHUD + Wrapper.swift */,
 				A344F41B257A61CA0048B754 /* RoundedCornerButton.swift */,
 				A33EFB422580FF0F00E9F336 /* Storyboard + Enum.swift */,
+				A3DBAF7A2591198600B0A0C4 /* ThemeColors.swift */,
 				A33EFB45258145AF00E9F336 /* UIColor + Extension.swift */,
 				A3137011257E5C4100CEA185 /* UIImage + Extension.swift */,
 				A3551EAD25735B000006099A /* UIImageView + Extension.swift */,
 				A3C195A125765F0200BAB46B /* UILabel + Extension.swift */,
 				A313701A257EBB1D00CEA185 /* UINavigationController + Extension.swift */,
 				A3A551A8258F69A200EAB5C5 /* UINavigationItem + Extension.swift */,
+				A3A448342592F577005F443A /* UIStoryboard + Extension.swift */,
 				A3C136D3257CBC9500960B4C /* UITextView + Extension.swift */,
 				A3C195E625779A9C00BAB46B /* UIView + Extension.swift */,
 				A316BE502575245C00989152 /* UIViewController + Extension.swift */,
-				A3DBAF7A2591198600B0A0C4 /* ThemeColors.swift */,
-				A3A448342592F577005F443A /* UIStoryboard + Extension.swift */,
 			);
 			path = "Helpers + Extension";
 			sourceTree = "<group>";
@@ -926,6 +929,7 @@
 				A3A551DC25903D8E00EAB5C5 /* MessageView.swift in Sources */,
 				A33EA0A4259598370092B97C /* CommentsViewController.swift in Sources */,
 				A3551E4B257256110006099A /* User.swift in Sources */,
+				A35F540825A8724100C6A6B5 /* ProgressHUD + Wrapper.swift in Sources */,
 				A3A551ED2590445600EAB5C5 /* NewConversationCell.swift in Sources */,
 				A3551EA22572AEE50006099A /* Calendar + Extension.swift in Sources */,
 				A3551EBC257378FB0006099A /* CustomUserLocationAnnotationView.swift in Sources */,
@@ -1005,7 +1009,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1060,7 +1064,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1080,7 +1084,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YQ4Y66HUTL;
 				INFOPLIST_FILE = Yogogo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1088,7 +1092,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Prince.Yogogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1102,7 +1106,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YQ4Y66HUTL;
 				INFOPLIST_FILE = Yogogo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1110,7 +1114,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Prince.Yogogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
