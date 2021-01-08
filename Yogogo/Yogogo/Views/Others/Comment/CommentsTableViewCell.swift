@@ -50,6 +50,18 @@ class CommentsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var lineView: UIView!
     
+    // MARK: - @IBAction
+    
+    @IBAction func likeButtonDidTap(_ sender: UIButton) {
+        // Change local view
+        sender.isSelected.toggle()
+        configureLikeButton()
+        
+        // Data
+        guard let currentComment = currentComment else { return }
+        CommentManager.shared.updateUserDidLike(comment: currentComment)
+    }
+    
     // MARK: - For setupPost
     
     func setupPost(with post: Post) {

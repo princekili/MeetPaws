@@ -525,6 +525,9 @@
                                                             <state key="selected">
                                                                 <imageReference key="image" image="heart.fill" catalog="system" renderingMode="template"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="likeButtonDidTap:" destination="PTH-2a-F1J" eventType="touchUpInside" id="dgF-fE-jIP"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>

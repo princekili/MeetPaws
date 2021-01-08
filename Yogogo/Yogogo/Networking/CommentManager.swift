@@ -77,4 +77,23 @@ final class CommentManager {
         // Delete /comments/commentId on firebase
         ref.child("comments").child(commentId).removeValue()
     }
+    
+    // MARK: - Handle comment's userDidLike
+    
+    func updateUserDidLike(comment: Comment) {
+
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        var userDidLike = comment.userDidLike
+        
+        if userDidLike.contains(userId) {
+            let filtered = userDidLike.filter { $0 != userId }
+            ref.child("comments").child(comment.commentId).child("userDidLike").setValue(filtered)
+            print("------ Dislike💔 ------")
+            
+        } else {
+            userDidLike.append(userId)
+            ref.child("comments").child(comment.commentId).child("userDidLike").setValue(userDidLike)
+            print("------ Like❤️ ------")
+        }
+    }
 }
