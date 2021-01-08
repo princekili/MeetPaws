@@ -56,6 +56,7 @@ class CameraViewController: UIViewController {
         
         guard let image = selectedItems.singlePhoto?.image else {
             dismiss(animated: true, completion: nil)
+            WrapperProgressHUD.showFailed(with: "Failed")
             print("selectedItems error")
             return
         }
@@ -65,6 +66,7 @@ class CameraViewController: UIViewController {
             self?.delegate?.loadRecentPost()
         }
         self.dismiss(animated: true, completion: nil)
+        WrapperProgressHUD.showSuccess()
     }
     
     // MARK: -

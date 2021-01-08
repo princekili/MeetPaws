@@ -95,30 +95,27 @@ extension MyPostViewController: PostTableViewCellPresentAlertDelegate {
         // UIAlertAction - Check the author
         guard let posts = UserManager.shared.currentUser?.posts else { return }
         
-        var action: UIAlertAction
-        
         if posts.contains(postId) {
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
-                
                 self?.confirmDeletePostAlert(postId: postId)
             }
-            action = deleteAction
+            moreActionsAlertController.addAction(deleteAction)
             
         } else {
             let hideAction = UIAlertAction(title: "Hide", style: .destructive) { [weak self] _ in
-                
                 self?.confirmHidePostAlert(postId: postId)
-                
             }
-            action = hideAction
+            moreActionsAlertController.addAction(hideAction)
+            
+            let reportAction = UIAlertAction(title: "Report", style: .destructive) { [weak self] _ in
+                self?.confirmReportPostAlert(postId: postId)
+            }
+            moreActionsAlertController.addAction(reportAction)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             moreActionsAlertController.dismiss(animated: true, completion: nil)
         }
-        
-        // addAction
-        moreActionsAlertController.addAction(action)
         moreActionsAlertController.addAction(cancelAction)
         
         self.present(moreActionsAlertController, animated: true, completion: nil)
@@ -135,6 +132,7 @@ extension MyPostViewController: PostTableViewCellPresentAlertDelegate {
             PostManager.shared.deletePost(postId: postId) {
                 // Delete the post on tableView
                 self.deleteHandler?()
+                WrapperProgressHUD.showSuccess()
             }
         }
         
@@ -160,6 +158,7 @@ extension MyPostViewController: PostTableViewCellPresentAlertDelegate {
             PostManager.shared.hide(with: postId) {
                 // Delete(Hide) the post on tableView
                 self.deleteHandler?()
+                WrapperProgressHUD.showSuccess()
             }
         }
         
@@ -169,6 +168,29 @@ extension MyPostViewController: PostTableViewCellPresentAlertDelegate {
         
         // addAction
         confirmAlertController.addAction(hideAction)
+        confirmAlertController.addAction(cancelAction)
+        
+        self.present(confirmAlertController, animated: true, completion: nil)
+    }
+    
+    func confirmReportPostAlert(postId: String) {
+        
+        // UIAlertController
+        let title = "Report Inappropriate Post?"
+        let message = "Your report is anonymous."
+        let confirmAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // UIAlertAction
+        let reportAction = UIAlertAction(title: "Report", style: .destructive) { _ in
+            WrapperProgressHUD.showSuccess()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            confirmAlertController.dismiss(animated: true, completion: nil)
+        }
+        
+        // addAction
+        confirmAlertController.addAction(reportAction)
         confirmAlertController.addAction(cancelAction)
         
         self.present(confirmAlertController, animated: true, completion: nil)

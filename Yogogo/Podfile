@@ -12,6 +12,7 @@ target 'Insdogram' do
   pod 'YPImagePicker'
   pod 'Kingfisher'
   pod 'lottie-ios'
+  pod 'ProgressHUD'
 #  pod 'Appirater'
 
   # Pods for Firebase

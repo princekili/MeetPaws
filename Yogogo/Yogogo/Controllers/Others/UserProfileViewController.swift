@@ -121,16 +121,18 @@ class UserProfileViewController: UIViewController {
         
         // UIAlertAction
         let blockAction = UIAlertAction(title: "Block", style: .destructive) { [weak self] _ in
-            
             self?.confirmBlockUserAlert(with: userId)
         }
+        moreActionsAlertController.addAction(blockAction)
+        
+        let reportAction = UIAlertAction(title: "Report", style: .destructive) { [weak self] _ in
+            self?.confirmReportUserAlert(with: userId)
+        }
+        moreActionsAlertController.addAction(reportAction)
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             moreActionsAlertController.dismiss(animated: true, completion: nil)
         }
-        
-        // addAction
-        moreActionsAlertController.addAction(blockAction)
         moreActionsAlertController.addAction(cancelAction)
         
         self.present(moreActionsAlertController, animated: true, completion: nil)
@@ -145,10 +147,13 @@ class UserProfileViewController: UIViewController {
         
         // UIAlertAction
         let blockAction = UIAlertAction(title: "Block", style: .destructive) { _ in
-            
-            guard let user = self.user else { return }
+            guard let user = self.user else {
+                WrapperProgressHUD.showFailed(with: "User doesn't exist.")
+                return
+            }
             UserManager.shared.block(with: user) {
                 self.blockHandler?()
+                WrapperProgressHUD.showSuccess()
             }
         }
         
@@ -158,6 +163,29 @@ class UserProfileViewController: UIViewController {
         
         // addAction
         confirmAlertController.addAction(blockAction)
+        confirmAlertController.addAction(cancelAction)
+        
+        self.present(confirmAlertController, animated: true, completion: nil)
+    }
+    
+    private func confirmReportUserAlert(with userId: String) {
+        
+        // UIAlertController
+        let title = "Report Inappropriate User?"
+        let message = "Your report is anonymous. If someone is in immediate danger, call the local emergency services, don't wait."
+        let confirmAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // UIAlertAction
+        let reportAction = UIAlertAction(title: "Report", style: .destructive) { _ in
+            WrapperProgressHUD.showSuccess()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            confirmAlertController.dismiss(animated: true, completion: nil)
+        }
+        
+        // addAction
+        confirmAlertController.addAction(reportAction)
         confirmAlertController.addAction(cancelAction)
         
         self.present(confirmAlertController, animated: true, completion: nil)

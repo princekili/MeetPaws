@@ -57,11 +57,8 @@ class EditProfileTableViewController: UITableViewController {
         guard let username = usernameLabel.text else { return }
         guard let bio = bioTextView.text else { return }
         
-//        userManager.updateUserProfile(image: profileImage, fullName: fullName, username: username, bio: bio) { [weak self] in
         userManager.updateUserProfile(image: profileImage, fullName: fullName, username: username, bio: bio) {
-//            print("------ Print currentUser in UserManager ------")
-//            print(self.userManager.currentUser ?? "------ currentUser == nil ------")
-//            print("------------")
+            WrapperProgressHUD.showSuccess()
         }
         
         dismiss(animated: true, completion: nil)
