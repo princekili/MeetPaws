@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -34,11 +36,11 @@
 		<string>Please go to Settings/Yogogo/Location and turn on the ‘Precise Location’.</string>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Please enable your precise location while using the app.</string>
+	<string>Please enable your precise location to interact with other users while using the app.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>for capturing videos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>for you to choose photos to upload</string>
+	<string>for choosing photos to upload</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
