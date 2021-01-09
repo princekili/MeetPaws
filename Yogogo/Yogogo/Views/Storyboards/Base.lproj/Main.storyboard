@@ -218,9 +218,9 @@
                             <constraint firstItem="Pjr-xg-Nsj" firstAttribute="top" secondItem="wo0-GE-Ycp" secondAttribute="top" id="qoZ-vs-lFa"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Insdogram" id="0xY-qV-RCO">
+                    <navigationItem key="navigationItem" title="MeetPaws" id="0xY-qV-RCO">
                         <barButtonItem key="backBarButtonItem" title=" " id="I1s-d4-U6d"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="eFG-iY-Cwk">
+                        <barButtonItem key="leftBarButtonItem" systemItem="camera" id="eFG-iY-Cwk">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
                                 <segue destination="gMV-PJ-K5I" kind="presentation" identifier="CameraVC" animates="NO" modalPresentationStyle="fullScreen" id="LwI-kW-ddj"/>
@@ -813,8 +813,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="username" id="MER-db-j5K">
                         <barButtonItem key="backBarButtonItem" title=" " id="P2V-Lj-bt6"/>
-                        <barButtonItem key="leftBarButtonItem" id="mfS-xS-smg">
-                            <imageReference key="image" image="plus" catalog="system" symbolScale="large" renderingMode="template"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="camera" id="mfS-xS-smg">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
                                 <segue destination="gMV-PJ-K5I" kind="presentation" identifier="CameraView" animates="NO" modalPresentationStyle="fullScreen" id="N3A-wu-T8P"/>
@@ -842,11 +841,11 @@
             <objects>
                 <viewController id="T9e-QR-uu9" customClass="FollowersViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ChT-Eq-RBo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="64G-dm-HLv">
-                                <rect key="frame" x="0.0" y="50" width="414" height="758"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="675"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowersTableViewCell" rowHeight="80" id="MIe-RF-esn" customClass="FollowersTableViewCell" customModule="Insdogram" customModuleProvider="target">
@@ -1065,9 +1064,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="jSv-8n-T8I" kind="relationship" relationship="viewControllers" id="DnV-Yb-bJ2"/>
-                        <segue destination="fch-kW-JCY" kind="relationship" relationship="viewControllers" id="XwX-Vd-0Mn"/>
-                        <segue destination="Dfn-3A-ibT" kind="relationship" relationship="viewControllers" id="MT4-cL-wSk"/>
                         <segue destination="dBA-sM-npu" kind="relationship" relationship="viewControllers" id="rME-yP-fyW"/>
+                        <segue destination="Dfn-3A-ibT" kind="relationship" relationship="viewControllers" id="MT4-cL-wSk"/>
+                        <segue destination="fch-kW-JCY" kind="relationship" relationship="viewControllers" id="XwX-Vd-0Mn"/>
                         <segue destination="oAd-fz-Odl" kind="relationship" relationship="viewControllers" id="edF-kl-XOV"/>
                     </connections>
                 </tabBarController>
@@ -1088,7 +1087,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="26"/>
                         </textAttributes>
                         <imageReference key="backIndicatorImage" image="chevron.left" catalog="system" renderingMode="original"/>
                     </navigationBar>
@@ -1174,11 +1173,11 @@
             <objects>
                 <viewController storyboardIdentifier="UserProfileVC" id="z8X-2O-y8n" customClass="UserProfileViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w1l-Tw-DGk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SIC-aE-p8g">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="1II-nS-NRS">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1496,11 +1495,11 @@
             <objects>
                 <viewController storyboardIdentifier="MyPostVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3h5-gX-FZm" userLabel="Post View Controller" customClass="MyPostViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gE2-gt-gop">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ygO-sM-Iwo">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostTableViewCell" id="aBM-pf-HXd" customClass="PostTableViewCell" customModule="Insdogram" customModuleProvider="target">
@@ -1713,9 +1712,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AP2-Za-6h7"/>
-        <segue reference="TZE-FA-8Gn"/>
-        <segue reference="XA7-zu-RY3"/>
+        <segue reference="vYt-mG-5lM"/>
+        <segue reference="ykH-sw-wtH"/>
+        <segue reference="Mfh-c0-Ke4"/>
         <segue reference="kB8-KP-Qa9"/>
         <segue reference="N3A-wu-T8P"/>
     </inferredMetricsTieBreakers>
@@ -1738,7 +1737,6 @@
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
