@@ -220,7 +220,7 @@ extension MyProfileViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 {
-            return CGSize(width: collectionView.width, height: 250)
+            return CGSize(width: collectionView.width, height: 350)
         }
         // Size of section tabs
 //        return CGSize(width: collectionView.width, height: 50)
