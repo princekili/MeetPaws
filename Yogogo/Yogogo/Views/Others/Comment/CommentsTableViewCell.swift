@@ -17,7 +17,7 @@ class CommentsTableViewCell: UITableViewCell {
     
     static let identifier = "CommentsTableViewCell"
     
-        private var currentUser: User?
+    private var currentUser: User?
     
     var currentComment: Comment?
     
@@ -48,8 +48,6 @@ class CommentsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var timestampLabel: UILabel!
     
-    @IBOutlet weak var likeCountLabel: UILabel!
-    
     @IBOutlet weak var lineView: UIView!
     
     // MARK: - @IBAction
@@ -78,7 +76,6 @@ class CommentsTableViewCell: UITableViewCell {
     
     func setupPost(with post: Post) {
         selectionStyle = .none
-        likeCountLabel.isHidden = true
         likeButton.isHidden = true
         setupPostAuthorInfo(with: post)
         setupCaptionLabel(with: post)
@@ -114,7 +111,6 @@ class CommentsTableViewCell: UITableViewCell {
         setupCommentAuthorInfo(with: comment)
         setupContentLabel(with: comment)
         setupTimestampLabel(with: comment)
-        setupLikeCountLabel(with: comment)
         setupLikeButton(with: comment)
         enableLongPress(sender: self, select: #selector(presentAlert))
     }
@@ -138,17 +134,13 @@ class CommentsTableViewCell: UITableViewCell {
         timestampLabel.text = "\(date)"
     }
     
-    private func setupLikeCountLabel(with comment: Comment) {
+    private func configureLikeCount(with comment: Comment) {
         let count = comment.userDidLike.filter { $0 != "" }.count
         switch count {
         case 0:
-            likeCountLabel.isHidden = true
-        case 1:
-            likeCountLabel.isHidden = false
-            likeCountLabel.text = "\(count) like"
+            self.likeButton.setTitle("", for: .normal)
         default:
-            likeCountLabel.isHidden = false
-            likeCountLabel.text = "\(count) likes"
+            self.likeButton.setTitle(" \(count)", for: .normal)
         }
     }
     
@@ -156,10 +148,11 @@ class CommentsTableViewCell: UITableViewCell {
         guard let userId = userManager.currentUser?.userId else { return }
         likeButton.isSelected = comment.userDidLike.contains(userId)
         configureLikeButton()
+        configureLikeCount(with: comment)
     }
     
     private func configureLikeButton() {
-        let size: CGFloat = 10
+        let size: CGFloat = 13
         
         if likeButton.isSelected {
             let config = UIImage.SymbolConfiguration(pointSize: size, weight: .regular)

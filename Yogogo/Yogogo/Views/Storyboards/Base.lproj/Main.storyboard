@@ -476,7 +476,7 @@
                                                     <rect key="frame" x="56" y="44" width="338" height="54"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="tlf-gn-d9n">
-                                                            <rect key="frame" x="0.0" y="0.0" width="304.5" height="47"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="338" height="47"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="很久沒陪妳散步啦 ！親愛的~" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwc-gu-Qr3">
                                                                     <rect key="frame" x="0.0" y="0.0" width="236" height="21.5"/>
@@ -485,7 +485,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="l02-sK-1Ej">
-                                                                    <rect key="frame" x="0.0" y="27.5" width="128" height="19.5"/>
+                                                                    <rect key="frame" x="0.0" y="27.5" width="103" height="19.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1h ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52j-GD-oQz">
                                                                             <rect key="frame" x="0.0" y="0.0" width="47.5" height="19.5"/>
@@ -493,30 +493,26 @@
                                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99 likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmV-Dd-5lx">
-                                                                            <rect key="frame" x="71.5" y="0.0" width="56.5" height="19.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjH-r9-UzE">
+                                                                            <rect key="frame" x="71.5" y="0.0" width="31.5" height="19.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <state key="normal" title=" 3">
+                                                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <imageReference key="image" image="heart" catalog="system" symbolScale="small"/>
+                                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                            </state>
+                                                                            <state key="selected">
+                                                                                <imageReference key="image" image="heart.fill" catalog="system" renderingMode="template"/>
+                                                                            </state>
+                                                                            <connections>
+                                                                                <action selector="likeButtonDidTap:" destination="PTH-2a-F1J" eventType="touchUpInside" id="dgF-fE-jIP"/>
+                                                                            </connections>
+                                                                        </button>
                                                                     </subviews>
                                                                 </stackView>
                                                             </subviews>
                                                         </stackView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjH-r9-UzE">
-                                                            <rect key="frame" x="320.5" y="0.0" width="17.5" height="22"/>
-                                                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <state key="normal">
-                                                                <imageReference key="image" image="heart" catalog="system" symbolScale="small"/>
-                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                                            </state>
-                                                            <state key="selected">
-                                                                <imageReference key="image" image="heart.fill" catalog="system" renderingMode="template"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="likeButtonDidTap:" destination="PTH-2a-F1J" eventType="touchUpInside" id="dgF-fE-jIP"/>
-                                                            </connections>
-                                                        </button>
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9q-r4-M6g" userLabel="Line View">
@@ -543,7 +539,6 @@
                                         <connections>
                                             <outlet property="contentLabel" destination="qwc-gu-Qr3" id="uc3-pu-xBG"/>
                                             <outlet property="likeButton" destination="cjH-r9-UzE" id="7gu-pw-wbO"/>
-                                            <outlet property="likeCountLabel" destination="bmV-Dd-5lx" id="m0p-VH-zAP"/>
                                             <outlet property="lineView" destination="G9q-r4-M6g" id="4hb-15-BKv"/>
                                             <outlet property="profileImage" destination="QQF-ZL-yN3" id="CNI-b1-2eR"/>
                                             <outlet property="timestampLabel" destination="52j-GD-oQz" id="LNx-zr-fEp"/>
@@ -1168,7 +1163,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SIC-aE-p8g">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="1II-nS-NRS">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1687,7 +1682,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="vYt-mG-5lM"/>
-        <segue reference="ykH-sw-wtH"/>
+        <segue reference="bTy-SW-93y"/>
         <segue reference="Mfh-c0-Ke4"/>
         <segue reference="bFb-v6-sCf"/>
         <segue reference="LwI-kW-ddj"/>
