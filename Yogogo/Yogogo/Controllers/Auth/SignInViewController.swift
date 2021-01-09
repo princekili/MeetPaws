@@ -219,8 +219,8 @@ import CryptoKit
 // Unhashed nonce.
 private var currentNonce: String?
 
-//@available(iOS 13, *)
-//func startSignInWithAppleFlow() {
+// @available(iOS 13, *)
+// func startSignInWithAppleFlow() {
 //  let nonce = randomNonceString()
 //  currentNonce = nonce
 //  let appleIDProvider = ASAuthorizationAppleIDProvider()
@@ -232,7 +232,7 @@ private var currentNonce: String?
 //  authorizationController.delegate = self
 //  authorizationController.presentationContextProvider = self
 //  authorizationController.performRequests()
-//}
+// }
 
 @available(iOS 13, *)
 private func sha256(_ input: String) -> String {
