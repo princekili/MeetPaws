@@ -98,8 +98,6 @@ class FeedTableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var likeCountButton: UIButton!
-    
     @IBOutlet weak var moreContentButton: UIButton!
     
     @IBOutlet weak var viewCommentsButton: UIButton!
@@ -108,7 +106,14 @@ class FeedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var captionLabel: UILabel!
     
-    @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var postImageView: UIImageView! {
+        didSet {
+            postImageView.layer.cornerRadius = 4
+            postImageView.layer.masksToBounds = true
+            postImageView.translatesAutoresizingMaskIntoConstraints = false
+            postImageView.contentMode = .scaleAspectFit
+        }
+    }
     
     // MARK: - @IBAction
     
@@ -150,6 +155,16 @@ class FeedTableViewCell: UITableViewCell {
     
     // MARK: -
     
+    private func configureLikeCount(with currentPost: Post) {
+        let count = currentPost.userDidLike.filter { $0 != "" }.count
+        switch count {
+        case 0:
+            self.likeButton.setTitle("", for: .normal)
+        default:
+            self.likeButton.setTitle(" \(count)", for: .normal)
+        }
+    }
+    
     private func configureLikeButton() {
         let size: CGFloat = 19
         
@@ -171,20 +186,7 @@ class FeedTableViewCell: UITableViewCell {
         guard let userId = self.userManager.currentUser?.userId else { return }
         self.likeButton.isSelected = currentPost.userDidLike.contains(userId)
         self.configureLikeButton()
-    }
-    
-    private func setupLikeCountButton(with currentPost: Post) {
-        let count = currentPost.userDidLike.filter { $0 != "" }.count
-        switch count {
-        case 0:
-            self.likeCountButton.isHidden = true
-        case 1:
-            self.likeCountButton.isHidden = false
-            self.likeCountButton.setTitle("\(count) like", for: .normal)
-        default:
-            self.likeCountButton.isHidden = false
-            self.likeCountButton.setTitle("\(count) likes", for: .normal)
-        }
+        self.configureLikeCount(with: currentPost)
     }
     
     private func setupViewCommentsButton(with currentPost: Post) {
@@ -203,7 +205,7 @@ class FeedTableViewCell: UITableViewCell {
             viewCommentsButton.setTitle("View \(count) comment", for: .normal)
         default:
             viewCommentsButton.isHidden = false
-            viewCommentsButton.setTitle("View all \(count) comments", for: .normal)
+            viewCommentsButton.setTitle("View \(count) comments", for: .normal)
         }
     }
     
@@ -253,7 +255,6 @@ extension FeedTableViewCell {
             
             self?.currentPost = currentPost
             self?.setupLikeButton(with: currentPost)
-            self?.setupLikeCountButton(with: currentPost)
             self?.setupViewCommentsButton(with: currentPost)
             self?.setupCaptionLabel(with: currentPost)
             self?.setupMoreContentButton()

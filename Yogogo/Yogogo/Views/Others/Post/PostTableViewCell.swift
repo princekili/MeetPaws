@@ -86,8 +86,6 @@ class PostTableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var likeCountButton: UIButton!
-    
     @IBOutlet weak var moreContentButton: UIButton!
     
     @IBOutlet weak var viewCommentsButton: UIButton!
@@ -96,7 +94,14 @@ class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var timestampLabel: UILabel!
     
-    @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var postImageView: UIImageView! {
+        didSet {
+            postImageView.layer.cornerRadius = 4
+            postImageView.layer.masksToBounds = true
+            postImageView.translatesAutoresizingMaskIntoConstraints = false
+            postImageView.contentMode = .scaleAspectFit
+        }
+    }
 
     // MARK: - @IBAction
     
@@ -132,6 +137,16 @@ class PostTableViewCell: UITableViewCell {
     
     // MARK: -
     
+    private func configureLikeCount(with currentPost: Post) {
+        let count = currentPost.userDidLike.filter { $0 != "" }.count
+        switch count {
+        case 0:
+            self.likeButton.setTitle("", for: .normal)
+        default:
+            self.likeButton.setTitle(" \(count)", for: .normal)
+        }
+    }
+    
     private func configureLikeButton() {
         let size: CGFloat = 19
         
@@ -153,20 +168,7 @@ class PostTableViewCell: UITableViewCell {
         guard let userId = self.userManager.currentUser?.userId else { return }
         self.likeButton.isSelected = currentPost.userDidLike.contains(userId)
         self.configureLikeButton()
-    }
-    
-    private func setupLikeCountButton(with currentPost: Post) {
-        let count = currentPost.userDidLike.filter { $0 != "" }.count
-        switch count {
-        case 0:
-            likeCountButton.isHidden = true
-        case 1:
-            likeCountButton.isHidden = false
-            likeCountButton.setTitle("\(count) like", for: .normal)
-        default:
-            likeCountButton.isHidden = false
-            likeCountButton.setTitle("\(count) likes", for: .normal)
-        }
+        self.configureLikeCount(with: currentPost)
     }
     
     private func setupViewCommentsButton(with currentPost: Post) {
@@ -185,7 +187,7 @@ class PostTableViewCell: UITableViewCell {
             viewCommentsButton.setTitle("View \(count) comment", for: .normal)
         default:
             viewCommentsButton.isHidden = false
-            viewCommentsButton.setTitle("View all \(count) comments", for: .normal)
+            viewCommentsButton.setTitle("View \(count) comments", for: .normal)
         }
     }
     
@@ -227,7 +229,6 @@ class PostTableViewCell: UITableViewCell {
             
             self?.currentPost = currentPost
             self?.setupLikeButton(with: currentPost)
-            self?.setupLikeCountButton(with: currentPost)
             self?.setupViewCommentsButton(with: currentPost)
             self?.setupCaptionLabel(with: currentPost)
             self?.setupMoreContentButton()
