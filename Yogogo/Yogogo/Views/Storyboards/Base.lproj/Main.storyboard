@@ -23,10 +23,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedTableViewCell" id="Gj1-kw-ZQO" customClass="FeedTableViewCell" customModule="Insdogram" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="611"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="581"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gj1-kw-ZQO" id="vza-ml-M79">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="611"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="581"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aZk-gG-smH">
@@ -63,7 +63,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="4IE-qi-HTN">
-                                                    <rect key="frame" x="12" y="456" width="125.5" height="23"/>
+                                                    <rect key="frame" x="12" y="456" width="154.5" height="23"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iys-6H-yaL">
                                                             <rect key="frame" x="0.0" y="0.0" width="54.5" height="23"/>
@@ -81,10 +81,12 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uw6-KL-KYe">
-                                                            <rect key="frame" x="68.5" y="0.0" width="22" height="23"/>
+                                                            <rect key="frame" x="68.5" y="0.0" width="51" height="23"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                             <color key="tintColor" systemColor="labelColor"/>
-                                                            <state key="normal">
-                                                                <imageReference key="image" image="message" catalog="system" symbolScale="medium" renderingMode="template"/>
+                                                            <state key="normal" title=" 99">
+                                                                <color key="titleColor" systemColor="labelColor"/>
+                                                                <imageReference key="image" image="message" catalog="system" symbolScale="medium"/>
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                             </state>
                                                             <connections>
@@ -92,7 +94,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yh3-XO-R7t">
-                                                            <rect key="frame" x="104.5" y="0.0" width="21" height="23"/>
+                                                            <rect key="frame" x="133.5" y="0.0" width="21" height="23"/>
                                                             <color key="tintColor" systemColor="labelColor"/>
                                                             <state key="normal">
                                                                 <imageReference key="image" image="paperplane" catalog="system" symbolScale="medium" renderingMode="template"/>
@@ -110,7 +112,7 @@
                                                     </state>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="HjR-Dn-Zk8">
-                                                    <rect key="frame" x="16" y="483" width="382" height="120"/>
+                                                    <rect key="frame" x="16" y="483" width="382" height="90"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="很久沒陪妳散步啦 ！親愛的~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eky-sw-YfW">
                                                             <rect key="frame" x="0.0" y="0.0" width="382" height="30"/>
@@ -134,21 +136,8 @@
                                                                 <action selector="moreCaptionButtonDidTap:" destination="Gj1-kw-ZQO" eventType="touchUpInside" id="ilj-RF-x3c"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H74-Fm-Ia7">
-                                                            <rect key="frame" x="0.0" y="60" width="136" height="30"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="Si7-et-ihq"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <state key="normal" title="View 2 comments">
-                                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="viewCommentsButtonDidTap:" destination="Gj1-kw-ZQO" eventType="touchUpInside" id="JeY-T0-CfV"/>
-                                                            </connections>
-                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July 27, 2014" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j40-rr-Tm0">
-                                                            <rect key="frame" x="0.0" y="90" width="95" height="30"/>
+                                                            <rect key="frame" x="0.0" y="60" width="95" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="zo0-X1-PsM"/>
                                                             </constraints>
@@ -203,7 +192,6 @@
                                             <outlet property="shareButton" destination="Yh3-XO-R7t" id="YZ3-6s-gvD"/>
                                             <outlet property="timestampLabel" destination="j40-rr-Tm0" id="vde-rR-ogT"/>
                                             <outlet property="usernameButton" destination="wM1-oA-mzh" id="RUy-yo-kO9"/>
-                                            <outlet property="viewCommentsButton" destination="H74-Fm-Ia7" id="Ldg-UP-Ugf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1503,10 +1491,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostTableViewCell" id="aBM-pf-HXd" customClass="PostTableViewCell" customModule="Insdogram" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="611"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="581"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aBM-pf-HXd" id="lMe-EZ-BO0">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="611"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="581"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="a3E-kP-jSK">
@@ -1543,7 +1531,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="ygc-0a-Q1E">
-                                                    <rect key="frame" x="12" y="456" width="125.5" height="23"/>
+                                                    <rect key="frame" x="12" y="456" width="154.5" height="23"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YtK-1s-Mlb">
                                                             <rect key="frame" x="0.0" y="0.0" width="54.5" height="23"/>
@@ -1561,9 +1549,11 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o47-pR-koV">
-                                                            <rect key="frame" x="68.5" y="0.0" width="22" height="23"/>
+                                                            <rect key="frame" x="68.5" y="0.0" width="51" height="23"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                             <color key="tintColor" systemColor="labelColor"/>
-                                                            <state key="normal">
+                                                            <state key="normal" title=" 99">
+                                                                <color key="titleColor" systemColor="labelColor"/>
                                                                 <imageReference key="image" image="message" catalog="system" symbolScale="medium" renderingMode="template"/>
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                             </state>
@@ -1572,7 +1562,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Jq-g2-L1h">
-                                                            <rect key="frame" x="104.5" y="0.0" width="21" height="23"/>
+                                                            <rect key="frame" x="133.5" y="0.0" width="21" height="23"/>
                                                             <color key="tintColor" systemColor="labelColor"/>
                                                             <state key="normal">
                                                                 <imageReference key="image" image="paperplane" catalog="system" symbolScale="medium" renderingMode="template"/>
@@ -1590,7 +1580,7 @@
                                                     </state>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="QIn-Bp-dur">
-                                                    <rect key="frame" x="16" y="483" width="382" height="120"/>
+                                                    <rect key="frame" x="16" y="483" width="382" height="90"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="很久沒陪妳散步啦 ！親愛的~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVM-N0-RtT">
                                                             <rect key="frame" x="0.0" y="0.0" width="382" height="30"/>
@@ -1614,21 +1604,8 @@
                                                                 <action selector="moreCaptionButtonDidTap:" destination="aBM-pf-HXd" eventType="touchUpInside" id="Y6j-VL-Gtz"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvC-05-2mp">
-                                                            <rect key="frame" x="0.0" y="60" width="136" height="30"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="AGY-qd-jUg"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <state key="normal" title="View 2 comments">
-                                                                <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="viewCommentsButtonDidTap:" destination="3h5-gX-FZm" eventType="touchUpInside" id="ixJ-RH-zdw"/>
-                                                            </connections>
-                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July 27, 2014" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecv-Hz-D5F">
-                                                            <rect key="frame" x="0.0" y="90" width="95" height="30"/>
+                                                            <rect key="frame" x="0.0" y="60" width="95" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="q3T-5y-GtN"/>
                                                             </constraints>
@@ -1683,7 +1660,6 @@
                                             <outlet property="shareButton" destination="4Jq-g2-L1h" id="bMS-G4-mzq"/>
                                             <outlet property="timestampLabel" destination="ecv-Hz-D5F" id="22a-yK-jpc"/>
                                             <outlet property="usernameButton" destination="EWO-aL-xzj" id="NSv-4y-iIL"/>
-                                            <outlet property="viewCommentsButton" destination="pvC-05-2mp" id="Ilq-gh-ZOv"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1715,8 +1691,8 @@
         <segue reference="vYt-mG-5lM"/>
         <segue reference="ykH-sw-wtH"/>
         <segue reference="Mfh-c0-Ke4"/>
-        <segue reference="kB8-KP-Qa9"/>
-        <segue reference="N3A-wu-T8P"/>
+        <segue reference="bFb-v6-sCf"/>
+        <segue reference="LwI-kW-ddj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IU_profileImage" width="640" height="640"/>

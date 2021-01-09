@@ -88,8 +88,6 @@ class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var moreContentButton: UIButton!
     
-    @IBOutlet weak var viewCommentsButton: UIButton!
-    
     @IBOutlet weak var captionLabel: UILabel!
     
     @IBOutlet weak var timestampLabel: UILabel!
@@ -171,7 +169,7 @@ class PostTableViewCell: UITableViewCell {
         self.configureLikeCount(with: currentPost)
     }
     
-    private func setupViewCommentsButton(with currentPost: Post) {
+    private func setupCommentsCount(with currentPost: Post) {
         var comments: [String] = []
         if let ignoreList = UserManager.shared.currentUser?.ignoreList {
             for userId in ignoreList {
@@ -181,13 +179,9 @@ class PostTableViewCell: UITableViewCell {
         let count = comments.count
         switch count {
         case 0:
-            viewCommentsButton.isHidden = true
-        case 1:
-            viewCommentsButton.isHidden = false
-            viewCommentsButton.setTitle("View \(count) comment", for: .normal)
+            commentButton.setTitle("", for: .normal)
         default:
-            viewCommentsButton.isHidden = false
-            viewCommentsButton.setTitle("View \(count) comments", for: .normal)
+            commentButton.setTitle(" \(count)", for: .normal)
         }
     }
     
@@ -229,7 +223,7 @@ class PostTableViewCell: UITableViewCell {
             
             self?.currentPost = currentPost
             self?.setupLikeButton(with: currentPost)
-            self?.setupViewCommentsButton(with: currentPost)
+            self?.setupCommentsCount(with: currentPost)
             self?.setupCaptionLabel(with: currentPost)
             self?.setupMoreContentButton()
             self?.setupAuthorInfo(with: currentPost)
