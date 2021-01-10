@@ -33,7 +33,7 @@
 	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
 	<dict>
 		<key>MGLAccuracyAuthorizationDescription</key>
-		<string>Please go to Settings/Yogogo/Location and turn on the ‘Precise Location’.</string>
+		<string>Please go to Settings/MeetPaws/Location and turn on the ‘Precise Location’.</string>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please enable your precise location to interact with other users while using the app.</string>

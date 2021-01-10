@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06302D6A173B7FB225B5E34A /* Pods_MeetPaws.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF09E0B480F7BB663D37D2A0 /* Pods_MeetPaws.framework */; };
 		A3136FC4257DF3C000CEA185 /* EditUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3136FC3257DF3C000CEA185 /* EditUsernameViewController.swift */; };
 		A3136FC7257E04DE00CEA185 /* EditBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3136FC6257E04DE00CEA185 /* EditBioViewController.swift */; };
 		A313700F257E58C400CEA185 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A313700E257E58C400CEA185 /* PostManager.swift */; };
@@ -119,11 +120,11 @@
 		A3EE0328257BB98500459C54 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EE0327257BB98500459C54 /* SettingsTableViewController.swift */; };
 		A3FF43DA258F2FA70071B03D /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF43D9258F2FA70071B03D /* Messages.swift */; };
 		A3FF43DD258F38490071B03D /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FF43DC258F38490071B03D /* MessageManager.swift */; };
-		F74499567804EB3AA5C4277A /* Pods_Insdogram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034D8CDEAA98A44EEF76EE71 /* Pods_Insdogram.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		034D8CDEAA98A44EEF76EE71 /* Pods_Insdogram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Insdogram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A21E797150A5FBE5951F4F2 /* Pods-MeetPaws.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetPaws.debug.xcconfig"; path = "Target Support Files/Pods-MeetPaws/Pods-MeetPaws.debug.xcconfig"; sourceTree = "<group>"; };
+		4E3870D24A46CE50495F1995 /* Pods-MeetPaws.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetPaws.release.xcconfig"; path = "Target Support Files/Pods-MeetPaws/Pods-MeetPaws.release.xcconfig"; sourceTree = "<group>"; };
 		615692C546D4AE9F09EDCA6A /* Pods-Insdogram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Insdogram.debug.xcconfig"; path = "Target Support Files/Pods-Insdogram/Pods-Insdogram.debug.xcconfig"; sourceTree = "<group>"; };
 		A3136FC3257DF3C000CEA185 /* EditUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUsernameViewController.swift; sourceTree = "<group>"; };
 		A3136FC6257E04DE00CEA185 /* EditBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioViewController.swift; sourceTree = "<group>"; };
@@ -220,7 +221,7 @@
 		A3C195EC2577E35F00BAB46B /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		A3C195EF2577E7CF00BAB46B /* MyProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		A3C195F22577E80900BAB46B /* MyProfileTabsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTabsCollectionReusableView.swift; sourceTree = "<group>"; };
-		A3CEA997256F87F1001DA842 /* Insdogram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insdogram.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3CEA997256F87F1001DA842 /* MeetPaws.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetPaws.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3CEA99A256F87F1001DA842 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3CEA99C256F87F1001DA842 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A3CEA99E256F87F1001DA842 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
@@ -235,12 +236,13 @@
 		A3EE02E8257B489700459C54 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		A3EE02EC257B5FEB00459C54 /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		A3EE02F8257B6D7300459C54 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		A3EE0310257B8E5900459C54 /* Yogogo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yogogo.entitlements; sourceTree = "<group>"; };
+		A3EE0310257B8E5900459C54 /* MeetPaws.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeetPaws.entitlements; sourceTree = "<group>"; };
 		A3EE0317257BB57600459C54 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		A3EE0327257BB98500459C54 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		A3FF43D9258F2FA70071B03D /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		A3FF43DC258F38490071B03D /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		D007E390A3FFC3A58B926DF7 /* Pods-Insdogram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Insdogram.release.xcconfig"; path = "Target Support Files/Pods-Insdogram/Pods-Insdogram.release.xcconfig"; sourceTree = "<group>"; };
+		DF09E0B480F7BB663D37D2A0 /* Pods_MeetPaws.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetPaws.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,7 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A35BCC202570EF830090B95E /* MapKit.framework in Frameworks */,
-				F74499567804EB3AA5C4277A /* Pods_Insdogram.framework in Frameworks */,
+				06302D6A173B7FB225B5E34A /* Pods_MeetPaws.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +263,8 @@
 			children = (
 				615692C546D4AE9F09EDCA6A /* Pods-Insdogram.debug.xcconfig */,
 				D007E390A3FFC3A58B926DF7 /* Pods-Insdogram.release.xcconfig */,
+				2A21E797150A5FBE5951F4F2 /* Pods-MeetPaws.debug.xcconfig */,
+				4E3870D24A46CE50495F1995 /* Pods-MeetPaws.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -298,7 +302,6 @@
 		A3551E812572921C0006099A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				A3A551F625904A8400EAB5C5 /* Not for now */,
 				A331584A257FC950004CC86C /* UserManager.swift */,
 				A313700E257E58C400CEA185 /* PostManager.swift */,
 				A3551E45257252480006099A /* MapsNetworking.swift */,
@@ -475,13 +478,6 @@
 			path = Conversations;
 			sourceTree = "<group>";
 		};
-		A3A551F625904A8400EAB5C5 /* Not for now */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Not for now";
-			sourceTree = "<group>";
-		};
 		A3C136D7257CC4EB00960B4C /* EditProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,7 +563,7 @@
 		A3CEA98E256F87F1001DA842 = {
 			isa = PBXGroup;
 			children = (
-				A3CEA999256F87F1001DA842 /* Yogogo */,
+				A3CEA999256F87F1001DA842 /* MeetPaws */,
 				A3CEA998256F87F1001DA842 /* Products */,
 				85420101885810C289ADB45C /* Pods */,
 				C2A847738FFA764735640344 /* Frameworks */,
@@ -577,12 +573,12 @@
 		A3CEA998256F87F1001DA842 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A3CEA997256F87F1001DA842 /* Insdogram.app */,
+				A3CEA997256F87F1001DA842 /* MeetPaws.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A3CEA999256F87F1001DA842 /* Yogogo */ = {
+		A3CEA999256F87F1001DA842 /* MeetPaws */ = {
 			isa = PBXGroup;
 			children = (
 				A3C195A42577661F00BAB46B /* Resources */,
@@ -592,11 +588,11 @@
 				A3C195A62577668F00BAB46B /* Controllers */,
 				A3551E83257292950006099A /* Helpers + Extension */,
 				A3A5519A258F66BD00EAB5C5 /* Assets */,
-				A3CEA9AB256F87F4001DA842 /* Info.plist */,
-				A3EE0310257B8E5900459C54 /* Yogogo.entitlements */,
+				A3EE0310257B8E5900459C54 /* MeetPaws.entitlements */,
 				A3D99359258E5FCE001E8EFD /* launchscreen_logo_0.png */,
+				A3CEA9AB256F87F4001DA842 /* Info.plist */,
 			);
-			path = Yogogo;
+			path = MeetPaws;
 			sourceTree = "<group>";
 		};
 		A3FF43C3258EFE7A0071B03D /* Core Tabs */ = {
@@ -679,7 +675,7 @@
 			isa = PBXGroup;
 			children = (
 				A35BCC1F2570EF830090B95E /* MapKit.framework */,
-				034D8CDEAA98A44EEF76EE71 /* Pods_Insdogram.framework */,
+				DF09E0B480F7BB663D37D2A0 /* Pods_MeetPaws.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -687,9 +683,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A3CEA996256F87F1001DA842 /* Insdogram */ = {
+		A3CEA996256F87F1001DA842 /* MeetPaws */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A3CEA9AE256F87F4001DA842 /* Build configuration list for PBXNativeTarget "Insdogram" */;
+			buildConfigurationList = A3CEA9AE256F87F4001DA842 /* Build configuration list for PBXNativeTarget "MeetPaws" */;
 			buildPhases = (
 				24D5E3C317ABAB035BAE0720 /* [CP] Check Pods Manifest.lock */,
 				A3CEA993256F87F1001DA842 /* Sources */,
@@ -703,9 +699,9 @@
 			);
 			dependencies = (
 			);
-			name = Insdogram;
+			name = MeetPaws;
 			productName = Yogogo;
-			productReference = A3CEA997256F87F1001DA842 /* Insdogram.app */;
+			productReference = A3CEA997256F87F1001DA842 /* MeetPaws.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -722,7 +718,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A3CEA992256F87F1001DA842 /* Build configuration list for PBXProject "Insdogram" */;
+			buildConfigurationList = A3CEA992256F87F1001DA842 /* Build configuration list for PBXProject "MeetPaws" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -735,7 +731,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A3CEA996256F87F1001DA842 /* Insdogram */,
+				A3CEA996256F87F1001DA842 /* MeetPaws */,
 			);
 		};
 /* End PBXProject section */
@@ -781,7 +777,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Insdogram-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MeetPaws-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -794,15 +790,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Insdogram/Pods-Insdogram-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MeetPaws/Pods-MeetPaws-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Insdogram/Pods-Insdogram-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MeetPaws/Pods-MeetPaws-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Insdogram/Pods-Insdogram-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeetPaws/Pods-MeetPaws-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A35BCC1A2570B6330090B95E /* SwiftLint */ = {
@@ -1013,7 +1009,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1068,7 +1064,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1080,16 +1076,16 @@
 		};
 		A3CEA9AF256F87F4001DA842 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 615692C546D4AE9F09EDCA6A /* Pods-Insdogram.debug.xcconfig */;
+			baseConfigurationReference = 2A21E797150A5FBE5951F4F2 /* Pods-MeetPaws.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Yogogo/Yogogo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MeetPaws/MeetPaws.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = YQ4Y66HUTL;
-				INFOPLIST_FILE = Yogogo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				INFOPLIST_FILE = MeetPaws/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1103,16 +1099,16 @@
 		};
 		A3CEA9B0256F87F4001DA842 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D007E390A3FFC3A58B926DF7 /* Pods-Insdogram.release.xcconfig */;
+			baseConfigurationReference = 4E3870D24A46CE50495F1995 /* Pods-MeetPaws.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Yogogo/Yogogo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MeetPaws/MeetPaws.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = YQ4Y66HUTL;
-				INFOPLIST_FILE = Yogogo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				INFOPLIST_FILE = MeetPaws/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1127,7 +1123,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A3CEA992256F87F1001DA842 /* Build configuration list for PBXProject "Insdogram" */ = {
+		A3CEA992256F87F1001DA842 /* Build configuration list for PBXProject "MeetPaws" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A3CEA9AC256F87F4001DA842 /* Debug */,
@@ -1136,7 +1132,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A3CEA9AE256F87F4001DA842 /* Build configuration list for PBXNativeTarget "Insdogram" */ = {
+		A3CEA9AE256F87F4001DA842 /* Build configuration list for PBXNativeTarget "MeetPaws" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A3CEA9AF256F87F4001DA842 /* Debug */,
