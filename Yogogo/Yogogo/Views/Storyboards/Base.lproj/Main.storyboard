@@ -32,14 +32,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aZk-gG-smH">
                                                     <rect key="frame" x="12" y="8" width="194" height="36"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dlg-tl-Q1l">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dlg-tl-Q1l">
                                                             <rect key="frame" x="0.0" y="0.5" width="36" height="35"/>
                                                             <color key="tintColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="36" id="QYH-V3-hU7"/>
                                                                 <constraint firstAttribute="height" constant="36" id="pPl-hh-RPp"/>
                                                             </constraints>
-                                                            <imageReference key="image" image="person.circle" catalog="system" renderingMode="template"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wM1-oA-mzh">
                                                             <rect key="frame" x="44" y="0.0" width="150" height="34"/>
@@ -1101,7 +1100,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="26"/>
                         </textAttributes>
                         <imageReference key="backIndicatorImage" image="chevron.left" catalog="system" renderingMode="original"/>
                     </navigationBar>
@@ -1127,7 +1126,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="26"/>
                         </textAttributes>
                         <imageReference key="backIndicatorImage" image="chevron.left" catalog="system" renderingMode="original"/>
                     </navigationBar>
@@ -1466,7 +1465,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                            <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="26"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1502,7 +1501,7 @@
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dx4-UH-1qS">
                                                             <rect key="frame" x="0.0" y="0.5" width="36" height="35"/>
-                                                            <color key="tintColor" systemColor="labelColor"/>
+                                                            <color key="tintColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="36" id="ezy-Hm-qzp"/>
                                                                 <constraint firstAttribute="height" constant="36" id="qdn-G3-BCV"/>
@@ -1692,7 +1691,7 @@
         <segue reference="ykH-sw-wtH"/>
         <segue reference="Mfh-c0-Ke4"/>
         <segue reference="bFb-v6-sCf"/>
-        <segue reference="LwI-kW-ddj"/>
+        <segue reference="N3A-wu-T8P"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="IU_profileImage" width="640" height="640"/>

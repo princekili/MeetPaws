@@ -16,8 +16,6 @@ target 'Insdogram' do
 #  pod 'Appirater'
 
   # Pods for Firebase
-  pod 'Firebase/Firestore'
-  pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
