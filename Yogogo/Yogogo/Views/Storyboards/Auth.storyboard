@@ -51,7 +51,7 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJc-Pg-WMH">
                                         <rect key="frame" x="0.0" y="81" width="199" height="57"/>
-                                        <string key="text">To enjoy Insdogram, 
+                                        <string key="text">To enjoy MeetPaws, 
 you have to sign in.</string>
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="20"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -69,8 +69,8 @@ you have to sign in.</string>
                                             <constraint firstAttribute="width" secondItem="6m2-aZ-ppr" secondAttribute="height" multiplier="100:101" id="R7W-Wn-3Gy"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insdogram" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yq-Lt-OQ0">
-                                        <rect key="frame" x="10.5" y="129.5" width="129" height="40"/>
+                                    <label opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MeetPaws" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yq-Lt-OQ0">
+                                        <rect key="frame" x="12" y="129.5" width="126" height="40"/>
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="28"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -135,11 +135,10 @@ you have to sign in.</string>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IAj-xk-4Ei">
                                 <rect key="frame" x="20" y="59" width="374" height="803"/>
                                 <color key="backgroundColor" red="0.73796564340000004" green="0.91487348079999997" blue="0.91289204359999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <string key="text">End-User License Agreement ("Agreement") for Insdogram
+                                <mutableString key="text">End-User License Agreement ("Agreement")
+Last updated: January 10, 2021
 
-Last updated: January 08, 2021
-
-Please read this End-User License Agreement carefully before clicking the "I Agree" button, downloading or using Insdogram.
+Please read this End-User License Agreement carefully before clicking the "I Agree" button, downloading or using MeetPaws.
 
 Interpretation and Definitions
 Interpretation
@@ -150,9 +149,9 @@ For the purposes of this End-User License Agreement:
 
 Agreement means this End-User License Agreement that forms the entire agreement between You and the Company regarding the use of the Application. This Agreement has been created with the help of the EULA Generator.
 
-Application means the software program provided by the Company downloaded by You to a Device, named Insdogram
+Application means the software program provided by the Company downloaded by You to a Device, named MeetPaws
 
-Company (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Insdogram.
+Company (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to MeetPaws.
 
 Content refers to content such as text, images, or other information that can be posted, uploaded, linked to or otherwise made available by You, regardless of the form of that content.
 
@@ -243,9 +242,8 @@ By email: princewang.developer@gmail.com
 
 ---------------------------------------
 
-Privacy Policy for Insdogram
-
-Last updated: January 08, 2021
+Privacy Policy
+Last updated: January 10, 2021
 
 This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.
 
@@ -262,9 +260,9 @@ Account means a unique account created for You to access our Service or parts of
 
 Affiliate means an entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.
 
-Application means the software program provided by the Company downloaded by You on any electronic device, named Insdogram
+Application means the software program provided by the Company downloaded by You on any electronic device, named MeetPaws
 
-Company (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Insdogram.
+Company (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to MeetPaws.
 
 Country refers to: Taiwan
 
@@ -385,7 +383,7 @@ You are advised to review this Privacy Policy periodically for any changes. Chan
 Contact Us
 If you have any questions about this Privacy Policy, You can contact us:
 
-By email: princewang.developer@gmail.com</string>
+By email: princewang.developer@gmail.com</mutableString>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -446,7 +444,7 @@ By email: princewang.developer@gmail.com</string>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Peh-zH-4aT">
                                         <rect key="frame" x="0.0" y="81" width="281" height="85"/>
-                                        <string key="text">To enjoy Insdogram, 
+                                        <string key="text">To enjoy MeetPaws, 
 you have to pick a username.
 You can always change it later.</string>
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="20"/>
@@ -538,7 +536,7 @@ You can always change it later.</string>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uU-in-P6z">
                                         <rect key="frame" x="21.5" y="81" width="241" height="57"/>
-                                        <string key="text">To enjoy Insdogram, 
+                                        <string key="text">To enjoy MeetPaws, 
 please pick a profile photo.</string>
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="20"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

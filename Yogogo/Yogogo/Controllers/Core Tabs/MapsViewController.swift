@@ -272,7 +272,7 @@ extension MapsViewController: MGLMapViewDelegate {
 extension MapsViewController {
     
     private func deniedAlert() {
-        let message = "To see the map you need to change your location settings. Please go to Settings/Insdogram/Location/ and allow location access.(While Using the App)"
+        let message = "To see the map you need to change your location settings. Please go to Settings/MeetPaws/Location/ and allow location access.(While Using the App)"
         
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default) { (alertAction) in

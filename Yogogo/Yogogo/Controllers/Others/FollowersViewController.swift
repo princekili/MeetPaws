@@ -324,7 +324,7 @@ extension FollowersViewController: RemoveButtonDidTapDelegate {
         
         // UIAlertController
         let title = "Remove Follower?"
-        let message = "Insdogram won't tell \(user.username) they were removed from your followers."
+        let message = "MeetPaws won't tell \(user.username) they were removed from your followers."
         let removeAlertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
         // UIAlertAction

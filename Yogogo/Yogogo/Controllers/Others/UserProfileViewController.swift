@@ -142,7 +142,7 @@ class UserProfileViewController: UIViewController {
         
         // UIAlertController
         let title = "Block User?"
-        let message = "You won't see each other again after relaunching Insdogram."
+        let message = "You won't see each other again after relaunching MeetPaws."
         let confirmAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         // UIAlertAction
