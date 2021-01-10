@@ -291,14 +291,12 @@ extension CommentsViewController: CommentsTableViewCellDelegate {
         // UIAlertAction - Check the author
         guard let userId = UserManager.shared.currentUser?.userId else { return }
         let commentId = comment.commentId
-        var action: UIAlertAction
         
         if comment.userId == userId {
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
-                
                 self?.confirmDeleteCommentAlert(with: commentId)
             }
-            action = deleteAction
+            moreActionsAlertController.addAction(deleteAction)
             
         } else {
             let hideAction = UIAlertAction(title: "Hide", style: .destructive) { [weak self] _ in
@@ -306,15 +304,19 @@ extension CommentsViewController: CommentsTableViewCellDelegate {
                 self?.confirmHideCommentAlert(with: commentId, at: index)
                 
             }
-            action = hideAction
+            moreActionsAlertController.addAction(hideAction)
+            
+            let reportAction = UIAlertAction(title: "Report", style: .destructive) { [weak self] _ in
+                
+                self?.confirmReportCommentAlert(with: commentId, at: index)
+                
+            }
+            moreActionsAlertController.addAction(reportAction)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             moreActionsAlertController.dismiss(animated: true, completion: nil)
         }
-        
-        // addAction
-        moreActionsAlertController.addAction(action)
         moreActionsAlertController.addAction(cancelAction)
         
         self.present(moreActionsAlertController, animated: true, completion: nil)
@@ -330,6 +332,7 @@ extension CommentsViewController: CommentsTableViewCellDelegate {
             
             guard let post = self.post else { return }
             CommentManager.shared.deleteComment(of: post, commentId: commentId)
+            WrapperProgressHUD.showSuccess()
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
@@ -354,6 +357,7 @@ extension CommentsViewController: CommentsTableViewCellDelegate {
             PostManager.shared.hide(with: commentId) {
                 // Delete(Hide) the post on tableView
                 self.deleteHandler?(index)
+                WrapperProgressHUD.showSuccess()
             }
         }
         
@@ -363,6 +367,29 @@ extension CommentsViewController: CommentsTableViewCellDelegate {
         
         // addAction
         confirmAlertController.addAction(hideAction)
+        confirmAlertController.addAction(cancelAction)
+        
+        self.present(confirmAlertController, animated: true, completion: nil)
+    }
+    
+    func confirmReportCommentAlert(with commentId: String, at index: Int) {
+        
+        // UIAlertController
+        let title = "Report Inappropriate Comment?"
+        let message = "Your report is anonymous."
+        let confirmAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // UIAlertAction
+        let reportAction = UIAlertAction(title: "Report", style: .destructive) { _ in
+            WrapperProgressHUD.showSuccess()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            confirmAlertController.dismiss(animated: true, completion: nil)
+        }
+        
+        // addAction
+        confirmAlertController.addAction(reportAction)
         confirmAlertController.addAction(cancelAction)
         
         self.present(confirmAlertController, animated: true, completion: nil)
