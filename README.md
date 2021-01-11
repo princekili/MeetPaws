@@ -64,7 +64,7 @@ Hide posts and comments that you don't want to see again. You can also block use
 - View the post by tapping the photo
 - Edit profile
 - Follow / Unfollow the user
-- Followers list & Following list
+- Followers & Following
 - Message the user
 - Block the user
 
@@ -94,7 +94,7 @@ Hide posts and comments that you don't want to see again. You can also block use
 ### Edit profile
 ![edit profile](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/profile_1.gif?raw=true)
 
-### Followers list & Following list
+### Followers & Following
 ![followers & following](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/profile_2.gif?raw=true)
 
 ### View the post on the photo gallery wall
