@@ -61,6 +61,7 @@ Hide posts and comments that you don't want to see again. You can also block use
 
 ### Post Feed
 - Post a photo with the caption
+- Instagram-like photo picker
 - Like the post with ❤️
 - Leave comments below the post
 - Report inappropriate posts and comments
@@ -89,9 +90,9 @@ Hide posts and comments that you don't want to see again. You can also block use
 ### Others
 - Support Dark Mode
 - Sign in with Apple
-- Instagram-like photo picker
 - Search users by the username
 
+![dark mode](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/dark_mode.gif?raw=true)
 
 ## Third-Party Libraries
 - Firebase
