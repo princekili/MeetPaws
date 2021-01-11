@@ -6,8 +6,12 @@
 <p align="center">
 <img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshot_1.png" height="370">
 <img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshot_2.png" height="370">
+</p>
+
+<p align="center">
 <img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshot_3.png" height="370">
 <img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshot_4.png" height="370">
+</p>
 
 ## Contents
 - [Intro](https://github.com/princekili/MeetPaws/blob/main/README.md#intro)
