@@ -4,16 +4,16 @@
 <H1 align="center">MeetPaws</H1>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshots_1.png" height="400">
-<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshots_2.png" height="400">
-<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshots_3.png" height="400">
-<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshots_4.png" height="400">
+<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshot_1.png" height="370">
+<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshot_2.png" height="370">
+<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshot_3.png" height="370">
+<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshot_4.png" height="370">
 
 ## Contents
 - [Intro](https://github.com/princekili/MeetPaws/blob/main/README.md#intro)
 - [Features](https://github.com/princekili/MeetPaws/blob/main/README.md#features)
 - [Some Features in Action](https://github.com/princekili/MeetPaws/blob/main/README.md#some-features-in-action)
-- [Credits](https://github.com/princekili/MeetPaws/blob/main/README.md#third-party-libraries)
+- [Third-Party Libraries](https://github.com/princekili/MeetPaws/blob/main/README.md#third-party-libraries)
 - [Requirements](https://github.com/princekili/MeetPaws/blob/main/README.md#requirements)
 - [Skills](https://github.com/princekili/MeetPaws/blob/main/README.md#skills)
 - [Contact](https://github.com/princekili/MeetPaws/blob/main/README.md#contact)
@@ -23,17 +23,17 @@
 
 #### __`MeetPaws` is a SNS `iOS` app written in `Swift`. It's inspired by Instagram.__
 
-##### 🐕 Meet New Friends
-> When you're walking your dog, MeetPaws can bring you closer to the nearby people who are also walking their dog. Just open MeetPaws and find new friends on the map!
+#### 🐕 Meet New Friends
+When you're walking your dog, MeetPaws can bring you closer to the nearby people who are also walking their dog. Just open MeetPaws and find new friends on the map!
 
-##### 🐕 Connect With Friends
-> Chat with friends via messages. Share what you're up to or see what's new from others.
+#### 🐕 Connect With Friends
+Chat with friends via messages. Share what you're up to or see what's new from others.
 
-##### 🐕 Express Yourself
-> Post the photo to your feed that you want to show on your profile. Feel free to be yourself and share things from your daily moments to life's highlights.
+#### 🐕 Express Yourself
+Post the photo to your feed that you want to show on your profile. Feel free to be yourself and share things from your daily moments to life's highlights.
 
-##### 🐕 Determine What to See
-> Hide posts and comments that you don't want to see again. You can also block users, and you'll never see each other again!
+#### 🐕 Determine What to See
+Hide posts and comments that you don't want to see again. You can also block users, and you'll never see each other again!
 
 
 ## Features
@@ -79,6 +79,7 @@
 
 ### Find users on the map
 ![map_1](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/map_1.gif?raw=true)
+
 ![map_2](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/map_2.gif?raw=true)
 
 ### Real-time chat
