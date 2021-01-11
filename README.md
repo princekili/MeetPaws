@@ -92,7 +92,7 @@ Hide posts and comments that you don't want to see again. You can also block use
 - Sign in with Apple
 - Search users by the username
 
-![dark mode](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/dark_mode.gif?raw=true)
+![dark mode](https://github.com/princekili/MeetPaws/blob/main/MeetPaws/materials_readme/gif/dark_mode.gif?raw=true)
 
 ## Third-Party Libraries
 - Firebase
@@ -128,3 +128,5 @@ Hide posts and comments that you don't want to see again. You can also block use
 **Prince**
 
 princewang.developer@gmail.com
+
+
