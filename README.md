@@ -1,18 +1,20 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/Screenshots/app_icon.png" height="100">
+<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/app_icon.png" height="100">
 
 <H1 align="center">MeetPaws</H1>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/Screenshots/screenshots_mix.png" height="400" align="center">
+<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots_mix.png" height="400" align="center">
+
 
 ## Contents
-- [Intro]()
-- [Features]()
-- [Some Features in Action]()
-- [Credits]()
-- [Requirements]()
-- [Skills]()
+- [Intro](https://github.com/princekili/MeetPaws/blob/main/README.md#intro)
+- [Features](https://github.com/princekili/MeetPaws/blob/main/README.md#features)
+- [Some Features in Action](https://github.com/princekili/MeetPaws/blob/main/README.md#some-features-in-action)
+- [Credits](https://github.com/princekili/MeetPaws/blob/main/README.md#third-party-libraries)
+- [Requirements](https://github.com/princekili/MeetPaws/blob/main/README.md#requirements)
+- [Skills](https://github.com/princekili/MeetPaws/blob/main/README.md#skills)
+
 
 ## Intro
 
@@ -29,6 +31,7 @@
 
 ##### 🐕 Determine What to See
 > Hide posts and comments that you don't want to see again. You can also block users, and you'll never see each other again!
+
 
 ## Features
 
@@ -58,7 +61,7 @@
 - View the post by tapping the photo
 - Edit profile
 - Follow / Unfollow the user
-- Followers & Following list
+- Followers list & Following list
 - Message the user
 - Block the user
 
@@ -68,11 +71,30 @@
 - Instagram-like photo picker
 - Search users by the username
 
+
 ## Some Features in Action
 
 ### Find users on the map
-![map](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/Screenshots/gif/map.gif?raw=true)
+![map_1](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/map_1.gif?raw=true)
+![map_2](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/map_2.gif?raw=true)
 
+### Real-time chat
+![real-time chat](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/real-time%20chating.gif?raw=true)
+
+### Submit a post
+![submit a post](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/submit%20a%20post.gif?raw=true)
+
+### Like the post & Leave a comment
+![leave a comment](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/leave%20a%20comment.gif?raw=true)
+
+### Edit profile
+![edit profile](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/profile_1.gif?raw=true)
+
+### Followers list & Following list
+![followers & following](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/profile_2.gif?raw=true)
+
+### View the post of the photo gallery wall
+![view the post](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/profile_3.gif?raw=true)
 
 ## Third-Party Libraries
 - Firebase
@@ -88,6 +110,7 @@
 - JGProgressHUD
 - Lottie
 
+
 ## Requirements
 - iOS 14.0
 - Xcode 12.0
@@ -101,3 +124,5 @@
 - Implement **Sign In with Apple** via **Firebase Auth**
 - Store photos via **Firebase Storage** to upload and download anytime
 - Track, prioritize, and fix stability issues via **Firebase Crashlytics**
+
+
