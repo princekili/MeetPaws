@@ -4,8 +4,10 @@
 <H1 align="center">MeetPaws</H1>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots_mix.png" height="400" align="center">
-
+<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshots_1.png" height="400">
+<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshots_2.png" height="400">
+<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshots_3.png" height="400">
+<img src="https://raw.githubusercontent.com/princekili/MeetPaws/develop/MeetPaws/materials_readme/screenshots/screenshots_4.png" height="400">
 
 ## Contents
 - [Intro](https://github.com/princekili/MeetPaws/blob/main/README.md#intro)
@@ -14,6 +16,7 @@
 - [Credits](https://github.com/princekili/MeetPaws/blob/main/README.md#third-party-libraries)
 - [Requirements](https://github.com/princekili/MeetPaws/blob/main/README.md#requirements)
 - [Skills](https://github.com/princekili/MeetPaws/blob/main/README.md#skills)
+- [Contact](https://github.com/princekili/MeetPaws/blob/main/README.md#contact)
 
 
 ## Intro
@@ -79,7 +82,7 @@
 ![map_2](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/map_2.gif?raw=true)
 
 ### Real-time chat
-![real-time chat](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/real-time%20chating.gif?raw=true)
+![real-time chat](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/real-time%20chat.gif?raw=true)
 
 ### Submit a post
 ![submit a post](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/submit%20a%20post.gif?raw=true)
@@ -93,7 +96,7 @@
 ### Followers list & Following list
 ![followers & following](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/profile_2.gif?raw=true)
 
-### View the post of the photo gallery wall
+### View the post on the photo gallery wall
 ![view the post](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/profile_3.gif?raw=true)
 
 ## Third-Party Libraries
@@ -126,3 +129,7 @@
 - Track, prioritize, and fix stability issues via **Firebase Crashlytics**
 
 
+## Contact
+**Prince**
+
+princewang.developer@gmail.com
