@@ -16,7 +16,6 @@
 ## Contents
 - [Intro](https://github.com/princekili/MeetPaws/blob/main/README.md#intro)
 - [Features](https://github.com/princekili/MeetPaws/blob/main/README.md#features)
-- [Some Features in Action](https://github.com/princekili/MeetPaws/blob/main/README.md#some-features-in-action)
 - [Third-Party Libraries](https://github.com/princekili/MeetPaws/blob/main/README.md#third-party-libraries)
 - [Requirements](https://github.com/princekili/MeetPaws/blob/main/README.md#requirements)
 - [Skills](https://github.com/princekili/MeetPaws/blob/main/README.md#skills)
@@ -45,7 +44,10 @@ Hide posts and comments that you don't want to see again. You can also block use
 ### Map
 - See the current location of nearby online users on the map when you are online
 - View the profile by tapping the user on the map
-- Send messages by tapping the user on the map
+
+![map_1](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/map_1.gif?raw=true)
+
+![map_2](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/map_2.gif?raw=true)
 
 ### Messages
 - Real-time chat
@@ -55,12 +57,18 @@ Hide posts and comments that you don't want to see again. You can also block use
 - Typing indicator
 - User online indicator
 
+![real-time chat](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/real-time%20chat.gif?raw=true)
+
 ### Post Feed
 - Post a photo with the caption
 - Like the post with ❤️
 - Leave comments below the post
 - Report inappropriate posts and comments
 - Hide posts and comments
+
+![submit a post](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/submit%20a%20post.gif?raw=true)
+
+![leave a comment](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/leave%20a%20comment.gif?raw=true)
 
 ### User Profile
 - User information
@@ -72,37 +80,18 @@ Hide posts and comments that you don't want to see again. You can also block use
 - Message the user
 - Block the user
 
+![edit profile](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/profile_1.gif?raw=true)
+
+![followers & following](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/profile_2.gif?raw=true)
+
+![view the post](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/profile_3.gif?raw=true)
+
 ### Others
 - Support Dark Mode
 - Sign in with Apple
 - Instagram-like photo picker
 - Search users by the username
 
-
-## Some Features in Action
-
-### Find users on the map
-![map_1](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/map_1.gif?raw=true)
-
-![map_2](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/map_2.gif?raw=true)
-
-### Real-time chat
-![real-time chat](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/real-time%20chat.gif?raw=true)
-
-### Submit a post
-![submit a post](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/submit%20a%20post.gif?raw=true)
-
-### Like the post & Leave a comment
-![leave a comment](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/leave%20a%20comment.gif?raw=true)
-
-### Edit profile
-![edit profile](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/profile_1.gif?raw=true)
-
-### Followers & Following
-![followers & following](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/profile_2.gif?raw=true)
-
-### View the post on the photo gallery wall
-![view the post](https://github.com/princekili/MeetPaws/blob/develop/MeetPaws/materials_readme/gif/profile_3.gif?raw=true)
 
 ## Third-Party Libraries
 - Firebase
