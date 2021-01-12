@@ -41,7 +41,7 @@ class ConversationsVC: UIViewController {
         navigationItem.backButtonTitle = ""
         view.backgroundColor = .systemBackground
         if let tabItems = tabBarController?.tabBar.items {
-            tabBarBadge = tabItems[3]
+            tabBarBadge = tabItems[1]
         }
         setupUI()
     }
