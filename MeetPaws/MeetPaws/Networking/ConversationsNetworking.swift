@@ -1,6 +1,6 @@
 //
 //  ConversationsNetworking.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/21.
 //
@@ -17,7 +17,7 @@ class ConversationsNetworking {
     
     var unreadMessages = [String: Int]()
     
-    var friendKeys = [String]()
+    var userKeys = [String]()
     
     var totalUnread = Int()
     
@@ -25,104 +25,14 @@ class ConversationsNetworking {
     
     // MARK: - To Fix !!!
     
-   func observeFriendsList() {
-    
-//        convVC.blankLoadingView.isHidden = false
-    
-        ref.child("users").observeSingleEvent(of: .value) { (snap) in
-            
-            for child in snap.children {
-                guard let snapshot = child as? DataSnapshot else { return }
-                guard let friend = snapshot.value as? [String: Any] else { return }
-                self.friendKeys.append(contentsOf: Array(friend.keys))
-            }
-            
-            guard self.friendKeys.count > 0 else {
-                self.convVC.loadMessagesHandler(nil)
-                return
-            }
-            
-            self.messagesReference()
-        }
-    }
-    
-    // MARK: -
-    
-    private func observeFriendActions() {
-        observeRemovedFriends()
-        observeNewFriends()
-    }
-    
-    // MARK: -
-    
-    private func observeRemovedFriends() {
-        guard let userId = Auth.auth().currentUser?.uid else { return }
-        
-        ref.child("friendsList").child(userId)
-            .observe(.childRemoved) { (snap) in
-                
-            let friendToRemove = snap.key
-            var index = 0
-            for message in self.convVC.messages {
-                if message.determineUser() == friendToRemove {
-                    self.groupedMessages.removeValue(forKey: friendToRemove)
-                    self.convVC.messages.remove(at: index)
-                    self.removeFriendFromArray(friendToRemove)
-                    self.convVC.tableView.reloadData()
-                    return
-                }
-                index += 1
-            }
-        }
-    }
-    
-    // MARK: -
-    
-    private func observeNewFriends() {
-        guard let userId = Auth.auth().currentUser?.uid else { return }
-        
-        ref.child("friendsList").child(userId)
-            .observe(.childAdded) { (snap) in
-                
-            let friendToAdd = snap.key
-            let status = self.friendKeys.contains { (key) -> Bool in
-                return key == friendToAdd
-            }
-            if status {
-                return
-            } else {
-                self.friendKeys.append(friendToAdd)
-                self.convVC.observeMessageActions()
-            }
-        }
-    }
-    
-    // MARK: -
-    
-    private func removeFriendFromArray(_ friendToRemove: String) {
-        var index = 0
-        for friend in friendKeys {
-            if friendToRemove == friend {
-                friendKeys.remove(at: index)
-            }
-            index += 1
-        }
-    }
-    
-    // MARK: - To Fix !!!
-    
     func messagesReference() {
         
         guard let userId = Auth.auth().currentUser?.uid else { return }
-        
         let users = SearchManager.shared.users
         
         for user in users {
-//        for user in Users.list {
-            ref.child("messages").child(userId).child(user.userId)
-                .queryLimited(toLast: 1)
-//                .observeSingleEvent(of: .value) { (snap) in
-                .observe(.value) { (snap) in
+            
+            ref.child("messages").child(userId).child(user.userId).queryLimited(toLast: 1).observe(.value) { (snap) in
                     
                 guard snap.childrenCount > 0 else {
                     self.convVC.loadMessagesHandler(nil)
@@ -135,11 +45,10 @@ class ConversationsNetworking {
                     let message = MessageManager.setupUserMessage(for: values)
                     self.groupedMessages[message.determineUser()] = message
                 }
-                    
-//                if user.userId == Users.list[Users.list.count - 1].userId {
-                    if user.userId == users[users.count - 1].userId {
-                        self.convVC.loadMessagesHandler(Array(self.groupedMessages.values))
-                    }
+                
+                if user.userId == users[users.count - 1].userId {
+                    self.convVC.loadMessagesHandler(Array(self.groupedMessages.values))
+                }
             }
         }
     }
@@ -149,10 +58,8 @@ class ConversationsNetworking {
     func observeNewMessages(completion: @escaping (_ newMessages: [Messages]) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
-        for key in friendKeys {
-            ref.child("messages").child(userId).child(key)
-                .queryLimited(toLast: 1)
-                .observe(.childAdded) { (snap) in
+        for key in userKeys {
+            ref.child("messages").child(userId).child(key).queryLimited(toLast: 1).observe(.childAdded) { (snap) in
                     
                 guard let values = snap.value as? [String: Any] else { return }
                 let message = MessageManager.setupUserMessage(for: values)
@@ -167,7 +74,6 @@ class ConversationsNetworking {
                 }
             }
         }
-        self.observeFriendActions()
     }
     
     // MARK: -
@@ -175,11 +81,9 @@ class ConversationsNetworking {
     func observeDeletedMessages() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
-        for key in friendKeys {
+        for key in userKeys {
             
-            ref.child("messages").child(userId).child(key)
-                .queryLimited(toLast: 1)
-                .observe(.childRemoved) { (snap) in
+            ref.child("messages").child(userId).child(key).queryLimited(toLast: 1).observe(.childRemoved) { (snap) in
                     
                 guard let values = snap.value as? [String: Any] else { return }
                 let message = MessageManager.setupUserMessage(for: values)
@@ -192,40 +96,10 @@ class ConversationsNetworking {
     
     // MARK: -
     
-    private func loadFriends(_ recent: Messages, completion: @escaping (_ user: User) -> Void) {
-        
-        let user = recent.determineUser()
-    
-        ref.child("users").child(user).observe(.value) { (snapshot) in
-            
-            let userInfo = snapshot.value as? [String: Any] ?? [:]
-            
-            guard let user = User(userId: snapshot.key, userInfo: userInfo) else {
-                print("------ User not found ------")
-                return
-            }
-            
-            return completion(user)
-            
-//            guard let values = snap.value as? [String: Any] else { return }
-//            var friend = User()
-//            friend.id = snap.key
-//            friend.name = values["name"] as? String
-//            friend.email = values["email"] as? String
-//            friend.isOnline = values["isOnline"] as? Bool
-//            friend.lastLogin = values["lastLogin"] as? NSNumber
-//            friend.profileImage = values["profileImage"] as? String
-//            friend.isMapLocationEnabled = values["isMapLocationEnabled"] as? Bool
-//            return completion(friend)
-        }
-    }
-    
-    // MARK: -
-    
-    func observeUserSeenMessage(_ friendId: String, completion: @escaping(_ userSeenMessagesCount: Int) -> Void) {
+    func observeUserSeenMessage(_ userId: String, completion: @escaping(_ userSeenMessagesCount: Int) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
-        ref.child("messages").child("unread-Messages").child(friendId).child(userId)
+        ref.child("messages").child("unread-Messages").child(userId).child(userId)
             .observe(.value) { (snap) in
             
                 return completion(Int(snap.childrenCount))
@@ -234,16 +108,16 @@ class ConversationsNetworking {
     
     // MARK: -
     
-    func observeIsUserTyping(_ friendId: String, completion: @escaping (_ isTyping: Bool, _ friendId: String) -> Void) {
+    func observeIsUserTyping(_ userId: String, completion: @escaping (_ isTyping: Bool, _ userId: String) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
-        ref.child("userActions").child(friendId).child(userId)
+        ref.child("userActions").child(userId).child(userId)
             .observe(.value) { (snap) in
                 
             guard let data = snap.value as? [String: Any] else { return }
             guard let isTyping = data["isTyping"] as? Bool else { return }
-            guard let friendId = data["fromFriend"] as? String else { return }
-            return completion(isTyping, friendId)
+            guard let userId = data["fromFriend"] as? String else { return }
+            return completion(isTyping, userId)
         }
     }
     

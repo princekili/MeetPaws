@@ -1,6 +1,6 @@
 //
 //  AuthManager.swift
-//  Yogogo
+//  MeetPaws
 //
 //  Created by prince on 2020/12/8.
 //
@@ -103,9 +103,6 @@ class UserManager {
                 print("------ Author not found ------")
                 return
             }
-
-            print("------ Get the author info 'ID: \(user.username)' successfully ------")
-            
             completion(user)
         }
     }

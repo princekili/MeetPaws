@@ -1,6 +1,6 @@
 //
 //  SearchManager.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/24.
 //
@@ -21,12 +21,9 @@ class SearchManager {
     
     private func getUserIds(completion: @escaping ([String]) -> Void) {
         
-        print("------ observe Users to get userIds... ------")
-        
         ref.child("users").observeSingleEvent(of: .value) { (snapshot) in
             
             guard let users = snapshot.value as? [String: Any] else { return }
-            
             var userIds: [String] = []
             
             for userId in users.keys {
@@ -34,11 +31,8 @@ class SearchManager {
                 if let ignoreList = UserManager.shared.currentUser?.ignoreList {
                     guard !ignoreList.contains(userId) else { continue }
                 }
-                
                 userIds.append(userId)
-                print("------ userId: \(userId) ------")
             }
-            
             completion(userIds)
         }
     }

@@ -1,6 +1,6 @@
 //
 //  ProfileViewController.swift
-//  Yogogo
+//  MeetPaws
 //
 //  Created by prince on 2020/12/2.
 //
@@ -117,8 +117,6 @@ extension MyProfileViewController {
             
             for postId in postIds {
                 
-                print("------ Loading My Post: \(postId) ------")
-                
                 self?.isLoadingPost = true
                 
                 PostManager.shared.observeUserPost(postId: postId) { [weak self] (newPost) in
@@ -129,7 +127,6 @@ extension MyProfileViewController {
                     myPosts.sort(by: { $0.timestamp > $1.timestamp })
                     
                     // Save to local PostManager
-//                    guard let myPosts = self?.myPosts else { return }
                     PostManager.shared.postsOfCurrentUser = myPosts
                     
                     self?.myPosts = myPosts

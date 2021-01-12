@@ -1,6 +1,6 @@
 //
 //  ChatVC.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/20.
 //
@@ -268,7 +268,7 @@ class ChatViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             }
         }
         msgRef.queryLimited(toLast: 1).observe(.childAdded) { (snap) in
-            self.chatNetworking.newMessageRecievedHandler(self.messages, for: snap) { (newMessage) in
+            self.chatNetworking.newMessageReceivedHandler(self.messages, for: snap) { (newMessage) in
                 self.messages.append(newMessage)
                 self.collectionView.reloadData()
                 if newMessage.determineUser() != currentUser.userId {

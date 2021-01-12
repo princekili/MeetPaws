@@ -1,6 +1,6 @@
 //
 //  PostManager.swift
-//  Yogogo
+//  MeetPaws
 //
 //  Created by prince on 2020/12/7.
 //
@@ -35,9 +35,7 @@ final class PostManager {
         // Save postId to UserManager
         guard let postId = postDatabaseRef.key else { return }
         userManager.currentUser?.posts.insert(postId, at: 0)
-        userManager.updateUserPosts {
-            print("------ New added postId: \(postId) ------")
-        }
+        userManager.updateUserPosts {}
         
         // Use the unique key as the image name and prepare the storage reference
         guard let imageKey = postDatabaseRef.key else { return }
@@ -125,8 +123,6 @@ final class PostManager {
 
             var newPosts: [Post] = []
             
-            print("------ Total number of new posts: \(snapshot.childrenCount) ------")
-            
             guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
                 print("There's no post.")
                 return
@@ -171,8 +167,6 @@ final class PostManager {
         postLimitedQuery.observeSingleEvent(of: .value, with: { (snapshot) in
             
             var oldPosts: [Post] = []
-            
-            print("------ Total number of old posts: \(snapshot.childrenCount) ------")
             
             guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
                 print("There's no post.")
@@ -222,7 +216,6 @@ final class PostManager {
                 print("------ Post not found: \(snapshot.key) ------")
                 return
             }
-            print("------ newPost: \(newPost.postId) ------")
             completion(newPost)
         }
     }
@@ -237,12 +230,9 @@ final class PostManager {
         if userDidLike.contains(userId) {
             let filtered = userDidLike.filter { $0 != userId }
             postsRef.child(post.postId).child("userDidLike").setValue(filtered)
-            print("------ Dislike💔 ------")
-            
         } else {
             userDidLike.append(userId)
             postsRef.child(post.postId).child("userDidLike").setValue(userDidLike)
-            print("------ Like❤️ ------")
         }
     }
     
@@ -262,17 +252,12 @@ final class PostManager {
         guard let posts = userManager.currentUser?.posts else { return }
         let filtered = posts.filter { $0 != postId }
         userManager.currentUser?.posts = filtered
-        print("------ userManager.currentUser.posts: \(filtered) ------")
         
         // Update /users/userId/posts on firebase
-        guard let userId = Auth.auth().currentUser?.uid else { return }
-        userManager.updateUserPosts {
-            print("------ Delete /users/\(userId)/posts/\(postId) ------")
-        }
+        userManager.updateUserPosts {}
         
         // Update /posts on firebase
         postsRef.child(postId).removeValue()
-        print("------ Delete /posts/\(postId) ------")
         
         // Delete the local one
         completion()
@@ -286,10 +271,7 @@ final class PostManager {
         userManager.currentUser?.ignoreList.append(id)
         
         // Update /users/userId/ignoreList on firebase
-        guard let currentUser = userManager.currentUser else { return }
-        userManager.updateCurrentUserIgnoreList(with: id) {
-            print("------ Add /users/\(currentUser.userId)/ignoreList/\(id) ------")
-        }
+        userManager.updateCurrentUserIgnoreList(with: id) {}
         
         // Hide the post/comment/user & Reload data
         completion()

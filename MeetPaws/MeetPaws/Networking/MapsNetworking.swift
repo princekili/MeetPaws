@@ -1,6 +1,6 @@
 //
 //  MapsNetworking.swift
-//  Yogogo
+//  MeetPaws
 //
 //  Created by prince on 2020/11/28.
 //
@@ -28,12 +28,9 @@ class MapsNetworking {
     
     func getUserIds(completion: @escaping ([String]) -> Void) {
         
-        print("------ observe Users to get userIds... ------")
-        
         usersRef.observeSingleEvent(of: .value) { (snapshot) in
             
             guard let users = snapshot.value as? [String: Any] else { return }
-            
             var userIds: [String] = []
             
             for userId in users.keys {
@@ -43,9 +40,7 @@ class MapsNetworking {
                 if let ignoreList = UserManager.shared.currentUser?.ignoreList {
                     guard !ignoreList.contains(userId) else { continue }
                 }
-                
                 userIds.append(userId)
-                print("------ userId: \(userId) ------")
             }
             completion(userIds)
         }
@@ -55,12 +50,9 @@ class MapsNetworking {
     
     func getUserInfo(userId: String, completion: @escaping (String, [String: Any]) -> Void) {
         
-        print("------ get User Info... ------")
-        
         usersRef.child(userId).observeSingleEvent(of: .value) { (snapshot) in
             
             guard let values = snapshot.value as? [String: Any] else { return }
-            
             completion(userId, values)
         }
     }
@@ -75,12 +67,9 @@ class MapsNetworking {
     // MARK: - observe User Location
     
     func observeUserLocation(user: User) {
-        
-        print("------ observe User Location... ------")
-        
         // Check isMapLocationEnabled
         if user.isMapLocationEnabled {
-
+            
             userLocationsRef.child(user.userId).observe(.value) { (snapshot) in
                 
                 guard let values = snapshot.value as? [String: Any] else { return }
@@ -98,8 +87,6 @@ class MapsNetworking {
                     self.handleUserLocation(user, coordinate)
                 }
             }
-        } else {
-            print("------ user.isMapLocationEnabled == false ------")
         }
     }
     

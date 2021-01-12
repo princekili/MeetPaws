@@ -1,6 +1,6 @@
 //
 //  FeedViewController.swift
-//  Yogogo
+//  MeetPaws
 //
 //  Created by prince on 2020/11/30.
 //
@@ -91,10 +91,7 @@ class FeedViewController: UIViewController {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
         UserManager.shared.getCurrentUserInfo(userId: userId) { (user) in
-            
             let myUser = user
-            print("------  Get the currentUser info successfully in FeedVC ------")
-            print(myUser)
         }
     }
 }
@@ -119,9 +116,6 @@ extension FeedViewController: LoadRecentPostsDelegate {
     }
     
     @objc func loadRecentPosts() {
-
-        print("------ Loading Recent Posts... ------")
-        
         isLoadingPost = true
         
         PostManager.shared.getRecentPosts(start: postFeed.first?.timestamp, limit: 10) { [weak self] (newPosts) in
@@ -196,7 +190,6 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         self.deleteHandler = { [weak self] index in
             self?.postFeed.remove(at: index)
             tableView.reloadData()
-            print("------ Delete the post: \(currentPost.postId) ------")
         }
         
         return cell
@@ -215,8 +208,6 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             isLoadingPost = false
             return
         }
-        
-        print("------ Loading Old Posts... ------")
         
         PostManager.shared.getOldPosts(start: lastPostTimestamp, limit: 10) { [weak self] (oldPosts) in
             

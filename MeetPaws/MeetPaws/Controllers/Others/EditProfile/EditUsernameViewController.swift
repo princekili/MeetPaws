@@ -1,6 +1,6 @@
 //
 //  EditUsernameViewController.swift
-//  Yogogo
+//  MeetPaws
 //
 //  Created by prince on 2020/12/7.
 //
