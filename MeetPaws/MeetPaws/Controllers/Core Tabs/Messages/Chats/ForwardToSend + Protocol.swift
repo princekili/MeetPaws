@@ -15,7 +15,7 @@ protocol ForwardToFriend {
 
 // MARK: -
 
-extension ChatVC: ForwardToFriend {
+extension ChatViewController: ForwardToFriend {
     
     // MARK: -
     

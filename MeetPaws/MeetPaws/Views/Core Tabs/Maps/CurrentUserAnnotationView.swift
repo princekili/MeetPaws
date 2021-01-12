@@ -30,8 +30,6 @@ class CurrentUserAnnotationView: MGLUserLocationAnnotationView {
         imageLayer.cornerRadius = imageLayer.frame.size.width / 2
         imageLayer.masksToBounds = true
         imageLayer.borderWidth = 2
-//        imageLayer.borderColor = UIColor().hexStringToUIColor(hex: "aee6e6").cgColor // light blue
-//        imageLayer.borderColor = UIColor().hexStringToUIColor(hex: "ffa45b").cgColor // orange
         imageLayer.borderColor = UIColor.systemBlue.cgColor
         layer.addSublayer(imageLayer)
     }

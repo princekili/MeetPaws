@@ -32,7 +32,7 @@ class ConversationsCell: UITableViewCell {
     
     let checkmark = UIImageView()
     
-    var convVC: ConversationsVC!
+    var convVC: ConversationsViewController!
     
     var message: Messages? {
         didSet {

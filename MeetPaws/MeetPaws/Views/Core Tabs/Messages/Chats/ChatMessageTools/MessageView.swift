@@ -10,7 +10,7 @@ import Kingfisher
 
 class MessageView: UIView {
 
-    var friendName: String!
+    var userName: String!
     
     var cell: ChatCell!
     
@@ -28,19 +28,13 @@ class MessageView: UIView {
     
     let responseMediaMessage = UIImageView()
     
-    var responseAudioLabel = UILabel()
-    
-    let audioPlayButton = UIButton(type: .system)
-    
-    let durationLabel = UILabel()
-    
     // MARK: -
     
-    init(frame: CGRect, cell: ChatCell, message: Messages, friendName: String) {
+    init(frame: CGRect, cell: ChatCell, message: Messages, userName: String) {
         super.init(frame: frame)
         self.cell = cell
         self.message = message
-        self.friendName = friendName
+        self.userName = userName
         showMessageMenu()
     }
     
@@ -61,8 +55,6 @@ class MessageView: UIView {
             }
         } else if message.mediaUrl != nil {
             addSubview(setupMsgMedia())
-        } else if message.audioUrl != nil {
-            setupAudioPlayButton()
         }
     }
     
@@ -75,8 +67,6 @@ class MessageView: UIView {
             setupRepTextMessage(text: message.repMessage)
         } else if message.repMediaMessage != nil {
             setupRepMediaMessage(message.repMediaMessage)
-        } else {
-            setupResponseAudioMessage()
         }
     }
     
@@ -128,7 +118,6 @@ class MessageView: UIView {
     // MARK: -
     
     private func setupRepLine() {
-//        responseLine.backgroundColor = ThemeColors.selectedOutcomingColor
         responseLine.backgroundColor = .systemBackground
         addSubview(responseLine)
         responseLine.translatesAutoresizingMaskIntoConstraints = false
@@ -199,59 +188,6 @@ class MessageView: UIView {
             responseNameLabel.leadingAnchor.constraint(equalTo: responseMediaMessage.trailingAnchor, constant: 4),
             responseNameLabel.centerYAnchor.constraint(equalTo: responseMediaMessage.centerYAnchor, constant: -8),
             responseNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
-    
-    // MARK: -
-    
-    private func setupResponseAudioMessage() {
-        addSubview(responseAudioLabel)
-        responseAudioLabel.text = "Audio Message"
-        responseAudioLabel.translatesAutoresizingMaskIntoConstraints = false
-        responseAudioLabel.textColor = cell.isIncoming ? .lightGray : .lightText
-        responseAudioLabel.font = UIFont(name: "Helvetica Neue", size: 15)
-        addSubview(responseNameLabel)
-        responseNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        let constraints = [
-            responseNameLabel.leadingAnchor.constraint(equalTo: responseLine.leadingAnchor, constant: 8),
-            responseNameLabel.topAnchor.constraint(equalTo: responseLine.topAnchor, constant: 2),
-            responseNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 8),
-            responseAudioLabel.topAnchor.constraint(equalTo: responseNameLabel.bottomAnchor, constant: -2),
-            responseAudioLabel.leadingAnchor.constraint(equalTo: responseLine.leadingAnchor, constant: 8)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
-    
-    // MARK: -
-    
-    private func setupAudioPlayButton() {
-        addSubview(audioPlayButton)
-        audioPlayButton.isUserInteractionEnabled = false
-        audioPlayButton.translatesAutoresizingMaskIntoConstraints = false
-        audioPlayButton.tintColor = cell.audioPlayButton.tintColor
-        audioPlayButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
-        let constraints = [
-            audioPlayButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            audioPlayButton.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            audioPlayButton.heightAnchor.constraint(equalToConstant: 25),
-            audioPlayButton.widthAnchor.constraint(equalToConstant: 25)
-        ]
-        NSLayoutConstraint.activate(constraints)
-        setupAudioDurationLabel()
-    }
-    
-    // MARK: -
-    
-    private func setupAudioDurationLabel() {
-        addSubview(durationLabel)
-        durationLabel.text = cell.durationLabel.text
-        durationLabel.textColor = cell.durationLabel.textColor
-        durationLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 14)
-        durationLabel.translatesAutoresizingMaskIntoConstraints = false
-        let constraints = [
-            durationLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            durationLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }

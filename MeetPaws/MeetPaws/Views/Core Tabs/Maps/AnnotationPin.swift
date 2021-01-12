@@ -23,7 +23,7 @@ class AnnotationPin: MGLPointAnnotation {
             self.subtitle = "Online"
         } else {
             let date = Date(timeIntervalSince1970: TimeInterval((user.lastLogin)))
-            self.subtitle = calendar.calculateLastLogin(date as NSDate)
+            self.subtitle = calendar.calculateLastLogin(date as Date)
         }
     }
     

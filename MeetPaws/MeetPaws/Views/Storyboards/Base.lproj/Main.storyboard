@@ -13,7 +13,7 @@
         <!--Feed View Controller-->
         <scene sceneID="3ZU-Py-byz">
             <objects>
-                <viewController storyboardIdentifier="FeedVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8QM-k2-q7e" userLabel="Feed View Controller" customClass="FeedViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8QM-k2-q7e" userLabel="Feed View Controller" customClass="FeedViewController" customModule="MeetPaws" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wpY-dR-MCR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedTableViewCell" id="Gj1-kw-ZQO" customClass="FeedTableViewCell" customModule="Insdogram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedTableViewCell" id="Gj1-kw-ZQO" customClass="FeedTableViewCell" customModule="MeetPaws" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="581"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gj1-kw-ZQO" id="vza-ml-M79">
@@ -227,7 +227,7 @@
         <!--Search View Controller-->
         <scene sceneID="o8p-GP-BZK">
             <objects>
-                <viewController id="3Mn-MZ-2et" customClass="SearchViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3Mn-MZ-2et" customClass="SearchViewController" customModule="MeetPaws" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fii-KR-tyj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -237,7 +237,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" systemColor="systemGray5Color"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchTableViewCell" rowHeight="80" id="ftq-q3-7KK" customClass="SearchTableViewCell" customModule="Insdogram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchTableViewCell" rowHeight="80" id="ftq-q3-7KK" customClass="SearchTableViewCell" customModule="MeetPaws" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ftq-q3-7KK" id="SUu-ig-RwR">
@@ -317,7 +317,7 @@
         <!--Maps View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MapsVC" id="BYZ-38-t0r" customClass="MapsViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapsVC" id="BYZ-38-t0r" customClass="MapsViewController" customModule="MeetPaws" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -338,7 +338,7 @@
         <!--Messages View Controller-->
         <scene sceneID="9n0-YQ-iR2">
             <objects>
-                <viewController id="WFW-8s-3Pe" userLabel="Messages View Controller" customClass="ConversationsVC" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WFW-8s-3Pe" userLabel="Messages View Controller" customClass="ConversationsViewController" customModule="MeetPaws" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gTE-jG-ga0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -364,7 +364,7 @@
         <!--Comments-->
         <scene sceneID="JD5-zx-beu">
             <objects>
-                <viewController id="5P4-bq-0GH" customClass="CommentsViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5P4-bq-0GH" customClass="CommentsViewController" customModule="MeetPaws" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hqh-gl-2cf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -384,7 +384,7 @@
                                                 </constraints>
                                                 <imageReference key="image" image="person.circle" catalog="system" renderingMode="template"/>
                                             </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Message" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gwD-ci-Njv">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Message" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gwD-ci-Njv">
                                                 <rect key="frame" x="42" y="0.0" width="298" height="30"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -425,7 +425,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentsTableViewCell" rowHeight="110" id="PTH-2a-F1J" customClass="CommentsTableViewCell" customModule="Insdogram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentsTableViewCell" rowHeight="110" id="PTH-2a-F1J" customClass="CommentsTableViewCell" customModule="MeetPaws" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PTH-2a-F1J" id="hpf-ZI-GQ7">
@@ -564,7 +564,7 @@
         <!--username-->
         <scene sceneID="hET-qn-wW8">
             <objects>
-                <viewController storyboardIdentifier="MyProfileVC" id="v5s-mV-UN2" customClass="MyProfileViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyProfileVC" id="v5s-mV-UN2" customClass="MyProfileViewController" customModule="MeetPaws" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uLH-DE-CII">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -579,7 +579,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyPostCollectionViewCell" id="wMk-Nk-DLg" userLabel="PostCollectionViewCell" customClass="MyPostCollectionViewCell" customModule="Insdogram" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyPostCollectionViewCell" id="wMk-Nk-DLg" userLabel="PostCollectionViewCell" customClass="MyPostCollectionViewCell" customModule="MeetPaws" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="351" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FZr-sE-PuK">
@@ -602,7 +602,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyProfileHeaderCollectionReusableView" id="rs9-Db-LkJ" customClass="MyProfileHeaderCollectionReusableView" customModule="Insdogram" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyProfileHeaderCollectionReusableView" id="rs9-Db-LkJ" customClass="MyProfileHeaderCollectionReusableView" customModule="MeetPaws" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -826,7 +826,7 @@
         <!--Followers View Controller-->
         <scene sceneID="flC-5z-YzO">
             <objects>
-                <viewController id="T9e-QR-uu9" customClass="FollowersViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="T9e-QR-uu9" customClass="FollowersViewController" customModule="MeetPaws" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ChT-Eq-RBo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -835,7 +835,7 @@
                                 <rect key="frame" x="0.0" y="50" width="414" height="675"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowersTableViewCell" rowHeight="80" id="MIe-RF-esn" customClass="FollowersTableViewCell" customModule="Insdogram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowersTableViewCell" rowHeight="80" id="MIe-RF-esn" customClass="FollowersTableViewCell" customModule="MeetPaws" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MIe-RF-esn" id="CmN-Wr-pAh">
@@ -1070,7 +1070,7 @@
                         <imageReference key="selectedImage" image="heart.text.square.fill" catalog="system" renderingMode="template"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="AxG-I7-RGb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" backIndicatorTransitionMaskImage="chevron.left" id="AxG-I7-RGb">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -1096,7 +1096,7 @@
                         <imageReference key="selectedImage" image="paperplane.fill" catalog="system" renderingMode="template"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ffz-OI-EfG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" backIndicatorTransitionMaskImage="chevron.left" catalog="system" id="ffz-OI-EfG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -1122,7 +1122,7 @@
                         <imageReference key="selectedImage" image="person.fill" catalog="system" renderingMode="template"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Ujw-im-cXi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" backIndicatorTransitionMaskImage="chevron.left" id="Ujw-im-cXi">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -1158,7 +1158,7 @@
         <!--username-->
         <scene sceneID="0oj-0N-RLM">
             <objects>
-                <viewController storyboardIdentifier="UserProfileVC" id="z8X-2O-y8n" customClass="UserProfileViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserProfileVC" id="z8X-2O-y8n" customClass="UserProfileViewController" customModule="MeetPaws" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w1l-Tw-DGk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1173,7 +1173,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserPostCollectionViewCell" id="rxN-5X-nRi" userLabel="PostCollectionViewCell" customClass="UserPostCollectionViewCell" customModule="Insdogram" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserPostCollectionViewCell" id="rxN-5X-nRi" userLabel="PostCollectionViewCell" customClass="UserPostCollectionViewCell" customModule="MeetPaws" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="351" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="t37-le-4Fv">
@@ -1196,7 +1196,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserProfileHeaderCollectionReusableView" id="rCy-JV-HVP" customClass="UserProfileHeaderCollectionReusableView" customModule="Insdogram" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserProfileHeaderCollectionReusableView" id="rCy-JV-HVP" customClass="UserProfileHeaderCollectionReusableView" customModule="MeetPaws" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -1480,7 +1480,7 @@
         <!--Post View Controller-->
         <scene sceneID="f7T-5F-pKa">
             <objects>
-                <viewController storyboardIdentifier="MyPostVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3h5-gX-FZm" userLabel="Post View Controller" customClass="MyPostViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyPostVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3h5-gX-FZm" userLabel="Post View Controller" customClass="MyPostViewController" customModule="MeetPaws" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gE2-gt-gop">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1489,7 +1489,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostTableViewCell" id="aBM-pf-HXd" customClass="PostTableViewCell" customModule="Insdogram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostTableViewCell" id="aBM-pf-HXd" customClass="PostTableViewCell" customModule="MeetPaws" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="581"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aBM-pf-HXd" id="lMe-EZ-BO0">
@@ -1688,7 +1688,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="vYt-mG-5lM"/>
-        <segue reference="ykH-sw-wtH"/>
+        <segue reference="0Vg-ii-N9L"/>
         <segue reference="Mfh-c0-Ke4"/>
         <segue reference="bFb-v6-sCf"/>
         <segue reference="N3A-wu-T8P"/>
@@ -1698,6 +1698,7 @@
         <image name="arrow.up" catalog="system" width="120" height="128"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="chevron.left" width="128" height="128"/>
         <image name="dog_postImage" width="426" height="421"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>

@@ -31,7 +31,7 @@ extension Calendar {
         }
     }
     
-    func calculateLastLogin(_ date: NSDate) -> String {
+    func calculateLastLogin(_ date: Date) -> String {
         let now = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium

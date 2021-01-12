@@ -19,7 +19,7 @@ class ToolsTB: UITableView {
     
     var selectedCell: ChatCell!
     
-    var chatView: ChatVC!
+    var chatVC: ChatViewController!
     
     // MARK: -
     
@@ -31,7 +31,7 @@ class ToolsTB: UITableView {
             toolsImg.remove(at: 2)
         }
         scrollView = sView
-        chatView = sView.chatVC
+        chatVC = sView.chatVC
         selectedCell = sView.selectedCell
         delegate = self
         dataSource = self
@@ -59,7 +59,7 @@ class ToolsTB: UITableView {
     // MARK: -
     
     private func removeHandler() {
-        chatView.chatNetworking.removeMessageHandler(messageToRemove: selectedMessage) {
+        chatVC.chatNetworking.removeMessageHandler(messageToRemove: selectedMessage) {
             self.scrollView.handleViewDismiss(isDeleted: true)
         }
     }
@@ -92,8 +92,8 @@ extension ToolsTB: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tool = tools[indexPath.row]
-        let messageToForward = chatView.userResponse.messageToForward
-        let repliedMesage = chatView.userResponse.repliedMessage
+        let messageToForward = chatVC.userResponse.messageToForward
+        let repliedMesage = chatVC.userResponse.repliedMessage
         tableView.deselectRow(at: indexPath, animated: true)
         if "Delete" == tool {
             removeHandler()
@@ -103,10 +103,10 @@ extension ToolsTB: UITableViewDelegate, UITableViewDataSource {
             pasteBoard.string = selectedMessage.message
             scrollView.handleViewDismiss()
         } else if "Reply" == tool {
-            if repliedMesage != nil || messageToForward != nil { chatView.exitResponseButtonPressed() }
+            if repliedMesage != nil || messageToForward != nil { chatVC.exitResponseButtonPressed() }
             scrollView.handleViewDismiss(isReply: true)
         } else if "Forward" == tool {
-            if repliedMesage != nil || messageToForward != nil { chatView.exitResponseButtonPressed() }
+            if repliedMesage != nil || messageToForward != nil { chatVC.exitResponseButtonPressed() }
             scrollView.handleViewDismiss(isForward: true)
         }
     }

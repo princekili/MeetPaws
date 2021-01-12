@@ -33,7 +33,6 @@ class PickProfilePhotoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     // MARK: -
@@ -42,7 +41,7 @@ class PickProfilePhotoViewController: UIViewController {
         selectPhoto()
     }
 
-    @IBAction func okButtonDidTap(_ sender: CustomButton) {
+    @IBAction func okButtonDidTap(_ sender: UIButton) {
         okButton.isEnabled = false
         addUser()
     }
@@ -62,10 +61,6 @@ class PickProfilePhotoViewController: UIViewController {
         userManager.addUser(image: image) { [weak self] in
             print("------ Upload new added user '\(username)' data successfully! ------")
             self?.showMainView()
-            
-//            guard let userId = Auth.auth().currentUser?.uid else { return }
-//            self.userManager.getUserInfo(userId: userId) { (user) in
-//            }
         }
     }
     
@@ -127,7 +122,6 @@ extension PickProfilePhotoViewController: UIImagePickerControllerDelegate, UINav
  
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
-//        if let selectedImage = info[.originalImage] as? UIImage {
         if let selectedImage = info[.editedImage] as? UIImage {
             
             profilePhotoImageView.image = selectedImage

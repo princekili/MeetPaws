@@ -9,7 +9,7 @@ import UIKit
 
 class MessageCollectionView: UICollectionView, UIGestureRecognizerDelegate {
 
-    var chatVC: ChatVC!
+    var chatVC: ChatViewController!
     
     var collectionViewOrigin: CGPoint!
     
@@ -17,7 +17,7 @@ class MessageCollectionView: UICollectionView, UIGestureRecognizerDelegate {
     
     // MARK: -
     
-    init(collectionViewLayout layout: UICollectionViewLayout, chatVC: ChatVC) {
+    init(collectionViewLayout layout: UICollectionViewLayout, chatVC: ChatViewController) {
         super.init(frame: .zero, collectionViewLayout: layout)
         self.chatVC = chatVC
         setupCollectionView()

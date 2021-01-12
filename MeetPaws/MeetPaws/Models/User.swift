@@ -13,7 +13,7 @@ class Users {
     
     static var list = [User]()
     
-    static var convVC: ConversationsVC?
+    static var convVC: ConversationsViewController?
 }
 
 // MARK: - User Model

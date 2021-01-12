@@ -17,7 +17,7 @@ class ChatCell: UICollectionViewCell {
     
     let mediaMessage = UIImageView()
     
-    var chatVC: ChatVC!
+    var chatVC: ChatViewController!
     
     var msgTopAnchor: NSLayoutConstraint!
     
@@ -57,9 +57,6 @@ class ChatCell: UICollectionViewCell {
             setupMessagePosition(msg)
             setupImageMessage(msg)
             playButton.isHidden = msg?.videoUrl == nil
-            
-            // MARK: - setupAudioMessage
-            setupAudioMessage(msg)
             
             if msg?.repMID != nil {
                 setupRepMessageView(msg!.repSender)
@@ -170,34 +167,6 @@ class ChatCell: UICollectionViewCell {
     }
     
     // MARK: -
-    // MARK: - setupAudioMessage
-    
-    private func setupAudioMessage(_ msg: Messages?) {
-        if msg?.audioUrl != nil {
-            guard let url = URL(string: msg!.audioUrl!) else { return }
-            backgroundWidthAnchor.constant = 120
-            setupAudioPlayButton()
-            chatVC.chatNetworking.downloadMessageAudio(with: url) { (data, eror) in
-                guard let data = data else { return }
-                do {
-                    self.audioPlayer = try AVAudioPlayer(data: data)
-                    self.audioPlayButton.isEnabled = true
-                    let (minute, second) = self.timeFrom(seconds: Int(self.audioPlayer.duration - self.audioPlayer.currentTime))
-                    let minutes = minute < 10 ? "0\(minute)" : "\(minute)"
-                    let seconds = second < 10 ? "0\(second)" : "\(second)"
-                    self.setupAudioDurationLabel()
-                    self.durationLabel.text = "\(minutes):\(seconds)"
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
-        } else {
-            durationLabel.removeFromSuperview()
-            audioPlayButton.removeFromSuperview()
-        }
-    }
-    
-    // MARK: -
     
     private func setupBackgroundView() {
         messageBackground.translatesAutoresizingMaskIntoConstraints = false
@@ -262,7 +231,6 @@ class ChatCell: UICollectionViewCell {
         activityLabel.isHidden = false
         activityLabel.font = UIFont.boldSystemFont(ofSize: 11)
         activityLabel.textColor = ThemeColors.selectedOutcomingColor
-//        activityLabel.textColor = .systemBackground
         let constraints = [
             activityLabel.trailingAnchor.constraint(equalTo: messageBackground.trailingAnchor, constant: -4),
             activityLabel.topAnchor.constraint(equalTo: messageBackground.bottomAnchor, constant: 2)
@@ -388,7 +356,6 @@ class ChatCell: UICollectionViewCell {
         } else {
             self.responseMediaMessage.removeFromSuperview()
             self.responseTextMessage.removeFromSuperview()
-            setupResponseAudioMessage()
         }
     }
     
@@ -467,26 +434,6 @@ class ChatCell: UICollectionViewCell {
     
     // MARK: -
     
-    private func setupResponseAudioMessage() {
-        messageBackground.addSubview(responseAudioMessage)
-        responseAudioMessage.translatesAutoresizingMaskIntoConstraints = false
-        responseAudioMessage.addSubview(responseNameLabel)
-        responseNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        responseAudioMessage.text = "Audio Message"
-        responseAudioMessage.textColor = isIncoming ? .lightGray : .lightText
-        responseAudioMessage.font = UIFont(name: "Helvetica Neue", size: 15)
-        let constraints = [
-            responseNameLabel.leadingAnchor.constraint(equalTo: responseLine.leadingAnchor, constant: 8),
-            responseNameLabel.topAnchor.constraint(equalTo: responseLine.topAnchor, constant: 2),
-            responseNameLabel.trailingAnchor.constraint(equalTo: messageBackground.trailingAnchor, constant: 8),
-            responseAudioMessage.topAnchor.constraint(equalTo: responseNameLabel.bottomAnchor, constant: -2),
-            responseAudioMessage.leadingAnchor.constraint(equalTo: responseLine.leadingAnchor, constant: 8)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
-    
-    // MARK: -
-    
     private func removeReplyOutlets() {
         replyMsgTopAnchor.isActive = false
         responseLine.removeFromSuperview()
@@ -496,56 +443,6 @@ class ChatCell: UICollectionViewCell {
         responseMediaMessage.removeFromSuperview()
         responseView.removeFromSuperview()
         msgTopAnchor.isActive = true
-    }
-    
-    // MARK: - setup Audio Play Button
-    
-    private func setupAudioPlayButton() {
-        audioPlayButton.isEnabled = false
-        messageBackground.addSubview(audioPlayButton)
-        audioPlayButton.addTarget(self, action: #selector(playAudioButtonPressed), for: .touchUpInside)
-        audioPlayButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
-        audioPlayButton.translatesAutoresizingMaskIntoConstraints = false
-        let constraints = [
-            audioPlayButton.leadingAnchor.constraint(equalTo: messageBackground.leadingAnchor, constant: 8),
-            audioPlayButton.topAnchor.constraint(equalTo: messageBackground.topAnchor, constant: 8),
-            audioPlayButton.heightAnchor.constraint(equalToConstant: 25),
-            audioPlayButton.widthAnchor.constraint(equalToConstant: 25)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
-    
-    // MARK: -
-    
-    private func setupAudioDurationLabel() {
-        messageBackground.addSubview(durationLabel)
-        durationLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 14)
-        durationLabel.translatesAutoresizingMaskIntoConstraints = false
-        let constraints = [
-            durationLabel.trailingAnchor.constraint(equalTo: messageBackground.trailingAnchor, constant: -8),
-            durationLabel.centerYAnchor.constraint(equalTo: messageBackground.centerYAnchor)
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
-    
-    // MARK: -
-    
-    @objc private func playAudioButtonPressed() {
-        chatVC.handleUserPressedAudioButton(for: self)
-    }
-    
-    // MARK: - timerHandler
-    
-    @objc func timerHandler() {
-        if !audioPlayer.isPlaying {
-            audioPlayButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
-            timer.invalidate()
-            chatVC.chatAudio.audioPlayer = nil
-        }
-        let (minute, second) = timeFrom(seconds: Int(audioPlayer.duration - audioPlayer.currentTime))
-        let minutes = minute < 10 ? "0\(minute)" : "\(minute)"
-        let seconds = second < 10 ? "0\(second)" : "\(second)"
-        durationLabel.text = "\(minutes):\(seconds)"
     }
     
     // MARK: -

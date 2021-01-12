@@ -11,7 +11,7 @@ class ConversationsNetworking {
     
     // MARK: -
     
-    var convVC: ConversationsVC!
+    var convVC: ConversationsViewController!
     
     var groupedMessages = [String: Messages]()
     

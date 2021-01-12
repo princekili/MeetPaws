@@ -16,6 +16,7 @@ struct UserActivity {
     init(isTyping: Bool, userId: String) {
         
         self.isTyping = isTyping
+        
         self.userId = userId
     }
 }

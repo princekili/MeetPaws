@@ -65,7 +65,7 @@ class SharedMediaCell: UICollectionViewCell {
             playButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             playButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             playButton.widthAnchor.constraint(equalToConstant: 35),
-            playButton.heightAnchor.constraint(equalToConstant: 35),
+            playButton.heightAnchor.constraint(equalToConstant: 35)
         ]
         NSLayoutConstraint.activate(constraints)
     }

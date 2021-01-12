@@ -68,46 +68,7 @@ class MapsNetworking {
     // MARK: - decode User = setup User Info
     
     func decodeUser(userId: String, values: [String: Any], completion: @escaping (User) -> Void) {
-        
-        guard let username = values["username"] as? String else { return }
-        guard let profileImage = values["profileImage"] as? String else { return }
-        guard let fullName = values["fullName"] as? String else { return }
-        guard let bio = values["bio"] as? String else { return }
-        guard let posts = values["posts"] as? [String] else { return }
-        guard let followRequests = values["followRequests"] as? [String] else { return }
-        guard let followers = values["followers"] as? [String] else { return }
-        guard let following = values["following"] as? [String] else { return }
-        guard let postDidLike = values["postDidLike"] as? [String] else { return }
-        guard let bookmarks = values["bookmarks"] as? [String] else { return }
-        guard let ignoreList = values["ignoreList"] as? [String] else { return }
-        guard let joinedDate = values["joinedDate"] as? Int else { return }
-        guard let lastLogin = values["lastLogin"] as? Int else { return }
-        guard let isPrivate = values["isPrivate"] as? Bool else { return }
-        guard let isOnline = values["isOnline"] as? Bool else { return }
-        guard let isMapLocationEnabled = values["isMapLocationEnabled"] as? Bool else { return }
-        
-        let user = User(userId: userId,
-                        username: username,
-                        profileImage: profileImage,
-                        fullName: fullName,
-                        bio: bio,
-                        posts: posts,
-                        followRequests: followRequests,
-                        followers: followers,
-                        following: following,
-                        postDidLike: postDidLike,
-                        bookmarks: bookmarks,
-                        ignoreList: ignoreList,
-                        joinedDate: joinedDate,
-                        lastLogin: lastLogin,
-                        isPrivate: isPrivate,
-                        isOnline: isOnline,
-                        isMapLocationEnabled: isMapLocationEnabled
-        )
-        usersDict[userId] = user
-//        print("------ Users.list.append(user) ------")
-//        print(user)
-        
+        guard let user = User(userId: userId, userInfo: values) else { return }
         completion(user)
     }
     
@@ -137,33 +98,9 @@ class MapsNetworking {
                     self.handleUserLocation(user, coordinate)
                 }
             }
-            
         } else {
             print("------ user.isMapLocationEnabled == false ------")
         }
-        
-        // MARK: How to remove the annotation instantly when user's isMapLocationEnabled turn into false ?
-//        usersRef.child(user.userId).child("isMapLocationEnabled").observe(.childChanged) { (snapshot) in
-//            guard let isMapLocationEnabled = snapshot.value as? Bool else { return }
-//
-//            if isMapLocationEnabled {
-//                print("------ observe user location: \(user.username) = \(user.userId) ------")
-//
-//                self.userLocationsRef.child(user.userId).observe(.value) { (snapshot) in
-//
-//                    guard let values = snapshot.value as? [String: Any] else { return }
-//                    guard let latitude = values["latitude"] as? Double else { return }
-//                    guard let longitude = values["longitude"] as? Double else { return }
-//
-//                    let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-//                    self.handleUserLocation(user, coordinate)
-//                }
-//
-//            } else {
-//                // Remove the user's annotation
-//
-//            }
-//        }
     }
     
     // MARK: - handle User Location -> Add users' pin

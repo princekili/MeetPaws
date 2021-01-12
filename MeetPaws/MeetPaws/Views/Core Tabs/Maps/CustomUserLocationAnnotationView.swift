@@ -18,7 +18,7 @@ class CustomUserLocationAnnotationView: MGLUserLocationAnnotationView {
     
     var arrow: CAShapeLayer!
 
-    // `update` is a method inherited from MGLUserLocationAnnotationView. It updates the appearance of the user location annotation when needed. This can be called many times a second, so be careful to keep it lightweight.
+    // update is a method inherited from MGLUserLocationAnnotationView. It updates the appearance of the user location annotation when needed. This can be called many times a second, so be careful to keep it lightweight.
     override func update() {
         if frame.isNull {
             frame = CGRect(x: 0, y: 0, width: size, height: size)
@@ -83,9 +83,9 @@ class CustomUserLocationAnnotationView: MGLUserLocationAnnotationView {
         let max: CGFloat = size / 2
         let pad: CGFloat = 3
 
-        let top =    CGPoint(x: max * 0.5, y: 0)
-        let left =   CGPoint(x: 0 + pad,   y: max - pad)
-        let right =  CGPoint(x: max - pad, y: max - pad)
+        let top = CGPoint(x: max * 0.5, y: 0)
+        let left = CGPoint(x: 0 + pad, y: max - pad)
+        let right = CGPoint(x: max - pad, y: max - pad)
         let center = CGPoint(x: max * 0.5, y: max * 0.6)
 
         let bezierPath = UIBezierPath()

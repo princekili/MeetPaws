@@ -27,7 +27,7 @@ class ChatNetworking {
     
     var isUserTyping = false
     
-    var chatVC: ChatVC!
+    var chatVC: ChatViewController!
     
     let userManager = UserManager.shared
     
@@ -267,7 +267,7 @@ class ChatNetworking {
         if user.isOnline {
             chatVC.navigationItem.setNavTitles(navTitle: tempName, navSubtitle: "Online")
         } else {
-            chatVC.navigationItem.setNavTitles(navTitle: tempName, navSubtitle: chatVC.calendar.calculateLastLogin(loginDate as NSDate))
+            chatVC.navigationItem.setNavTitles(navTitle: tempName, navSubtitle: chatVC.calendar.calculateLastLogin(loginDate as Date))
         }
     }
     

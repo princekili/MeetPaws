@@ -164,12 +164,11 @@ class MapsViewController: UIViewController {
     }
     
     @objc func showUserProfileVC() {
-        
         performSegue(withIdentifier: "SegueMapsToUserProfile", sender: nil)
     }
 
     @objc func openUserMessagesHandler() {
-        let chatVC = ChatVC()
+        let chatVC = ChatViewController()
         chatVC.user = selectedUser
         navigationController?.pushViewController(chatVC, animated: true)
     }

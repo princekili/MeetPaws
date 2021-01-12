@@ -48,7 +48,7 @@ class PickUsernameViewController: UIViewController {
     
     // MARK: -
 
-    @IBAction func nextButtonDidTap(_ sender: CustomButton) {
+    @IBAction func nextButtonDidTap(_ sender: UIButton) {
         
         // MARK: - For test
         isAvailable = true

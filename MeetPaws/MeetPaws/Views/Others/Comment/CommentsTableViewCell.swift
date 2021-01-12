@@ -84,7 +84,6 @@ class CommentsTableViewCell: UITableViewCell {
     
     private func setupPostAuthorInfo(with post: Post) {
         userManager.getAuthorInfo(userId: post.userId) { [weak self] (user) in
-//            self?.currentUser = user
             self?.usernameButton.setTitle(user.username, for: .normal)
             let url = URL(string: user.profileImage)
             self?.profileImage.kf.setImage(with: url)

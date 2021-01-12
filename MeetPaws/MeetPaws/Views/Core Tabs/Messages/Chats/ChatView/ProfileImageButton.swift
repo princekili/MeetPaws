@@ -10,7 +10,7 @@ import Kingfisher
 
 class ProfileImageButton: UIButton {
 
-    init(chatVC: ChatVC, url: String) {
+    init(chatVC: ChatViewController, url: String) {
         super.init(frame: .zero)
         setupProfileImage(url, chatVC)
     }
@@ -21,7 +21,7 @@ class ProfileImageButton: UIButton {
     
     // MARK: -
     
-    private func setupProfileImage(_ url: String, _ chatVC: ChatVC) {
+    private func setupProfileImage(_ url: String, _ chatVC: ChatViewController) {
         let userImageIcon = UIImageView()
         
         let url = URL(string: url)
