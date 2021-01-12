@@ -1,6 +1,6 @@
 //
 //  AuthManager.swift
-//  Yogogo
+//  MeetPaws
 //
 //  Created by prince on 2020/12/8.
 //
@@ -103,9 +103,6 @@ class UserManager {
                 print("------ Author not found ------")
                 return
             }
-
-            print("------ Get the author info 'ID: \(user.username)' successfully ------")
-            
             completion(user)
         }
     }
@@ -134,19 +131,15 @@ class UserManager {
     // MARK: - Add a user on DB
     
     func addUser(image: UIImage, completion: @escaping () -> Void) {
-        
         guard let userId = Auth.auth().currentUser?.uid else { return }
-        
         let userRef = ref.child("users").child(userId)
         
         // Use the unique key as the image name and prepare the storage reference
         guard let imageKey = userRef.key else { return }
-        
         let imageStorageRef = profilePhotoStorageRef.child("\(imageKey).jpg")
         
         // Resize the image
         let scaledImage = image.scale(newWidth: 200)
-        
         guard let imageData = scaledImage.jpegData(compressionQuality: 0.7) else { return }
         
         // Create the file metadata
@@ -161,7 +154,6 @@ class UserManager {
             
             // Add a reference in the database
             snapshot.reference.downloadURL(completion: { (url, error) in
-                
                 let username = self.username
                 
                 guard let url = url else { return }
@@ -201,23 +193,18 @@ class UserManager {
                     "isOnline": isOnline,
                     "isMapLocationEnabled": isMapLocationEnabled
                 ]
-                
                 userRef.setValue(user)
             })
-            
             // Describe what to do at where uploadPost() is called.
             completion()
         }
-        
+
         uploadTask.observe(.progress) { (snapshot) in
-            
             let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
-            
             print("Uploading... \(percentComplete)% complete")
         }
         
         uploadTask.observe(.failure) { (snapshot) in
-            
             if let error = snapshot.error {
                 print("Upload error -> ", error.localizedDescription)
             }
@@ -227,10 +214,6 @@ class UserManager {
     // MARK: - Update All User Info
     
     func updateAllUserInfo(completion: @escaping () -> Void) {
-
-        print("------ Update local user info to DB ------")
-        print(currentUser ?? "------ currentUser == nil ------")
-        print("-----^ Update local user info to DB ^-----")
 
         // MARK: Update DB
         guard let userId = Auth.auth().currentUser?.uid else { return }
@@ -315,14 +298,8 @@ class UserManager {
                 userRef.child(userId).child("profileImage").setValue(profileImage)
                 userRef.child(userId).child("fullName").setValue(fullName)
                 userRef.child(userId).child("bio").setValue(bio)
-                
-                print("------ usersRef.child(\(userId)).child(username).setValue(\(username)) ------")
-                print("------ usersRef.child(\(userId)).child(profileImage).setValue(\(profileImage)) ------")
-                print("------ usersRef.child(\(userId)).child(fullName).setValue(\(fullName)) ------")
-                print("------ usersRef.child(\(userId)).child(bio).setValue(\(bio)) ------")
             }
         }
-        
         completion() // do something after updating
     }
     
@@ -332,34 +309,26 @@ class UserManager {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         guard let posts = self.currentUser?.posts else { return }
         usersRef.child(userId).child("posts").setValue(posts)
-        print("------ usersRef.child(\(userId)).child(posts).setValue(\(posts)) ------")
         completion() // do something after updating
     }
     
     // MARK: - Update Post Like Count
     
     func updateLikeCount(completion: @escaping () -> Void) {
-        
         guard let userId = Auth.auth().currentUser?.uid else { return }
         guard let postDidLike = self.currentUser?.postDidLike else { return }
         
         usersRef.child(userId).child("postDidLike").setValue(postDidLike)
-        
-        print("------ usersRef.child(\(userId)).child(postDidLike).setValue(\(postDidLike)) ------")
-        
         completion() // do something after updating
     }
     
     // MARK: - Update isMapLocationEnabled
     
     func updateIsMapLocationEnabled() {
-        
         guard let userId = Auth.auth().currentUser?.uid else { return }
         guard let isMapLocationEnabled = self.currentUser?.isMapLocationEnabled else { return }
         
         usersRef.child(userId).child("isMapLocationEnabled").setValue(isMapLocationEnabled)
-
-        print("------ users/\(userId)/isMapLocationEnabled: \(isMapLocationEnabled) ------")
     }
     
     // MARK: - Update /users/uid/ignoreList for hiding the post/comment/user
@@ -373,7 +342,6 @@ class UserManager {
         ignoreList.removeDuplicates()
         
         usersRef.child(uid).child("ignoreList").setValue(ignoreList)
-        print("------ usersRef.child(\(uid)).child(ignoreList).setValue(\(ignoreList)) ------")
         completion()
     }
     
@@ -386,7 +354,6 @@ class UserManager {
         ignoreList.removeDuplicates()
         
         usersRef.child(user.userId).child("ignoreList").setValue(ignoreList)
-        print("------ usersRef.child(\(user.userId)).child(ignoreList).setValue(\(ignoreList)) ------")
         completion()
     }
     
@@ -395,15 +362,10 @@ class UserManager {
     func block(with user: User, completion: @escaping () -> Void) {
         
         // For current user
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        self.updateCurrentUserIgnoreList(with: user.userId) {
-            print("------ Add /users/\(uid)/ignoreList/\(user.userId) ------")
-        }
+        self.updateCurrentUserIgnoreList(with: user.userId) {}
         
         // For the blocked user
-        self.updateBlockedUserIgnoreList(with: user) {
-            print("------ Add /users/\(user.userId)/ignoreList/\(uid) ------")
-        }
+        self.updateBlockedUserIgnoreList(with: user) {}
         
         // Unfollow each other
         FollowManager.shared.unfollow(the: user)

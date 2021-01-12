@@ -1,6 +1,6 @@
 //
 //  ForwardToSend + Protocol.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/21.
 //
@@ -15,7 +15,7 @@ protocol ForwardToFriend {
 
 // MARK: -
 
-extension ChatVC: ForwardToFriend {
+extension ChatViewController: ForwardToFriend {
     
     // MARK: -
     

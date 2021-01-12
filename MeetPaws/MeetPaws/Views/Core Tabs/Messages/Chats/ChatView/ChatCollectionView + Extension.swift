@@ -1,6 +1,6 @@
 //
 //  ChatCollectionView + Extension.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/20.
 //
@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-extension ChatVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ChatViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var height: CGFloat = 80

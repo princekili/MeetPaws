@@ -1,6 +1,6 @@
 //
 //  FollowManager.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/30.
 //
@@ -21,6 +21,21 @@ class FollowManager {
     
     // MARK: - Get follower info
     
+    func getUsers(userIds: [String], completion: @escaping () -> Void) {
+        
+        for userId in userIds {
+            // The userId should not be in the ignoreList
+            if let ignoreList = UserManager.shared.currentUser?.ignoreList {
+                guard !ignoreList.contains(userId) else { continue }
+            }
+            
+            group.enter()
+            getUserInfo(of: userId)
+        }
+        
+        group.notify(queue: .main, execute: completion)
+    }
+    
     private func getUserInfo(of userId: String) {
         
         ref.child("users").child(userId).observeSingleEvent(of: .value) { (snapshot) in
@@ -36,21 +51,6 @@ class FollowManager {
             self.group.leave()
             self.users.removeDuplicates()
         }
-    }
-    
-    func getUsers(userIds: [String], completion: @escaping () -> Void) {
-        
-        for userId in userIds {
-            // The userId should not be in the ignoreList
-            if let ignoreList = UserManager.shared.currentUser?.ignoreList {
-                guard !ignoreList.contains(userId) else { continue }
-            }
-            
-            group.enter()
-            getUserInfo(of: userId)
-        }
-        
-        group.notify(queue: .main, execute: completion)
     }
     
     // MARK: - Observe the user

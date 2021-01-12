@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Yogogo
+//  MeetPaws
 //
 //  Created by prince on 2020/11/28.
 //
@@ -164,12 +164,11 @@ class MapsViewController: UIViewController {
     }
     
     @objc func showUserProfileVC() {
-        
         performSegue(withIdentifier: "SegueMapsToUserProfile", sender: nil)
     }
 
     @objc func openUserMessagesHandler() {
-        let chatVC = ChatVC()
+        let chatVC = ChatViewController()
         chatVC.user = selectedUser
         navigationController?.pushViewController(chatVC, animated: true)
     }

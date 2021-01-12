@@ -1,6 +1,6 @@
 //
 //  LoginViewController.swift
-//  Yogogo
+//  MeetPaws
 //
 //  Created by prince on 2020/12/2.
 //
@@ -60,7 +60,7 @@ class SignInViewController: UIViewController {
     
     // MARK: - Handle sign in
     
-    @IBAction func signInWithAppleButtonDidTap(_ sender: CustomButton) {
+    @IBAction func signInWithAppleButtonDidTap(_ sender: UIButton) {
         performSignIn()
     }
     
@@ -83,19 +83,6 @@ class SignInViewController: UIViewController {
         currentNonce = nonce
         return request
     }
-    
-    // MARK: - Default 'Sign in with Apple' button
-    
-//    private func setupSignInButton() {
-//        let button = ASAuthorizationAppleIDButton()
-//        button.addTarget(self, action: #selector(handleSignInWithAppleButtonDidTap), for: .touchUpInside)
-//        button.center = view.center
-//        view.addSubview(button)
-//    }
-//
-//    @objc private func handleSignInWithAppleButtonDidTap() {
-//        performSignIn()
-//    }
 }
 
 // MARK: - ASAuthorizationControllerDelegate

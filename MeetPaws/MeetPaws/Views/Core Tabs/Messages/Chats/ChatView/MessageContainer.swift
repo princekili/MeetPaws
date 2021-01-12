@@ -1,6 +1,6 @@
 //
 //  MessageContainer.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/20.
 //
@@ -35,11 +35,11 @@ class MessageContainer: UIView, UITextViewDelegate {
     
     let size: CGFloat = 30
     
-    var chatVC: ChatVC!
+    var chatVC: ChatViewController!
     
     // MARK: -
     
-    init(height: CGFloat, const: CGFloat, chatVC: ChatVC) {
+    init(height: CGFloat, const: CGFloat, chatVC: ChatViewController) {
         super.init(frame: .zero)
         self.chatVC = chatVC
         self.containerHeight = height
@@ -58,10 +58,6 @@ class MessageContainer: UIView, UITextViewDelegate {
         setupAddImageButton()
         setupSendButton()
         setupMessageTV()
-//        setupActionCircle()
-//        setupMicrophone()
-//        recordingAudioAnimation()
-//        setupRecordingLabel()
     }
     
     // MARK: -
@@ -69,7 +65,6 @@ class MessageContainer: UIView, UITextViewDelegate {
     private func setupBackground() {
         chatVC.view.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
-//        backgroundColor = .systemGray6
         backgroundColor = .systemBackground
         bottomAnchr = bottomAnchor.constraint(equalTo: chatVC.view.bottomAnchor)
         heightAnchr = heightAnchor.constraint(equalToConstant: containerHeight)
@@ -155,58 +150,7 @@ class MessageContainer: UIView, UITextViewDelegate {
         ]
         NSLayoutConstraint.activate(constraints)
     }
-    
-    // MARK: -
-    
-//    private func setupMicrophone() {
-//        addSubview(micButton)
-//        micButton.translatesAutoresizingMaskIntoConstraints = false
-//        micButton.setImage(UIImage(systemName: "mic"), for: .normal)
-//        micButton.tintColor = .label
-//        micButton.addTarget(chatVC, action: #selector(chatVC.handleAudioRecording), for: .touchUpInside)
-//        let constraints = [
-//            micButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const),
-//            micButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-//            micButton.heightAnchor.constraint(equalToConstant: 30),
-//            micButton.widthAnchor.constraint(equalToConstant: 30)
-//        ]
-//        NSLayoutConstraint.activate(constraints)
-//    }
-    
-    // MARK: -
-    
-//    private func recordingAudioAnimation() {
-//        recordingAudioView.isHidden = true
-//        addSubview(recordingAudioView)
-//        recordingAudioView.animation = Animation.named("audioWave")
-//        recordingAudioView.play()
-//        recordingAudioView.loopMode = .loop
-//        recordingAudioView.backgroundBehavior = .pauseAndRestore
-//        recordingAudioView.translatesAutoresizingMaskIntoConstraints = false
-//        let constraints = [
-//            recordingAudioView.centerYAnchor.constraint(equalTo: centerYAnchor),
-//            recordingAudioView.centerXAnchor.constraint(equalTo: centerXAnchor),
-//            recordingAudioView.heightAnchor.constraint(equalToConstant: 180),
-//            recordingAudioView.widthAnchor.constraint(equalToConstant: 180)
-//        ]
-//        NSLayoutConstraint.activate(constraints)
-//    }
-    
-    // MARK: -
-    
-//    private func setupRecordingLabel() {
-//        addSubview(recordingLabel)
-//        recordingLabel.isHidden = true
-//        recordingLabel.text = "00:00"
-//        recordingLabel.translatesAutoresizingMaskIntoConstraints = false
-//        recordingLabel.font = UIFont(name: "Helvetica Neue", size: 16)
-//        let constraints = [
-//            recordingLabel.trailingAnchor.constraint(equalTo: leadingAnchor),
-//            recordingLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -const - 5)
-//        ]
-//        NSLayoutConstraint.activate(constraints)
-//    }
-    
+ 
     // MARK: -
     
     private func setupActionCircle() {
@@ -236,7 +180,7 @@ extension MessageContainer {
     
     func textViewDidChange(_ textView: UITextView) {
         chatVC.chatNetworking.isTypingHandler(textView: textView)
-        chatVC.animateActionButton()
+        chatVC.animateSendButton()
         messageTextView.subviews[2].isHidden = !messageTextView.text.isEmpty
         let size = CGSize(width: textView.frame.width, height: 150)
         let estSize = textView.sizeThatFits(size)

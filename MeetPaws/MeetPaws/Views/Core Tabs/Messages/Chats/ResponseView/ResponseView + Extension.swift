@@ -1,6 +1,6 @@
 //
 //  ChatVC + Extension.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/20.
 //
@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-extension ChatVC {
+extension ChatViewController {
 
     func responseViewChangeAlpha(alpha: CGFloat) {
         userResponse.lineView.alpha = alpha
@@ -91,7 +91,6 @@ extension ChatVC {
         messageContainer.addSubview(userResponse.nameLabel)
         userResponse.nameLabel.translatesAutoresizingMaskIntoConstraints = false
         userResponse.nameLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 16)
-//        userResponse.nameLabel.textColor = .systemBackground
         userResponse.nameLabel.textColor = .label
         userResponse.nameLabel.text = name
         userResponse.nameLabelConstraint = userResponse.nameLabel.leadingAnchor.constraint(equalTo: userResponse.lineView.trailingAnchor, constant: 8)
@@ -109,8 +108,6 @@ extension ChatVC {
     func setupResponseMessage(_ message: Messages) {
         if message.mediaUrl != nil {
             setupResponseMediaM(message)
-//        } else if message.audioUrl != nil {
-//            setupAudioMessage()
         } else {
             setupResponseTextM(message)
         }
@@ -157,21 +154,4 @@ extension ChatVC {
         ]
         NSLayoutConstraint.activate(constraints)
     }
-    
-    // MARK: -
-    
-//    func setupAudioMessage() {
-//        messageContainer.addSubview(userResponse.audioMessage)
-//        userResponse.audioMessage.translatesAutoresizingMaskIntoConstraints = false
-//        userResponse.audioMessage.text = "Audio Message"
-//        userResponse.audioMessage.textColor = .lightGray
-//        userResponse.audioMessage.font = UIFont(name: "Helvetica Neue", size: 15)
-//        let constraints = [
-//            userResponse.audioMessage.leadingAnchor.constraint(equalTo: userResponse.lineView.trailingAnchor, constant: 8),
-//            userResponse.audioMessage.trailingAnchor.constraint(equalTo: userResponse.exitButton.trailingAnchor, constant: -16),
-//            userResponse.audioMessage.topAnchor.constraint(equalTo: userResponse.nameLabel.bottomAnchor, constant: -2),
-//            userResponse.audioMessage.bottomAnchor.constraint(equalTo: messageContainer.messageTV.topAnchor, constant: -16)
-//        ]
-//        NSLayoutConstraint.activate(constraints)
-//    }
 }

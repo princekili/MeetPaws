@@ -1,6 +1,6 @@
 //
 //  ChatVC.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/20.
 //
@@ -11,15 +11,13 @@ import AVFoundation
 import CoreServices
 import Lottie
 
-class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVAudioRecorderDelegate {
+class ChatViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVAudioRecorderDelegate {
 
     var user: User!
     
     var messages = [Messages]()
     
     let chatNetworking = ChatNetworking()
-    
-    let chatAudio = ChatAudio()
     
     var userResponse = UserResponse()
     
@@ -31,8 +29,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     var refreshIndicator: MessageLoadingIndicator!
     
-    let blankLoadingView = AnimationView(animation: Animation.named("chatLoadingAnim"))
-    
     let calendar = Calendar(identifier: .gregorian)
     
     let ref = Database.database().reference()
@@ -42,7 +38,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-//        view.backgroundColor = ThemeColors.selectedBackgroundColor
         setupChat()
         notificationCenterHandler()
     }
@@ -82,28 +77,8 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         // MARK: - Layers order
         messageContainer = MessageContainer(height: containerHeight, const: topConst, chatVC: self)
         collectionView = MessageCollectionView(collectionViewLayout: UICollectionViewFlowLayout.init(), chatVC: self)
-        
         refreshIndicator = MessageLoadingIndicator(frame: view.frame, const: topConst, chatVC: self)
         hideKeyboardOnTap()
-//        setupChatBlankView()
-    }
-    
-    // MARK: -
-    
-    private func setupChatBlankView() {
-        view.addSubview(blankLoadingView)
-        blankLoadingView.translatesAutoresizingMaskIntoConstraints = false
-        blankLoadingView.backgroundColor = .systemBackground
-        blankLoadingView.play()
-        blankLoadingView.loopMode = .loop
-        blankLoadingView.backgroundBehavior = .pauseAndRestore
-        let constraints = [
-            blankLoadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            blankLoadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            blankLoadingView.bottomAnchor.constraint(equalTo: messageContainer.topAnchor),
-            blankLoadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
-        ]
-        NSLayoutConstraint.activate(constraints)
     }
     
     // MARK: -
@@ -120,7 +95,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     // MARK: -
     
     private func setupChatNavBar() {
-//        let loginDate = NSDate(timeIntervalSince1970: (user.lastLogin).doubleValue)
         let loginDate = Date(timeIntervalSince1970: TimeInterval((user.lastLogin)))
         navigationController?.navigationBar.tintColor = .label
         
@@ -132,15 +106,13 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         if user.isOnline {
             navigationItem.setNavTitles(navTitle: displayName, navSubtitle: "Online")
         } else {
-            navigationItem.setNavTitles(navTitle: displayName, navSubtitle: calendar.calculateLastLogin(loginDate as NSDate))
+            navigationItem.setNavTitles(navTitle: displayName, navSubtitle: calendar.calculateLastLogin(loginDate as Date))
         }
     }
 
     // MARK: - CLIP IMAGE BUTTON PRESSED METHOD
     
     @objc func addImageButtonPressed() {
-        print("------ addImageButtonPressed ------")
-        
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
@@ -206,11 +178,9 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         guard trimmedMessage.count > 0 else { return }
         
         let senderRef = ref.child("messages").child(currentUser.userId).child(user.userId).childByAutoId()
-        
         let friendRef = ref.child("messages").child(user.userId).child(currentUser.userId).child(senderRef.key!)
         
         guard let messageId = senderRef.key else { return }
-        
         var values = ["message": trimmedMessage,
                       "sender": currentUser.userId,
                       "recipient": user.userId,
@@ -289,7 +259,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     private func observeMessageActions() {
         guard let currentUser = UserManager.shared.currentUser else { return }
         
-        self.blankLoadingView.isHidden = true
         chatNetworking.observeUserMessageSeen()
         let msgRef = ref.child("messages").child(currentUser.userId).child(user.userId)
         msgRef.observe(.childRemoved) { (snap) in
@@ -299,7 +268,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             }
         }
         msgRef.queryLimited(toLast: 1).observe(.childAdded) { (snap) in
-            self.chatNetworking.newMessageRecievedHandler(self.messages, for: snap) { (newMessage) in
+            self.chatNetworking.newMessageReceivedHandler(self.messages, for: snap) { (newMessage) in
                 self.messages.append(newMessage)
                 self.collectionView.reloadData()
                 if newMessage.determineUser() != currentUser.userId {
@@ -330,10 +299,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     // MARK: To fix
     
     @objc func profileImageTapped() {
-//        let friendController = FriendInformationVC()
-//        friendController.user = user
-//        friendController.modalPresentationStyle = .fullScreen
-//        show(friendController, sender: self)
+        // Show the user profile
     }
     
     // MARK: -
@@ -443,7 +409,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     // MARK: -
     
-    func animateActionButton() {
+    func animateSendButton() {
         var buttonToAnimate = UIButton()
         if messageContainer.messageTextView.text.count >= 1 {
             messageContainer.micButton.alpha = 0
@@ -482,7 +448,6 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     
-    // MARK: To fix
     // MARK: - handle Long PressGesture
     
     @objc func handleLongPressGesture(longPress: UILongPressGestureRecognizer) {
@@ -506,7 +471,7 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     func forwardButtonPressed(_ message: Messages) {
         chatNetworking.getMessageSender(message: message) { (name) in
             self.userResponse.messageToForward = message
-            let convController = NewConversationVC()
+            let convController = NewConversationViewController()
             convController.forwardDelegate = self
             convController.forwardName = name
             let navController = UINavigationController(rootViewController: convController)
@@ -521,104 +486,12 @@ class ChatVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         messageContainer.messageTextView.becomeFirstResponder()
         userResponse.responseStatus = true
         userResponse.repliedMessage = message
-        
         messageContainer.heightAnchr.constant += 50
-        
         UIView.animate(withDuration: 0.1, animations: {
             self.view.layoutIfNeeded()
             self.responseMessageLine(message, forwardedName)
         }) { (true) in
             self.responseViewChangeAlpha(alpha: 1)
-        }
-    }
-    
-    // MARK: - handle Audio Recording
-    
-    @objc func handleAudioRecording() {
-        chatAudio.recordingSession = AVAudioSession.sharedInstance()
-        if !chatAudio.requestPermisson() { return }
-        if chatAudio.audioRecorder == nil {
-            startAudioRecording()
-        } else {
-            stopAudioRecording()
-        }
-    }
-    
-    private func startAudioRecording() {
-        let fileName = chatAudio.getDirectory().appendingPathComponent("sentAudio.m4a")
-        let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
-        do {
-            chatAudio.audioRecorder = try AVAudioRecorder(url: fileName, settings: settings)
-            chatAudio.audioRecorder.delegate = self
-            chatAudio.audioRecorder.record()
-            prepareContainerForRecording()
-        } catch {
-            showAlert(title: "Error", message: error.localizedDescription)
-        }
-    }
-    
-    private func prepareContainerForRecording() {
-        chatAudio.timer = Timer(timeInterval: 1.0, target: self, selector: #selector(audioTimerHandler), userInfo: nil, repeats: true)
-        RunLoop.current.add(chatAudio.timer, forMode: RunLoop.Mode.common)
-        messageContainer.micButton.setImage(UIImage(systemName: "stop.circle"), for: .normal)
-        messageContainer.recordingLabel.isHidden = false
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
-            self.messageContainer.recordingLabel.frame.origin.x += self.messageContainer.frame.width/6
-            self.messageContainer.messageTextView.frame.origin.y += self.containerHeight
-            self.messageContainer.addImageButton.frame.origin.y += self.containerHeight
-            self.view.layoutIfNeeded()
-            self.messageContainer.recordingAudioView.isHidden = false
-        }) { (true) in
-            self.messageContainer.actionCircle.isHidden = false
-        }
-    }
-    
-    @objc private func audioTimerHandler() {
-        chatAudio.timePassed += 1
-        let (minute, second) = chatAudio.timePassedFrom(seconds: chatAudio.timePassed)
-        let minutes = minute < 10 ? "0\(minute)" : "\(minute)"
-        let seconds = second < 10 ? "0\(second)" : "\(second)"
-        messageContainer.recordingLabel.text = "\(minutes):\(seconds)"
-    }
-    
-    private func stopAudioRecording() {
-        chatAudio.audioRecorder.stop()
-        chatAudio.audioRecorder = nil
-        chatAudio.timePassed = 0
-        do {
-            let data = try Data(contentsOf: chatAudio.getDirectory().appendingPathComponent("sentAudio.m4a"))
-            chatNetworking.uploadAudio(file: data)
-            removeRecordingUI()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    private func removeRecordingUI() {
-        messageContainer.recordingAudioView.isHidden = true
-        if chatAudio.timer != nil { chatAudio.timer.invalidate() }
-        messageContainer.micButton.setImage(UIImage(systemName: "mic"), for: .normal)
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
-            self.messageContainer.actionCircle.isHidden = true
-            self.messageContainer.recordingLabel.frame.origin.x -= self.messageContainer.frame.width/6
-            self.messageContainer.messageTextView.frame.origin.y -= self.containerHeight
-            self.messageContainer.addImageButton.frame.origin.y -= self.containerHeight
-            self.view.layoutIfNeeded()
-        }) { (true) in
-            self.messageContainer.recordingAudioView.isHidden = true
-            self.messageContainer.recordingLabel.text = "00:00"
-        }
-    }
-    
-    func handleUserPressedAudioButton(for cell: ChatCell) {
-        if chatAudio.audioPlayer == nil {
-            chatAudio.audioPlayer = cell.audioPlayer
-            chatAudio.audioPlayer?.play()
-            cell.audioPlayButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
-            cell.timer = Timer(timeInterval: 0.3, target: cell, selector: #selector(cell.timerHandler), userInfo: nil, repeats: true)
-            RunLoop.current.add(cell.timer, forMode: RunLoop.Mode.common)
-        } else {
-            chatAudio.audioPlayer?.pause()
         }
     }
 }

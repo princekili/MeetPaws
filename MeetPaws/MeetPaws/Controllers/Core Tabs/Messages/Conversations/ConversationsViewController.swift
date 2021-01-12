@@ -1,6 +1,6 @@
 //
 //  ConversationsVC.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/21.
 //
@@ -15,7 +15,7 @@ protocol NewConversationSelected {
     func showSelectedUser(selectedFriend: User)
 }
 
-class ConversationsVC: UIViewController {
+class ConversationsViewController: UIViewController {
     
     let convNetworking = ConversationsNetworking()
     
@@ -41,14 +41,14 @@ class ConversationsVC: UIViewController {
         navigationItem.backButtonTitle = ""
         view.backgroundColor = .systemBackground
         if let tabItems = tabBarController?.tabBar.items {
-            tabBarBadge = tabItems[3]
+            tabBarBadge = tabItems[1]
         }
+        loadConversations()
         setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadConversations()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -97,7 +97,7 @@ class ConversationsVC: UIViewController {
     // MARK: -
     
     @objc func newConversationTapped() {
-        let controller = NewConversationVC()
+        let controller = NewConversationViewController()
         controller.conversationDelegate = self
         present(UINavigationController(rootViewController: controller), animated: true, completion: nil)
     }
@@ -106,7 +106,6 @@ class ConversationsVC: UIViewController {
     
     private func loadConversations() {
         convNetworking.convVC = self
-//        convNetworking.observeFriendsList()
         convNetworking.messagesReference()
     }
     
@@ -146,7 +145,7 @@ class ConversationsVC: UIViewController {
     // MARK: -
     
     func nextControllerHandler(user: User) {
-        let controller = ChatVC()
+        let controller = ChatViewController()
         controller.modalPresentationStyle = .fullScreen
         controller.user = user
         convNetworking.removeConvObservers()
@@ -189,7 +188,7 @@ class ConversationsVC: UIViewController {
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
-extension ConversationsVC: UITableViewDelegate, UITableViewDataSource {
+extension ConversationsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setupNoTypingCell(_ cell: ConversationsCell) {
         cell.isTypingView.isHidden = true
@@ -242,7 +241,7 @@ extension ConversationsVC: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: -
 
-extension ConversationsVC: NewConversationSelected {
+extension ConversationsViewController: NewConversationSelected {
     
     func showSelectedUser(selectedFriend: User) {
         nextControllerHandler(user: selectedFriend)

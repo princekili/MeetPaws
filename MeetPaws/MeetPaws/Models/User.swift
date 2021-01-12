@@ -1,6 +1,6 @@
 //
 //  FriendInfo.swift
-//  Yogogo
+//  MeetPaws
 //
 //  Created by prince on 2020/11/28.
 //
@@ -13,7 +13,7 @@ class Users {
     
     static var list = [User]()
     
-    static var convVC: ConversationsVC?
+    static var convVC: ConversationsViewController?
 }
 
 // MARK: - User Model

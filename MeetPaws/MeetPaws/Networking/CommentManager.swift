@@ -1,6 +1,6 @@
 //
 //  CommentManager.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/25.
 //
@@ -60,8 +60,7 @@ final class CommentManager {
                 print("------ Comment not found: \(snapshot.key) ------")
                 return
             }
-
-            print("------ newComment: \(newComment.commentId) ------")
+            
             completion(newComment)
         }
     }
@@ -88,12 +87,10 @@ final class CommentManager {
         if userDidLike.contains(userId) {
             let filtered = userDidLike.filter { $0 != userId }
             ref.child("comments").child(comment.commentId).child("userDidLike").setValue(filtered)
-            print("------ Dislike💔 ------")
             
         } else {
             userDidLike.append(userId)
             ref.child("comments").child(comment.commentId).child("userDidLike").setValue(userDidLike)
-            print("------ Like❤️ ------")
         }
     }
 }

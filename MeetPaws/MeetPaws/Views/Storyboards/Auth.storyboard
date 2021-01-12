@@ -13,7 +13,7 @@
         <!--Welcome View Controller-->
         <scene sceneID="o5P-6N-bLf">
             <objects>
-                <viewController storyboardIdentifier="SignInVC" title="SignInVC" id="btx-yT-kY9" userLabel="Welcome View Controller" customClass="SignInViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInVC" title="SignInVC" id="btx-yT-kY9" userLabel="Welcome View Controller" customClass="SignInViewController" customModule="MeetPaws" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FF3-gX-0yy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +60,7 @@ you have to sign in.</string>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-22" translatesAutoresizingMaskIntoConstraints="NO" id="z65-Nh-hkB">
-                                <rect key="frame" x="132" y="335.5" width="150" height="169.5"/>
+                                <rect key="frame" x="132" y="302" width="150" height="169.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen_logo_0.png" translatesAutoresizingMaskIntoConstraints="NO" id="6m2-aZ-ppr">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="151.5"/>
@@ -104,11 +104,11 @@ you have to sign in.</string>
                         <constraints>
                             <constraint firstItem="ZOq-o5-WXQ" firstAttribute="top" secondItem="u0n-BG-KGi" secondAttribute="top" constant="100" id="5ZV-6R-smi"/>
                             <constraint firstItem="ZOq-o5-WXQ" firstAttribute="centerX" secondItem="FF3-gX-0yy" secondAttribute="centerX" id="Mhp-pO-B0V"/>
+                            <constraint firstItem="z65-Nh-hkB" firstAttribute="top" secondItem="ZOq-o5-WXQ" secondAttribute="bottom" constant="20" id="SvB-hS-zho"/>
                             <constraint firstItem="u0n-BG-KGi" firstAttribute="bottom" secondItem="L9v-97-d4c" secondAttribute="bottom" constant="60" id="ZcG-hV-cFM"/>
                             <constraint firstItem="ZMX-sF-YvP" firstAttribute="centerX" secondItem="FF3-gX-0yy" secondAttribute="centerX" id="Zy7-qt-3c4"/>
                             <constraint firstItem="L9v-97-d4c" firstAttribute="top" secondItem="ZMX-sF-YvP" secondAttribute="bottom" constant="25" id="l3Z-8y-1U9"/>
                             <constraint firstItem="u0n-BG-KGi" firstAttribute="trailing" secondItem="L9v-97-d4c" secondAttribute="trailing" constant="20" id="nXs-8j-ttO"/>
-                            <constraint firstItem="z65-Nh-hkB" firstAttribute="centerY" secondItem="FF3-gX-0yy" secondAttribute="centerY" constant="-28" id="p6b-4r-0ca"/>
                             <constraint firstItem="z65-Nh-hkB" firstAttribute="centerX" secondItem="FF3-gX-0yy" secondAttribute="centerX" id="wPV-Eo-lSm"/>
                             <constraint firstItem="L9v-97-d4c" firstAttribute="leading" secondItem="u0n-BG-KGi" secondAttribute="leading" constant="20" id="zwU-FS-UM3"/>
                         </constraints>
@@ -135,7 +135,7 @@ you have to sign in.</string>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IAj-xk-4Ei">
                                 <rect key="frame" x="20" y="59" width="374" height="803"/>
                                 <color key="backgroundColor" red="0.73796564340000004" green="0.91487348079999997" blue="0.91289204359999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <mutableString key="text">End-User License Agreement ("Agreement")
+                                <string key="text">End-User License Agreement ("Agreement")
 Last updated: January 10, 2021
 
 Please read this End-User License Agreement carefully before clicking the "I Agree" button, downloading or using MeetPaws.
@@ -383,7 +383,7 @@ You are advised to review this Privacy Policy periodically for any changes. Chan
 Contact Us
 If you have any questions about this Privacy Policy, You can contact us:
 
-By email: princewang.developer@gmail.com</mutableString>
+By email: princewang.developer@gmail.com</string>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -407,7 +407,7 @@ By email: princewang.developer@gmail.com</mutableString>
         <!--Welcome View Controller-->
         <scene sceneID="6ro-e0-y9v">
             <objects>
-                <viewController storyboardIdentifier="PickUsernameVC" title="PickUsernameVC" id="Nfq-be-M2n" userLabel="Welcome View Controller" customClass="PickUsernameViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PickUsernameVC" title="PickUsernameVC" id="Nfq-be-M2n" userLabel="Welcome View Controller" customClass="PickUsernameViewController" customModule="MeetPaws" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ith-Bq-z1T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -499,7 +499,7 @@ You can always change it later.</string>
         <!--Welcome View Controller-->
         <scene sceneID="0fT-HO-8ot">
             <objects>
-                <viewController storyboardIdentifier="PickProfilePhotoVC" title="PickProfilePhotoVC" id="F8c-W1-6QY" userLabel="Welcome View Controller" customClass="PickProfilePhotoViewController" customModule="Insdogram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PickProfilePhotoVC" title="PickProfilePhotoVC" id="F8c-W1-6QY" userLabel="Welcome View Controller" customClass="PickProfilePhotoViewController" customModule="MeetPaws" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LiG-LT-Xlf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -1,6 +1,6 @@
 //
 //  UserIsTypingModel.swift
-//  Yogogo
+//  MeetPaws
 //
 //  Created by prince on 2020/11/28.
 //
@@ -16,6 +16,7 @@ struct UserActivity {
     init(isTyping: Bool, userId: String) {
         
         self.isTyping = isTyping
+        
         self.userId = userId
     }
 }

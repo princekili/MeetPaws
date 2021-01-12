@@ -1,6 +1,6 @@
 //
 //  ChatNetworking.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/20.
 //
@@ -27,12 +27,11 @@ class ChatNetworking {
     
     var isUserTyping = false
     
-    var chatVC: ChatVC!
+    var chatVC: ChatViewController!
     
     let userManager = UserManager.shared
     
-    // MARK: -
-    // MARK: GET MESSAGES METHOD
+    // MARK: - GET MESSAGES METHOD
     
     func getMessages(_ view: UIView, _ msgs: [Messages], completion: @escaping(_ newMessages: [Messages], _ mOrder: Bool) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
@@ -100,7 +99,7 @@ class ChatNetworking {
     
     // MARK: -
     
-    func newMessageRecievedHandler(_ messages: [Messages], for snap: DataSnapshot, completion: @escaping (_ message: Messages) -> Void) {
+    func newMessageReceivedHandler(_ messages: [Messages], for snap: DataSnapshot, completion: @escaping (_ message: Messages) -> Void) {
         let status = messages.contains { (message) -> Bool in return message.id == snap.key }
         if !status {
             guard let values = snap.value as? [String: Any] else { return }
@@ -262,12 +261,11 @@ class ChatNetworking {
             chatVC.navigationItem.setupTypingNavTitle(navTitle: user.fullName)
             return
         }
-//        let loginDate = NSDate(timeIntervalSince1970: (user.lastLogin ?? 0).doubleValue)
         let loginDate = Date(timeIntervalSince1970: TimeInterval((user.lastLogin)))
         if user.isOnline {
             chatVC.navigationItem.setNavTitles(navTitle: tempName, navSubtitle: "Online")
         } else {
-            chatVC.navigationItem.setNavTitles(navTitle: tempName, navSubtitle: chatVC.calendar.calculateLastLogin(loginDate as NSDate))
+            chatVC.navigationItem.setNavTitles(navTitle: tempName, navSubtitle: chatVC.calendar.calculateLastLogin(loginDate as Date))
         }
     }
     
@@ -395,6 +393,7 @@ class ChatNetworking {
     private func getFirstImageVideoFrame(for url: URL) -> UIImage? {
         let asset = AVAsset(url: url)
         let generator = AVAssetImageGenerator(asset: asset)
+        
         do {
             let cgImage = try generator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60), actualTime: nil)
             return UIImage(cgImage: cgImage)
@@ -427,7 +426,7 @@ class ChatNetworking {
     
     func observeUserMessageSeen() {
         guard let userId = Auth.auth().currentUser?.uid else { return }
-        
+
         Database.database().reference().child("messages").child("unread-Messages").child(user.userId).child(userId).observe(.value) { (snap) in
             if Int(snap.childrenCount) > 0 {
                 self.messageStatus = "Sent"

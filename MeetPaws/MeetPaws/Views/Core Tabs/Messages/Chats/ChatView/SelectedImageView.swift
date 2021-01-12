@@ -1,6 +1,6 @@
 //
 //  SelectedImageView.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/20.
 //
@@ -11,7 +11,7 @@ class SelectedImageView: UIView, UINavigationControllerDelegate {
 
     var keyWindow = UIApplication.shared.windows[0]
     
-    var chatVC: ChatVC?
+    var chatVC: ChatViewController?
     
     var sharedMediaVC: SharedMediaVC?
     
@@ -29,7 +29,7 @@ class SelectedImageView: UIView, UINavigationControllerDelegate {
     
     // MARK: -
     
-    init(_ cellImage: UIImageView, _ message: Messages?, _ chatVC: ChatVC? = nil, _ sharedMediaVC: SharedMediaVC? = nil) {
+    init(_ cellImage: UIImageView, _ message: Messages?, _ chatVC: ChatViewController? = nil, _ sharedMediaVC: SharedMediaVC? = nil) {
         super.init(frame: .zero)
         self.cellImage = cellImage
         self.chatVC = chatVC

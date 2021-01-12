@@ -1,6 +1,6 @@
 //
 //  ConversationsCell.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/21.
 //
@@ -32,7 +32,7 @@ class ConversationsCell: UITableViewCell {
     
     let checkmark = UIImageView()
     
-    var convVC: ConversationsVC!
+    var convVC: ConversationsViewController!
     
     var message: Messages? {
         didSet {

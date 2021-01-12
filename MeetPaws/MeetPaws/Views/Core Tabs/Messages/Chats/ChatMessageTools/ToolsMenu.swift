@@ -1,6 +1,6 @@
 //
 //  ToolsMenu.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/21.
 //
@@ -10,7 +10,7 @@ import UIKit
 
 class ToolsMenu: UIScrollView {
 
-    var chatVC: ChatVC!
+    var chatVC: ChatViewController!
     
     var message: Messages!
     
@@ -36,7 +36,7 @@ class ToolsMenu: UIScrollView {
     
     // MARK: -
     
-    init(_ message: Messages, _ selectedCell: ChatCell, _ chatVC: ChatVC) {
+    init(_ message: Messages, _ selectedCell: ChatCell, _ chatVC: ChatViewController) {
         super.init(frame: .zero)
         self.chatVC = chatVC
         self.message = message
@@ -56,14 +56,16 @@ class ToolsMenu: UIScrollView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: -
+    // MARK: - To Fix
     
     private func prepareMenuFrame() {
         xValue = messageFrame.origin.x
         if !selectedCell.isIncoming, messageFrame.width < 190 {
             xValue = messageFrame.minX - 150
             let width = messageFrame.width
-            if  width < 190, width > 120 { xValue = messageFrame.origin.x - 90 }
+            if  width < 190, width > 120 {
+                xValue = messageFrame.origin.x - 90
+            }
         }
         scrollYValue = cellFrame.maxY + 8
         noScroll = contentSize.height == chatVC.view.frame.height
@@ -81,14 +83,18 @@ class ToolsMenu: UIScrollView {
         frame = chatVC.view.frame
         var sHeight: CGFloat
         backgroundColor = .clear
-        if messageFrame.height < chatVC.view.frame.height - 220 { sHeight = chatVC.view.frame.height } else { sHeight = messageFrame.height + 230 }
+        if messageFrame.height < chatVC.view.frame.height - 220 {
+            sHeight = chatVC.view.frame.height
+        } else {
+            sHeight = messageFrame.height + 230
+        }
         contentSize = CGSize(width: chatVC.view.frame.width, height: sHeight)
     }
     
     // MARK: -
     
     private func setupMessageView() {
-        messageView = MessageView(frame: messageFrame, cell: selectedCell, message: message, friendName: chatVC.user.fullName)
+        messageView = MessageView(frame: messageFrame, cell: selectedCell, message: message, userName: chatVC.user.fullName)
         addSubview(messageView)
     }
     

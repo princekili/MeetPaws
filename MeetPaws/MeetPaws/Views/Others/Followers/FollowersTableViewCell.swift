@@ -1,6 +1,6 @@
 //
 //  FollowersTableViewCell.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/29.
 //
@@ -10,8 +10,6 @@ import Kingfisher
 
 protocol RemoveButtonDidTapDelegate: AnyObject {
     func presentAlert(for user: User, cell: UITableViewCell)
-    
-//    func joeyAlert(_ cell: UITableViewCell)
 }
 
 enum FollowType: Int {

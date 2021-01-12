@@ -1,6 +1,6 @@
 //
 //  MessageLoadingIndicator.swift
-//  Insdogram
+//  MeetPaws
 //
 //  Created by prince on 2020/12/20.
 //
@@ -11,13 +11,13 @@ class MessageLoadingIndicator: UIActivityIndicatorView {
 
     var const: CGFloat!
     
-    var chatVC: ChatVC!
+    var chatVC: ChatViewController!
     
     var order: Bool!
     
     // MARK: -
     
-    init(frame: CGRect, const: CGFloat, chatVC: ChatVC) {
+    init(frame: CGRect, const: CGFloat, chatVC: ChatViewController) {
         super.init(frame: frame)
         self.const = const
         self.chatVC = chatVC

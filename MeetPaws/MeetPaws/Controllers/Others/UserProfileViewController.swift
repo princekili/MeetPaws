@@ -1,6 +1,6 @@
 //
 //  UserProfileViewController.swift
-//  Yogogo
+//  MeetPaws
 //
 //  Created by prince on 2020/12/14.
 //
@@ -358,7 +358,7 @@ extension UserProfileViewController: UserProfileTabsCollectionReusableViewDelega
 extension UserProfileViewController: OpenUserMessagesHandlerDelegate {
     
     func openUserMessagesHandler() {
-        let chatVC = ChatVC()
+        let chatVC = ChatViewController()
         chatVC.user = user
         navigationController?.pushViewController(chatVC, animated: true)
     }
