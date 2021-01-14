@@ -9,12 +9,12 @@ import UIKit
 import FirebaseAuth
 
 class SettingsTableViewController: UITableViewController {
+    
+    let segueId = "SegueAboutDeveloper"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        navigationItem.backButtonTitle = ""
     }
     
     private func handleSignOut() {
@@ -38,7 +38,10 @@ class SettingsTableViewController: UITableViewController {
             return
         }
         
-        // Show Sign in page
+        showSignInVC()
+    }
+    
+    private func showSignInVC() {
         let storyboard = UIStoryboard(name: StoryboardName.auth.rawValue, bundle: nil)
         let nextController = storyboard.instantiateViewController(identifier: StoryboardId.signInVC.rawValue)
         
@@ -55,18 +58,18 @@ class SettingsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        
-        // Hide section #1
-        case 0: return 0
-            
+        case 0: return 1
         case 1: return 1
-            
         default: return 0
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        
+        if indexPath.section == 0 && indexPath.row == 0 {
+            performSegue(withIdentifier: segueId, sender: nil)
+        }
         
         if indexPath.section == 1 && indexPath.row == 0 {
             handleSignOut()
