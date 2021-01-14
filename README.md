@@ -24,7 +24,7 @@
 
 ## Intro
 
-#### __`MeetPaws` is a SNS `iOS` app written in `Swift`. It's inspired by Instagram.__
+#### __`MeetPaws` is a social networking `iOS` app written in `Swift`. It's inspired by Instagram.__
 
 #### 🐕 Meet New Friends
 When you're walking your dog, MeetPaws can bring you closer to the nearby people who are also walking their dog. Just open MeetPaws and find new friends on the map!
