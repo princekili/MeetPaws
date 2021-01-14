@@ -125,7 +125,7 @@ Hide posts and comments that you don't want to see again. You can also block use
 
 
 ## Contact
-**Prince**
+**Tzu Wang**
 
 princewang.developer@gmail.com
 
